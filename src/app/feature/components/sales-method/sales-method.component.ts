@@ -7,9 +7,10 @@ import {
   input,
   signal,
   PLATFORM_ID,
+  DOCUMENT
 } from '@angular/core';
 import { MetodosVentaService } from '@shared/services/metodos-venta.service';
-import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SalesChannel } from 'src/app/interfaces/sales-channel';
 import { RouterLink } from '@angular/router';
 

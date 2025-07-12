@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
   ElementRef,
@@ -65,7 +65,7 @@ import { SwiperOptions } from 'swiper/types';
     styles: `
 
   `,
-    imports: [CommonModule],
+    imports: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppRecargasComponent {

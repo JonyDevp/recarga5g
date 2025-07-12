@@ -6,7 +6,7 @@ import {
   signal,
   computed,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -40,15 +40,14 @@ import { AdvantageList } from '@interfaces/advantage-list.interface';
 
     `],
     imports: [
-        CommonModule,
-        RouterLink,
-        ProductCarouselComponent,
-        SalesMethodComponent,
-        AppRecargasComponent,
-        ProductsComponent,
-        RegisterStepsComponent,
-        DoubtsComponent,
-    ]
+    RouterLink,
+    ProductCarouselComponent,
+    SalesMethodComponent,
+    AppRecargasComponent,
+    ProductsComponent,
+    RegisterStepsComponent,
+    DoubtsComponent
+]
 })
 export default class PlataformaPagaquiComponent
   implements OnInit, AfterViewInit

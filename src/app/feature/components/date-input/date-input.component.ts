@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,7 +21,7 @@ import {
 
 @Component({
   selector: 'app-date-input',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   template: `
     <div class="mt-4 lg:mt-0 w-full">
 

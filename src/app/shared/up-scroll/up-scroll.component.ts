@@ -1,5 +1,5 @@
 import { trigger } from '@angular/animations';
-import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   Component,
   HostListener,
@@ -7,6 +7,7 @@ import {
   PLATFORM_ID,
   Renderer2,
   signal,
+  DOCUMENT
 } from '@angular/core';
 
 @Component({

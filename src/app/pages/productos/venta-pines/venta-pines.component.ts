@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -26,14 +26,13 @@ import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
     templateUrl: './venta-pines.component.html',
     styles: [``],
     imports: [
-        CommonModule,
-        RouterLink,
-        ProductCarouselComponent,
-        ProductComponent,
-        SalesMethodComponent,
-        RegisterStepsComponent,
-        DoubtsComponent
-    ]
+    RouterLink,
+    ProductCarouselComponent,
+    ProductComponent,
+    SalesMethodComponent,
+    RegisterStepsComponent,
+    DoubtsComponent
+]
 })
 export default class VentaPinesComponent implements OnInit{
 

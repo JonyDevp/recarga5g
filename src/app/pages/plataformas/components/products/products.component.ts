@@ -1,10 +1,10 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
-  imports: [NgIf, RouterLink, NgClass],
+  imports: [RouterLink, NgClass],
   templateUrl: `products.component.html`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

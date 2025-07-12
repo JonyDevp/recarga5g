@@ -7,9 +7,9 @@ import {
   viewChild,
   ElementRef,
   OnDestroy,
-
+  DOCUMENT
 } from '@angular/core';
-import { CommonModule, DOCUMENT, isPlatformBrowser, NgClass } from '@angular/common';
+import { CommonModule, isPlatformBrowser, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { ThemesService } from '@shared/services/themes.service';
 import { animate, style, transition, trigger } from '@angular/animations';

@@ -6,7 +6,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
 import { ProductCarouselService } from '../product-carousel/services/product-carousel.service';
 import { RouterLink } from '@angular/router';
@@ -28,7 +28,7 @@ import { RouterLink } from '@angular/router';
       <ng-content select="[btnIcon]"></ng-content>
     </button>
   `,
-  imports: [CommonModule],
+  imports: [],
 })
 export class BtnFilterComponent {
   titleBtn = input.required<Category>();

@@ -11,10 +11,11 @@ import {
   PLATFORM_ID,
   Renderer2,
   signal,
+  DOCUMENT
 } from '@angular/core';
 import { FaqsService, TitleSection } from '../../faqs.service';
 import { FaqsMenuFilterComponent } from '../faqs-menu-filter/faqs-menu-filter.component';
-import { DOCUMENT, isPlatformBrowser, NgClass } from '@angular/common';
+import { isPlatformBrowser, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-faqs-modal-card',

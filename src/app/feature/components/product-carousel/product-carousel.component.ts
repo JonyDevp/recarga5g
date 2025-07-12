@@ -12,13 +12,13 @@ import {
   viewChild,
 } from '@angular/core';
 import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { SwiperOptions } from 'swiper/types';
 // import { SwiperContainer } from 'swiper/element';
 
 @Component({
   selector: 'app-product-carousel',
-  imports: [CommonModule],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `

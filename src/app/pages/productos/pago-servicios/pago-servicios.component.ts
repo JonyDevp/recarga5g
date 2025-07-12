@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { CommonModule, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
 //* Servicios importados
@@ -24,14 +24,13 @@ import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
         }
       `],
     imports: [
-    CommonModule,
-      RouterLink,
-        ProductCarouselComponent,
-        ProductComponent,
-        SalesMethodComponent,
-        RegisterStepsComponent,
-        DoubtsComponent
-    ]
+    RouterLink,
+    ProductCarouselComponent,
+    ProductComponent,
+    SalesMethodComponent,
+    RegisterStepsComponent,
+    DoubtsComponent
+]
 })
 export default class PagoServiciosComponent implements OnInit{
 

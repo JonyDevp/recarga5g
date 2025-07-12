@@ -11,15 +11,15 @@ import {
   viewChildren,
   effect,
   Renderer2,
+  DOCUMENT
 } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
 import { metaTagModel } from 'src/app/interfaces/meta-tag.model';
 import { MetaTagService } from '../../../../shared/services/meta-tag.service';
 import {
-  DOCUMENT,
   isPlatformBrowser,
-  ViewportScroller,
+  ViewportScroller
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import {

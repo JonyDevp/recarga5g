@@ -10,11 +10,7 @@ import {
   viewChild,
   PLATFORM_ID,
 } from '@angular/core';
-import {
-  CommonModule,
-  isPlatformBrowser,
-  NgOptimizedImage,
-} from '@angular/common';
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import {  Title } from '@angular/platform-browser';
 import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -52,7 +48,6 @@ import { Testimonial, TestimonialService } from './services/testimonial.service'
   selector: 'app-home',
   templateUrl: './home.component.html',
   imports: [
-    CommonModule,
     NgOptimizedImage,
     RouterLink,
     ProductCarouselComponent,
@@ -65,8 +60,7 @@ import { Testimonial, TestimonialService } from './services/testimonial.service'
     DoubtsComponent,
     ProductComponent,
     CountUpModule
-    // BentoItemComponent
-  ],
+],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

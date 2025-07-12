@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
@@ -23,7 +23,6 @@ import { ErrorStateComponent } from "./components/error-state/error-state.compon
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
   imports: [
-    CommonModule,
     RouterLink,
     FollowCardComponent,
     NgxPaginationModule,
