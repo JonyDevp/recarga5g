@@ -1,0 +1,385 @@
+<div class="flex flex-col items-center justify-center mt-28 container w-full mx-auto animate-slide-in-bottom">
+  <picture>
+    <source [srcset]="
+        isDarkTheme()
+          ? '/assets/img/banner-blog-dark.jpg'
+          : '/assets/img/banner-blog-light.jpg'
+      " type="image/jpg" />
+
+    <img [src]="
+        isDarkTheme()
+          ? '/assets/img/banner-blog-dark.jpg'
+          : '/assets/img/banner-blog-light.jpg'
+      " alt="Conoce nuestro blog" class="shadow-lg rounded-lg" />
+  </picture>
+
+  <div
+    class="bg-white w-full max-w-xl dark:bg-slate-700 shadow-lg shadow-blue-100 dark:shadow-blue-300/20 -mt-3 p-3 rounded-lg flex items-center">
+    <input type="text" placeholder="Buscar articulo..."
+      class="outline-none mt-2 ml-2 w-full text-slate-600 dark:text-slate-300" />
+  </div>
+  <div class="flex gap-10 justify-center mt-5"></div>
+</div>
+
+<section class="container w-full px-4 mx-auto mt-16">
+  <div class="blog flex flex-col lg:flex-row gap-4 items-start">
+    <article class="article w-full lg:w-1/2 lg:sticky top-8">
+      <img src="assets/img/terminales-thumbnail.webp" alt=""
+        class="max-h-[225px] lg:max-h-[396px] size-full rounded-2xl object-cover border border-slate-300/80 dark:border-slate-500/50 shadow-md" />
+
+      <div class="article-content mt-6">
+        <a href="#" class="font-medium text-sm uppercase text-orange-700 dark:text-orange-300">Tecnologia</a>
+        <h3 class="text-3xl font-semibold tracking-tight hover:underline mb-4">
+          <a href="#">
+            ¡Facilita todos tus pagos con las terminales Pagaquí!
+          </a>
+        </h3>
+
+        <p class="leading-8 text-slate-700/80 dark:text-slate-400">
+          En el mundo actual, aceptar múltiples formas de pago ya no es un lujo, sino una necesidad para cualquier
+          negocio. Con las terminales Pagaquí, puedes ofrecer a tus clientes una experiencia de pago rápida, segura y
+          sin complicaciones, aceptando:
+        </p>
+      </div>
+
+      <footer class="wrapper-data flex items-start justify-start gap-2.5 mt-6">
+        <div class="blog-avatar size-14 p-1 rounded-[50%] bg-slate-100 overflow-hidden">
+          <img src="https://banter.tailawesome.com/_next/image?url=%2Fimages%2Fposts%2Farchive-05.jpeg&w=512&q=75"
+            width="size-full" alt="Recargas Electrónicas" />
+        </div>
+
+        <div class="blog-data-info flex flex-col justify-between">
+          <a href="" class="font-semibold text-sm">Recargas Electrónicas</a>
+          <p class="text-sm flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+            <time datetime="2025-05-05">mayo/2025</time>
+            <span class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+            </svg>
+            <time datetime="PT3M">3hrs</time>
+          </p>
+        </div>
+      </footer>
+    </article>
+
+    <aside class="lg:ml-16 w-full lg:w-1/2">
+      <h2
+        class="font-medium relative border-b border-slate-300/80 dark:border-slate-500/40 pb-2.5 text-2xl before:absolute before:-bottom-px before:left-0 before:h-px before:w-24 before:bg-red-600 dark:before:bg-blue-400 before:content-['']">
+        Ultimos posts
+      </h2>
+
+      <div class="aside-posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-5 mt-6">
+
+        @if(loadingState().currentPosts === 'LOADING') {
+        @for (sk of [1,2,3]; track $index) {
+        <app-skeleton-aside-post />
+        }
+        }
+
+        @if(loadingState().currentPosts === 'EMPTY') {
+        <app-card-empty-state />
+        }
+
+        @if(loadingState().currentPosts === 'ERROR') {
+        <app-card-error-state />
+        }
+
+        @if(loadingState().currentPosts === 'SUCESS') {
+        @for (asidePost of signalData().currentPosts.items; track asidePost.id) {
+        <article
+          class="aside-post flex items-center flex-col lg:flex-row py-8 w-full border-b border-slate-300/80 animate-slide-in-bottom">
+          <img [src]="asidePost.headerImage?.url" alt=""
+            class="max-h-[225px] lg:max-w-[280px] lg:max-h-[150px] size-full rounded-2xl object-cover" />
+
+          <div class="aside-post-content lg:flex-[1_1_0%] lg:ml-5 lg:max-w-96 w-full mt-4 lg:mt-0">
+            <a href="#" class="text-orange-700 tracking-wide">Tecnología</a>
+         
+            <h3 class="font-semibold text-xl hover:underline">
+              <a [routerLink]="['/mas/blog/post', asidePost.slug]" 
+                 [state]="{id: asidePost.id}">
+                {{asidePost.title}}
+              </a>
+            </h3> 
+            <!-- <h3 class="font-semibold text-xl hover:underline">
+              <a [routerLink]="'mas/blog/post/asidePost.slug'" (click)="navigatePost(asidePost.slug, asidePost.id)" class="">
+                {{asidePost.title}}
+              </a>
+            </h3> -->
+
+            <footer class="aside-data flex items-start justify-start gap-2.5 lg:mt-6">
+              <div class="blog-avatar size-8 p-1 rounded-[50%] bg-slate-100 overflow-hidden">
+                <img src="https://banter.tailawesome.com/_next/image?url=%2Fimages%2Fposts%2Farchive-05.jpeg&w=512&q=75"
+                  width="size-full" alt="Recargas Electrónicas" />
+              </div>
+
+              <div class="blog-data-info flex flex-row justify-between">
+                <a href="" class="font-semibold text-xs hover:underline">Recargas Electrónicas</a>
+                <p class="text-xs flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+                  <span class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>
+                  <time datetime="2025-05-05">mayo/2025</time>
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"/></svg>
+                    <time datetime="PT3M">3hrs</time> -->
+                </p>
+              </div>
+            </footer>
+          </div>
+        </article>
+        }
+        }
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="container mt-16 mx-auto px-4">
+  <div>
+    <h3
+      class="font-medium relative border-b border-slate-300/80 dark:border-slate-500/40 pb-2.5 text-2xl before:absolute before:-bottom-px before:left-0 before:h-px before:w-24 before:bg-red-600 dark:before:bg-blue-400 before:content-['']">
+      Posts en Tendencia
+    </h3>
+
+    <div class="mt-9 relative">
+      <swiper-container init="false" #swiperApp class="swiper-app">
+        @for (product of signalData().tags.items; track $index) {
+        <swiper-slide class="swiper-app__slide">
+
+          <a routerLink="'/mas/blog/tag/'" class="max-h-40 rounded-2xl size-full relative">
+            <div class="absolute left-0 right-0 bottom-0 pb-6">
+              <div class="flex justify-center w-full">
+                <span class="text-sm p-3 bg-slate-300 py-1 px-3 rounded-md font-medium">Tecnología</span>
+              </div>
+            </div>
+          </a>
+
+        </swiper-slide>
+        }
+      </swiper-container>
+
+    </div>
+  </div>
+</section>
+
+<section class="container mx-auto mt-16 px-4">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+      <div class="mx-auto">
+        <div class="articles grid grid-cols-1 lg:grid-cols-2 gap-6">
+          @for (_ of [1,2,3]; track _) {
+          <article class="rounded-2xl flex flex-col relative shadow-md">
+            <div class="overflow-hidden h-[194px]">
+              <img
+                src="https://images.unsplash.com/photo-1468971050039-be99497410af?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="" class="rounded-tl-2xl rounded-tr-2xl object-cover" />
+            </div>
+            <div class="p-5 flex flex-col w-full justify-between flex-[1_1_0%]">
+              <div class="content">
+                <a href="" class="text-orange-700 dark:text-orange-300 tracking-wide700">Inteligencia artificial</a>
+                <h3 class="text-2xl">How AI is Making Nuclear Fusion Safer</h3>
+
+                <p class="leading-7 text-slate-700/80 dark:text-slate-400">
+                  Lorem ipsum dolor sit amet aliqua enim hac. Diam eros
+                  adipiscing aliquam nisi do augue mattis sodales turpis lectus
+                  a. Curabitur nullam sodales phasellus donec nec pharetra
+                  quisque. Nec mi congue lobortis eget aliqua donec diam
+                  sollicitudin eu phasellus facilisi dictumst.
+                </p>
+              </div>
+
+              <footer class="article-data flex items-start justify-start gap-2.5 mt-6">
+                <div class="blog-avatar size-10 p-1 rounded-[50%] bg-slate-100 overflow-hidden">
+                  <img
+                    src="https://banter.tailawesome.com/_next/image?url=%2Fimages%2Fposts%2Farchive-05.jpeg&w=512&q=75"
+                    width="size-full" alt="Recargas Electrónicas" />
+                </div>
+
+                <div class="blog-data-info flex flex-col justify-between">
+                  <a href="" class="font-semibold text-sm">Recargas Electrónicas</a>
+                  <p class="text-sm flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+                    <time datetime="2025-05-05">mayo/2025</time>
+                    <span class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                      class="size-5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                    </svg>
+                    <time datetime="PT3M">3hrs</time>
+                  </p>
+                </div>
+              </footer>
+            </div>
+          </article>
+          }
+        </div>
+
+        <pagination-controls id="pagination-posts" (pageChange)="onPageChange($event)" previousLabel="Anterior"
+          nextLabel="Siguiente" screenReaderPaginationLabel="Navegación de páginas" screenReaderPageLabel="Página"
+          screenReaderCurrentLabel="Estás en la pagina" />
+      </div>
+    </div>
+    <aside class="lg:col-span-1 w-full">
+      <div class="aside-features lg:px-8 bg-slate-200 dark:bg-slate-600 rounded-2xl w-full">
+        <h3
+          class="font-medium relative border-b border-slate-300/80 dark:border-slate-500/40 pb-2.5 pt-6 text-2xl before:absolute before:-bottom-px before:left-0 before:h-px before:w-24 before:bg-red-600 dark:before:bg-blue-400 before:content-['']">
+          Posts Destacados
+        </h3>
+        <div class="aside-posts pt-6">
+          @for (item of [1, 2, 3]; track item) {
+          <article class="flex gap-4 mb-12">
+            <img
+              src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="" class="size-24 rounded-2xl shadow-md object-cover" />
+            <div class="">
+              <div class="flex flex-col items-start size-full">
+                <div class="aside-post-content">
+                  <h3 class="font-medium text-lg">
+                    <a routerLink="/blog/how-is-she"> How to Become an Idea Machine </a>
+                  </h3>
+
+                  <footer class="wrapper-data flex items-start justify-start gap-2.5 mt-4">
+                    <!-- <div class="blog-avatar size-10 p-1 rounded-[50%] bg-slate-100 overflow-hidden">
+                       <img
+                         src="https://banter.tailawesome.com/_next/image?url=%2Fimages%2Fposts%2Farchive-05.jpeg&w=512&q=75"
+                         width="size-full" alt="Recargas Electrónicas" />
+                     </div> -->
+
+                    <div class="blog-data-info flex flex-col justify-between">
+                      <a href="" class="font-semibold text-sm">Recargas Electrónicas</a>
+                      <p class="text-sm flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+                        <time datetime="2025-05-05">mayo/2025</time>
+                        <span class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                           class="size-5" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round"
+                             d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                         </svg>
+                         <time datetime="PT3M">3hrs</time> -->
+                      </p>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </article>
+          }
+        </div>
+      </div>
+      <app-follow-card />
+    </aside>
+  </div>
+</section>
+
+<!-- <section class="section max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[5fr_2fr] gap-20">
+  <div class="blog order-2 lg:order-1">
+    <h2 class="relative font-semibold text-4xl pl-4 before:absolute before:left-0 before:top-0 before:w-[5px] before:rounded-[5px] before:h-full before:bg-slate-300">Ultimos post</h2>
+  
+    <div class="blog-container mt-6">
+      @if(isLoading()) {
+      
+          @for(_ of [1, 2]; track _) {
+            <div class="skeleton-card grid max-[500px]:grid-cols-1 sm:grid-cols-[3fr_4fr] gap-5 bg-white dark:bg-slate-600 p-3 rounded-lg shadow-lg mb-4">
+              <div class="skeleton-banner rounded-md animate-pulse">
+                <span class="w-[300px] h-[320px] rounded-md bg-slate-300 block"></span>
+              </div>
+
+              <div class="skeleton-content py-2.5 px-2 animate-pulse">
+                  <span class="bg-slate-300 text-slate-700 font-semibold text-sm py-1 px-3 rounded-md mb-4 block h-8"></span>
+                  <span class="bg-slate-300 block w-full h-2/3 pb-2"></span>
+
+                  <div class="skeleton-footer flex items-start justify-start gap-2.5 mt-4">
+                    <div class="skeleton-avatar">
+                      <div class="size-12 bg-slate-300 rounded-[50%]"></div>
+                    </div>
+                    <div class="skeleton-info flex gap-1 items-center w-full">
+                      <span class="w-full h-6 block bg-slate-300"></span>
+
+                    </div>
+                  </div>
+              </div>
+
+          </div>
+          }
+              
+      } @else {
+        @for (post of posts(); track $index) {
+          <article class="blog-card grid max-[500px]:grid-cols-1 sm:grid-cols-[3fr_4fr] gap-5 bg-white dark:bg-slate-600 p-3 rounded-lg shadow-lg transition-transform mb-4">
+            <div class="blog-card-banner rounded-md">
+              <img [src]="post.headerImage?.url" 
+                   class="object-cover size-full" 
+                   [alt]="post.headerImage?.title">
+            </div>
+            <div class="blog-card-content py-2.5 px-2">
+              <button type="button" class="bg-slate-200 text-slate-700 font-semibold text-sm py-1 px-3 rounded-md mb-4">Telefonía</button>
+              <h3 class="font-semibold text-lg mb-4">
+          
+               <a [routerLink]="['/mas/blog/post', post.slug]" [queryParams]="{id: post.id}">
+                {{post.title}}
+               </a>
+              </h3>
+    
+              <p class="text-slate-600/80 dark:text-slate-300">
+               
+              </p>
+    
+              <footer class="wrapper-data flex items-start justify-start gap-2.5 mt-4">
+                <div class="blog-avatar size-14 p-1 rounded-[50%] bg-slate-100 overflow-hidden">
+                  <img src="https://banter.tailawesome.com/_next/image?url=%2Fimages%2Fposts%2Farchive-05.jpeg&w=512&q=75" width="size-full" alt="Recargas Electrónicas">
+                </div>
+    
+                <div class="blog-data-info flex flex-col justify-between">
+                  <a href="" class="font-semibold text-sm">Recargas Electrónicas</a>
+                  <p class="text-sm flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+                    <time datetime="2025-05-05">{{post.publish_date}}</time>
+                    <span class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"/></svg>
+                    <time datetime="PT3M">3hrs</time>
+                  </p>
+                </div>
+              </footer>
+            </div>
+          </article>
+        }
+      }
+    </div>
+  </div>
+  <aside class="aside block items-stretch order-1 lg:order-2">
+    <div class="topis mb-10">
+      <h3 class="font-semibold text-3xl text-slate-600 dark:text-slate-400 text-center mb-12">Topics</h3>
+
+      <a href="#" class="mb-6 flex items-stretch bg-white dark:bg-slate-600 rounded-lg shadow-md overflow-hidden">
+        <div class="w-[50px] flex justify-center items-center bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+        </div>
+
+        <p class="px-4 py-2 font-semibold  text-slate-700/80 dark:text-slate-300">Telefonía</p>
+      </a>
+
+      <a href="#" class="mb-6 flex items-stretch bg-white dark:bg-slate-600 rounded-lg shadow-md overflow-hidden">
+        <div class="w-[50px] flex justify-center items-center bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+        </div>
+
+        <p class="py-2 px-4 font-semibold text-slate-700/80 dark:text-slate-300">Tecnologia</p>
+      </a>
+
+      <a href="#" class="mb-6 flex items-stretch bg-white dark:bg-slate-600 rounded-lg shadow-md overflow-hidden">
+        <div class="w-[50px] flex justify-center items-center bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+        </div>
+
+        <p class="py-2 px-4 font-semibold text-slate-700/80 dark:text-slate-300">Otros</p>
+      </a>
+    </div>
+
+    <div class="tags">
+      <h4 class="text-3xl text-slate-600 dark:text-slate-400 font-semibold text-center mb-4">Tags</h4>
+      <div class="flex bg-white dark:bg-slate-600 gap-2 p-8 shadow-md">
+          <button class="text-sm font-semibold rounded-[5px] py-1.5 px-2.5 bg-slate-200 dark:bg-slate-700">#Telcel</button>
+          <button class="text-sm font-semibold rounded-[5px] py-1.5 px-2.5 bg-slate-200 dark:bg-slate-700">#Tecnologia</button>
+          <button class="text-sm font-semibold rounded-[5px] py-1.5 px-2.5 bg-slate-200 dark:bg-slate-700">#IA</button>
+          <button class="text-sm font-semibold rounded-[5px] py-1.5 px-2.5 bg-slate-200 dark:bg-slate-700">#Novedades</button>
+      </div>
+    </div>
+  </aside>
+</section> -->

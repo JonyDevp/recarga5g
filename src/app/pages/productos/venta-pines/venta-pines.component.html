@@ -1,0 +1,627 @@
+<section class="banner-plataformas mb-20 animate-slide-in-bottom">
+  <div
+    class="banner-plataformas__container container flex items-center justify-center mx-auto mt-20 pt-4 shadow rounded-lg">
+
+    <picture>
+      <source media="(min-width:1536px)"
+        [srcset]="isDarkTheme() ? 'assets/img/producto-pines-web_dark.webp' : 'assets/img/producto-pines-web_light.webp'"
+        type="image/webp">
+
+      <source media="(min-width:340px)"
+        [srcset]="isDarkTheme() ? 'assets/img/banner-pines-mobile_dark.webp' : 'assets/img/banner-pines-mobile_light.webp'"
+        type="image/webp">
+
+      <img width="1539" height="385" alt="Venta de pines electrónicos para tu negocio"
+        title="Venta de pines electrónicos para tu negocio"
+        [src]="isDarkTheme() ? 'assets/img/banner-pines-web_dark.webp' : 'assets/img/producto-pines-web_light.webp'"
+        class="banner-plataform w-full h-auto">
+    </picture>
+
+  </div>
+</section>
+
+<!-- ============= CAORUSEL PINES ============= -->
+
+<section data-aos="zoom-in-up" class="container mx-auto mb-20">
+  <app-product-carousel [products]="carouselPines()"></app-product-carousel>
+</section>
+<!-- ============= SECCION COBRO PINES============= -->
+
+<section data-aos="zoom-in-up" class="my-20">
+  <div class="venta-pin container mx-auto px-5 sm:px-6 lg:px-8 relative">
+    <div class="circle-shape-wrapper -z-10 absolute top-20 left-2/4 pointer-events-none -translate-x-2/4"
+      aria-hidden="true">
+      <div
+        class="circle-shape blur-[160px] opacity-35 bg-gradient-to-tr from-blue-500 to-blue-100 rounded-full size-80">
+      </div>
+    </div>
+
+    <div class="circle-shape-wrapper -z-10 absolute bottom-30 left-10 pointer-events-none" aria-hidden="true">
+      <div
+        class="circle-shape blur-[160px] opacity-35 bg-gradient-to-br from-blue-500 to-purple-400 rounded-full size-80">
+      </div>
+    </div>
+    <div class="venta-pin-row grid grid-cols-10 lg:grid-cols-11">
+
+      <div class="venta-pin-col w-full col-span-10 lg:col-span-6 flex flex-col items-center">
+
+
+        <div class="text-left w-full">
+          <div
+            class="font-medium text-sm py-[0.375rem] px-4 rounded-md bg-slate-800 dark:bg-slate-700 text-slate-100 shadow-sm inline-flex items-center gap-2">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12.75 8.25v7.5m6-7.5h-3V12m0 0v3.75m0-3.75H18M9.75 9.348c-1.03-1.464-2.698-1.464-3.728 0-1.03 1.465-1.03 3.84 0 5.304 1.03 1.464 2.699 1.464 3.728 0V12h-1.5M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+            </svg>
+
+            <span>
+              Variedad de pines electrónicos
+            </span>
+
+          </div>
+        </div>
+
+        <h1 class="text-4xl text-left font-semibold c-text w-full">Vende pines electrónicos en tu negocio</h1>
+
+        <div class="mt-6">
+          <p class="text-lg">
+            Oportunidad perfecta para diversificar tu negocio y aumentar tus ganancias, ofreciendo <strong>tarjeta de
+              regalo</strong> en tu negocio a todos tus clientes.
+          </p>
+
+          <p class="text-lg mt-4">
+            Esta oportunidad te permite diversificar tus servicios, fidelizar a tus clientes y optimizar sus
+            experiencias, ya que podrán adquirir sus tarjetas de regalo y recargar sus servicios favoritos sin tener que
+            desplazarse o hacer largas filas.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-12 grid-cols-1 lg:grid-cols-2">
+
+          <article
+            class="shadow ring-1 ring-gray-200 dark:ring-gray-700 bg-gray-300/25 dark:bg-slate-600/30 p-6 rounded-lg">
+            <div class="venta-pin-icon flex gap-1">
+              <div class="why-sell-icon w-12 h-12 inline-flex items-center justify-center rounded-full mb-4 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                  class="size-7" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+                </svg>
+              </div>
+              <h3 class="text-[17px] font-semibold">Gana una comisión extra por vender tarjeta de regalo</h3>
+            </div>
+            <p class="mt-2">
+              Gana más con cada pin que vendas
+            </p>
+          </article>
+
+          <article class="shadow ring-1 ring-gray-200 dark:ring-gray-700 rounded-lg p-6">
+            <div class="venta-pin-icon flex gap-1">
+              <div class="why-sell-icon w-12 h-12 inline-flex items-center justify-center rounded-full mb-4 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                  class="size-7" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3.75v16.5M2.25 12h19.5M6.375 17.25a4.875 4.875 0 0 0 4.875-4.875V12m6.375 5.25a4.875 4.875 0 0 1-4.875-4.875V12m-9 8.25h16.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H3.75a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5Zm12.621-9.44c-1.409 1.41-4.242 1.061-4.242 1.061s-.349-2.833 1.06-4.242a2.25 2.25 0 0 1 3.182 3.182Zm-5.598-3.18c1.409 1.409 1.06 4.242 1.06 4.242S9 12.22 7.592 10.811a2.25 2.25 0 1 1 3.182-3.182Z" />
+                </svg>
+              </div>
+              <h3 class="text-[17px] font-semibold">
+                Vende mas +100 tipos de pines electrónicos con comisiones atractivas en tu negocio
+              </h3>
+            </div>
+
+            <p class="mt-2">
+              Ofrece a tus clientes la posibilidad de adquirir tarjeta de regalo para plataformas como Spotify, Netflix,
+              Google Play, Free Fire y muchas más.
+            </p>
+          </article>
+
+          <article class="shadow ring-1 ring-gray-200 dark:ring-gray-700 rounded-lg p-6">
+            <div class="venta-pin-icon flex items-center">
+              <div class="why-sell-icon w-12 h-12 inline-flex items-center justify-center rounded-full mb-4 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                  class="size-6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                </svg>
+              </div>
+              <h3 class="text-[17px] font-semibold">
+                Comisiones atractivas para vender pines electrónicos
+              </h3>
+            </div>
+            <p class="mt-2">
+              Esta es una oportunidad única para diversificar tu negocio y generar ingresos adicionales sin
+              complicaciones. ¡Únete a nosotros y comienza a ganar más hoy mismo!
+            </p>
+          </article>
+
+          <article class="shadow ring-1 ring-gray-200 dark:ring-gray-700 rounded-lg p-6">
+            <div class="venta-pin-icon flex items-center">
+              <div class="why-sell-icon w-12 h-12 inline-flex items-center justify-center rounded-full mb-4 shrink-0">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                  class="size-6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                </svg>
+              </div>
+
+              <h3 class="text-[17px] font-semibold">
+                Atrae más clientes y fidelízalos ofreciendo pines electrónicos de las mejores marcas
+              </h3>
+            </div>
+
+            <p class="mt-2">
+              Al integrar esta funcionalidad en tu negocio, te posicionarás como un centro de soluciones prácticas y
+              confiables.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+      <div class="venta-pin-col w-full col-span-10 lg:col-span-5 lg:pl-24 mt-12">
+        <div class="flex flex-col lg:min-h-[805px] justify-center mx-auto">
+          <img src="assets/img/pines.webp" alt="Venta de pines electrónicos para negocios">
+          <img src="assets/img/pines-fisicos.webp" class="pt-8" alt="Venta de pines electrónicos para negocios">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section data-aos="zoom-in-up"
+  class="bg-gradient-to-br from-red-700 to-red-900 dark:from-blue-700 dark:to-blue-900 mb-20">
+  <div class="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14 lg:px-8 lg:py-10">
+    <div class="flex flex-col mb-16 sm:text-center sm:mb-0">
+      <span class="mb-6 sm:mx-auto">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-accent-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+            class="size-10 text-white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7a15.53 15.53 0 0 1-.311.06 15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+          </svg>
+        </div>
+      </span>
+      <div class="mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <h4
+          class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
+          <span class="relative inline-block">
+            <svg viewBox="0 0 52 24" fill="currentColor"
+              class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-deep-purple-accent-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+              <defs>
+                <pattern id="700c93bf-0068-4e32-aafe-ef5b6a647708" x="0" y="0" width=".135" height=".30">
+                  <circle cx="1" cy="1" r=".7"></circle>
+                </pattern>
+              </defs>
+              <rect fill="url(#700c93bf-0068-4e32-aafe-ef5b6a647708)" width="52" height="24"></rect>
+            </svg>
+            <span class="relative">¿Que son</span>
+          </span>
+          los pines electrónicos?
+        </h4>
+        <p class="text-base text-indigo-100 md:text-lg">
+          Los <strong>pines electrónicos</strong> son códigos digitales que permiten a los usuarios recargar saldo,
+          activar suscripciones o acceder a servicios en plataformas populares como Spotify, Netflix, Google Play, Free
+          Fire, Uber Eats y muchas más.
+        </p>
+
+        <!-- <p class="text-base text-indigo-100 md:text-lg mt-2">
+          Estos códigos, que pueden ser de números o letras, se entregan de manera instantánea y se canjean fácilmente en las aplicaciones o sitios web correspondientes.
+        </p> -->
+
+        <p class="text-base text-indigo-100 md:text-lg mt-2">
+          los pines electrónicos son una forma práctica, segura y rentable de modernizar tu negocio, ofreciendo un
+          servicio que combina tecnología, comodidad y rentabilidad. ¡Aprovecha esta tendencia y lleva tu negocio al
+          siguiente nivel!
+        </p>
+      </div>
+
+      <div>
+        <a routerLink="/registro"
+          class="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide bg-white text-slate-700 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none">
+          registrarme
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-aos="fade-up" class="razones mb-20">
+  <div class="container mx-auto px-5 sm:px-6 lg:px-8 relative">
+
+    <div class="circle-shape-wrapper -z-10 absolute top-1/3 left-2/4 pointer-events-none -translate-x-2/4"
+      aria-hidden="true">
+      <div
+        class="circle-shape blur-[160px] opacity-35 bg-gradient-to-tr from-blue-500 to-blue-100 rounded-full size-80">
+      </div>
+    </div>
+
+    <div
+      class="font-medium text-sm py-[0.375rem] px-4 rounded-md bg-slate-800 dark:bg-slate-700 text-slate-100 shadow-sm inline-flex items-center gap-2 mr-auto lg:mx-auto mb-1">
+
+      <span>
+        +40 marcas diferentes
+      </span>
+
+    </div>
+    <h4 class="c-text font-semibold text-3xl pb-4">¿Por qué vender tarjetas de regalo en mi negocio?</h4>
+    <p class="mb-12"> Ahora puedes pagar tus servicios básicos o ayudar a tus clientes a hacerlo de manera rápida y
+      sencilla.</p>
+
+    <div class="razones-list mb-10 border-b">
+      <div class="razones-row">
+        <h5 class="c-text text-lg font-semibold">Plataforma para vender tarjeta de regalo</h5>
+        <p class="mb-6 lg:max-w-96 text-pretty">Con recarga5g.com podras vender +100 tipos de pines electrónicos: Google
+          play, Spotify, YouTube Premium, Cinepolis, Free Fire y muchos mas.</p>
+
+        <ul
+          class="razones-ul grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 border-slate-500/20 dark:border-slate-600/50 border-b pb-6">
+
+          <li>
+            <div class="flex flex-row gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+              </svg>
+              <h6 class="font-semibold text-lg">Ganancias por venta de pines electrónicos</h6>
+            </div>
+            <p>
+              Obten una comisión atractiva al vender pines electrónicos desde un 3% hasta un 5% por cada venta.
+            </p>
+          </li>
+
+          <li>
+            <div class="flex flex-row gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-8" viewBox="0 0 512 512">
+                <circle fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" cx="256" cy="56"
+                  r="40" />
+                <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"
+                  d="M204.23 274.44c2.9-18.06 4.2-35.52-.5-47.59-4-10.38-12.7-16.19-23.2-20.15L88 176.76c-12-4-23.21-10.7-24-23.94-1-17 14-28 29-24 0 0 88 31.14 163 31.14s162-31 162-31c18-5 30 9 30 23.79 0 14.21-11 19.21-24 23.94l-88 31.91c-8 3-21 9-26 18.18-6 10.75-5 29.53-2.1 47.59l5.9 29.63 37.41 163.9c2.8 13.15-6.3 25.44-19.4 27.74S308 489 304.12 476.28l-37.56-115.93q-2.71-8.34-4.8-16.87L256 320l-5.3 21.65q-2.52 10.35-5.8 20.48L208 476.18c-4 12.85-14.5 21.75-27.6 19.46s-22.4-15.59-19.46-27.74l37.39-163.83z" />
+              </svg>
+              <h6 class="font-semibold text-lg">Aumenta tus ventas en tu negocio con tarjetas de regalo</h6>
+            </div>
+            <p>
+              Al vender tarjetas de marcas populares como Netflix, Spotify, Google Play, Amazon o Uber Eats, no solo
+              generas ingresos adicionales, sino que también incrementas el tráfico en tu establecimiento o plataforma
+              en línea.
+            </p>
+          </li>
+
+          <li>
+            <div class="flex flex-row gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+              </svg>
+
+              <h6 class="font-semibold text-lg">Ofrece un servicio extra con nuestros pines electrónicos</h6>
+            </div>
+            <p>
+              Con un catálogo amplio de tarjetas de regalo, puedes ofrecer algo para todos los gustos y necesidades,
+              desde entretenimiento hasta compras en línea, lo que te permite generar comisiones recurrentes.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="razones-list mb-10 border-b">
+      <div class="razones-row">
+        <ul
+          class="razones-ul grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 border-slate-500/20 dark:border-slate-600/50 border-b pb-6">
+
+          <li>
+            <div class="flex flex-row gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                class="size-8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+              </svg>
+
+              <h6 class="font-semibold text-lg">Atrae más clientes y fidelízalos ofreciendo pines electrónicos </h6>
+            </div>
+            <p>
+              Las tarjetas de regalo son un producto altamente demandado. Ofrecerlas en tu negocio te ayudará a atraer a
+              nuevos clientes que buscan soluciones prácticas y regalos ideales para cualquier ocasión.
+            </p>
+          </li>
+
+          <li>
+            <div class="flex flex-row gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                class="size-8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <h6 class="font-semibold text-lg">Comisiones atractivas por venta de pines electrónicos</h6>
+            </div>
+            <p>
+              No necesitas inventario físico ni grandes inversiones para empezar a vender tarjetas de regalo.
+              Simplemente regístrate en una plataforma confiable y comienza a vender de inmediato.
+            </p>
+          </li>
+
+          <li>
+            <div class="flex flex-row gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                class="size-7" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3a49.5 49.5 0 0 1-4.02-.163 2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+              </svg>
+              <h6 class="font-semibold text-lg">Asesoria para vender pines electrónicos</h6>
+            </div>
+            <p>
+              Obtendras asesoria personalizada ante cualquier duda o problema
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-20">
+  <div class="container mx-auto px-5 sm:px-6 lg:px-8 relative"></div>
+  <div class="circle-shape-wrapper -z-10 absolute top-1/3 left-2/4 pointer-events-none -translate-x-2/4"
+    aria-hidden="true">
+    <div
+      class="circle-shape blur-[160px] opacity-35 bg-gradient-to-tr from-indigo-500 to-blue-100 rounded-full size-80">
+    </div>
+  </div>
+  <div data-aos="fade-right" class="row flex flex-col lg:flex-row gap-8">
+    <div class="col w-full lg:w-1/2 lg:mt-12">
+      <div
+        class="font-medium text-sm py-[0.375rem] px-4 rounded-md bg-slate-800 dark:bg-slate-700 text-slate-100 shadow-sm inline-flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z" />
+        </svg>
+        <span>
+          seguro, facil y confiable
+        </span>
+
+      </div>
+      <h3 class="text-4xl font-semibold c-text">¿Como vender tarjetas de regalo en mi negocio?</h3>
+      <p class="mt-4">
+        Con nuestra plataforma, puedes vender +100 tarjetas electrónicas de las marcas más populares, como Netflix,
+        Spotify, Google Play, Amazon Prime Video, Free Fire, Uber Eats y muchas más. Cada venta que realices no solo
+        generará satisfacción en tus clientes, sino que también te reportará excelentes comisiones que aumentarán la
+        rentabilidad de tu negocio.
+      </p>
+
+      <ol class="mt-6">
+        <li class="flex p-4">
+
+          <span
+            class="w-10 h-10 text-lg font-semibold inline-flex items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-indigo-100 dark:text-indigo-600 mb-4 shrink-0">1</span>
+          <div class="grow pl-3">
+            <p class="font-semibold text-lg">Selecciona el pin con el monto a vender</p>
+
+            <p>Desde nuestra plataforma selecciona el pin a vender</p>
+          </div>
+        </li>
+
+        <li class="flex p-4">
+
+          <span
+            class="w-10 h-10 text-lg font-semibold inline-flex items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-indigo-100 dark:text-indigo-600 mb-4 shrink-0">2</span>
+
+          <div class="grow pl-3">
+            <p class="font-semibold text-lg">Captura y confirma el numero de tu cliente</p>
+
+            <p>Captura el numero de telefono de tu cliente donde podra recibir y canjear su tarjeta de regalo</p>
+          </div>
+        </li>
+
+        <li class="flex p-4">
+
+          <span
+            class="w-10 h-10 text-lg font-semibold inline-flex items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-indigo-100 dark:text-indigo-600 mb-4 shrink-0">3</span>
+
+          <div class="grow pl-3">
+            <p class="font-semibold text-lg">Cobra el monto del pin a tu cliente</p>
+
+            <p>Una vez realizada la venta, podrás cobrar el monto del pin, y recibir en la plataforma tu debida comisión
+            </p>
+          </div>
+        </li>
+
+        <li class="flex p-4">
+
+          <span
+            class="w-10 h-10 text-lg font-semibold inline-flex items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-100 dark:text-green-600 mb-4 shrink-0">✔</span>
+
+          <div class="grow pl-3">
+            <p class="font-semibold text-lg">Listo</p>
+
+            <p>Tu Cliente recibira el codigo por SMS para poder canjearlo en su plataforma de entretenimiento</p>
+          </div>
+        </li>
+
+
+      </ol>
+    </div>
+    <div class="col w-full lg:w-1/2">
+      <img src="assets/img/venta-pines.webp" alt="Vende +100 pines en negocios con excelentes comisiones">
+    </div>
+  </div>
+</section>
+
+<section class="mb-20">
+  <div class="container mx-auto px-5 sm:px-6 lg:px-8 relative">
+    <div class="circle-shape-wrapper -z-10 absolute top-20 left-2/4 pointer-events-none -translate-x-2/4"
+      aria-hidden="true">
+      <div
+        class="circle-shape blur-[160px] opacity-35 bg-gradient-to-tr from-indigo-500 to-blue-100 rounded-full size-80">
+      </div>
+    </div>
+    <div data-aos="fade-left" class="row flex flex-col lg:flex-row gap-8">
+
+      <div class="col w-full lg:max-w-1/2 order-2 lg:order-1">
+        <img src="assets/img/ganancias-pines.webp" width="700" height="700"
+          alt="Ganancias por vender pines en tu negocio" loading="lazy">
+      </div>
+
+      <div class="col w-full lg:max-w-1/2 order-1 lg:order-2">
+        <h3 class="text-4xl font-semibold c-text">¿Cuanto se gana vendiendo pines electrónicos?</h3>
+        <p class="mt-4">
+          Al vender un <strong>pin electrónico</strong> obtendrás una comisión extra desde un 3% hasta un 5%,
+          dependiendo el tipo de pin.
+        </p>
+
+        <p class="mt-4">
+          Con un catálogo de más de 100 tipos de pines, tienes la oportunidad de atraer a más clientes, aumentar tus
+          ventas y añadir variedad a los productos y servicios que ya ofreces. Cada transacción no solo te deja una
+          ganancia, sino que también fortalece la relación con tus clientes, convirtiendo tu negocio en un punto de
+          referencia para soluciones digitales
+        </p>
+
+        <p class="mt-4">
+          Solo necesitas registrarte en nuestra plataforma, acceder al catálogo y comenzar a vender.
+        </p>
+
+
+        <div class="relative overflow-x-auto mt-8">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+                  Pin electrónico
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Monto
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Comisión
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Google play
+                </th>
+                <td class="px-6 py-4">
+                  $100.00
+                </td>
+                <td class="px-6 py-4">
+                  3%
+                </td>
+
+              </tr>
+
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  NINTENDO ESHOP
+                </th>
+                <td class="px-6 py-4">
+                  $200.00
+                </td>
+                <td class="px-6 py-4">
+                  $4
+                </td>
+
+              </tr>
+
+              <tr class="bg-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Spotify
+                </th>
+                <td class="px-6 py-4">
+                  $129.00
+                </td>
+                <td class="px-6 py-4">
+                  %2
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-20">
+  <h2 class="text-5xl lg:leading-[1.1] font-semibold text-center c-text">Vender tarjetas de regalo en tu negocio </h2>
+  <app-product titleSection="pines electrónicos" size="max-w-3xl w-full" gridStyle="grid-cols-2 lg:grid-cols-4"
+    [product]="carouselPines()" animateScrollClass="zoom-in" />
+</section>
+
+<section class="mb-20">
+  <h3 class="text-4xl c-text font-semibold text-center mb-6 leading-[1.1]">Metodos de venta para vender pines
+    electrónicos</h3>
+  <app-sales-method />
+</section>
+
+<section  data-aos="zoom-in-up" class="bg-gradient-to-br from-red-700 to-red-900 dark:from-blue-700 dark:to-blue-900 mb-20">
+  <div class="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14 lg:px-8 lg:py-10">
+    <div class="flex flex-col mb-16 sm:text-center sm:mb-0">
+      <span class="mb-6 sm:mx-auto">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-accent-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+            class="size-10 text-white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3.75v16.5M2.25 12h19.5M6.375 17.25a4.875 4.875 0 0 0 4.875-4.875V12m6.375 5.25a4.875 4.875 0 0 1-4.875-4.875V12m-9 8.25h16.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H3.75a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5Zm12.621-9.44c-1.409 1.41-4.242 1.061-4.242 1.061s-.349-2.833 1.06-4.242a2.25 2.25 0 0 1 3.182 3.182Zm-5.598-3.18c1.409 1.409 1.06 4.242 1.06 4.242S9 12.22 7.592 10.811a2.25 2.25 0 1 1 3.182-3.182Z" />
+          </svg>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-10 text-white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7a15.53 15.53 0 0 1-.311.06 15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg> -->
+        </div>
+      </span>
+      <div class="mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <h4
+          class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
+          <span class="relative inline-block">
+            <svg viewBox="0 0 52 24" fill="currentColor"
+              class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-deep-purple-accent-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+              <defs>
+                <pattern id="700c93bf-0068-4e32-aafe-ef5b6a647708" x="0" y="0" width=".135" height=".30">
+                  <circle cx="1" cy="1" r=".7"></circle>
+                </pattern>
+              </defs>
+              <rect fill="url(#700c93bf-0068-4e32-aafe-ef5b6a647708)" width="52" height="24"></rect>
+            </svg>
+            <span class="relative">Gana Dinero</span>
+          </span>
+          Extra Vendiendo Pines Electrónicos de Netflix, Spotify y Más
+        </h4>
+        <p class="text-base text-indigo-100 md:text-lg">
+          Ofrece a tus clientes la posibilidad de adquirir recargas para plataformas populares como Netflix, Spotify,
+          Google Play, Free Fire, Uber Eats y muchas más, mientras tú disfrutas de comisiones atractivas por cada venta.
+        </p>
+
+
+        <p class="text-base text-indigo-100 md:text-lg mt-2">
+          Esta es una oportunidad única para diversificar tu negocio y generar ingresos adicionales sin necesidad de
+          hacer una gran inversión.
+        </p>
+      </div>
+
+      <div>
+        <a routerLink="/registro"
+          class="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide bg-white text-slate-700 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none">
+          registrarme
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="mb-20">
+  <h2 class="text-4xl font-semibold c-text text-center">Registro para vender tarjetas de regalo en mi negocio</h2>
+  <app-register-steps></app-register-steps>
+</section>
+
+<app-doubts title="¿Tienes mas dudas sobre como vender pines electrónicos?"
+  text="Ponte en contacto con nosotros para obtener mayor información sobre como puedas vender +100 pines electrónicos de mas 40 marcas"
+  link="https://api.whatsapp.com/send?phone=5212223239170&text=Hola%20recargas%20electr%C3%B3nicas%20%F0%9F%91%8B%2C%20quisiera%20mayor%20informaci%C3%B3n%20para%20cobrar%20servicios%20en%20mi%20negocio" />

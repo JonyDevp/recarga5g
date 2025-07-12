@@ -1,0 +1,161 @@
+
+<footer class="antialiased footer w-full bg-gray-100 dark:bg-gray-900">
+  
+  <div class="container mx-auto pt-8 px-5">
+
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 ">
+    <!-- Logo y Descripción -->
+    <div aria-labelledby="footer-logo" class="footer__sec w-full px-4 pb-2">
+      <div class="footer-logo">
+        <img src="/assets/img/logo-footer.png" class="footer-logo__img max-w-80 w-full h-auto mx-auto" loading="lazy"
+          alt="Recargas Electrónicas Logo" id="footer-logo">
+      </div>
+      <p class="footer__p text-sm text-slate-700 dark:text-white leading-relaxed mt-4">
+        Somos la empresa #1 en la venta de tiempo aire, pago de servicios y
+        pines electrónicos. Tenemos presencia en toda la República Mexicana.
+      </p>
+
+      <!-- Redes Sociales -->
+      <nav aria-label="Redes sociales" class="social my-4">
+        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Síguenos en:</span>
+        <ul class="social__ul flex items-center mt-2 gap-6">
+          <li class="social__li">
+            <a href="https://www.facebook.com/recargas.electronicas.com.mx/"
+              aria-label="Facebook de Recargas Electrónicas" target="_blank" rel="noopener noreferrer"
+              class="social__a">
+              <img src="assets/img/social-facebook.png" width="35" height="35" loading="lazy"
+                alt="Facebook Recargas Electrónicas">
+            </a>
+          </li>
+          <li class="social__li">
+            <a href="https://twitter.com/recargascelular" aria-label="Twitter de Recargas Electrónicas" target="_blank"
+              rel="noopener noreferrer" class="social__a">
+              <img src="assets/img/social-twitter.png" width="35" height="35" loading="lazy"
+                alt="Twitter Recargas Electrónicas">
+            </a>
+          </li>
+          <li class="social__li">
+            <a href="https://www.instagram.com/recargascelular/" aria-label="Instagram de Recargas Electrónicas"
+              target="_blank" rel="noopener noreferrer" class="social__a">
+              <img src="assets/img/social-instagram.png" width="35" height="35" loading="lazy"
+                alt="Instagram Recargas Electrónicas">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Sección de Ayuda -->
+    <section aria-labelledby="footer-help" class="footer__sec w-full px-4 pb-2">
+      <h4 id="footer-help" class="footer__h4 text-2xl font-semibold text-slate-700 dark:text-white mb-8 relative before:content-[''] before:absolute before:z-[1] before:w-7 before:h-[3px] before:bg-red-500 dark:before:bg-sky-500 before:-bottom-2 before:left-0 after:absolute after:content-[''] after:z-[1] after:w-4 after:h-[3px] after:bg-red-500 dark:after:bg-sky-500 after:-bottom-2 after:left-9">
+        Nosotros
+      </h4>
+      <ul class="footer__ul">
+        @for (help of menuHelp; track $index) {
+          <li class="footer__li mb-2">
+            <a
+            [routerLink]="help.routerLink"
+            class="footer__a inline-flex items-center cursor-pointer py-2 text-sm font-semibold rounded-lg group text-gray-800 hover:text-red-700 dark:text-white dark:hover:text-sky-500">
+      
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-red-700 dark:text-sky-500 translate-x-0 group-hover:translate-x-2 transition-transform ease-in-out duration-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+            </svg>
+            <span class="pl-3">
+              {{help.label}}
+            </span>
+          </a>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <!-- Sección Legal -->
+    <section aria-labelledby="footer-productos" class="footer__sec w-full px-4 pb-2">
+      <h4 id="footer-legal" class="footer__h4 text-2xl font-semibold text-slate-700 dark:text-white mb-8 relative before:content-[''] before:absolute before:z-[1] before:w-7 before:h-[3px] before:bg-red-500 dark:before:bg-sky-500 before:-bottom-2 before:left-0 after:absolute after:content-[''] after:z-[1] after:w-4 after:h-[3px] after:bg-red-500 dark:after:bg-sky-500 after:-bottom-2 after:left-9">
+        Productos
+      </h4>
+      <ul class="footer__ul">
+        @for (product of menuProducts; track $index) {
+          <li class="footer__li mb-2">
+            <a
+            [routerLink]="product.routerLink"
+            class="footer__a inline-flex items-center cursor-pointer py-2 text-sm font-semibold rounded-lg group text-gray-800 hover:text-red-700 dark:text-white dark:hover:text-sky-500">
+           
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5 text-red-700 dark:text-sky-500 translate-x-0 group-hover:translate-x-2 transition-transform ease-in-out duration-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+            </svg>
+            <span class="pl-3">{{product.label}}</span>
+          </a>
+          </li>
+        }
+        
+      </ul>
+    </section>
+
+    <section aria-labelledby="footer-contact" class="footer__sec w-full px-4 pb-2">
+      <!-- Sección de Contacto -->
+      <h4 id="footer-contact" class="footer__h4 text-2xl font-semibold text-slate-700 dark:text-white mb-8 relative before:content-[''] before:absolute before:z-[1] before:w-7 before:h-[3px] before:bg-red-500 dark:before:bg-sky-500 before:-bottom-2 before:left-0 after:absolute after:content-[''] after:z-[1] after:w-4 after:h-[3px] after:bg-red-500 dark:after:bg-sky-500 after:-bottom-2 after:left-9">
+        Contacto
+      </h4>
+      <address class="not-italic">
+        <ul class="footer__ul">
+          <li class="footer__li mb-4">
+            <span class="text-base font-semibold text-slate-700 dark:text-white">Dirección:</span>
+            <p class="text-sm text-slate-700 dark:text-slate-300">Delegación Benito Juarez, Distrito Federal, México</p>
+          </li>
+          <li class="footer__li mb-4">
+            <span class="text-base font-semibold text-slate-700 dark:text-white">Teléfono:</span>
+            <a href="tel:+522717140102"
+              class="footer__a text-sm text-slate-700 dark:text-slate-300 hover:text-red-700 dark:hover:text-sky-500">
+              +52 271 714 0102
+            </a>
+          </li>
+          <li class="footer__li mb-4">
+            <span class="text-base font-semibold text-slate-700 dark:text-white">WhatsApp:</span>
+            <a href="https://wa.me/522223239170?text=Recargas%20Electrónicas"
+              class="footer__a text-sm text-slate-700 dark:text-slate-300 hover:text-red-700 dark:hover:text-sky-500">
+              +52 222 323 9170
+            </a>
+          </li>
+          <li class="footer__li mb-4">
+            <span class="text-base font-semibold text-slate-700 dark:text-white">Correo:</span>
+            <a href="mailto:tae.celular@gmail.com"
+              class="footer__a text-sm text-slate-700 dark:text-slate-300 hover:text-red-700 dark:hover:text-sky-500">
+              tae.celular&#64;gmail.com
+            </a>
+          </li>
+        </ul>
+      </address>
+    </section>
+
+    <!-- Sección de Horario de Atención -->
+    <section aria-labelledby="footer-hours" class="footer__sec w-full px-4 pb-2">
+      <h4 id="footer-hours" class="footer__h4 text-2xl font-semibold text-slate-700 dark:text-white mb-8 relative before:content-[''] before:absolute before:z-[1] before:w-7 before:h-[3px] before:bg-red-500 dark:before:bg-sky-500 before:-bottom-2 before:left-0 after:absolute after:content-[''] after:z-[1] after:w-4 after:h-[3px] after:bg-red-500 dark:after:bg-sky-500 after:-bottom-2 after:left-9">
+        Horario de Atención
+      </h4>
+      <ul class="footer__ul">
+        <li class="footer__li mb-4">
+          <span class="footer__span text-sm text-slate-700 dark:text-slate-300">Lunes - Viernes: 9AM a 6PM</span>
+        </li>
+        <li class="footer__li mb-4">
+          <span class="footer__span text-sm text-slate-700 dark:text-slate-300">Sábado: 9AM a 4PM</span>
+        </li>
+      </ul>
+    </section>
+  
+  </div>
+
+  <!-- Copyright -->
+  <div class="copyright py-4 border-t border-slate-300 dark:border-slate-800">
+    <div class="container mx-auto flex flex-col lg:flex-row items-center justify-center px-6 lg:px-8">
+      <h3 class="footer__h6 text-sm lg:text-base text-slate-800 dark:text-white">
+        <a href="https://www.recargas.electronicas.com.mx/" class="footer__a" target="_blank" rel="noopener noreferrer">
+          &#169; 2024 Recargas Electrónicas SA. DE. CV.
+        </a>
+      </h3>
+      <p class="footer__p text-sm lg:text-base text-gray-800 dark:text-white pl-2">| Todos los derechos reservados</p>
+    </div>
+  </div>
+
+</div>
+</footer>

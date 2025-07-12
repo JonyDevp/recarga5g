@@ -1,0 +1,140 @@
+[
+
+    {
+        "id": 1,
+        "title": "Plataforma web",
+        "description": "Vende recargas Telcel, con excelentes comisiones, con tu smartphone o computadora ",
+        "img": {
+            "url": "/assets/img/laptop.png",
+            "alt": "Venta de recargas desde computadora"
+        },
+
+        "modal": {
+            "subTitle": "Venta de recargas por computadora",
+            "description": "Ingresa a nuestro portal desde tu navegador de preferencia",
+           "list": [
+
+                {
+                    "iconClass": "wifi",
+                    "description": "Conexión a internet"
+                },
+
+                {
+                    "iconClass": "laptop_mac",
+                    "description": "Equipo de computo"
+                },
+
+                
+                {
+                    "iconClass": "web",
+                    "description": "Ingresa a nuestro portal desde tu navegador"
+                },
+
+                {
+                    "iconClass": "account_circle",
+                    "description": "Proporciona tus datos de acceso"
+
+                },
+
+                {
+                    "iconClass": "credit_score",
+                    "description": "Consulta las cuentas bancarias autorizadas"
+                },
+
+                {
+                    "iconClass": "price_check",
+                    "description": "Depósita o transfiere un monto minimo de $100"
+                },
+
+                {
+                    "iconClass": "notifications_active",
+                    "description": "Reportar tu pago por whatsApp a nuestro asesor ejecutivo"
+                },
+
+                {
+                    "iconClass": "new_releases",
+                    "description": "¡Listo! ya puedes realizar recargas, recibir pago de servicios y gift cards en tu celular."
+                }
+           ]
+        }
+      
+    },
+
+    {
+        "id": 2,
+        "title": "App",
+        "description": "Descarga la app desde la tienda oficial para vender recargas telcel en tu dispositivo Android o IOS.",
+        "img": {
+            "url": "/assets/img/smartphone.webp",
+            "alt": "Venta de recargas desde la App"
+        },
+
+        "modal": {
+            "subTitle": "Venta de recargas desde la App",
+            "description": "Descarga la App para Android y IOS",
+            "list": [
+                {
+                    "iconClass": "system_update",
+                    "description": "Descarga e instala la app desde la tienda Oficial"
+                },
+
+                {
+                    "iconClass": "account_circle",
+                    "description": "Si eres cliente ingresa al portal con tus datos de acceso"
+                },
+
+                {
+                    "iconClass": "credit_score",
+                    "description": "Consulta las cuentas bancarias autorizadas"
+                },
+
+                {
+                    "iconClass": "price_check",
+                    "description": "Depósita o transfiere un monto minimo de $100"
+                },
+
+                {
+                    "iconClass": "notifications_active",
+                    "description": "Reportar tu pago por whatsApp a nuestro asesor ejecutivo"
+                },
+
+                {
+                    "iconClass": "new_releases",
+                    "description": "¡Listo! ya puedes realizar recargas, recibir pago de servicios y gift cards en tu celular."
+                }
+            ]
+        }
+    },
+
+    {
+        "id": 3,
+        "title": "Via SMS",
+        "description": "Vender recargas electrónicas enviando un simple SMS. En tu telefono celular.",
+        "img": {
+            "url": "/assets/img/sms.webp",
+            "alt": "Venta de recargas via SMS"
+        },
+
+        "modal": {
+            "subTitle": "Venta de recargas por SMSS",
+            "description": "Registra tu numero y vende recargas con un simple sms",
+            "list": [
+                {
+                    "iconClass": "smartphone",
+                    "description": "Celular"
+                },
+
+                {
+                    "iconClass": "smartphone",
+                    "description": "Si eres cliente, Da de alta tu numero (Para que puedas enviar SMS gratis)"
+                },
+
+                {
+                    "iconClass": "local_library",
+                    "description": "Consulta o pide a nuestro asesor la nomenclatura para vender a cualquier compañia"
+                }
+
+            ]
+        }
+    }
+]

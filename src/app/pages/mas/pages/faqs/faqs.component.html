@@ -1,0 +1,957 @@
+<section class="mt-40">
+
+    <div class="max-w-7xl mb-20 mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-center mb-2">
+            <div
+                class="font-medium text-sm py-[0.375rem] px-4 rounded-md bg-slate-800 dark:bg-slate-700 text-slate-100 shadow-sm inline-flex items-center gap-2 mr-auto lg:mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <span>
+                    FAQS
+                </span>
+
+            </div>
+        </div>
+        <h1 class="text-4xl font-semibold text-left lg:text-center mb-3">Preguntas frecuentes para vender recargas</h1>
+        <p class="text-left lg:text-center mb-4">Consulta las preguntas mas frecuentes que tenemos acerca de nuestras plataformas</p>
+        <p class="mb-4 text-left lg:text-center">Preguntas y respuestas frecuentes para vender recargas electrónicas</p>
+        <form action="">
+            <div class="relative mb-6 max-w-96 mx-auto">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                        class="size-6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                    </svg>
+                </div>
+                <input (focus)="isOpenModal.set(true)" type="text" id="input-group-1"
+                    class="w-full block text-slate-500 ps-11 p-2.5 dark:text-white rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border border-slate-400 dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                    placeholder="Buscar pregunta...">
+            </div>
+        </form>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="faqs-row flex flex-col lg:flex-row gap-8">
+            <div class="faqs-col w-full lg:w-1/3 shrink-0 hidden lg:block ">
+                <aside class="px-8 h-full border-r border-r-slate-300 dark:border-r-slate-300/30">
+                    <div
+                        class="no-scrollbar sticky top-24 bottom-24 ">
+                        <nav class="faqs-nav">
+                            <!-- general -->
+                            <div class="mb-6">
+                                <app-faqs-menu [menuItems]="faqsMenuOne" [activeSection]="activeTitle" />
+                            </div>
+
+                            <!-- platform -->
+                            <div class="platform mb-6">
+                                <span class="font-semibold text-sm">Plataformas</span>
+                                <app-faqs-menu [menuItems]="faqsMenuTwo" [activeSection]="activeTitle" />
+                                <app-faqs-menu [menuItems]="faqsMenuThree" [activeSection]="activeTitle" />
+                            </div>
+
+                            <!-- terminales -->
+                            <div>
+                                <span class="font-semibold mb-3">Terminales PVT</span>
+                            </div>
+                        </nav>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="faqs-col w-full lg:w-2/3 grow lg:pl-12">
+                <!-- preguntas general -->
+                <section class="faqs-general border-b border-b-slate-300 dark:border-b-slate-300/30">
+                    <h2 id="preguntas-generales" (click)="scrollToTitle('preguntas-generales')"
+                        class="text-3xl font-medium cursor-pointer mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-600 dark:from-gray-300 dark:to-indigo-600">
+                        Preguntas Generales
+                    </h2>
+
+                    <div class="mb-10">
+                        <h3 id="beneficios" 
+                            #titleSection
+                           (click)="scrollToTitle('beneficios')"
+                            class="text-2xl faqs-title text-left font-semibold scroll-mt-20 mb-3 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span 
+                                class="cursor-pointer faqs-btn"> 
+                                ¿Qué Beneficios tengo al registrarme con Recarga5g.com?
+                            </span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p>
+                            Con <strong>recarga5g.com</strong>. Podras obtener grandes beneficios y ganancias para tu negocio. 
+                        </p>
+                        <p class="mb-4">
+                            Registrate totalmente gratis. Realiza un inversión minima de $100 mismo que se abonan como saldo a tu usuario en la plataforma
+                        </p>
+
+                        <p>No importa si tienes una tienda, cafetería o negocio desde casa: las recargas electrónicas son el impulso financiero que necesitas.</p>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 id="monto-inversion" (click)="scrollToTitle('monto-inversion')" #titleSection
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 group/faqs hover:text-red-700 dark:hover:text-sky-400 flex flex-row items-center gap-2">
+                            <span class="faqs-btn cursor-pointer">
+                                ¿Cuanto invertir para vender recargas?
+                            </span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p class="mb-4">
+                            ¿Quieres generar ingresos extras con un negocio rentable y de bajo riesgo? ¡Vender recargas electrónicas es la oportunidad perfecta!
+                        </p>
+
+                        <p class="mb-4">
+                            Solo necesitas un depósito o transferencia mínima de $100, que se convierte en tu saldo inicial para empezar a vender y ganar comisiones de inmediato.
+                        </p>
+
+                        <p class="mb-4">
+                            Con solo $100 de saldo inicial, comienzas a vender y recuperar tu inversión rápidamente.
+                            Las comisiones por cada recarga te ayudan a multiplicar tu dinero.
+                        </p>
+
+                        <p>
+                            No necesitas miles de pesos para empezar. Con una pequeña inversión, puedes generar ganancias diarias y crecer a tu ritmo.
+                        </p>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 id="comisiones" #titleSection (click)="scrollToTitle('comisiones')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 group/faqs hover:text-red-700 dark:hover:text-sky-400 flex flex-row items-center gap-2">
+                            <span class="faqs-a cursor-pointer">
+                                ¿Que comisiones ofrecemos para vender tiempo aire?
+                            </span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                        <p class="mb-8">
+                            Manejamos comisiones atractivas ajustadas para todo tipo de negocio, de manera constante
+                            ofrecemos promociones no dudes en contactarnos.
+                        </p>
+
+                        <div class="relative overflow-x-auto">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">
+                                            Tipo de cliente
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Comisión por recarga
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Comisión por servicio
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Comisión por pin
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Cliente nuevo
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            6%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            3%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            2%
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Cliente con 1 año de antiguedad
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            6.5%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            4%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            3%
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Cliente con 2 año de antiguedad
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            7%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            5%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            4%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Distribuidores nuevos
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            7%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            3.5%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            3%
+                                        </td>
+                                    </tr>
+
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Distribuidores 1 año de antiguedad
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            7.5%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            4%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            4%
+                                        </td>
+                                    </tr>
+
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Distribuidores con 2 año de antiguedad
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            7.5%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            5%
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            4%
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <i class="mt-4 block lg:pl-4">Tabla de comisiones ajustadas a cambios</i>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="mb-10">
+
+                        <h3 id="como-registrarse" #titleSection (click)="scrollToTitle('como-registrarse')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer faqs-btn text-left"> ¿Como registrarme para vender recargas
+                                electrónicas en mi negocio?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p class="mb-4">
+                            Con nuestra plataforma podrás vender tiempo aire, pago de servicios y pines, el registro es
+                            totalmente gratis y sencillo.
+                            Solo deberás registrarte aqui.
+                        </p>
+
+                        <p>
+                            Una vez registrado la información para vender tiempo aire será enviado a tu correo, en 2do
+                            correo será enviado el correo de bienvenida con tus datos de acceso
+                            al portal, manuales de usuario y numeros de cuenta para depósitos y/o transferencias para
+                            comprar saldo.
+                        </p>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 id="como-comprar-saldo" #titleSection (click)="scrollToTitle('como-comprar-saldo')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer"> ¿Como comprar saldo?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p class="mb-4">
+                            Para comprar saldo, solo deberás realizar un depósito y/o transferencia a alguna de nuestras
+                            cuentas bancarias vigentes.
+                        </p>
+
+                        <p class="mb-4">
+                            Una vez hecho el siguiente paso es la notificación de este, para ello podras reportarlo
+                            directamente en nuestra pagina web:
+                            <a class="text-red-700 dark:text-sky-500 font-semibold" routerLink="/mas/reportar"> reportar
+                                compra</a>, o bien a nuestro numero de WhatsApp:
+                            <a href="" class="text-red-700 dark:text-sky-500 font-semibold">Reportar por WhatsApp</a>
+                        </p>
+
+                        <p class="italic text-slate-600 dark:text-slate-300">
+                            *No olvides en adjuntar tu usuario e imagen de comprobante de pago
+                        </p>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 id="equipo-recargas" #titleSection (click)="scrollToTitle('equipo-recargas')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer"> ¿Qué necesito para vender recargas electrónicas?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p class="mb-4">
+                            Olvídate de trámites complicados, equipos costosos o requisitos imposibles. Nuestro sistema está diseñado para que cualquiera pueda comenzar en minutos, usando lo que ya tiene.
+                        </p>
+
+                        <p class="mb-4">
+                            La magia está en su versatilidad. Puedes operar desde cualquier dispositivo: descarga nuestra aplicación oficial en tu smartphone (disponible tanto para iOS como Android), accede desde tu computadora mediante nuestro portal web o incluso realiza transacciones mediante SMS gratuitos si no cuentas con internet en el momento.
+                        </p>
+                      
+                        <p class="mb-4">
+                            El proceso es tan sencillo como revolucionario: regístrate en pocos minutos sin costo alguno, realiza tu primer depósito (con un mínimo accesible de solo $100 pesos) y comienza a ofrecer recargas inmediatamente. Tu saldo estará disponible al instante, listo para convertir en ganancias.
+                        </p>
+
+                        <p>
+                            Ofrecemos cobertura completa para todos los operadores nacionales, incluyendo Telcel, Movistar, AT&T y Unefon, además de paquetes de datos y promociones especiales. Cada transacción que realizas genera comisiones directas para ti, sin intermediarios ni letras pequeñas.
+                        </p>
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 id="tiempo-saldo" #titleSection (click)="scrollToTitle('tiempo-saldo')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer"> ¿En cuanto tiempo puedo disponer de mi saldo?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p class="mb-4">
+                            Una vez que hayas realizado depósito y/o transferencia y reportado tu compra, el tiempo de espera es de 20 a 40min aprox.
+                        </p>
+
+                        <p class="mb-4">
+                            Si el tiempo de aplicación supera el esperado no dudes en contactarnos para darle seguimiento.
+                        </p>
+                
+                    </div>
+
+                    <div class="mb-10">
+                        <h3 id="contratacion" #titleSection (click)="scrollToTitle('contratacion')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">¿Debo firmar contrato o pagar alguna mensualidad o anualidad?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+                        <p class="mb-4">
+                            ¡En nuestras plataformas no hay letras pequeñas! Lo mejor de nuestra plataforma es que:
+                        </p>
+
+                    <p class="mb-4">
+                        ¡Olvídate de trámites complicados! <strong>Recarga5g.com</strong> es la opción sin compromisos donde empiezas a ganar desde hoy
+                    </p>
+
+                    <p class="mb-4">
+                        En recarga5g.com rompemos los esquemas tradicionales. Sabemos que lo último que necesitas como emprendedor o dueño de negocio son ataduras que limiten tu crecimiento. Por eso hemos creado un modelo donde tú tienes el control absoluto.
+                    </p>
+
+                    <p class="mb-4">
+                        Imagina poder decirle sí a más clientes porque ahora puedes ofrecer recargas, pagos de servicios y tarjetas digitales. Visualiza aumentar el tráfico en tu local con estos servicios adicionales que la gente necesita diariamente. Todo esto sin preocuparte por costos ocultos que afecten tu margen de ganancia.
+                    </p>
+
+                    <p class="italic">
+                        "La forma más libre de aumentar tus ingresos – sin contratos, sin cuotas, solo oportunidades."
+                    </p>
+                    </div>
+
+                </section>
+                <!-- Plataformas -->
+                <div class="faqs-platform mt-10">
+
+                    <h2 id="plataformas"
+                        class="text-3xl font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-600 dark:from-gray-300 dark:to-indigo-600">
+                        <span>
+                            Plataformas para vender recargas
+                        </span>
+                        <span class="font-semibold hidden group-hover/faqs:block">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                                class="size-6" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </span>
+                    </h2>
+                    <!-- Plataforma Pagaqui -->
+                    <section class="platform-pagaqui border-b border-b-slate-300 dark:border-b-slate-300/30 mb-10">
+
+                     <h2 id="pagaqui" #titleSection (click)="scrollToTitle('pagaqui')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer"> Pagaqui</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                     </h2>
+
+                        <div class="mb-10">
+                            <h3 #titleSection (click)="scrollToTitle('que-es-pagaqui')" id="que-es-pagaqui"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">¿Que es pagaqui?</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+
+                            <p class="mb-4">
+                                En el competitivo mundo de los servicios digitales, <strong>PagaQui</strong> se consolida como la solución más inteligente y eficiente para comerciantes y emprendedores. Nuestra plataforma integrada rompe con los esquemas tradicionales al ofrecer un sistema unificado que transforma la manera de gestionar recargas electrónicas, pagos de servicios y venta de tarjetas de regalo. Todo con un unico saldo.
+                            </p>
+
+                            <p class="mb-4">
+                                La innovación clave de PagaQui reside en su revolucionario modelo de <strong>saldo único</strong>, una característica exclusiva que simplifica radicalmente tus operaciones. A diferencia de otras plataformas que fragmentan tu capital en múltiples cuentas, con nosotros un mismo fondo cubre todas tus transacciones: desde recargas para cualquier operador hasta el pago de servicios básicos y la emisión de PINs para las tarjetas digitales más populares.
+                            </p>
+                         
+
+                            <p class="mb-4">
+                                La comisión se aplica sobre venta, es decir por cada venta que realices sin importar el monto, obtendras una comisión. Dicha ganancia extra sera con base a tu comisión actual.
+                            </p>
+
+                            <p>Esta comisión se aplica de manera automatica y se abona a tu saldo final. Para que puedas realizar cualquier otra venta.</p> 
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="que-hacer-pagaqui" (click)="scrollToTitle('que-hacer-pagaqui')"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">¿Que puedes hacer en pagaqui?</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+                            <p>
+                                ¡La plataforma TODO EN UNO para tu negocio! con <a class="font-medium text-red-700 dark:text-blue-400" href="https://pagaqui.com.mx/Login.aspx" target="_blank" rel="noreferrer noopener">Pagaqui</a> 💰 Realiza recargas a cualquier compañía (Telcel, Movistar, AT&T), cobra servicios (luz, agua, TV) y vende tarjetas de regalo (Netflix, Amazon, Spotify) ¡con un único saldo! ✅ Fácil, rápido y con las mejores comisiones. ¡Empieza a ganar dinero hoy sin complicaciones!
+                                <!-- Con <a class="text-red-700 dark:text-blue-400 font-semibold" href="" rel="" target="_blank">Pagaqui</a>  -->
+                            </p>
+
+                            <ul class="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-8 mt-4 px-4">
+                                <li>
+                                    ✔ Un unico saldo para: recargas, servicio y tarjeta de regalo
+                                </li>
+                                <li>
+                                    ✔ Comisión por venta
+                                </li>
+
+                                <li>
+                                    ✔ Compras con aplicación de saldo automatica
+                                </li>
+
+                                <li>
+                                    ✔ +200 compañias de servicios
+                                </li>
+
+                                <li>
+                                    ✔ Constante innovación
+                                </li>
+
+                                <li>
+                                    ✔ Cobros con QR
+                                </li>
+
+                                <li>
+                                    ✔ Crea y administra tus cuentas empleado y PVT
+                                </li>
+
+                                <li>
+                                    ✔ Vende tarjeta SIMS
+                                </li>
+                            </ul>
+
+                        </div>        
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="ver-comisiones-pagaqui"
+                                (click)="scrollToTitle('ver-comisiones-pagaqui')"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">¿Como puedo ver las comisiones en pagaqui?</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+                            <p class="mb-6">
+                                Podrás consultar en todo momento en la plataforma la comisión que has obtenido por cada venta que hayas realizo, en tu reporte de ventas.
+                                O bien en tu estado de cuenta en la plataforma.
+                            </p>
+
+                            <img src="assets/img/reporte-ventas-pagaqui.webp" title="Reporte de ventas Pagaqui" width="1829" height="813" alt="Reporte de ventas" loading="lazy">
+                            <span class="text-sm italic opacity-85 mt-2 inline-block">*Reporte de ventas</span>
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="cuentas-pagaqui"
+                                (click)="scrollToTitle('cuentas-pagaqui')"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">¿Cuales son las cuentas en las que puedo depositar o transferir Pagaqui?</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+
+                            <p class="mb-4">
+                                Para recargar saldo puede hacerlo de manera sencilla en unos cuantos pasos.
+                            </p>
+                            <p class="mb-6">
+
+                               Los numeros de cuenta para depósitos y/o transferencias para recargar saldo lo podrás consultar en todo momento directamente en la plataforma, de igual manera
+                               podrás consultarlo en el correo de bienvenida. <a href="https://pagaqui.com.mx/images_v3/home/cuentas.jpg" class="text-red-700 font-medium dark:text-blue-400 cursor-pointer" rel="noopener noreferrer" target="_blank">Consultar cuentas</a>
+                            </p>
+
+                           
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="comprar-saldo-pagaqui"
+                                (click)="scrollToTitle('comprar-saldo-pagaqui')"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">¿Cómo comprar saldo Pagaqui?</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+
+                            <p class="mb-4">
+                                Para recargar saldo, puedes realizar un deposito y/o transferencia a cualquier de las cuentas bancarias vigentes.
+                            </p>
+
+                            <p class="mb-4">
+                                Una vez realizo tu compra el siguiente paso es el reporte de este para ello podrás realizarlo en alguna de las siguientes opciones:
+                            </p>
+
+                            <ul class="flex flex-col gap-6 list-decimal pl-8">
+                                <li>
+                                    <span class="font-semibold">Reportandolo desde nuestra pagina web</span>: Para ello deberás llenar un formulario con los respectivos de tu comprobante de pago.
+                                    <a class="font-medium text-red-700 dark:text-blue-400 cursor-pointer" routerLink="/mas/reportes">Reportar ahora</a>
+                                </li>
+                                <li> <span class="font-semibold">Reportandolo via WhatsApp</span>: O bien si lo deseas puede reportar todas tus compras a nuestro numero de WhatsApp.
+                                    <a href="https://api.whatsapp.com/send?phone=5212223239170&text=Hola%20recargas%20electr%C3%B3nicas%20%F0%9F%91%8B%2C%20deseo%20reportar%20un%20dep%C3%B3sito" class="font-medium text-red-700 dark:text-blue-400 cursor-pointer">Reportar ahora</a>
+
+                                </li>
+                            </ul>
+                         
+                           
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="pagar-servicio-pagaqui"
+                                (click)="scrollToTitle('pagar-servicio-pagaqui')"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">¿Cómo pagar un servicio con Pagaqui?</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+
+                            <p class="mb-4">
+                                Con nuestra plataforma puedes pagar mas de 200 compañias de servicios: Telefonia, agua, luz, gas, internet, etc.
+                            </p>
+
+                            <ol class="flex flex-col gap-6 list-decimal pl-8">
+                                <li>Disponer del saldo suficiente.</li>
+                                <li>
+                                    El cliente te visita y presenta su recibo. Solo debes cobrar recibos vigentes. No debes recibir recibos vencidos.</li>
+                                <li>Captura el numero de referencia del recibo.</li>
+                                <li>Cobras el importe del recibo más el cargo extra de <span class="font-semibold">$10</span> (por hacer llegar el pago del servicio al proveedor).</li>
+                                <li>Si el pago fué exitoso el sistema descontará de tu saldo el importe del recibo y el cargo por venta interno.</li>
+                            </ol>
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="contacto-pagaqui"
+                                (click)="scrollToTitle('contacto-pagaqui')"
+                                class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+
+                                <span class="cursor-pointer">Contacto Pagaqui</span>
+                                <span class="font-semibold hidden group-hover/faqs:block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </span>
+                            </h3>
+
+                            <p class="mb-4">
+                                Si tienes dudas o estas presentando un problema con nuestra plataforma, puedes ponerte en contacto con alguno de nuestro medios de contacto.
+                            </p>
+
+                            <ul class="flex flex-col gap-6 list-decimal pl-8">
+                                <li class="flex items-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6 text-primary dark:text-blue-400" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3a49.5 49.5 0 0 1-4.02-.163 2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                                    <p class="font-medium text-primary dark:text-blue-400 pl-2">WhatsApp:</p>
+                                    <a href="https://api.whatsapp.com/send?phone=5212223239170&text=hola%20recargas%20electr%C3%B3nicas%20%F0%9F%91%8B" rel="noreferrer noopener" target="_blank" class="cursor-pointer hover:underline">+52 222 323 9170</a>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5 text-primary dark:text-blue-400" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"/></svg>
+                                    <p class="text-primary dark:text-blue-400">Correo electrónico:</p>
+                                    <a href="mailto:tae.celular@gmail.com" rel="noreferrer noopener" class="hover:underline cursor-pointer">{{mail}}</a>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5 text-primary dark:text-blue-400" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+                                    <p class="text-primary dark:text-blue-400">Telefono:</p>
+                                    <a href="tel:+522717140102" class="hover:underline cursor-pointer" rel="noreferrer noopener">+52 271 714 0102</a>
+                                </li>
+                            </ul>
+          
+                        </div>
+
+                    </section>
+
+                    <!-- Plataforma Planetaemx -->
+                    <section class="platform-planetaemx">
+                        <h2 id="planetaemx" #titleSection (click)="scrollToTitle('planetaemx')"
+                        class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center text-teal-700 dark:text-teal-500 group/faqs">
+                        <span class="cursor-pointer">Planetaemx</span>
+                        <span class="font-semibold hidden group-hover/faqs:block">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </span>
+                        </h2>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="que-es-planetaemx" (click)="scrollToTitle('que-es-planetaemx')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">¿Que es Planetaemx?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                        <p class="mb-4">
+                            Con <strong>Planetaemx</strong>, simplificamos la gestión de tu negocio ofreciéndote una plataforma todo en uno para venta de tiempo aire y pago de servicios. Ya no necesitas múltiples sistemas o proveedores: con nosotros, todo está centralizado en un solo lugar, con un sistema fácil, rápido y seguro.
+                        </p>
+
+                        <p class="mb-4">
+                            El modelo de PlanetaEMX está diseñado pensando en la flexibilidad que necesitan los negocios modernos. Operamos con un <span class="font-semibold">sistema dual de saldos</span> que te permite administrar por separado tus fondos para recargas telefónicas y para pagos de servicios, dándote un control preciso sobre tu capital de trabajo. Esta innovadora estructura garantiza que siempre tengas visibilidad completa de tus operaciones y ganancias.
+                        </p>
+
+                        <p>
+                            Lo que realmente nos diferencia es nuestro compromiso con la simplicidad y el crecimiento de tu negocio. Sin trámites burocráticos, sin contratos que te aten a largos plazos, sin costos ocultos que afecten tu rentabilidad. Solo una plataforma robusta donde depositas el saldo que necesitas y comienzas a generar ingresos desde el primer día.
+                            <a routerLink="/registro" class="font-medium text-primary dark:text-sky-400 hover:underline">registrate aqui</a>
+                        </p>
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="que-hacer-planetaemx" (click)="scrollToTitle('que-hacer-planetaemx')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">¿Que puedes hacer en Planetaemx?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                        <p class="mb-4">
+                            PlanetaEMX opera con un innovador sistema de saldos separados que te brinda control absoluto sobre tus fondos. Administra independientemente tu capital para recargas y para servicios, con la flexibilidad de transferir entre ellos cuando lo requieras.
+                        </p>
+
+                        <p class="mb-4">
+                            Deposita fácilmente desde nuestro portal y recibe acreditaciones rápidas. Cada depósito que realizas y reportes en la plataforma se refleja al instante en tu saldo disponible, para que nunca pierdas una venta. Además, gana comisiones atractivas por cada transacción que realices, aumentando tus ingresos con cada operación.
+                        </p>
+
+                        <p class="font-semibold mb-4">Beneficios exclusivos de PlanetaEMX:</p>
+
+                        <ul class="flex flex-col gap-4">
+                            <li>
+                                <span class="font-semibold">✔ Control total:</span> Maneja tus saldos de manera independiente y transfiere fondos cuando lo necesites.
+                            </li>
+
+                            <li>
+                                <span class="font-semibold">✔ Reportes en tiempo real:</span> Consulta todos tus movimientos, depósitos y ganancias directamente desde tu cuenta.
+                            </li>
+
+                            <li>
+                                <span class="font-semibold">✔ Sin complicaciones:</span> Procesos sencillos y atención rápida para que operes sin problemas.
+                            </li>
+
+                            <li>
+                                <span class="font-semibold">✔ Crecimiento asegurado:</span> Atrae más clientes ofreciendo los servicios que más necesitan.
+                            </li>
+                        </ul>
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="ver-comisiones-planetaemx" (click)="scrollToTitle('ver-comisiones-planetaemx')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">¿Como puedo ver las comisiones en Planetaemx?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                        <p class="mb-4"> 
+                            Desde la plataforma web o bien desde la app <a class="font-medium text-red-700 dark:text-blue-400 hover:underline" href="https://play.google.com/store/apps/details?id=com.techoblige.recargaki&hl=es_MX" rel="noreferrer noopener">Recargaki</a>, puedes consultar todos
+                            tus depósitos reportados. 
+                        </p>   
+
+                        <p class="mb-4">
+                            En la opción <span class="font-semibold">Reportes > Depósitos</span>, Selecciónando el rango de fechas a consultar
+                        </p>
+
+                        <img src="assets/img/plataformas/planetaemx/reporte-depositos.webp" alt="Reporte de depósitos Planetaemx" title="Reporte de depósitos Planetaemx" width="755" height="243" loading="lazy">
+                  
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="cuentas-planetaemx" (click)="scrollToTitle('cuentas-planetaemx')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">¿Cuales son las cuentas en las que puedo depositar o transferir Planetaemx?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                        <p class="mb-4"> 
+                            Para recargar saldo puedes realizar una compra minima de $100 pesos mexicanos, depositando y/o transfiriendo a cualquier de las cuentas vigentes en el portal.
+                            <a class="font-medium text-red-700 dark:text-blue-400 hover:underline" href="https://www.planetaemx.com/index.php">Consultar cuentas</a>
+                        </p>   
+
+                  
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="comprar-saldo-planetaemx" (click)="scrollToTitle('comprar-saldo-planetaemx')"
+                            class="text-2xl cursor-pointer faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span>¿Como comprar saldo en Planetaemx?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                        <p class="mb-4"> 
+                        Una vez que hayas realizado tu depósito y/o transferencia, el siguiente paso es el reporte de este, <span class="font-semibold">Si el saldo lo requieres para recargas y sin factura</span>.
+                        Lo puedes reportar directamente en el portal.
+                        </p>   
+
+
+                        <img src="assets/img/plataformas/planetaemx/reportar-compra.webp" width="1007" height="560" alt="Reporte de compra para recargar saldo" title="Reporte de compra para recargar saldo" loading="lazy">
+
+                        <p class="mt-8">
+                          Si tu compras lo requieres con factura, es necesario que lo reportes via correo electrónico, adjuntando los formatos correspondientes para la emisión de todas tus compras futuras.
+                        </p>
+
+                        <p class="mt-4">
+                            Ponte en contacto con nuestro asesor ejecutivo para brindarte toda la documentación. <a href="https://api.whatsapp.com/send?phone=5212223239170&text=Hola%20recargas%20electr%C3%B3nicas%20%F0%9F%91%8B%2C%20necesit%C3%B3%20la%20informaci%C3%B3n%20y%20documentaci%C3%B3n%20para%20la%20emisi%C3%B3n%20de%20mi%20compras%20con%20factura%20%F0%9F%93%84." class="font-medium text-red-700 dark:text-blue-400 hover:underline" rel="noreferrer noopener">Contactar asesor</a>.
+                        </p>
+
+                             <p class="mt-4"> 
+                            Si deseas <strong>recargar saldo para servicios</strong>, puedes reportar tu compra en algunos de los siguientes medios:
+                        </p>   
+
+                        <ul class="flex flex-col gap-4 pl-4 list-decimal mt-4">
+                            <li>
+                                <span class="font-semibold">Reportando compra via WhastApp: </span> <a href="https://api.whatsapp.com/send?phone=5212223239170&text=Hola%20recargas%20electr%C3%B3nicas%20%F0%9F%91%8B%2C%20deseo%20reportar%20un%20dep%C3%B3sito%20para%20saldo%20para%20servicios" class="text-red-700 dark:text-blue-400 font-medium hover:underline" rel="noreferrer noopener" target="_blank">Reportar compra via WhatsApp</a>
+                            </li>
+
+                            <li>
+                                <span class="font-semibold">Reportando compra por correo electrónico: </span> <a href="mailto:tae.celular@gmail.com" class="text-red-700 dark:text-blue-400 hover:underline" rel="noreferrer noopener" target="_blank">Reportar por correo</a>
+                            </li>
+                        </ul>
+
+                        <p class="italic mt-4">
+                            "No olvides en adjuntar comprobante de pago, usuario e indicarnos que tu compra es para servicios"
+                        </p>
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="pagar-servicio-planetaemx" (click)="scrollToTitle('pagar-servicio-planetaemx')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">¿Como pagar un servicio con Planetaemx?</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                   
+
+                        <p class="mt-4">
+                            Procesa recibos de luz, agua, gas, televisión por cable e internet con la confianza de una plataforma estable y segura.
+                        </p>
+
+                        <ol class="flex flex-col gap-6 list-decimal pl-8 mt-4">
+                            <li>Disponer del saldo suficiente.</li>
+                            <li>
+                                El cliente te visita y presenta su recibo. Solo debes cobrar recibos vigentes. No debes recibir recibos vencidos.</li>
+                            <li>Captura el numero de referencia del recibo.</li>
+                            <li>Cobras el importe del recibo más el cargo extra de <span class="font-semibold">$8</span> (por hacer llegar el pago del servicio al proveedor).</li>
+                            <li>Si el pago fué exitoso el sistema descontará de tu saldo el importe del recibo y el cargo por venta interno.</li>
+                        </ol>
+                  
+                        </div>
+
+                        <div class="mb-10">
+                            <h3 #titleSection id="contacto-planetaemx" (click)="scrollToTitle('contacto-planetaemx')"
+                            class="text-2xl faqs-title font-semibold mb-3 scroll-mt-20 flex flex-row gap-2 items-center hover:text-red-700 dark:hover:text-sky-400 group/faqs">
+                            <span class="cursor-pointer">Contacto Planetaemx</span>
+                            <span class="font-semibold hidden group-hover/faqs:block">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </span>
+                        </h3>
+
+                   
+
+                        <p class="mt-4">
+                           Si eres cliente de <a href="https://recargaselectronicas.org/" class="font-medium text-red-700 dark:text-blue-400 hover:underline" rel="noreferrer noopener" target="_blank">Recargas Electrónicas</a>, <a href="https://planetaemx.com/index.php" class="font-medium text-red-700 dark:text-blue-400 hover:underline" rel="noreferrer noopener" target="_blank">Planetaemx</a> o
+                           <a href="https://recargaki.com/index.php" class="font-medium text-red-700 dark:text-blue-400 hover:underline" rel="noreferrer noopener" target="_blank">Recargaki</a>  o bien eres un interesado o cliente nuevo.
+                        </p>
+
+                        <p class="mt-4">
+                            Puedes ponerte en contacto con nosotros, si necesitas asesoria ante cualquier problema o duda acerca de nuestra plataforma o depósitos.
+                        </p>
+
+                        <p class="mt-4">
+                           Contactanos en cualquier de nuestros medios de contacto:
+                        </p>
+
+                        
+                        <ul class="flex flex-col gap-6 list-decimal pl-8 mt-4">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6 text-primary dark:text-blue-400" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3a49.5 49.5 0 0 1-4.02-.163 2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                                <p class="font-medium text-primary dark:text-blue-400 pl-2">WhatsApp:</p>
+                                <a href="https://api.whatsapp.com/send?phone=5212223239170&text=hola%20recargas%20electr%C3%B3nicas%20%F0%9F%91%8B" rel="noreferrer noopener" target="_blank" class="cursor-pointer hover:underline">+52 222 323 9170</a>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5 text-primary dark:text-blue-400" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"/></svg>
+                                <p class="text-primary dark:text-blue-400">Correo electrónico:</p>
+                                <a href="mailto:tae.celular@gmail.com" rel="noreferrer noopener" class="hover:underline cursor-pointer">{{mail}}</a>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5 text-primary dark:text-blue-400" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+                                <p class="text-primary dark:text-blue-400">Telefono:</p>
+                                <a href="tel:+522717140102" class="hover:underline cursor-pointer" rel="noreferrer noopener">+52 271 714 0102</a>
+                            </li>
+                        </ul>
+            
+                        </div>
+                    </section>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- modal -->
+<app-faqs-modal-card [isOpenModal]="isOpenModal()" (closeModal)="closeModal($event)"></app-faqs-modal-card>

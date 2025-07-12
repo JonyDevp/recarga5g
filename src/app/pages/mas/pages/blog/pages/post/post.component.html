@@ -1,0 +1,67 @@
+@if(statusData() === 'LOADING') {
+<div class="skeleton-post max-w-4xl w-full mx-auto mt-32 py-2 px-4 animate-slide-in-bottom">
+    <div class="skeleton-post-content animate-pulse">
+        <div class="skeleton-link w-40 h-7 bg-slate-300"></div>
+        <div class="skeleton-title w-full h-10 bg-slate-300 my-6"></div>
+        <div class="skeleton-avatar flex flex-row gap-3">
+            <div class="skeleton-avatar-col">
+                <div class="skeleton-avatar-img size-14 rounded-[50%] bg-slate-300"></div>
+            </div>
+            <div class="skeleton-avatar-col flex flex-col gap-4">
+                <div class="skeleton-avatar-author w-52 h-6 bg-slate-300"></div>
+                <div class="skeleton-avatar-date w-32 h-4 bg-slate-300"></div>
+            </div>
+        </div>
+    
+        <div class="skeleton-img-thumbnail w-full h-[450px] bg-slate-300 rounded-2xl mt-12"></div>
+    
+        <div class="skeleton-text w-full h-4 bg-slate-300 mt-8"></div>
+        @for (_ of [1,2,3,4,5,6,7,8,9]; track _) {
+            <div class="skeleton-text w-full h-4 bg-slate-300 mt-3"></div>
+        }
+    </div>
+  
+</div>
+}
+@if(statusData() === 'ERROR' || statusData() === 'EMPTY') {
+    <div class="max-w-4xl w-full mx-auto mt-32 p-10 mb-8 bg-slate-100 dark:bg-slate-700 shadow-md rounded-md animate-slide-in-bottom">
+         <a routerLink="/mas/blog" class="text-sm font-medium text-sky-600 dark:text-sky-300 inline-flex gap-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+                Regresar a Blog
+            </a>
+        <img src="/assets/img/svg/server-error.svg" class="size-52 mx-auto mb-4" alt="Error server">
+        <h1 class="text-4xl font-semibold text-center text-red-700 dark:text-red-300">Error en servidor</h1>
+        <p class="text-center">¡Ups! :( Al parecer se producido un error en nuestro servicio, vuelve a intentarlo mas tarde</p>
+    </div>
+}
+
+@if (statusData() === 'SUCESS') {
+    <section class="animate-slide-in-bottom">
+        <div class="max-w-4xl w-full mx-auto mt-32 py-2 px-4">
+            <a routerLink="/mas/blog" class="text-sm font-medium text-sky-600 dark:text-sky-300 inline-flex gap-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+                Regresar a Blog
+            </a>
+    
+                <div class="mt-4 post">
+                    <h1 class="font-semibold text-4xl mb-5">{{post()?.title}}</h1>
+    
+                    <div class="post-avatar flex items-center gap-2 mb-10">
+                        <img class="post-avatar-image rounded-[50%] block size-8" src="assets/img/aviso__aplicacion.png">
+                        <div class="post-info text-sm text-slate-700/70 dark:text-slate-300">
+                            Recargas Electrónicas ·
+                            <span class="font-semibold">mayo 07, 2025</span>
+                        </div>
+                    </div>
+    
+                    <img [src]="post()?.headerImage?.url" [alt]="post()?.headerImage?.title" class="rounded-3xl shadow-md">
+                </div>
+        </div>
+    
+        <div class="max-w-4xl w-full mx-auto mt-8 ">
+            <div class="prose dark:prose-invert mx-auto max-w-none" [innerHTML]="post()?.body"></div>       
+        </div>
+    </section>
+
+}    
+

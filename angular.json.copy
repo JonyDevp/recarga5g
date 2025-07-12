@@ -1,0 +1,210 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"cli": {
+		"analytics": "5c6252c8-08da-4df4-a387-ff263a50a5da"
+	},
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"recarga5g": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:application": {
+					"strict": true
+				},
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "",
+			"sourceRoot": "src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:browser",
+					"options": {
+						"allowedCommonJsDependencies": [
+							"lodash"
+						],
+						
+						"outputPath": "dist/recarga5g/browser",
+						"index": "src/index.html",
+						"main": "src/main.ts",
+						"polyfills": "src/polyfills.ts",
+						"tsConfig": "tsconfig.app.json",
+						"assets": [
+							"src/favicon.ico",
+							"src/assets",
+							"src/robots.txt",
+							"src/browserconfig.xml"
+						],
+						"styles": [
+							"@angular/material/prebuilt-themes/indigo-pink.css",
+							"src/styles.scss",
+							"node_modules/swiper/swiper-bundle.min.css",
+							"node_modules/ngx-sharebuttons/themes/default.scss"
+						],
+						"stylePreprocessorOptions": {
+							"includePaths": ["src/assets/scss/partials"]
+						  },
+						"scripts": [
+							"node_modules/wowjs/dist/wow.js"
+						]
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "1mb",
+									"maximumError": "1.5mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "14kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"buildOptimizer": true,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+            "production": {
+              "buildTarget": "recarga5g:build:production"
+						},
+            "development": {
+              "buildTarget": "recarga5g:build:development"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "recarga5g:build"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "src/test.ts",
+						"polyfills": "src/polyfills.ts",
+						"tsConfig": "tsconfig.spec.json",
+						"karmaConfig": "karma.conf.js",
+						"assets": [
+							"src/favicon.ico",
+							"src/assets"
+						],
+						"styles": [
+							"@angular/material/prebuilt-themes/indigo-pink.css",
+							"src/styles.scss"
+						],
+						"scripts": []
+					}
+				},
+				"server": {
+					"builder": "@angular-devkit/build-angular:server",
+					"options": {
+						"outputPath": "dist/recarga5g/server",
+						"main": "server.ts",
+						"tsConfig": "tsconfig.server.json",
+						"stylePreprocessorOptions": {
+							"includePaths": ["src/assets/scss/partials"]
+						  }
+					},
+					
+					"configurations": {
+						"production": {
+							"outputHashing": "media",
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							]
+						},
+						"development": {
+							"optimization": false,
+							"sourceMap": true,
+              "extractLicenses": false,
+              "buildOptimizer": false
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve-ssr": {
+					"builder": "@angular-devkit/build-angular:ssr-dev-server",
+					"configurations": {
+						"development": {
+							"browserTarget": "recarga5g:build:development",
+							"serverTarget": "recarga5g:server:development"
+						},
+						"production": {
+							"browserTarget": "recarga5g:build:production",
+							"serverTarget": "recarga5g:server:production"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"prerender": {
+					"builder": "@angular-devkit/build-angular:prerender",
+					"options": {
+						"routes": [
+							"/",
+							"/registro",
+							"/plataforma/pagaqui",
+							"/plataforma/planetaemx",
+							"/consulta/recargas",
+							"/consulta/servicios",
+							"/consulta/pines",
+							"/reporte/reportePagaqui",
+							"/reporte/reportePlanetaemx",
+							"/ayuda/faqs",
+							"/ayuda/contacto",
+							"/ayuda/blog",
+							"/ayuda/blog/article/1rPNWMt1B4NW3M6dnr0JKh",
+							"/ayuda/blog/article/4valbgmZeMq8zXc9Q5HHSH",
+							"/ayuda/blog/article/6ekGBmK81O3APhvCaIV6Wk",
+							"/ayuda/blog/article/7L1myHWJyrtCd6sD5qwJvf",
+							"/ayuda/blog/article/5UgAboFr1eZ5YbjmfyNRbD",
+							"/legal/politicas",
+							"/legal/condiciones",
+							"/Error/404"
+            ],
+            "discoverRoutes": false
+						
+					},
+					"configurations": {
+						"production": {
+							"browserTarget": "recarga5g:build:production",
+							"serverTarget": "recarga5g:server:production"
+						},
+						"development": {
+							"browserTarget": "recarga5g:build:development",
+							"serverTarget": "recarga5g:server:development"
+						}
+					},
+					"defaultConfiguration": "production"
+				}
+			}
+		}
+  }
+}

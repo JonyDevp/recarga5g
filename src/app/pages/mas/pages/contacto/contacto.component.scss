@@ -1,0 +1,238 @@
+
+.hero {
+  &__container {
+    grid-template-columns: 1fr;
+    background-color: var(--c-body);
+  }
+
+  &__img {
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+}
+
+.contacto {
+  &__container {
+    grid-template-columns: 1fr;
+  }
+
+  &__h2 {
+    text-align: center;
+  }
+}
+
+.contacto {
+  &__container {
+    grid-template-columns: 1fr;
+  }
+
+  &__h1 {
+    text-align: center;
+  }
+
+  &__options {
+    // @include flexible(flex, row, wrap, space-evenly, center);
+    gap: 1.5em;
+  }
+
+  &__item {
+    background-color: var(--c-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    max-width: 350px;
+    padding: 35px 30px;
+  }
+
+  &__box-icon {
+    position: relative;
+    margin-bottom: 25px;
+    // @include flexible(flex, column, nowrap, center, center);
+  }
+  &__icon {
+    background-color: var(--c-light-primary);
+    font-size: 35px;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    border-radius: 50%;
+    // @include flexible(flex, column, nowrap, center, center);
+  }
+
+  &__h3 {
+    text-align: center;
+    color: var(--c-primary);
+  }
+
+  &__a {
+    margin-top: 15px;
+    text-align: center;
+    display: block;
+  }
+}
+
+.info {
+  &__container {
+    grid-template-columns: 1fr;
+    background-image: url("/assets/img/recarga5g-ubicacion.webp");
+    width: 100%;
+    height: 650px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+    position: relative;
+  }
+
+  &__box {
+    max-width: 350px;
+    // @include flexible(flex, column, wrap, center, center);
+    background-color: var(--c-card);
+    position: relative;
+  }
+
+  &__card {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  &__h4 {
+    color: var(--c-primary);
+    display: inline-flex;
+    gap: 0.3em;
+  }
+
+  &__img {
+    width: 30px;
+    object-fit: contain;
+  }
+
+  &__btn {
+    max-width: 350px;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    box-shadow: var(--c-primary) 0px 1px 20px;
+    // @include responsive(400px) {
+    //   bottom: 0;
+    //   left: 0;
+    // }
+  }
+}
+
+.tachuela {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &__img {
+    max-width: 100px;
+    transform: rotate(45deg);
+  }
+}
+
+// .sociales {
+
+//     &__ul {
+//         height: 100%;
+//         @include flexible(flex, row, wrap, flex-end, flex-end);
+//         gap: 1.5em;
+//     }
+
+//     &__li {
+//         margin-bottom: 1em;
+//         margin-right: 1em;
+//         box-shadow: var(--shadow);
+//     }
+//     &__a {
+//         width: 42px;
+//         height: 42px;
+//         object-fit: contain;
+//     }
+// }
+// .contacto__content {
+//   display: grid;
+//   grid-template-columns: 1fr 1.2fr;
+//   @include responsive(950px) {
+//     grid-template-columns: 1fr;
+//   }
+//  gap: 1.5em;
+
+// }
+
+// .title-pagaqui {
+//     color: hsl(225deg 66% 45%);
+// }
+
+// .title-recargaki {
+//     color: hsl(120, 47%, 30%);
+// }
+
+// .contacto-list {
+//     background-color: var(--c-card);
+//     border-radius: 10px;
+//     padding: 60px 40px 0px 40px;
+//     box-shadow: var(--shadow);
+// }
+
+// .contacto-item {
+//     margin-bottom: 30px;
+//     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+// }
+
+// .contacto-item__title {
+//     display: flex;
+//     align-items: center;
+//     margin-bottom: 0.75em;
+// }
+
+// .contacto-item__h3 {
+//     margin-bottom: 10px;
+//     padding: 0 0.35em;
+//     font-weight: bold;
+//     line-height: 1.3;
+// }
+
+// .contacto-item__p {
+//     padding-left: 2.8em;
+// }
+
+// .contacto-item__i {
+//     font-size: 2rem;
+//     background-color: var(--color-primary);
+//     color: #FFF;
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .contacto-right {
+//     height: 100%;
+// }
+
+// .contacto-right__img {
+//     overflow: hidden;
+//     border-radius: 178px 178px 12px 12px;
+//     margin: auto;
+//     width: 80%;
+//     height: 100%;
+//     box-shadow: 0 16px 32px hsla(228, 66%, 25%, .25);
+// }
+
+// .contacto-right__p {
+//     line-height: 1.8;
+//     text-align: justify;
+// }
+
+// @media screen and (max-width: 992px) {
+//     .contacto-list {
+//         order: 4;
+//     }
+//     .contacto-right {
+//         order: 3;
+//     }
+// }

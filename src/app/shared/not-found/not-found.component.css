@@ -1,0 +1,21 @@
+.astronaut {
+  will-change: transform;
+  animation: move-astronaut 20s infinite linear both alternate;
+}
+
+.astronaut__img {
+  animation: rotate-astronaut 200s infinite linear both alternate;
+}
+
+/* ============ ANIMATION ============  */
+@keyframes rotate-astronaut {
+  100% {
+    transform: rotate(-720deg);
+  }
+}
+
+@keyframes move-astronaut {
+  100% {
+    transform: translate(-160px, 160px);
+  }
+}

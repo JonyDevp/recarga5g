@@ -1,0 +1,27 @@
+<div class="nofound h-screen w-full relative overflow-hidden bg-[url(/assets/img/bg_purple.png)] object-cover animate-fade-in">
+    <div class="nofound__container container mx-auto">
+        <!-- Increase z-index of content to appear above stars -->
+        <div class="nofound__content flex items-center justify-center text-center h-screen flex-col relative z-10">
+            <h2 class="nofound__h2 text-white text-8xl font-semibold">404</h2>
+            <h3 class="nofound__h3 text-slate-100 text-4xl">Pages no found</h3>
+            <a routerLink="/" class="nofound__a cursor-pointer text-white text-xl bg-red-600 hover:bg-red-700 dark:bg-blue-600 dark:hover:bg-blue-700 px-4 py-2 rounded-md shadow mt-4">Regresar a la pagina principal</a>
+        </div>
+
+        <!-- Keep decorative elements (earth, astronaut, moon) above stars but below text -->
+        <div class="earth absolute top-1/4 left-14 z-[5]">
+            <img src="/assets/img/svg/earth.svg" class="earth__img size-52" alt="tierra">
+        </div>
+
+        <div class="astronaut absolute top-1/5 left-2/5 z-[6]">
+            <img src="/assets/img/svg/astronaut.svg" class="astronaut__img size-64 object-contain" alt="astronauta">
+        </div>
+
+        <div class="moon absolute top-2/12 left-2/12 z-[4]">
+            <img src="/assets/img/svg/moon.svg" class="moon__img size-36" alt="Luna">
+        </div>
+
+        <!-- Keep stars at the very bottom (z-0 or negative z-index) -->
+        <div class="glowing_stars bg-[url('/assets/img/svg/overlay_stars.svg')] bg-repeat bg-contain bg-top-left size-full absolute top-0 left-0 z-0">
+        </div>
+    </div>
+</div>

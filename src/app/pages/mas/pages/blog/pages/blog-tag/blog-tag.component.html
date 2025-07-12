@@ -1,0 +1,180 @@
+<section class="hero-blog-tag py-24 bg-slate-200 dark:bg-slate-600 mt-24">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between flex-row">
+            <div class="flex lg:order-1 items-center flex-row">
+
+                @if (!isLoading()) {
+                  <img src="https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="" class="size-[100px] relative rounded-2xl object-cover">
+
+                    <div class="ml-5">
+                    <p class="text-orange-700 dark:text-sky-300 font-medium text-sm">
+                        Tag
+                    </p>
+                    </div>
+                } @else {
+                    <div class="size-[100px] relative rounded-2xl object-cover bg-slate-500 animate-pulse"></div>
+                    <div class="ml-5">
+                        <span class="block w-40 h-12 bg-slate-400 mb-1 animate-pulse"></span>
+                    </div>
+                }
+            </div>
+
+            <div class="order-2">
+                <nav class="flex items-center text-sm">
+                    <a class="flex items-center gap-2 font-semibold text-slate-700/80 dark:text-slate-300" routerLink="/mas/blog">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                            class="size-6" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" />
+                        </svg>
+                        Blog
+                    </a>
+                    <span class="mx-4 font-semibold"> > </span>
+                    @if (!isLoading()) {
+                    <p class="text-orange-700 dark:text-sky-300 font-semibold">
+                        Tecnología
+                    </p>
+                    } @else {
+                    <span class="block w-40 h-5 bg-slate-400 mb-1 animate-pulse"></span>
+                    }
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-24 px-4 container mx-auto">
+    <div class="articles-container grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="articles col-span-2">
+            @if(!isLoading()) {
+            @for (item of [1, 2, 3]; track item) {
+            <article
+                class="grid grid-cols-1 lg:grid-cols-4 gap-8 pb-4 border-b border-slate-300 dark:border-slate-500/30 mb-8">
+                <div class="col-span-1">
+                    <img src="https://plus.unsplash.com/premium_photo-1666901328734-3c6eb9b6b979?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="" class="w-full lg:size-64 rounded-2xl shadow-md object-cover" />
+                </div>
+                <div class="col-span-3 flex flex-col flex-wrap">
+                    <div class="pb-2">
+                        <span class="text-orange-700 dark:text-orange-300">Tecnología</span>
+                        <h3 class="text-2xl font-medium pt-3">
+                            What New Data Says About Remote Work and Productivity
+                        </h3>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
+                            sit eveniet quibusdam dignissimos nesciunt quos totam. Quisquam,
+                            saepe! Excepturi dignissimos accusantium culpa harum eum
+                            assumenda, soluta fugiat aspernatur praesentium voluptatem!
+                            Voluptatem commodi, quam natus nesciunt voluptas sit mollitia.
+                        </p>
+                    </div>
+
+                    <footer class="wrapper-data flex items-start justify-start gap-2.5 mt-4">
+                        <div class="blog-avatar size-10 p-1 rounded-[50%] bg-slate-100 overflow-hidden">
+                            <img src="https://banter.tailawesome.com/_next/image?url=%2Fimages%2Fposts%2Farchive-05.jpeg&w=512&q=75"
+                                width="size-full" alt="Recargas Electrónicas" />
+                        </div>
+
+                        <div class="blog-data-info flex flex-col justify-between">
+                            <a href="" class="font-semibold text-sm">Recargas Electrónicas</a>
+                            <p class="text-sm flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+                                <time datetime="2025-05-05">mayo/2025</time>
+                                <span
+                                    class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" class="size-5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                                <time datetime="PT3M">3hrs</time>
+                            </p>
+                        </div>
+                    </footer>
+                </div>
+            </article>
+            }
+            } @else {
+                @for (skeleton of [1,2,3]; track skeleton) {
+                    <div
+                        class="skeleton-article grid grid-cols-1 lg:grid-cols-4 gap-8 pb-4 border-b border-slate-300 dark:border-slate-500/30 mb-8">
+                        <div class="skeleton-image col-span-1">
+                            <div class="skeleton-img w-full lg:size-64 rounded-2xl shadow-md bg-slate-400 animate-pulse"></div>
+                        </div>
+        
+                        <div class="skeleton-content col-span-3 flex flex-col flex-wrap">
+                            <div class="pb-2">
+                                <span class="block bg-slate-400 w-42 h-4 animate-pulse lg:ml-6 mb-4"></span>
+                                <span class="block bg-slate-400 w-4/5 h-32 lg:ml-6"></span>
+                                <div class="flex items-start justify-start gap-2.5 mt-4">
+                                    <span class="skeleton-avatar block size-10 p-1 rounded-[50%] bg-slate-400 overflow-hidden animate-pulse ml-6"></span>
+                                    <div class="skeleton-data flex flex-col justify-between">
+                                        <span class="block w-32 h-3 bg-slate-400"></span>
+                                        <span class="block w-32 h-6 bg-slate-400 mt-4"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <aside class="col-span-1 w-full">
+            @if (!isLoading()) {
+                <div class="current-post bg-slate-200 dark:bg-slate-700 px-8 py-4 rounded-2xl mb-10">
+                    <h3
+                        class="font-medium relative border-b border-slate-300/80 dark:border-slate-500/40 pb-2.5 pt-6 text-2xl before:absolute before:-bottom-px before:left-0 before:h-px before:w-24 before:bg-red-600 dark:before:bg-blue-400 before:content-['']">
+                        Most read in Productivity
+                    </h3>
+    
+                    <div class="pt-4">
+                        @for (post of [1, 2, 3]; track post) {
+                        <article class="flex mb-6">
+                            <img src="https://plus.unsplash.com/premium_photo-1665657351153-32a6f43adb93?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI1fHx8ZW58MHx8fHx8"
+                                class="size-full lg:w-[93px] lg:h-[96px] rounded-2xl object-cover" alt="" />
+                            <div class="lg:w-2/3 ml-4">
+                                <h3 class="hover:underline font-semibold text-lg">
+                                    <a href="#" class="">Can You Hack Productivity With Pills?</a>
+                                </h3>
+    
+                                <footer class="wrapper-data flex items-start justify-start gap-2.5 mt-2">                      
+                                    <div class="blog-data-info flex flex-col justify-between">
+                                        <a href="" class="font-semibold text-sm">Recargas Electrónicas</a>
+                                        <p class="text-sm flex gap-1 items-center text-slate-600/70 dark:text-slate-300">
+                                            <time datetime="2025-05-05">mayo/2025</time>
+                                            <span
+                                                class="separador size-[3px] rounded-[3px] bg-slate-500 my-0 mx-[3px] inline-block"></span>                   
+                                        </p>
+                                    </div>
+                                </footer>
+                            </div>
+                        </article>
+                        }
+                    </div>
+                </div>
+    
+            } @else {
+                <div class="skeleton-current-post bg-slate-200 dark:bg-slate-700 px-8 py-4 rounded-2xl mb-10">
+                    <span class="block w-72 h-8 bg-slate-400"></span>
+
+                    <div class="pt-4">
+                        @for (sk of [1,2,3]; track $index) {
+                            <div class="skeleton-article flex mb-6">
+                                <div class="skeleton-img size-full lg:w-[93px] lg:h-[96px] rounded-2xl object-cover bg-slate-400"></div>
+    
+                                <div class="lg:w-2/3 ml-4">
+                                    <span class="block w-72 h-10 bg-slate-400"></span>
+                                    <span class="block w-32 h-6 bg-slate-400 mt-4"></span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                 
+            }
+
+        <app-follow-card /> 
+        </aside>
+    </div>
+</section>

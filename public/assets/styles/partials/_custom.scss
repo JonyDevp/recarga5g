@@ -1,0 +1,62 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+
+// Use the default configuration.
+$my-typography: mat.define-typography-config();
+@include mat.typography-hierarchy($my-typography);
+
+//* LIGHT THEME CUSTOM
+$light-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$red-palette, 700),
+            accent: mat.define-palette(mat.$indigo-palette, 500),
+        ),
+        density: 0,
+    )
+);
+
+//* DARK THEME CUSTOM
+$dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$indigo-palette, 500),
+            accent: mat.define-palette(mat.$red-palette, 500),
+        ),
+    )
+);
+
+
+.light-theme {
+    @include mat.all-component-themes($light-theme);
+    --c-title: #555166;
+    --c-text: #263238;
+    --c-body: #fff;
+    --c-card: #faf8fa;
+    --c-primary: #c52c2c;
+    --c-secondary: #c52c2c; 
+    --c-light-primary:#ffe4e4;
+    --c-light-secondary: #ffe4e4;
+    background-color: var(--c-body);
+    
+}
+
+.dark-theme {
+    @include mat.all-component-colors($dark-theme);
+    --c-title: #ffffff;
+    --c-text: #e9e9ea;
+    --c-body: #20262e;
+    --c-card: #2a323d;
+    --c-primary: #a0afff;
+    --c-secondary: #3f51b5;
+    --c-light-primary: #e4eaff;
+    --c-light-secondary: #3f51b5;
+    background-color: var(--c-body);
+}
+
+
+//* Cambiar tema a oscuro cuando el usuario tiene modo dark en su dispositivo
+
+

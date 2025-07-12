@@ -1,0 +1,895 @@
+<section class="banner banner-plataformas animate-slide-in-bottom">
+
+    <div
+        class="banner-plataformas__container container flex items-center justify-center mx-auto mt-20 pt-4 shadow rounded-lg">
+        <picture>
+            <source media="(min-width:1536px)"
+                [srcset]="isDarkTheme() ? 'assets/img/plataformas/planetaemx/banner-plataforma-dark_web.webp' : 'assets/img/plataformas/planetaemx/banner-plataforma-light_web.webp'"
+                type="image/webp">
+
+            <source media="(min-width:340px)"
+                [srcset]="isDarkTheme() ? 'assets/img/plataformas/planetaemx/banner-plataforma-dark_mobile.webp' : 'assets/img/plataformas/planetaemx/banner-plataforma-light_mobile.webp'"
+                type="image/webp">
+
+            <img [src]="isDarkTheme() ? 'assets/img/plataformas/planetaemx/banner-plataforma-dark_web.webp' : 'assets/img/plataformas/planetaemx/banner-plataforma-light_web.webp'"
+                width="1539" height="385"
+                alt="Planetaemx plataforma para la venta de recargas electrónicas para negocios"
+                class="banner-plataform w-full h-auto">
+        </picture>
+    </div>
+
+</section>
+
+<section data-aos="zoom-in-up" class="section-carousel-planetaemx my-20">
+    <app-product-carousel [products]="productCarousel()"></app-product-carousel>
+</section>
+
+<section data-aos="zoom-in-up" class="section-sistema-planetaemx mb-20">
+    <div
+        class="sistema-planetaemx__container relative overflow-hidden container px-4 sm:px-6 lg:px-8 mx-auto grid grid-cols-1 lg:grid-cols-2 justify-between gap-4">
+
+        <div class="bg-shape-wrapper absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-30 dark:opacity-20 pointer-events-none"
+            aria-hidden="true">
+            <div
+                class="bg-shape h-32 bg-gradient-to-br from-violet-500 to-sky-500 blur-[106px] dark:from-blue-700 left-0">
+            </div>
+            <div
+                class="bg-shape h-24 bg-gradient-to-r from-purple-400 to-blue-300 blur-[106px] dark:to-indigo-600 right-0">
+            </div>
+        </div>
+
+        <div class="sistema-planetaemx__col">
+
+            <div
+                class="font-medium text-sm py-[0.375rem] mb-4 px-4 rounded-md text-slate-100 bg-slate-800 dark:bg-slate-700 shadow-sm inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <span>
+                    Excelentes comisiones
+                </span>
+
+            </div>
+
+            <h1
+                class="sistema-planetaemx__h1 text-4xl lg:text-5xl font-bold pb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-teal-700 dark:from-teal-400 dark:to-emerald-600">
+                Vende Recargas Electronicas
+                7.5% de comisión Fija
+            </h1>
+
+            <p class="sistema-planetaemx__p mb-4">
+                Con <strong>Planetaemx</strong> obten una comisión por depósito que reportes en la plataforma.
+            </p>
+
+            <p class="mb-4">
+                En <a href="https://planetaemx.com/index.php" target="_blank" rel="noopener noreferrer"
+                    class="font-semibold text-green-700 hover:text-green-800 dark:text-green-400 dark:hover:text-green-500">PlanetaeMx</a>
+                ofrecemos soluciones rápidas y seguras para la compra de <strong>recargas telefónicas</strong>, el pago
+                de
+                servicios y la adquisición de tarjetas de regalo. Nuestra plataforma te permite realizar todas estas
+                operaciones en un solo lugar, ahorrándote tiempo y esfuerzo. Además,
+                obtén beneficios exclusivos como comisiones por depósitos, todo desde la comodidad de tu dispositivo.
+                ¡Simplifica tus pagos con PlanetaeMx
+            </p>
+
+            <p class="mb-4">
+                Con una inversión minima de $100 obtendras el monto correspondiente en saldo + % de comisión.
+            </p>
+
+            <ul class="advantage__ul flex flex-wrap flex-col md:flex-row items-center mt-4">
+
+                @for (item of listBenefit; track $index) {
+                <li class="advantage__li basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+
+                    <p [ngClass]="item.isActive ? 'bg-green-700 text-white shadow-md shadow-slate-400/80 dark:shadow-slate-900/30' : 'border-l-2 border-l-green-500 dark:border-l-slate-400 bg-white dark:bg-slate-700 shadow-md shadow-green-200/50 dark:shadow-slate-900/30'"
+                        class="advantage_label text-sm block py-3 px-4 rounded-md">
+                        Comisión por depósito
+                    </p>
+                </li>
+                }
+
+            </ul>
+        </div>
+        <div class="sistema-planetaemx__col">
+            <img src="/assets/img/plataformas/planetaemx/sistema-planetaemx.webp"
+                alt="sistema de venta de recargas planetaemx" width="700" height="700"
+                title="Sistema para la venta de recargas electrónicas" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<section data-aos="fade-up" class="section-features mb-20">
+    <div class="container px-4 sm:px-6 lg:px-8 mx-auto relative overflow-hidden">
+     
+        <div class="bg-shape-wrapper absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-20 pointer-events-none"
+            aria-hidden="true">
+            <div
+                class="bg-shape h-20 bg-gradient-to-br from-violet-500 to-sky-500 blur-[160px] dark:from-blue-700 left-0">
+            </div>
+            <div
+                class="bg-shape h-24 bg-gradient-to-r from-purple-400 to-blue-300 blur-[160px] dark:to-indigo-600 right-0">
+            </div>
+        </div>
+        
+        <div class="features-row flex flex-wrap gap-9 lg:gap-0">
+
+            <div class="features-col w-full flex-[0_0_100%] lg:w-1/2 lg:flex-[0_0_auto] mb-4">
+                <div
+                    class="inline-block px-3 py-1 mb-2 text-sm font-medium text-slate-100 rounded-lg md:text-center bg-slate-800 dark:bg-slate-700">
+                    Ideal para tu negocio
+                </div>
+                <h4
+                    class="text-4xl lg:text-5xl font-semibold mb-4 text-transparent bg-gradient-to-r bg-clip-text from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+                    Beneficios de vender recargas con Planetaemx
+
+                </h4>
+                <p>Registrate totalmente gratis</p>
+            </div>
+
+            <article
+                class="features-col w-full flex-[0_0_100%] md:w-1/2 md:flex-[0_0_50%] lg:w-1/4 lg:flex-[0_0_25%] py-8 px-6 dark:bg-slate-700/50 shadow shadow-green-300/20 dark:shadow-green-800/20">
+                <div class="features-icon flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                        stroke="currentColor" class="size-16 text-green-800 dark:text-green-600">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                    </svg>
+                </div>
+                <h5 class="text-2xl font-semibold text-center">Diferentes metodos de venta</h5>
+                <p class="mt-4 text-center">Descarga la App desde la tienda oficial para Android y empieza a vender
+                    recargas y pago de servicios</p>
+            </article>
+
+            <article
+                class="features-features w-full flex-[0_0_100%] md:w-1/2 md:flex-[0_0_50%] lg:w-1/4 lg:flex-[0_0_25%] py-8 px-6 shadow-md shadow-green-300/20 dark:shadow-green-800/20">
+                <div class="features-icon flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                        stroke="currentColor" class="size-16 text-green-800 dark:text-green-600">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z" />
+                    </svg>
+                </div>
+                <h5 class="text-2xl font-semibold text-center">Cobro de pago servicios</h5>
+                <p class="mt-4 text-center">recarga <strong>saldo para pago de servicios</strong> y paga cualquier
+                    recibo Luz, agua, internet y mucho mas</p>
+            </article>
+
+            <article
+                class="features-col w-full flex-[0_0_100%] md:w-1/2 md:flex-[0_0_50%] lg:w-1/4 lg:flex-[0_0_25%] py-8 px-6 dark:bg-slate-700/50  shadow-md hadow-green-300/20 dark:shadow-green-800/30">
+                <div class="features-icon flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                        stroke="currentColor" class="size-16 text-green-800 dark:text-green-600">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                    </svg>
+                </div>
+                <h5 class="text-2xl font-semibold text-center text-slate-700 dark:text-white">comisión por depósito
+                    venta de recargas</h5>
+                <p class="mt-4 text-center">Obten el monto de tu depósito + % de comisión, por cada
+                    depósito que reportes.</p>
+
+            </article>
+
+            <article
+                class="features-col w-full flex-[0_0_100%] md:w-1/2 md:flex-[0_0_50%] lg:w-1/4 lg:flex-[0_0_25%] py-8 px-6 shadow-md">
+                <div class="features-icon flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-14 text-green-800 dark:text-green-600">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21C7.043 21 4.862 20.355 3 19.234Z" />
+                    </svg>
+                </div>
+                <h5 class="text-2xl font-semibold text-center">Crea y administra cuentas para venta de recargas</h5>
+                <p class="mt-4 text-center">Si eres socio <Strong>Recargaki</Strong> o <strong>Planetaemx</strong>,
+                    puedes crear la cantidad de usuarios que desees.</p>
+            </article>
+
+            <div
+                class="features-col w-full flex-[0_0_100%] md:w-1/2 md:flex-[0_0_50%] lg:w-1/4 lg:flex-[0_0_25%] flex items-center justify-center">
+                <a routerLink="/registro"
+                    class="text-lg font-semibold text-center bg-green-700 text-white py-4 px-3 cursor-pointer">Registrarme</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-aos="zoom-in-up" class="section bg-green-700 mb-20">
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+
+        <div class="flex flex-col mb-16 sm:text-center sm:mb-0">
+            <span class="mb-6 sm:mx-auto">
+                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-accent-400">
+                    <svg class="w-10 h-10 text-white" stroke="currentColor" viewBox="0 0 52 52">
+                        <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
+                            points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+                    </svg>
+                </div>
+            </span>
+            <div class="mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+                <h2
+                    class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
+                    <span class="relative inline-block">
+                        <svg viewBox="0 0 52 24" fill="currentColor"
+                            class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-deep-purple-accent-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+                            <defs>
+                                <pattern id="700c93bf-0068-4e32-aafe-ef5b6a647708" x="0" y="0" width=".135"
+                                    height=".30">
+                                    <circle cx="1" cy="1" r=".7"></circle>
+                                </pattern>
+                            </defs>
+                            <rect fill="url(#700c93bf-0068-4e32-aafe-ef5b6a647708)" width="52" height="24"></rect>
+                        </svg>
+                        <span class="relative">Vende</span>
+                    </span>
+                    Recargas electrónicas con Planetaemx
+
+
+                </h2>
+                <p class="text-base text-indigo-100 md:text-lg">
+                    Vende recargas electrónicas a cualquier compañia con excelentes comisiones, obten una comisión extra
+                    por cada depósito que reportes en la plataforma.
+                </p>
+
+                <p class="text-base text-indigo-100 md:text-lg">
+                    Telcel, Movistar, Unefon, Bait, AT&T, Telcel Paquete, Virgin Mobile, Soriana Movil, Internet para el
+                    Bienestar, JR Movil, Axios Mobile, Valor TELECOM, Wimo Telecom, Gugacom, Weex
+            </div>
+
+            <div>
+                <a routerLink="/registro"
+                    class="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide bg-white text-slate-700 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none">
+                    Empezar a vender
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section  class="section-app-recargaki mb-20 relative overflow-hidden">
+    <div class="app-recargaki__container py-4 px-4 sm:px-6 lg:px-8 container mx-auto">
+
+        <div class="bg-shape-wrapper absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-20 pointer-events-none"
+            aria-hidden="true">
+            <div
+                class="bg-shape h-40 bg-gradient-to-br from-violet-500 to-sky-500 blur-[160px] dark:from-blue-700 left-0">
+            </div>
+            <div
+                class="bg-shape h-24 bg-gradient-to-r from-purple-400 to-blue-300 blur-[160px] dark:to-indigo-600 right-0">
+            </div>
+        </div>
+
+        <div
+            class="block max-w-72 mx-auto px-3 py-1 mb-2 text-sm font-semibold text-indigo-100 rounded-lg md:text-center bg-slate-800 dark:bg-slate-700">
+            Venta de recargas, pago de servicios
+        </div>
+        <h2
+            class="app-recargaki__h2 text-3xl lg:text-4xl text-transparent bg-gradient-to-r bg-clip-text from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600 font-bold text-center">
+            App
+            Recargaki
+        </h2>
+
+
+        <div class="app-recargaki__row flex justify-center items-center flex-wrap mt-10">
+
+            <div data-aos="fade-right" class="app-recargaki-col w-full lg:w-[40%]">
+
+                <ol class="app-recargaki__ul flex flex-wrap flex-col">
+
+                    <li
+                        class="app-recargaki__li relative mb-[30px] pt-[10px] pb-[10px] pl-14 before:absolute before:content-[counter(indexApp)] before:top-3 before:left-0 before:text-2xl before:size-8 before:text-center before:rounded-full before:bg-green-100 before:text-green-700">
+                        <p class="text-sm lg:text-base text-gray-700 dark:text-gray-300">
+                            Descarga la app desde la tienda oficial como <strong>Recargaki</strong>
+                        </p>
+
+                    </li>
+
+                    <li
+                        class="app-recargaki__li relative mb-[30px] pt-[10px] pb-[10px] pl-14 before:absolute before:content-[counter(indexApp)] before:top-3 before:left-0 before:text-2xl before:size-8 before:text-center before:rounded-full before:bg-green-100 before:text-green-700">
+                        <p class="text-sm lg:text-base text-gray-700 dark:text-gray-300">
+                            Si ya eres cliente <a class="text-base font-semibold text-green-700 dark:text-green-500"
+                                href="">Recargaki</a>,
+                            <a class="text-base font-semibold text-green-700 dark:text-green-500"
+                                href="https://planetaemx.com/index.php" target="_blank"
+                                rel="noopener noreferrer">Planetaemx</a> o bien de
+                            <a class="text-base font-semibold text-red-700 dark:text-pink-400"
+                                href="https://recargaki.com/index.php" target="_blank"
+                                rel="noopener noreferrer">Recargas Electrónicas</a>
+                            ingresa con tus datos de acceso.
+                        </p>
+
+                    </li>
+
+                    <li
+                        class="app-recargaki__li relative mb-[30px] pt-[10px] pb-[10px] pl-14 before:absolute before:content-[counter(indexApp)] before:top-3 before:left-0 before:text-2xl before:size-8 before:text-center before:rounded-full before:bg-green-100 before:text-green-700">
+                        <p class="text-sm lg:text-base text-gray-700 dark:text-gray-300">
+                            Consulta y depósita un monto minimo de $100 a alguna de las cuentas bancarias disponibles
+                        </p>
+
+                    </li>
+
+                    <li
+                        class="app-recargaki__li relative mb-[30px] pt-[10px] pb-[10px] pl-14 before:absolute before:content-[counter(indexApp)] before:top-3 before:left-0 before:text-2xl before:size-8 before:text-center before:rounded-full before:bg-green-100 before:text-green-700">
+                        <p class="text-sm lg:text-base text-gray-700 dark:text-gray-300">
+                            Notifica tu pago en el portal
+                        </p>
+
+                    </li>
+
+                    <li
+                        class="app-recargaki__li relative mb-[30px] pt-[10px] pb-[10px] pl-14 before:absolute before:content-[counter(indexApp)] before:top-3 before:left-0 before:text-2xl before:size-8 before:text-center before:rounded-full before:bg-green-100 before:text-green-700">
+                        <p class="text-sm lg:text-base text-gray-700 dark:text-gray-300">
+                            Obten el saldo correspondiente + % de comisión
+                        </p>
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+            <div data-aos="fade-up" class="app-recargaki-col w-full lg:w-[30%]">
+                <app-recargas [carouselImages]="appRecargaki()"></app-recargas>
+            </div>
+
+            <div data-aos="fade-left" class="app-recargaki-col w-full mt-6 lg:mt-0 lg:w-[30%]">
+                <h3 class="app-recargaki__h3 font-semibold text-3xl text-gray-700 dark:text-white text-center">Descarga
+                    la
+                    aplicación</h3>
+                <p class="app-recargaki__p text-gray-700 dark:text-gray-300 text-sm my-4 text-center">Bajate hoy mismo
+                    la
+                    app, empieza a realizar a cualquier compañia de telefonia, disponible para Android y IOS</p>
+                <div class="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+
+                    <a href="https://play.google.com/store/apps/details?id=com.techoblige.recargaki&hl=es_MX"
+                        target="_blank" rel="noopener noreferrer"
+                        class="w-full sm:w-auto flex bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white rounded-lg items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                        <svg class="mr-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab"
+                            data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
+                            </path>
+                        </svg>
+                        <div class="text-left">
+                            <div class="mb-1 text-xs">Get in on</div>
+                            <div class="-mt-1 font-sans text-sm font-semibold">
+                                Google Play
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-aos="zoom-in-up" class="section-bancos-planetaemx mb-20 overflow-hidden">
+
+    <div class="bancos-planetaemx__container  px-4 sm:px-6 lg:px-8  container mx-auto relative">
+
+        <div class="circle-shape-wrapper absolute bottom-56 right-0 pointer-events-none -z-1" aria-hidden="true">
+            <div
+                class="circle-shape blur-[160px] opacity-50 bg-gradient-to-tr from-indigo-500 to-blue-500/70 rounded-full size-72 -z-0">
+            </div>
+        </div>
+        <div class="bancos-planetaemx__row flex flex-col lg:flex-row flex-wrap ">
+
+            <div class="bancos-planetaemx__col w-full lg:w-1/2 mb-8 lg:mb-0">
+                <div
+                    class="font-medium mb-4 text-sm py-[0.375rem] px-4 rounded-md text-slate-100 bg-slate-800 dark:bg-slate-700 shadow-sm inline-flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+                    </svg>
+                    <span>
+                        Cuentas autorizadas
+                    </span>
+
+                </div>
+                <h5
+                    class="text-transparent bg-gradient-to-r from-teal-700 to-emerald-700 dark:from-teal-500 dark:to-emerald-600 bg-clip-text font-semibold text-3xl lg:text-5xl mb-4 lg:leading-[1.1]">
+                    Bancos para venta de
+                    recargas Bait
+                </h5>
+                <p class="mb-4">Realiza tus compras a alguna de
+                    las cuentas bancarias participantes, obten el monto
+                    en saldo correspondiente + una comisión extra, para que puedas realizar recargas a cualquier
+                    compañia, con excelentes comisiones.
+                </p>
+
+                <img src="assets/img/plataformas/planetaemx/bancos-planetaemx.webp"
+                    title="Cuentas para recargar saldo con planetaemx" class="w-full h-auto mb-4"
+                    alt="Bancos para recargar saldo" width="650" height="190" loading="lazy">
+
+                <a href="https://www.planetaemx.com/" target="_blank" rel="noopener noreferrer"
+                    class="mx-auto block max-w-64 rounded-lg bg-green-700 py-3 px-6 font-medium text-white shadow-md shadow-slate-500/20 hover:shadow-lg hover:shadow-slate-500/40 active:shadow-none">
+                    Consultar cuentas bancarias
+                </a>
+            </div>
+            <div class="bancos-planetaemx__col w-full lg:w-1/2 mt-4 lg:mb-0">
+                <img src="assets/img/plataformas/planetaemx/conoce-bancos-planetaemx.webp"
+                    class="w-full max-w-[650px] h-auto mx-auto" width="700" height="700"
+                    alt="Conoce los bancos para recargar saldo" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-aos="zoom-in-up" class="section-products mb-20 relative overflow-hidden">
+    <div class="container px-5 mx-auto">
+
+        <div class="flex flex-wrap w-full mb-10">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                <div
+                    class="font-medium mb-4 text-sm py-[0.375rem] px-4 rounded-md text-slate-100 bg-slate-800 dark:bg-slate-700 shadow-sm inline-flex items-center gap-2">
+                    <span> nuestros productos </span>
+                </div>
+                <h3
+                    class="text-3xl lg:text-4xl font-semibold title-font mb-2 text-transparent bg-clip-text bg-gradient-to-tr from-teal-700 to-emerald-700 dark:from-teal-500 dark:to-emerald-600">
+                    Nuestros Productos: Venta de tiempo aire Telcel y Cobro por Pago de Servicios
+                </h3>
+                <div class=" h-1 w-20 bg-green-700 rounded"></div>
+            </div>
+
+            <div class="lg:w-1/2 w-full leading-relaxed">
+                <p class="mb-2">
+                    ¿Necesitas recargar saldo en tu teléfono Telcel o el de tus clientes? Con nosotros, puedes realizar
+                    <strong>recargas de tiempo aire Bait </strong> de manera instantánea, las 24 horas del día, los 7
+                    días de la semana. Ya sea que tengas un negocio o simplemente quieras recargar tu propio saldo,
+                    nuestro servicio es rápido, seguro y confiable.
+                </p>
+            </div>
+        </div>
+
+        <app-products bgBtn="bg-green-700 dark:bg-green-600'" />
+    </div>
+</section>
+
+<section data-aos="fade-up" class="section section-distribuidores mb-20">
+
+    <div class="distribuidores-row container  px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap relative overflow-hidden">
+
+        <div class="circle-shape-wrapper absolute top-14 ml-[580px] pointer-events-none -z-1" aria-hidden="true">
+            <div
+                class="circle-shape blur-[160px] opacity-50 bg-gradient-to-tr from-blue-500 to-blue-500/30 rounded-full size-80 -z-0">
+            </div>
+        </div>
+
+        <div class="circle-shape-wrapper absolute bottom-56 right-64 pointer-events-none -z-1" aria-hidden="true">
+            <div
+                class="circle-shape blur-[160px] opacity-30 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full size-60 -z-0">
+            </div>
+        </div>
+
+        <div class="distribuidores col w-full lg:w-1/2 order-2 lg:order-1">
+            <img src="assets/img/plataformas/planetaemx/distribuidores-planetaemx.webp"
+                alt="Conviertete en distribuidor de venta de recargas electrónicas con recargas5g.com" width="700"
+                height="700" loading="lazy">
+        </div>
+
+        <div class="distribuidores col w-full lg:w-1/2 mb-8 lg:mb-0 order-1 lg:order-2">
+            <h4
+                class="text-4xl font-semibold text-transparent bg-gradient-to-r from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600 bg-clip-text">
+                Convierte en distribuidor de recargas electróncias</h4>
+            <p class="mt-4 lg:max-w-2xl">Crea tu propia red afiliando a personas que deseen <strong>vender recargas
+                    electrónicas</strong>
+                obten una comisión maxima y ganancias extras por lo depósitos que estos reporten en la plataforma.
+            </p>
+
+            <p class="mt-4 lg:max-w-2xl">
+                No importa si eres un emprendedor experimentado o estás buscando una nueva fuente de ingresos, con
+                <strong>Recarga5g.com</strong> tienes la oportunidad de ganar dinero de manera fácil y escalable.
+                ¡Conviértete en distribuidor de recargas electrónicas hoy mismo y comienza a maximizar tus ganancias!
+            </p>
+
+            <div class="mt-8">
+                <h5
+                    class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-tr from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+                    ¿Por qué Convertirte en Distribuidor de Recargas Electrónicas?</h5>
+                <p class="mt-4">Podras obtener ganancias maximas mayores a lo de tus competidores.</p>
+                <p class="mt-4 mb-8">
+                    En un mundo donde la conectividad es esencial, las recargas electrónicas se han convertido en un
+                    servicio indispensable para millones de personas. Si estás buscando una oportunidad de negocio
+                    rentable, flexible y de alta demanda, convertirte en distribuidor de recargas electrónicas es la
+                    decisión ideal.
+                </p>
+
+                <a class="rounded-lg py-3 px-6 text-sm font-semibold text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] dark:shadow-green-500/30 dark:hover:shadow-green-600/20 focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-green-600 border-green-600 dark:bg-green-600 dark:border-green-600"
+                    href="https://api.whatsapp.com/send?phone=5212223239170&text=Hola%20recargas%20electr%C3%B3nicas%20quiero%20ser%20distribuidor%20de%20recargas%20electr%C3%B3nicas%20en%20Planetaemx"
+                    rel="noopener noreferrer" target="_blank">Contactar asesor</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-platform mb-20 relative overflow-hidden">
+    <div class="container mx-auto relative px-4 sm:px-6 lg:px-8">
+        <div
+            class="flex justify-center max-w-48 mx-auto px-3 py-1 mb-2 text-sm font-semibold text-indigo-100 rounded-lg md:text-center bg-slate-800 dark:bg-slate-700 shadow-sm">
+            Ideal para tu negocio
+        </div>
+        <h3
+            class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-tr from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+            Planetaemx | Plataforma para vender recargas</h3>
+        <p class="text-center text-lg">Vende recargas para tu negocio con excelentes comisiones, desde tu smartphone,
+            computadora o vía SMS gratuito</p>
+        <div
+             data-aos="fade-down"
+            class="flex items-center py-8 justify-center mt-8 relative bg-gray-100 before:absolute before:inset-0 before:scale-x-110 before:border-y before:border-gray-200 after:absolute after:inset-0 after:scale-y-110 after:border-x after:border-gray-200 dark:bg-gray-800 dark:before:border-gray-700 dark:after:border-gray-700 ">
+
+            <div class="circle-shape-wrapper absolute top-28 right-28 pointer-events-none -z-1" aria-hidden="true">
+                <div
+                    class="circle-shape blur-[160px] opacity-50 bg-gradient-to-tr from-blue-500 to-blue-500/30 rounded-full size-80 -z-0">
+                </div>
+            </div>
+
+            <div class="circle-shape-wrapper absolute top-28 left-0 pointer-events-none -z-1" aria-hidden="true">
+                <div
+                    class="circle-shape blur-[160px] opacity-50 bg-gradient-to-tr from-indigo-500 to-purple-500/30 rounded-full size-80 -z-0">
+                </div>
+            </div>
+
+            <img src="assets/img/plataformas/planetaemx/devices.webp" alt="Venta de recargas recargaki" width="895"
+                height="534" loading="lazy">
+        </div>
+
+        <div data-aos="fade-up" class="platform mt-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+                <article class="platform-col relative p-6">
+                    <div class="platform-info flex items-center gap-2 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+
+                        <h4 class="text-lg font-semibold">Venta de recargas electrónicas en méxico</h4>
+                    </div>
+                    <p>Vende recargas multiregión y pago de servicios todo en una sola plataforma</p>
+                </article>
+
+                <article
+                    class="platform-col relative p-6 before:absolute before:content-[''] before:-start-[1px] before:bg-gray-300 before:dark:bg-gray-600/60">
+                    <div class="platform-info flex items-center gap-2 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                        </svg>
+                        <h4 class="text-lg font-semibold">gestión de cuentas empleado</h4>
+                    </div>
+                    <p>Crea facilmente todos empleados y asignales un permiso especifico</p>
+                </article>
+
+                <article
+                    class="platform-col relative p-6 before:absolute before:content-[''] before:-start-[1px] before:bg-gray-300 before:dark:bg-gray-600/60">
+                    <div class="platform-info flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                        </svg>
+                        <h4 class="text-lg font-semibold">Venta de recargas electrónicas por Telegram</h4>
+                    </div>
+                    <p>Busca el canal <strong>Saldo Electrónico Recargaki</strong> y vincula tus datos, para vender
+                        recargas</p>
+                </article>
+
+                <article
+                    class="platform-col relative p-6 after:absolute after:content-[''] after:start-0 after:bg-gray-300 after:dark:bg-gray-600/60">
+                    <div class="platform-info flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                        <h4 class="text-lg font-semibold">Inversión minima para venta de recargas</h4>
+                    </div>
+                    <p>Realiza tu depósito y/o transferencia minima de $100 y recibelo como saldo para recargas</p>
+
+                </article>
+
+                <article
+                    class="platform-col p-6 before:absolute before:content-[''] before:-start-[1px] before:bg-gray-300 before:dark:bg-gray-600/60 after:absolute after:content-[''] after:start-0 after:bg-gray-300 after:dark:bg-gray-600/60">
+                    <div class="platform-info flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                        </svg>
+                        <h4 class="text-lg font-semibold">Comisión fija por depósito para venta de recargas electrónicas
+                        </h4>
+                    </div>
+                    <p>Reporta directamente en el portal tu depósito y recibe tu depósito en saldo + una comisión extra
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-aos="fade-up"
+    class="section-beneficios relative overflow-hidden bg-gray-900 dark:bg-slate-700 rounded-2xl mx-4 lg:mx-8 mb-20">
+    <div class="p-8 sm:px-8 lg:px-16 lg:py-14">
+        <h2 class="text-white text-3xl font-bold text-center mb-4">Planetaemx sistema para vender recargas electrónicas
+            Bait</h2>
+        <div class="md:flex md:items-center md:space-x-12 lg:space-x-24">
+            <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-2 gap-x-12 xl:gap-x-24">
+                <div>
+                    <ul class="space-y-3 text-base font-medium text-white font-pj">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg> Excelentes comisiones
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg> Adaptado para todo tipo de negocio
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg> Sistema estable y seguro
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-3 text-base font-medium text-white font-pj">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg> Diferentes metodo de venta
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg> Soporte personalizado
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg> Ofrece mejores productos y servicios a tus clientes
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block md:hidden lg:block">
+                <div class="hidden lg:block">
+                    <svg class="w-4 h-auto text-gray-600" viewBox="0 0 16 123" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 11)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 46)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 81)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 116)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 18)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 53)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 88)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 123)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 25)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 60)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 95)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 32)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 67)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 102)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 39)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 74)"></line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5"
+                            transform="matrix(-0.83205 -0.5547 -0.5547 0.83205 15 109)"></line>
+                    </svg>
+                </div>
+                <div class="block mt-10 md:hidden">
+                    <svg class="w-auto h-4 text-gray-600" viewBox="0 0 172 16" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 11 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 46 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 81 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 116 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 151 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 18 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 53 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 88 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 123 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 158 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 25 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 60 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 95 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 130 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 165 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 32 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 67 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 102 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 137 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 172 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 39 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 74 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 109 1)">
+                        </line>
+                        <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 144 1)">
+                        </line>
+                    </svg>
+                </div>
+            </div>
+            <div class="mt-10 md:mt-0">
+                <a title="Get quote now"
+                    class="inline-flex items-center justify-center px-9 py-3.5 mt-5 text-base font-bold text-gray-900 transition-all duration-200 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white font-pj hover:bg-white/90 rounded-xl"
+                    routerLink="/registro"> Registrarme ahora
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-sales-method mb-20">
+    <div
+        class="font-medium text-sm py-[0.375rem] px-4 text-slate-100 rounded-lg md:text-center bg-slate-800 dark:bg-slate-700 shadow-sm flex text-center mx-auto items-center justify-center gap-2 mb-4 max-w-64">
+        <svg class="text-slate-100" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24"
+            viewBox="0 -960 960 960" width="24">
+            <path
+                d="M100-180v-82h80v-432q0-36.75 24.63-61.38Q229.25-780 266-780h554v54H266q-14 0-23 9t-9 23v432h207v82H100Zm504 0q-17.75 0-30.37-12.63Q561-205.25 561-223v-360q0-17.75 12.63-30.38Q586.25-626 604-626h214q17.75 0 30.38 12.62Q861-600.75 861-583v360q0 17.75-12.62 30.37Q835.75-180 818-180H604Zm11-82h192v-310H615v310Zm0 0h192-192Z" />
+        </svg>
+        <span>Diferentes metodos de venta</span>
+    </div>
+    <h2
+        class="text-4xl lg:text-5xl text-center mb-8 font-semibold c-text lg:leading-[1.1] text-transparent bg-gradient-to-r bg-clip-text from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+        ¿Como vender recargas Telcel?</h2>
+    <app-sales-method [customClass]="'bg-green-700 dark:bg-green-600'"
+        [customClassBtn]="'bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 focus:ring-green-800 dark:focus:ring-green-700'"
+        [customClassIcon]="'text-green-700 dark:text-emerald-500'"
+        [customClassShadow]="'shadow-green-500/10 dark:shadow-blue-900/10'" />
+</section>
+
+<section data-aos="zoom-in-up" class="section-recargas-negocios mb-20">
+
+    <div class="recargas container px-4 sm:px-6 lg:px-8 mx-auto relative overflow-hidden">
+
+        <div class="bg-shape-wrapper absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-20 pointer-events-none"
+            aria-hidden="true">
+            <div
+                class="bg-shape h-20 bg-gradient-to-br from-violet-500 to-sky-500 blur-[160px] rounded-full dark:from-blue-700 left-0">
+            </div>
+            <div
+                class="bg-shape h-24 bg-gradient-to-r from-purple-400 to-blue-300 blur-[160px] rounded-full dark:to-indigo-600 right-0">
+            </div>
+        </div>
+
+        <div class="recargas-row flex flex-wrap">
+
+            <div class="recargas-col w-full lg:w-1/2 order-2 lg:order-1 mt-8 lg:mt-0">
+                <img src="assets/img/plataformas/planetaemx/ganancias-planetaemx.webp"
+                    alt="grandes ganancias con planetaemx">
+            </div>
+
+            <div class="recargas-col w-full lg:w-1/2 order-1 lg:order-2 lg:mt-0">
+                <h3
+                    class="text-3xl lg:text-4xl font-semibold lg:pl-10 text-transparent bg-gradient-to-r bg-clip-text from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+                    Genera grandes ganancias vendiendo recargas electrónicas </h3>
+                <p class="mt-4 lg:max-w-2xl lg:pl-10">Ofrecer recargas electrónicas es un servicio altamente demandado,
+                    ya que millones de personas necesitan recargar saldo en sus teléfonos todos los días. Al unirte a
+                    nosotros, tendrás acceso a una plataforma segura y fácil de usar que te permitirá vender recargas al
+                    instante, las 24 horas del día, los 7 días de la semana.</p>
+                <p class="mt-4 lg:max-w-2xl lg:pl-10">
+                    No importa si tienes una tienda establecida o estás buscando emprender, vender recargas electrónicas
+                    es una excelente manera de aumentar tus ingresos.
+                </p>
+
+                <div class="lg:pl-10 mt-8">
+                    <h4
+                        class="text-3xl font-semibold text-transparent bg-gradient-to-r bg-clip-text from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+                        ¿Por qué vender recargas electrónicas con Recarga5g.com? </h4>
+                    <p class="mt-4">
+                        Si estás buscando una forma confiable y rentable de generar ingresos adicionales, Recarga5g.com
+                        es tu mejor opción. Somos la plataforma líder en venta de recargas electrónicas, y te ofrecemos
+                        todo lo que necesitas para convertirte en un punto de venta exitoso. Aquí te decimos por qué
+                        elegirnos
+                    </p>
+
+                    <ul class=" flex flex-wrap flex-col md:flex-row">
+                        <li class="basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+                            ✔ Comisiones hasta un 7.5%
+                        </li>
+                        <li class="basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+                            ✔ Inversión minima
+                        </li>
+
+                        <li class="basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+                            ✔ Sin penalizaciones ni pago forzosos
+                        </li>
+
+                        <li class="basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+                            ✔ Plataforma sencilla e intuitiva
+                        </li>
+
+                        <li class="basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+                            ✔ Segura y confiable
+                        </li>
+
+                        <li class="basis-2/4 my-4 w-full lg:w-2/4 md:pl-3 md:pr-3">
+                            ✔ Atención personalizada
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-register">
+    <div
+        class="font-medium text-sm py-[0.375rem] px-4 text-slate-100 rounded-lg md:text-center bg-slate-800 dark:bg-slate-700 shadow-sm flex text-center mx-auto items-center justify-center gap-2 mb-4 max-w-64">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+        </svg>
+        <span>Registro gratis</span>
+    </div>
+    <h2
+        class="text-4xl lg:text-5xl text-center mb-8 font-semibold bg-clip-text lg:leading-[1.1] text-transparent bg-gradient-to-r from-teal-700 to-emerald-700 dark:from-teal-400 dark:to-emerald-600">
+        Registro para venta de tiempo aire</h2>
+    <app-register-steps customClass="bg-green-100 text-green-800"></app-register-steps>
+</section>
+
+<app-doubts title="Ayuda Recargaki/Planetaemx" text="Si aun tienes dudas acerca de nuestra plataforma no dudes en contactarnos, nuestro asesor te atenderá con mucho gusto"
+    link="https://api.whatsapp.com/send?phone=5212223239170&text=Hola%20recargas%20electr%C3%B3nicas%20quiero%20mas%20informaci%C3%B3n%20para%20vender%20recargas%20en%20Planetaemx"
+    bgClass="from-green-700 to-emerald-700 dark:from-green-700 dark:to-tea-700" textBtn="text-emerald-900" />

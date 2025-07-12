@@ -1,0 +1,33 @@
+    @mixin flexible($display, $direction, $flex-wrap, $justify, $align) {
+    display: $display;
+    flex-flow: $direction $flex-wrap;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin grid($column, $espaciado) {
+    display: grid;
+    grid-template-columns: repeat($column, 1fr);
+    gap: $espaciado;
+}
+
+@mixin responsive($medida: 780px) {
+    @media screen and (max-width: $medida) {
+        @content;
+    }
+}
+
+@mixin neo($radius, $eje) {
+    border-radius: $radius;
+    background-color: var(--c-body);
+
+    background: linear-gradient(123deg, var(--c-card), var(--c-body));
+    box-shadow: -12px 12px 24px #e3e3e3, 12px -12px 24px var(--c-body);
+}
+
+// @media screen and (max-width: 768px) {
+//    .container {
+//     grid-template-columns: 1fr;
+//     gap: 0;
+//    }
+// }

@@ -1,0 +1,305 @@
+<div class="mt-24 h-full min-h-screen flex flex-col md:flex-row">
+  <div
+    class="flex w-full mx-auto lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center items-center">
+    <div class="p-4 w-full mx-auto text-center">
+      <h1 class="font-bold text-3xl text-white">
+        Recarga saldo desde nuestro pagina web
+      </h1>
+    </div>
+  </div>
+
+  <div class="mt-8 size-full lg:w-1/2 flex items-center justify-center">
+    <form [formGroup]="formReportPurchase" action="" autocomplete="off" class="w-full lg:max-w-[600px] px-4">
+      <h2 class="font-bold text-3xl">
+        Reporta todas tus compras y recibe tu saldo correspondiente
+      </h2>
+      <p class="text-sm mb-7">
+        Recarga saldo cuando y como lo desees, sin pagos forzosos ni anualidades
+      </p>
+
+      <div class="mt-4">
+        <label for="user" class="block text-sm font-medium text-gray-700 dark:text-white">
+          *Usuario:
+        </label>
+
+        <input type="text" id="user" placeholder="Indica el nombre de tu negocio o establecimiento"
+          class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          formControlName="user" />
+
+        <p class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
+            <path fill-rule="evenodd"
+              d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+              clip-rule="evenodd"></path>
+          </svg>
+          Indica el usuario que usas para ingresar al portal.
+        </p>
+
+        @if( isInvalidField('user') ) {
+        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+          Campo usuario es obligatorio
+        </span>
+        }
+      </div>
+
+      <div class="mt-4">
+        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-white">
+          *Nombre de usuario:
+        </label>
+
+        <input type="text" id="username" placeholder="Indica el nombre del titular"
+          class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          formControlName="username" />
+
+        <p class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
+            <path fill-rule="evenodd"
+              d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+              clip-rule="evenodd"></path>
+          </svg>
+          Indica el nombre completo del titular de la cuenta
+        </p>
+      </div>
+
+      <div class="mt-4">
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+          *Correo electrónico:
+        </label>
+
+        <input type="text" id="email" placeholder="Indica tu correo electrónico"
+          class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          formControlName="email" />
+      </div>
+
+      <div class="mt-4">
+        <label for="platform" class="block text-sm font-medium text-gray-700 dark:text-white">
+          *Plataforma:
+        </label>
+
+        <select 
+          id="platform" 
+          formControlName="platform"
+          (change)="updateBanks()"
+          class="bg-gray-50 border outline-none mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected value="">Plataforma que perteneces</option>
+          <option value="Pagaqui">Pagaqui</option>
+          <option value="Recargaki/Planetaemx">Recargaki/Planetaemx</option>
+        </select>
+      </div>
+
+      <div class="mt-8" formGroupName="payment_details">
+        <fieldset class="border border-slate-300 p-2">
+          <legend>Datos bancarios</legend>
+
+          <div class="mt-4">
+            <label for="bank" class="block text-sm font-medium text-gray-700 dark:text-white">
+              *Banco:
+            </label>
+
+            <select id="bank" formControlName="bank"
+             [disabled]="!formReportPurchase.get('platform')?.value"
+             [ngClass]="formReportPurchase.get('platform')?.value ? 'pointer-events-auto' : 'pointer-events-none'"
+              class="bg-gray-50 border outline-none mt-2 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option class="" selected value="">Selecciona el banco</option>
+              @for (bank of banksToShow; track bank.id) {
+              <option [value]="bank.bank">{{ bank.bank }}</option>
+              }
+            </select>
+
+            @if(isInvalidField('payment_details.bank')) {
+                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+                    Seleccione el banco a donde deposito
+                </span>
+            }
+          </div>
+
+          <div class="mt-4 section-form">
+            <label for="payment_method" class="block text-sm font-medium text-gray-700 dark:text-white">
+              *Metodo de pago:
+            </label>
+
+            <select id="payment_method" formControlName="payment_method"
+              class="bg-gray-50 border outline-none mt-2 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected>Selecciona el banco</option>
+              <option>Depósito en efectivo</option>
+              <option>Transferencia</option>
+            </select>
+          </div>
+
+          <div class="mt-4 section-form">
+            <label for="amount" class="text-sm font-medium text-gray-700 dark:text-white">Monto</label>
+            <div class="mt-2">
+              <div [ngClass]="
+                  isInvalidField('payment_details.amount')
+                    ? 'border-red-500 dark:border-sky-500'
+                    : 'border-slate-300 dark:border-slate-600'
+                "
+                class="flex items-center rounded-md bg-white dark:bg-gray-700 pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-1 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-blue-500 has-[input:focus]:ring-blue-500">
+                <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">
+                  $
+                </div>
+                <input id="amount" type="text" formControlName="amount"
+                  class="w-full block text-sm outline-none dark:text-white p-2.5 rounded-lg border-0 focus:outline-none dark:placeholder-slate-400" />
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 md:flex flex-col md:flex-row items-center gap-4">
+            <div class="mt-4 lg:mt-0 w-full lg:w-1/2">
+              <label for="date" class="block text-sm font-medium text-gray-700 dark:text-white">
+                *Fecha:
+              </label>
+
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                  </svg>
+                </div>
+
+                <app-date-input formControlName="date" />
+              </div>
+              @if(isInvalidField('payment_details.date')) {
+              <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5 mt-2">
+                {{ getDateErrorMessage() }}
+              </span>
+              }
+            </div>
+
+            <div class="mt-4 lg:mt-0 w-full lg:w-1/2 flex flex-row items-center">
+              <div class="w-full">
+                <label for="hour" class="block text-sm font-medium text-gray-700 dark:text-white">
+                  *Hora:
+                </label>
+
+                <div class="w-full flex flex-row mt-2">
+                  <input type="text" id="hour" placeholder="Indica la hora del deposito: 01:01:00" [ngClass]="
+                      isInvalidField('payment_details.hour')
+                        ? 'border-red-500 dark:border-sky-500'
+                        : 'border-slate-300 dark:border-slate-600'
+                    "
+                    class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-s-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                    formControlName="hour" />
+
+                  <div class="relative">
+                    <button (click)="handlerMenuFormat()" id="states-button" data-dropdown-toggle="dropdown-states"
+                      class="shrink-0 z-10 inline-flex items-center gap-1 p-2.5 text-sm font-medium text-center text-white bg-red-600 border border-gray-300 rounded-e-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:border-blue-600 focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+                      type="button">
+                      @if(currentFormatDay() === 'AM') {
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                        class="size-5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                      </svg>
+                      } @else {
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                        class="size-4" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25 9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                      </svg>
+                      }
+
+                      {{ currentFormatDay() }}
+                      <svg class="size-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 1 4 4 4-4" />
+                      </svg>
+                    </button>
+
+                    @if (isOpenMenuFormat()) {
+
+                    <div id="dropdown-states"
+                      class="z-10 block absolute bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
+                        <li>
+                          <button type="button" (click)="changeFormatDay(previousFormatDay())"
+                            class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <div class="inline-flex gap-2 items-center">
+                              @if(previousFormatDay() === 'PM') {
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                stroke-width="1.5" class="size-5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25 9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                              </svg>
+                              } @else {
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                              </svg>
+                              }
+
+                              {{ previousFormatDay() }}
+                            </div>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    }
+                  </div>
+                </div>
+                @if( isInvalidField('payment_details.hour') ) {
+                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+                  Campo hora es obligatorio
+                </span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label for="folio" class="block text-sm font-medium text-gray-700 dark:text-white">
+              *Folio o numero de autorización:
+            </label>
+
+            <input type="text" id="bussines" placeholder="Indica el monto depositado"
+              class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+              formControlName="folio" appNotSpecialCharacter />
+
+            @if( isInvalidField('payment_details.folio') ) {
+            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+              Campo folio es obligatorio
+            </span>
+            }
+          </div>
+
+          <div class="my-4">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
+              file</label>
+            <input
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="file_input_help" id="file_input" type="file" />
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
+              SVG, PNG, JPG or GIF (MAX. 800x400px).
+            </p>
+          </div>
+          <button [disabled]="!formReportPurchase.valid" type="submit" [ngClass]="
+              !formReportPurchase.valid
+                ? 'bg-red-400 pointer-events-none'
+                : 'bg-red-600 dark:bg-blue-600 hover:bg-red-700 dark:hover:bg-blue-700 pointer-events-auto'
+            "
+            class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Reportar compra
+          </button>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="form-section">
+  <pre>
+    {{ formReportPurchase.value | json }}
+  </pre>
+</div>
+
+<div class="form-section">
+  <pre>
+    Estado del formulario: {{  formReportPurchase.valid }}
+    <br>
+      Status: {{  formReportPurchase.status}}
+    </pre>
+</div>
