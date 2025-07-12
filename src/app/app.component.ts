@@ -39,10 +39,10 @@ ngOnInit(): void {
      AOS.init({
     duration: 1000,
     easing: 'ease-in-out',
+    disable: 'mobile',
     once: true,
     mirror: false,
     anchorPlacement: 'ccenter-bottom', // defines which position of the element regarding to window should trigger the animation
-
   });
 
   }

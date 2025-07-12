@@ -1,154 +1,139 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "version": 1,
-    "newProjectRoot": "projects",
-    "projects": {
-      "recarga5g": {
-        "projectType": "application",
-        "schematics": {
-          "@schematics/angular:component": {
-            "style": "css"
-            
-          }
-        },
-        "root": "",
-        "sourceRoot": "src",
-        "prefix": "app",
-        "architect": {
-          "build": {
-            "builder": "@angular/build:application",
-            "options": {
-              "outputPath": "dist/recarga5g",
-              "index": "src/index.html",
-              "browser": "src/main.ts",
-              "polyfills": [
-                "zone.js"
-              ],
-              "tsConfig": "tsconfig.app.json",
-              "inlineStyleLanguage": "css",
-              "assets": [
-                  {
-                    "glob": "**/*",
-                    "input": "public",
-                     "output": "/"
-                  }
-                
-              ],
-              "styles": [
-                "src/styles.css",
-                "node_modules/@fontsource/inter/400.css",
-               "node_modules/@fontsource/inter/500.css",
-               "node_modules/@fontsource/inter/600.css",
-               "node_modules/@fontsource/inter/700.css",
-                 "node_modules/aos/dist/aos.css"
-              ],
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "recarga5g": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
 
-              "scripts": [
-          
-              ],
-              "server": "src/main.server.ts",
-              "prerender": true,
-              "ssr": {
-                "entry": "server.ts"
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
               }
-            },
-            "configurations": {
-              "production": {
-                "budgets": [
-                  {
-                    "type": "initial",
-                    "maximumWarning": "500kB",
-                    "maximumError": "1MB"
-                  },
-                  {
-                    "type": "anyComponentStyle",
-                    "maximumWarning": "2kB",
-                    "maximumError": "4kB"
-                  }
-                ],
-                "outputHashing": "all"
-              },
-              "development": {
-                "optimization": false,
-                "extractLicenses": false,
-                "sourceMap": true,
-                "fileReplacements": [
-                  {
-                    "replace": "src/environments/environment.ts",
-                    "with": "src/environments/environment.development.ts"
-                  }
-                ]
-              }
-            },
-            "defaultConfiguration": "production"
+            ],
+            "styles": [
+              "src/styles.css",
+              "node_modules/@fontsource/inter/400.css",
+              "node_modules/@fontsource/inter/500.css",
+              "node_modules/@fontsource/inter/600.css",
+              "node_modules/@fontsource/inter/700.css",
+              "node_modules/aos/dist/aos.css"
+            ],
+            "outputPath": "dist/recarga5g",
+            "index": "src/index.html",
+
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
-          "serve": {
-            "builder": "@angular/build:dev-server",
-            "configurations": {
-              "production": {
-                "buildTarget": "recarga5g:build:production"
-              },
-              "development": {
-                "buildTarget": "recarga5g:build:development"
-              }
-            },
-            "defaultConfiguration": "development"
-          },
-          "extract-i18n": {
-            "builder": "@angular/build:extract-i18n"
-          },
-          "test": {
-            "builder": "@angular/build:karma",
-            "options": {
-              "polyfills": [
-                "zone.js",
-                "zone.js/testing"
-              ],
-              "tsConfig": "tsconfig.spec.json",
-              "inlineStyleLanguage": "css",
-              "assets": [
+          "configurations": {
+            "production": {
+              "budgets": [
                 {
-                  "glob": "**/*",
-                  "input": "public"
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
-              "styles": [
-                "src/styles.css"
-              ],
-              "scripts": []
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "recarga5g:build:production"
+            },
+            "development": {
+              "buildTarget": "recarga5g:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "css",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": ["src/styles.css"],
+            "scripts": []
           }
         }
       }
+    }
+  },
+  "cli": {
+    "analytics": "b6568823-8b41-40bd-a4c4-223bdc118638"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
     },
-    "cli": {
-      "analytics": "b6568823-8b41-40bd-a4c4-223bdc118638"
+    "@schematics/angular:directive": {
+      "type": "directive"
     },
-    "schematics": {
-      "@schematics/angular:component": {
-        "type": "component"
-      },
-      "@schematics/angular:directive": {
-        "type": "directive"
-      },
-      "@schematics/angular:service": {
-        "type": "service"
-      },
-      "@schematics/angular:guard": {
-        "typeSeparator": "."
-      },
-      "@schematics/angular:interceptor": {
-        "typeSeparator": "."
-      },
-      "@schematics/angular:module": {
-        "typeSeparator": "."
-      },
-      "@schematics/angular:pipe": {
-        "typeSeparator": "."
-      },
-      "@schematics/angular:resolver": {
-        "typeSeparator": "."
-      }
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   }
-  
+}

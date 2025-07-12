@@ -1,20 +1,24 @@
 @import "tailwindcss";
-@plugin "@midudev/tailwind-animations";
-@plugin "@tailwindcss/typography";
+@plugin '@midudev/tailwind-animations';
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* @theme {
-  --font-inter: "Inter Variable", sans-serif;
+@theme {
+      --font-inter: "Inter Variable", sans-serif;
   --color-primary: oklch(56.62% 0.2233 22.94);
-} */ 
+}
 
 .btn-primary {
   @apply rounded-lg py-3 px-6 text-sm font-semibold text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] dark:shadow-blue-500/30 dark:hover:shadow-blue-600/20 focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-primary border-red-600 dark:bg-blue-600 dark:border-blue-600;
 }
 
-html {
-  scroll-behavior: smooth;
+@media screen and (max-width: 767px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
-button, a {
-  cursor: pointer;
+html {
+  scroll-behavior: smooth;
 }

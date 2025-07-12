@@ -11,7 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~20.1.0",
-    "@angular/cdk": "^18.2.4",
+    "@angular/cdk": "^20.1.0",
     "@angular/common": "~20.1.0",
     "@angular/compiler": "~20.1.0",
     "@angular/core": "^20.1.0",
@@ -42,8 +42,7 @@
     "rxjs": "~7.8.0",
     "swiper": "^11.1.15",
     "tslib": "^2.5.0",
-    "uuid": "^11.1.0",
-    "zone.js": "~0.15.0"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@angular/build": "^20.1.0",
