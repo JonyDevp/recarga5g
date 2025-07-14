@@ -16,6 +16,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ClickOutsideDirective } from '@shared/directives/click-outside.directive';
 import { MenuItem } from '@interfaces/header.interface';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -63,7 +64,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
         animate('75ms ease-in', style({ transform: 'scale(0.95)', opacity: 0 }))
       ])
     ]),
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnDestroy {
 
@@ -72,11 +74,9 @@ export class HeaderComponent implements OnDestroy {
   isOpenNotf = signal(false)
   activeNavOverlay = signal(false);
   isOpenNav = signal(false);
-  isActiveMenu = signal(false);
-  isOpenMenu = signal<number>(-1);
-  navbar = viewChild<ElementRef>('headerNavbar');
-  btnToggleNav = viewChild<ElementRef>('toggleBtnNavbar');
-
+  //signal que indica cual esta abierto
+ readonly isOpenMenu = signal<number>(-1);
+  lastClickedMenu = signal<number | null>(null);
 
   private readonly document = inject(DOCUMENT);
   private readonly renderer2 = inject(Renderer2);
@@ -88,20 +88,24 @@ export class HeaderComponent implements OnDestroy {
 
   navbarItems: MenuItem[] = [
     {
+      id: 'bca7057a-6fad',
       label: "Inicio",
       routerLink: "/",
       isActiveClass: 'bg-gray-800 text-gray-200 dark:bg-gray-600 dark:text-white'
     },
 
     {
+      id: '562a8a75-7194',
       label: 'Plataformas',
       isActiveClass: 'bg-gray-800 text-gray-200 dark:bg-gray-600 dark:text-white',
       items: [
         {
+          id: '803fdda5-8e86',
           label: 'Conoce nuestras plataformas',
           isActiveClass: '',
           items: [
             {
+              id: 'cfe90e5e-42b9',
               label: 'Pagaqui',
               isActiveClass: 'text-slate-200 bg-gray-700',
               svgIcon: this.getSafeSvg('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V8.25m-18 0V6a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6ZM7.5 6h.008v.008H7.5V6Zm2.25 0h.008v.008H9.75V6Z"/></svg>'),
@@ -109,6 +113,7 @@ export class HeaderComponent implements OnDestroy {
               info: 'Explorar como vender recargas con pagaqui en tu negocio'
             },
             {
+              id: 'adb2f8a7-b45b',
               label: 'Planetaemx',
               isActiveClass: 'text-slate-200 bg-gray-700',
               svgIcon: this.getSafeSvg('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V8.25m-18 0V6a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6ZM7.5 6h.008v.008H7.5V6Zm2.25 0h.008v.008H9.75V6Z"/></svg>'),
@@ -122,14 +127,17 @@ export class HeaderComponent implements OnDestroy {
     },
 
     {
+      id: '05aaa8d3-8f85',
       label: 'Nuestros productos',
       isActiveClass: 'bg-gray-800 text-gray-200 dark:bg-gray-600 dark:text-white',
       items: [
         {
+          id: '71d720a8-ed28',
           label: 'Lo que tenemos para ti',
           isActiveClass: '',
           items: [
             {
+              id: '7d85e60d-0912',
               label: 'Recargas',
               isActiveClass: 'text-slate-200 bg-gray-700',
               svgIcon: this.getSafeSvg(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>`),
@@ -137,6 +145,7 @@ export class HeaderComponent implements OnDestroy {
               info: 'explora como puedes vender recargas en tu negocio'
             },
             {
+              id: '4b6210f5-9e84',
               label: 'Pago de Servicios',
               isActiveClass: 'text-slate-200 bg-gray-700',
               svgIcon: this.getSafeSvg(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"/></svg>`),
@@ -144,6 +153,7 @@ export class HeaderComponent implements OnDestroy {
               info: 'Explorar como cobrar +200 servicios en tu negocio'
             },
             {
+              id: 'd421718d-651f',
               label: 'Tarjetas de Regalo',
               isActiveClass: 'text-slate-200 bg-gray-700',
               svgIcon: this.getSafeSvg(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75v16.5M2.25 12h19.5M6.375 17.25a4.875 4.875 0 0 0 4.875-4.875V12m6.375 5.25a4.875 4.875 0 0 1-4.875-4.875V12m-9 8.25h16.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H3.75a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5Zm12.621-9.44c-1.409 1.41-4.242 1.061-4.242 1.061s-.349-2.833 1.06-4.242a2.25 2.25 0 0 1 3.182 3.182Zm-5.598-3.18c1.409 1.409 1.06 4.242 1.06 4.242S9 12.22 7.592 10.811a2.25 2.25 0 1 1 3.182-3.182Z"/></svg>`),
@@ -151,6 +161,7 @@ export class HeaderComponent implements OnDestroy {
               info: 'Explora como vender gift card en tu negocio'
             },
             {
+              id: 'a067855e-cb88',
               label: 'Terminales',
               isActiveClass: 'text-slate-200 bg-gray-700',
               svgIcon: this.getSafeSvg(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z"/></svg>`),
@@ -215,16 +226,19 @@ export class HeaderComponent implements OnDestroy {
     // },
 
     {
+      id: '67f0fed0-5050',
       label: 'Mas',
       isActiveClass: 'bg-gray-800 text-gray-200 dark:bg-gray-600 dark:text-white',
       styleClass: 'grid grid-cols-1 lg:grid-cols-2 gap-4',
       items: [
         {
+          id: '676b2096-092f',
           label: 'Extra',
           isActiveClass: '',
           items: [
 
             {
+              id: '6d74b807-aeee',
               label: 'Contacto',
               isActiveClass: 'text-slate-200 bg-gray-700',
               routerLink: '/mas/contacto',
@@ -234,6 +248,7 @@ export class HeaderComponent implements OnDestroy {
             },
 
             {
+              id: 'b9edeeeb-cb2f',
               label: 'Preguntas frecuentes',
               isActiveClass: 'text-slate-200 bg-gray-700',
               routerLink: '/mas/faqs',
@@ -243,6 +258,7 @@ export class HeaderComponent implements OnDestroy {
             },
 
             {
+              id: '0f3dafcf-a4c8',
               label: 'Reportar compra',
               isActiveClass: 'text-slate-200 bg-gray-700',
               routerLink: '/mas/reportar-compra',
@@ -251,6 +267,7 @@ export class HeaderComponent implements OnDestroy {
             },
 
             {
+              id: 'c397e154-b2c4',
               label: 'Nuestro blog',
               isActiveClass: 'text-slate-200 bg-gray-700',
               routerLink: '/mas/blog',
@@ -260,6 +277,7 @@ export class HeaderComponent implements OnDestroy {
             },
 
             {
+              id: 'af7592c3-2ed0',
               label: 'Politicas de privacidad',
               isActiveClass: 'text-slate-200 bg-gray-700',
               routerLink: '/mas/legal/politicas',
@@ -269,6 +287,7 @@ export class HeaderComponent implements OnDestroy {
             },
 
             {
+              id: 'cbf8d4ac-4f86',
               label: 'Condiciones de uso',
               isActiveClass: 'bg-gray-600 text-slate-200 dark:bg-gray-500',
               routerLink: '/mas/legal/condiciones',
@@ -276,8 +295,6 @@ export class HeaderComponent implements OnDestroy {
               info: 'Informate acerca de nuestra plataforma'
 
             },
-
-
           ]
         }
       ]
@@ -289,7 +306,37 @@ export class HeaderComponent implements OnDestroy {
     return this.sanitizer.bypassSecurityTrustHtml(svgCode);
   }
 
-  handlerScrollDocument(): void {
+
+
+  toggleNavbar(): void {
+    this.isOpenNav.update(value => !value);
+  }
+
+  handleMenuClick(index: number, event: Event) {
+      // Detener propagación para evitar que appClickOutside se active
+    event.stopPropagation();
+    
+    if (this.isOpenMenu() === index) {
+      // Si el menú clicado ya está abierto, ciérralo
+      this.isOpenMenu.set(-1);
+    } else {
+      // Si es un menú diferente, abre el nuevo y cierra el anterior
+      this.isOpenMenu.set(index);
+    }
+  }
+
+
+  isMenuOpen(index: number): boolean {
+    return this.isOpenMenu() === index;
+}
+
+
+  onToggleNavbar(): void {
+    this.toggleNavbar();
+    this.handlerScrollDocument();
+  }
+
+    handlerScrollDocument(): void {
     if (isPlatformBrowser(this.platform_id)) {
 
       const body = this.document.body;
@@ -308,25 +355,6 @@ export class HeaderComponent implements OnDestroy {
     }
   }
 
-
-  toggleNavbar(): void {
-    this.isOpenNav.update(currentValue => !currentValue);
-  }
-
-
-  toggleMenu(index: number) {
-
-    if (index === this.isOpenMenu()) {
-      this.isOpenMenu.set(-1)
-    } else {
-      this.isOpenMenu.set(index);
-    }
-  }
-
-  onToggleNavbar(): void {
-    this.toggleNavbar();
-    this.handlerScrollDocument();
-  }
 
   isSubMenuActive(items?: MenuItem[]): boolean {
     if (!items) return false;

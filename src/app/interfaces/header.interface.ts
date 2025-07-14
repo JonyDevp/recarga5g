@@ -142,7 +142,7 @@ export interface MenuItem {
     /**
      * Identifier of the element.
      */
-    id?: string;
+    id: string;
 
     /**
      * Specifies tab order of the item.
