@@ -32,6 +32,11 @@ export const routes: Routes = [
         loadChildren: () => import('@mas/mas.routes').then ( (masRoute) => masRoute.masRoutes)
     },
 
+    {
+        path: 'novedades',
+        loadComponent: () => import('./pages/novedades/pages/novedades/novedades.component')
+    },
+
        {
         path: '404',
         loadComponent: () => import('@shared/not-found/not-found.component')
