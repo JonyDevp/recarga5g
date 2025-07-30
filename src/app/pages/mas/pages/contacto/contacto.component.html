@@ -98,7 +98,6 @@
             <div class="group w-full h-full">
                 <div class="relative h-full">
                     <img src="https://pagedone.io/asset/uploads/1696488602.png" alt="ContactUs tailwind section" class="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700 object-cover"/>
-           
                 </div>
             </div>
         </div>
@@ -113,8 +112,7 @@
             <div class="mb-4">
               <label
                 for="bussines"
-                class="block text-sm font-semibold"
-              >
+                class="block text-sm font-semibold">
                 *Nombre completo:
               </label>
               <input
@@ -122,7 +120,7 @@
                 id="bussines"
                 placeholder="Indica tu nombre completo"
                 [ngClass]="isInvalidField('full_name') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
-                class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
                 formControlName="full_name"
               />
       
@@ -134,43 +132,62 @@
 
             <div class="mb-4">
               <label
-                for="bussines"
-                class="block text-sm font-semibold"
-              >
-                *Asunto:
+                for="email"
+                class="block text-sm font-semibold"s>
+                *Correo:
               </label>
               <input
                 type="text"
-                id="bussines"
-                placeholder="Indica el asunto"
-                [ngClass]="isInvalidField('subject') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
-                class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-                formControlName="subject"
+                id="email"
+                placeholder="Indica tu correo electrónico"
+                [ngClass]="isInvalidField('email') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
+                class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                formControlName="email"
         
               />
 
-              @if( isInvalidField('subject') ) {
-                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo Asunto es obligatorio</span>
+              @if( isInvalidField('email') ) {
+                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo correo es obligatorio</span>
+              }
+            </div>
+
+              <div class="mb-4">
+              <label
+                for="phone"
+                class="block text-sm font-semibold"s>
+                *Telefono:
+              </label>
+              <input
+                type="text"
+                id="phpne"
+                placeholder="Indica tu telefono"
+                [ngClass]="isInvalidField('phone') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
+                class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                formControlName="phone"
+        
+              />
+
+              @if( isInvalidField('email') ) {
+                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo correo es obligatorio</span>
               }
             </div>
            
             <div class="mb-4">
               <label
                 for="bussines"
-                class="block text-sm font-semibold"
-              >
+                class="block text-sm font-semibold">
                 *Mensaje:
               </label>
           
               <textarea [ngClass]="isInvalidField('subject') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" rows="6" formControlName="message" class="w-full resize-none block text-sm text-slate-700 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400" placeholder="Escribe tu mensaje..."></textarea>
               @if( isInvalidField('subject') ) {
-                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo Mensaje es obligatorio</span>
+                <span class="text-xs placeholder:text-slate-500 text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo Mensaje es obligatorio</span>
               }
             </div>
           </form>
           <button (click)="sendMessage()" type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-red-700 sm:w-fit hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-blue-600 dark:hover:bg-blue-400 dark:focus:ring-blue-800">Enviar Mensaje</button>
 
-          <div class="mt-4">
+          <!-- <div class="mt-4">
             <pre>
               {{ contactForm.value | json}}
             </pre>
@@ -182,7 +199,7 @@
               <br>
               Status: {{contactForm.status}}
             </pre>
-          </div>
+          </div> -->
     </div>
   </div>
 

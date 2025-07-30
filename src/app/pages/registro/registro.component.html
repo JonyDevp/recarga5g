@@ -1,12 +1,13 @@
 <!-- component -->
 <div class="mt-24 md:mt-8 lg:mt-8 h-full md:h-screen lg:h-screen flex flex-col md:flex-row lg:flex-row">
+  
   <div
     class="flex w-full lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center lg:justify-around items-center">
     <div class="p-4 w-full">
 
       <div class="max-w-xl w-full mx-auto relative overflow-hidden">
 
-        <swiper-container  #swiperInfo class="swiper-info" init="false" >
+        <swiper-container #swiperInfo class="swiper-info" init="false" >
           @for (step of steps; track $index) {
           <swiper-slide class="swiper-steps w-full">
             <div class="group relative transition hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl">
@@ -14,7 +15,7 @@
                 <span [innerHTML]="step.svg"></span>
                 <div class="space-y-2">
                   <h5 class="text-white font-bold text-3xl transition">{{step.title}}</h5>
-                  <p class="text-gray-300">
+                  <p class="text-gray-100">
                     {{step.description}}
                   </p>
                 </div>
@@ -52,9 +53,14 @@
         <label for="bussines" class="block text-sm font-medium text-gray-700 dark:text-white">
           Nombre del negocio:
         </label>
-        <input type="text" id="bussines" placeholder="Indica el nombre de tu negocio o establecimiento"
-          class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-          formControlName="bussinesName" appNotSpecialCharacter />
+        <input 
+          id="bussines" 
+          placeholder="Indica el nombre de tu negocio o establecimiento"
+          type="text" 
+          formControlName="bussinesName" 
+          appNotSpecialCharacter 
+          class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          />
 
         <p class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
@@ -66,14 +72,36 @@
         </p>
       </div>
 
+         <div class="mt-4">
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+          Nombre completo:
+        </label>
+        <input 
+         id="fullname" 
+         type="text" 
+         placeholder="*Indica tu nombre completo"
+         formControlName="fullName" 
+         class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          [ngClass]="isInvalidField('fullName') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
+          />
+
+        @if( isInvalidField('fullName') ) {
+        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo Nombre es obligatorio</span>
+        }
+      </div>
+
       <div class="mt-4">
         <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
           Correo electrónico:
         </label>
-        <input type="text" id="email" placeholder="* Indica tu correo electrónico"
-          class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+        <input 
+         id="email" 
+         type="text" 
+         placeholder="*Indica tu correo electrónico"
+         formControlName="email" 
+         class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
           [ngClass]="isInvalidField('email') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
-          formControlName="email" />
+          />
 
         @if( isInvalidField('email') ) {
         <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo correo es obligatorio</span>
@@ -92,10 +120,16 @@
                 d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
             </svg>
           </div>
-          <input type="text" id="phoneNumber" placeholder="Indica tu numero" formControlName="phoneNumber"
-            class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400 ps-10"
+          <input 
+            id="phoneNumber" 
+            placeholder="Indica tu numero" 
+            formControlName="phoneNumber"
+            type="text" 
+            appOnlyNumbers 
+            [maxlength]="10" 
+            class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400 ps-10"
             [ngClass]="isInvalidField('phoneNumber') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'"
-            appOnlyNumbers [maxlength]="10" />
+            />
         </div>
         @if( isInvalidField('phoneNumber') ) {
         <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo numero es obligatorio</span>
@@ -109,10 +143,16 @@
             <label for="zip" id="zip" class="block text-sm font-medium text-gray-700 dark:text-white">
               codigo postal:
             </label>
-            <input type="text" id="zip" placeholder="* Indica el codigo postal"
-              class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-              formControlName="zip" appOnlyNumbers [maxlength]="5"
-              [ngClass]="isInvalidField('address.zip') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" />
+            <input 
+              id="zip" 
+              type="text" 
+              placeholder="* Indica el codigo postal"
+              formControlName="zip" 
+              appOnlyNumbers 
+              [maxlength]="5"
+              class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+              [ngClass]="isInvalidField('address.zip') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" 
+              />
             @if( isInvalidField('address.zip') ) {
             <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo cp es obligatorio</span>
             }
@@ -123,10 +163,11 @@
             </label>
 
             <select id="state"
-              class="w-full block text-sm text-slate-800 dark:text-white mt-2 p-2.5 rounded-lg border bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 focus:outline-none dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white mt-2 p-2.5 rounded-lg border bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 focus:outline-none dark:focus:ring-blue-500 dark:focus:border-blue-500"
               formControlName="state"
-              [ngClass]="isInvalidField('address.state') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-gray-600'">
-              <option value="" disabled selected>* Seleccione una opción</option>
+              [ngClass]="isInvalidField('address.state') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-gray-600'"
+              >
+              <option value="" disabled selected >* Seleccione una opción</option>
               @for (state of statesOfCountry; track state.id) {
               <option [value]="state.id">{{ state.state }}</option>
               }
@@ -145,10 +186,14 @@
             <label for="municipDeleg" class="block text-sm font-medium text-gray-700 dark:text-white">
               Municipio:
             </label>
-            <input type="text" id="municipDeleg" placeholder="*Indica tu municipio"
-              class="w-full block text-sm text-slate-800 dark:text-white mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+            <input 
+              id="municipDeleg" 
+              type="text" 
+              placeholder="*Indica tu municipio"
+              class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
               formControlName="mun_deleg"
-              [ngClass]="isInvalidField('address.mun_deleg') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" />
+              [ngClass]="isInvalidField('address.mun_deleg') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" 
+              />
             @if( isInvalidField('address.mun_deleg') ) {
             <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo municipio es
               obligatorio</span>
@@ -160,10 +205,14 @@
             <label for="col" class="block text-sm font-medium text-gray-700 dark:text-white">
               Colonia:
             </label>
-            <input type="text" id="col"
-              class="w-full block text-sm text-slate-800 dark:text-white mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+            <input 
+              id="col"
+              type="text" 
               formControlName="col"
-              [ngClass]="isInvalidField('address.col') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" />
+              placeholder="* Indica tu colonia"
+              class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+              [ngClass]="isInvalidField('address.col') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" 
+              />
             @if( isInvalidField('address.col') ) {
             <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo colonia es obligatorio</span>
             }
@@ -175,8 +224,11 @@
           <label for="street" class="block text-sm font-medium text-gray-700 dark:text-white">
             Calle:
           </label>
-          <input type="text" id="street" placeholder="* Indica tu calle"
-            class="w-full block text-sm text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          <input 
+            id="street" 
+            type="text" 
+            placeholder="* Indica tu calle"
+            class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
             formControlName="street"
             [ngClass]="isInvalidField('address.street') ? 'border-red-500 dark:border-sky-500' : 'border-slate-300 dark:border-slate-600'" />
           @if( isInvalidField('address.street') ) {
@@ -196,7 +248,7 @@
   </div>
 </div>
 
-<!-- <div class="form-section">
+<div class="form-section">
   <pre>
     {{ signUpForm.value | json }}
   </pre>
@@ -210,4 +262,3 @@
     </pre>
 </div>
 
- -->

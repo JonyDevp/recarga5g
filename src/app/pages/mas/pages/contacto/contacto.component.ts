@@ -43,7 +43,8 @@ export default class ContactoComponent implements OnInit {
   private initContactForm(): void {
     this.contactForm = this.formBuilder.group({
       full_name: ['', [Validators.required, Validators.minLength(6), this.validatorService.noWriteSpaceValid]],
-      subject: ['', [Validators.required, Validators.minLength(3), this.validatorService.noWriteSpaceValid]],
+      email: ['', [Validators.required, Validators.minLength(3), this.validatorService.noWriteSpaceValid]],
+      phone: ['', [Validators.required, Validators.minLength(3), this.validatorService.noWriteSpaceValid]],
       message: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5000), this.validatorService.noWriteSpaceValid]]
     })
   }

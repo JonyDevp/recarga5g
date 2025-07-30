@@ -91,19 +91,19 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
 
 
   isInvalidField(field: string): boolean | undefined {
-    return this.signUpForm?.get(field)?.invalid && this.signUpForm.get(field)?.touched;
+    return this.signUpForm.get(field)?.invalid && this.signUpForm.get(field)?.touched;
   }
 
 
   register() {
 
     if (this.signUpForm.invalid) {
-      this.markFormGroupTouched(this.signUpForm); 
+     return this.markFormGroupTouched(this.signUpForm); 
     }
 
     const formValues = this.signUpForm.value;
-    this.launchConfetti()
-    this.cleanForm()
+    this.cleanForm();
+    this.launchConfetti();
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
@@ -212,7 +212,7 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
                 <path d="M10 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3"></path>
              </svg>`),
             title: 'Deposita o Transfiere',
-            description: 'Inicia con la venta de recargas con una inversión minima de $100',
+            description: 'Inicia con la venta de recargas con una inversión minima de $100 pesos mexicanos',
                img: {
               url: 'assets/img/svg/depositar.svg',
               alt: 'Depositar monto minimo para recargar saldo'
@@ -234,7 +234,7 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
                 </path>
             </svg>`),
             title: 'Registra tu comprobante',
-            description: 'Reporta tu comprobante de pago en la plataforma o bien por WhatsApp',
+            description: 'Reporta tu comprobante de pago en la plataforma o bien por WhatsApp, adjuntado tu usuario',
                img: {
               url: 'assets/img/svg/reportar.svg',
               alt: 'Registro comprobante de pago para recargar saldo'
