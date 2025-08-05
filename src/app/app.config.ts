@@ -7,6 +7,10 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
+import { NgxMaskConfig, provideEnvironmentNgxMask } from 'ngx-mask';
+
+const maskConfig: Partial<NgxMaskConfig> = { validation: false };
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -17,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimations(),
     provideAnimationsAsync(),
+    provideEnvironmentNgxMask(maskConfig)
   ]
 };
