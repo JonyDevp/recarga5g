@@ -15,7 +15,6 @@ import {
 import { DateInputComponent } from '@feature/components/date-input/date-input.component';
 import { NotSpecialCharacterDirective } from '@shared/directives/not-special-character.directive';
 import { OnlyNumbersDirective } from '@shared/directives/only-numbers.directive';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-reportar-compra',
@@ -111,14 +110,20 @@ export default class ReportarCompraComponent {
   banksToShow: TypeBank[] = [];
 
   updateBanks(): void {
+    const bankControl = this.formReportPurchase.get("payment_details.bank");
+    bankControl?.reset('', { emitEvent: false }); 
+  bankControl?.disable(); // Opcional: si quieres deshabilitarlo hasta nueva selección
+
     const selectedPlatform = this.formReportPurchase.get("platform")?.value;
 
     if(selectedPlatform === 'Pagaqui') {
       this.banksToShow = this.listPagaquiBank;
+        bankControl?.enable(); 
     } else if(selectedPlatform === 'Recargaki/Planetaemx') {
       this.banksToShow = this.listBankPlanetaemx;
+         bankControl?.enable(); // 
     } else {
-      this.banksToShow =  []
+      this.banksToShow =  [];
     }
   }
 
@@ -136,14 +141,13 @@ export default class ReportarCompraComponent {
       email: ['', [Validators.required, Validators.minLength(5)] ],
       platform: ['', [Validators.required] ],
       payment_details: this.fb.group({
-        bank: ['', [Validators.required, Validators.minLength(5)] ],
+        bank: [ {value: '', disabled: true}, [Validators.required, Validators.minLength(5)] ],
         payment_method: ['', [Validators.required]],
         amount: ['', [Validators.required, Validators.min(100)]],
         date: [formattedDate],
         hour: ['', [Validators.required]],
-        branch: [''],
         folio: ['', [Validators.required, Validators.minLength(4)]],
-        img: ['', [Validators.required]],
+        proof_payment: ['', [Validators.required]],
       }),
     });
   }
