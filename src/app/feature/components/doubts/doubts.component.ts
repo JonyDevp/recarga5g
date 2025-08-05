@@ -9,13 +9,13 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
   template: `
-  <section class="section-dudas container mx-auto shadow-sm px-8 lg:px-0 mb-20">
-  <div class="grid grid-cols-1 px-6 py-8 lg:py-16 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16 bg-gradient-to-br rounded-3xl"
+  <section class="section-dudas container mx-auto shadow-sm px-5 sm:px-6 lg:px-8 mb-20">
+  <div class="grid grid-cols-1 p-4 gap-8 lg:grid-cols-2 lg:items-center  bg-gradient-to-br rounded-3xl"
     [ngClass]="bgClass() ? bgClass() : 'from-red-700 to-red-900 dark:from-blue-700 dark:to-blue-900'">
     <div class="mx-auto max-w-lg text-center lg:mx-0 lg:pl-10">
       <h5 class="text-3xl font-bold sm:text-4xl text-white relative">
         {{ title() }}
-        <svg _ngcontent-ng-c2649257774="" viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 text-deep-purple-accent-100 lg:w-32  sm:block"><defs _ngcontent-ng-c2649257774=""><pattern _ngcontent-ng-c2649257774="" id="700c93bf-0068-4e32-aafe-ef5b6a647708" x="0" y="0" width=".135" height=".30"><circle _ngcontent-ng-c2649257774="" cx="1" cy="1" r=".7"></circle></pattern></defs><rect _ngcontent-ng-c2649257774="" fill="url(#700c93bf-0068-4e32-aafe-ef5b6a647708)" width="52" height="24"></rect></svg>
+        <svg  viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 text-deep-purple-accent-100 lg:w-32  sm:block"><defs _ngcontent-ng-c2649257774=""><pattern _ngcontent-ng-c2649257774="" id="700c93bf-0068-4e32-aafe-ef5b6a647708" x="0" y="0" width=".135" height=".30"><circle _ngcontent-ng-c2649257774="" cx="1" cy="1" r=".7"></circle></pattern></defs><rect _ngcontent-ng-c2649257774="" fill="url(#700c93bf-0068-4e32-aafe-ef5b6a647708)" width="52" height="24"></rect></svg>
       </h5>
 
       <p class="mt-4 text-white">
