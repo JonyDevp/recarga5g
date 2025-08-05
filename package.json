@@ -37,6 +37,7 @@
     "firebase": "^11.6.1",
     "lodash-es": "^4.17.21",
     "ngx-countup": "^13.2.0",
+    "ngx-mask": "^20.0.3",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "swiper": "^11.1.15",
