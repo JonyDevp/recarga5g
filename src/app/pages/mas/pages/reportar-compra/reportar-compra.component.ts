@@ -12,16 +12,15 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { DateInputComponent } from '@feature/components/date-input/date-input.component';
 import { NotSpecialCharacterDirective } from '@shared/directives/not-special-character.directive';
-import { OnlyNumbersDirective } from '@shared/directives/only-numbers.directive';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-reportar-compra',
   imports: [
     ReactiveFormsModule,
     NotSpecialCharacterDirective,
-    DateInputComponent,
+    NgxMaskDirective,
     JsonPipe,
     NgClass,
   ],
@@ -105,6 +104,30 @@ export default class ReportarCompraComponent {
       bank: 'BANAMEX CORPORATIVO EMPRESARIAL Y DE SERVICIOS SERVITAE 7020-4723972'
     }
   ];
+
+  customTimePatterns = {
+  'H': { 
+    pattern: new RegExp('[0-1]'), // Primer dígito de hora (0-2)
+    symbol: 'h'
+  },
+  'h': {
+    pattern: new RegExp('[0-9]'), // Segundo dígito de hora
+    symbol: 'h',
+    optional: false
+  },
+  'm': {
+    pattern: new RegExp('[0-5]'), // Primer dígito de minutos (0-5)
+    symbol: 'm'
+  },
+  '0': {
+    pattern: new RegExp('[0-9]') // Cualquier dígito
+  },
+  'A': {
+    pattern: new RegExp('[ap]'), // Solo A/a o P/p
+    symbol: 'a',
+    transform: (char: string) =>  char === 'a' ? 'AM' : 'PM'
+  }
+};
   
   // Propiedad para almacenar los bancos a mostrar
   banksToShow: TypeBank[] = [];
@@ -209,6 +232,20 @@ export default class ReportarCompraComponent {
   }
   
   return 'Error en la fecha';
+}
+
+
+formatSimpleTime(event: Event) {
+  const input = event.target as HTMLInputElement;
+  let value = input.value.toUpperCase();
+  
+  if (value.includes('A')) {
+    value = value.replace('A', 'AM').replace('M', '');
+  } else if (value.includes('P')) {
+    value = value.replace('P', 'PM').replace('M', '');
+  }
+  
+  input.value = value;
 }
 
   sendReport(): void {

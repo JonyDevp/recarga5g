@@ -154,7 +154,15 @@
                   </svg>
                 </div>
 
-                <app-date-input formControlName="date" />
+                <input
+                mask="00/00/0000"
+                [showMaskTyped]="true"
+                [keepCharacterPositions]="true"
+        type="text"
+        id="date"
+        placeholder="dd/mm/yyyy" 
+        class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 ps-10 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+      />
               </div>
               @if(isInvalidField('payment_details.date')) {
               <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5 mt-2">
@@ -170,7 +178,15 @@
                 </label>
 
                 <div class="w-full flex flex-row mt-2">
-                  <input type="text" id="hour" placeholder="Indica la hora del deposito: 01:01:00" [ngClass]="
+                  <input
+                       mask="Hh:m0:A0"
+                      [specialCharacters]="[':']"
+                     [patterns]="customTimePatterns"
+                    [dropSpecialCharacters]="false"
+                    [keepCharacterPositions]="true"
+           
+                  
+                    type="text" id="hour" placeholder="Indica la hora del deposito: 01:01:00" [ngClass]="
                       isInvalidField('payment_details.hour')
                         ? 'border-red-500 dark:border-sky-500'
                         : 'border-slate-300 dark:border-slate-600'
@@ -178,63 +194,6 @@
                     class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 rounded-s-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
                     formControlName="hour" />
 
-                  <div class="relative">
-                    <button (click)="handlerMenuFormat()" id="states-button" data-dropdown-toggle="dropdown-states"
-                      class="shrink-0 z-10 inline-flex items-center gap-1 p-2.5 text-sm font-medium text-center text-white bg-red-600 border border-gray-300 rounded-e-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:border-blue-600 focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-                      type="button">
-                      @if(currentFormatDay() === 'AM') {
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
-                        class="size-5" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                      </svg>
-                      } @else {
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
-                        class="size-4" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25 9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-                      </svg>
-                      }
-
-                      {{ currentFormatDay() }}
-                      <svg class="size-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="m1 1 4 4 4-4" />
-                      </svg>
-                    </button>
-
-                    @if (isOpenMenuFormat()) {
-
-                    <div id="dropdown-states"
-                      class="z-10 block absolute bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
-                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
-                        <li>
-                          <button type="button" (click)="changeFormatDay(previousFormatDay())"
-                            class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                            <div class="inline-flex gap-2 items-center">
-                              @if(previousFormatDay() === 'PM') {
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                stroke-width="1.5" class="size-5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25 9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-                              </svg>
-                              } @else {
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                                stroke-width="1.5" class="size-6" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                              </svg>
-                              }
-
-                              {{ previousFormatDay() }}
-                            </div>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                    }
-                  </div>
                 </div>
                 @if( isInvalidField('payment_details.hour') ) {
                 <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
