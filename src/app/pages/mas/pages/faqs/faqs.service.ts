@@ -67,8 +67,8 @@ faqsMenuFour: MenuFaq[] = [
     label: 'Terminales',
     id: '',
     menu: [
-      { label: 'Que es', id: 'que-s-'},
-      { label: 'Que puedes hacer', id: 'que-hcer'},
+      { label: 'Que es', id: 'que-es'},
+      { label: 'Que puedes hacer', id: 'que-hacer'},
     
     
     ]

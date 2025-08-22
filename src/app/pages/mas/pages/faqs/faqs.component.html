@@ -40,21 +40,21 @@
                 <aside class="px-8 h-full border-r border-r-slate-300 dark:border-r-slate-300/30">
                     <div
                         class="no-scrollbar sticky top-24 bottom-24 ">
-                        <nav class="faqs-nav">
+                        <nav class="navbar-faqs">
                             <!-- general -->
-                            <div class="mb-6">
+                            <div class="navbar-section border-b border-gray-300">
                                 <app-faqs-menu [menuItems]="faqsMenuOne" [activeSection]="activeTitle" />
                             </div>
 
                             <!-- platform -->
-                            <div class="platform mb-6">
-                                <span class="font-semibold text-sm">Plataformas</span>
+                            <div class="navbar-section my-6 border-b border-gray-300">
+                                <!-- <span class="font-semibold text-sm">Plataformas</span> -->
                                 <app-faqs-menu [menuItems]="faqsMenuTwo" [activeSection]="activeTitle" />
                                 <app-faqs-menu [menuItems]="faqsMenuThree" [activeSection]="activeTitle" />
                             </div>
 
                             <!-- terminales -->
-                            <div>
+                            <div class="navbar-section">
                                 <span class="font-semibold mb-3">Terminales PVT</span>
                             </div>
                         </nav>
