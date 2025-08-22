@@ -10,7 +10,7 @@ const DEFAULT_DURATION = 0.35;
   imports: [NgClass],
   template: `
     <ul>
-      @for (item of menuItems(); track $index) {
+      @for (item of menuItems(); track item.id) {
 
       <li class="">
         @if(item.menu && item.menu.length > 0) {
@@ -43,10 +43,9 @@ const DEFAULT_DURATION = 0.35;
           <ul
          [@isActivo]="isAnyChildActive(item)"
          [ngClass]="item.menu && 'border-l pl-4 ml-10 border-l-slate-300 dark:border-l-slate-300/30'">
-            @for (subitem of item.menu; track $index) {
+            @for (subitem of item.menu; track subitem.id) {
 
             <li class="faqs-list__li pb-4">
-
             
             <button
             type="button"
@@ -57,18 +56,38 @@ const DEFAULT_DURATION = 0.35;
                 (click)="scrollToAnchor(subitem.id)">{{ subitem.label }}
               
               </button>
-           
-
-            
+  
             </li> 
             }
           </ul>
      
         } @else {
-          <button class="">{{ item.label }}</button>
+               <button
+          type="button"
+            (click)="scrollToAnchor(item.id)"
+            [ngClass]="{
+              'bg-gray-800 text-gray-200 dark:bg-gray-700 dark:text-white':
+                isAnyChildActive(item)
+            }"
+            class="font-semibold mb-3 btn-dropdown inline-flex items-center gap-2 cursor-pointer px-3 py-2 text-sm rounded-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              class="size-4 transition-[rotate] duration-300"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+            {{ item.label }}
+          </button>
+          <!-- <button class="mb-6 pl-4 font-semibold">{{ item.label }}</button> -->
         }
    
- 
       </li>
 
       }
