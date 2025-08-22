@@ -1,12 +1,8 @@
 import {
   Component,
   ElementRef,
-  QueryList,
-  ViewChild,
-  ViewChildren,
   PLATFORM_ID,
   inject,
-  input,
   signal,
   viewChildren,
   effect,
@@ -19,7 +15,6 @@ import { metaTagModel } from 'src/app/interfaces/meta-tag.model';
 import { MetaTagService } from '../../../../shared/services/meta-tag.service';
 import {
   isPlatformBrowser,
-  ViewportScroller
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import {
@@ -74,9 +69,7 @@ export default class FaqsComponent {
   private readonly metaTagService = inject(MetaTagService);
   private platform_id = inject(PLATFORM_ID);
   private observer!: IntersectionObserver;
-  private document = inject(DOCUMENT);
   private readonly faqsService = inject(FaqsService);
-  private readonly renderer2 = inject(Renderer2);
   activeTitle: string = '';
   faqsMenuOne: MenuFaq[] = [];
   faqsMenuTwo: MenuFaq[] = [];
