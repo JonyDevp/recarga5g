@@ -12,7 +12,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { DateMaskDirective } from '@shared/directives/date-mask.directive';
 import { NotSpecialCharacterDirective } from '@shared/directives/not-special-character.directive';
+import { ValidatorsService } from '@shared/services/validators.service';
 import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
@@ -23,6 +25,7 @@ import { NgxMaskDirective } from 'ngx-mask';
     NgxMaskDirective,
     JsonPipe,
     NgClass,
+    DateMaskDirective
   ],
   templateUrl: `./reportar-compra.component.html`,
   styleUrl: './reportar-compra.component.css',
@@ -31,6 +34,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 export default class ReportarCompraComponent {
   public formReportPurchase!: FormGroup;
   private readonly fb = inject(FormBuilder);
+  private readonly ValidatorService = inject(ValidatorsService);
   isOpenMenu = signal(false);
   isOpenMenuFormat = signal(false);
   currentFormatDay = signal<FormatDay>('AM');
@@ -122,11 +126,7 @@ export default class ReportarCompraComponent {
   '0': {
     pattern: new RegExp('[0-9]') // Cualquier dígito
   },
-  'A': {
-    pattern: new RegExp('[ap]'), // Solo A/a o P/p
-    symbol: 'a',
-    transform: (char: string) =>  char === 'a' ? 'AM' : 'PM'
-  }
+  'a': { pattern: new RegExp('[aApP]') }  // A o P (AM/PM)
 };
   
   // Propiedad para almacenar los bancos a mostrar
@@ -167,9 +167,9 @@ export default class ReportarCompraComponent {
         bank: [ {value: '', disabled: true}, [Validators.required, Validators.minLength(5)] ],
         payment_method: ['', [Validators.required]],
         amount: ['', [Validators.required, Validators.min(100)]],
-        date: [formattedDate],
+        date: [ 'DD/MM/YYYY', [this.ValidatorService.noValidDate] ],
         hour: ['', [Validators.required]],
-        folio: ['', [Validators.required, Validators.minLength(4)]],
+        folio: [ '', [Validators.required, Validators.minLength(4)]],
         proof_payment: ['', [Validators.required]],
       }),
     });
@@ -183,70 +183,30 @@ export default class ReportarCompraComponent {
     this.isOpenMenu.update((value) => !value);
   }
 
-  handlerMenuFormat(): void {
-    this.isOpenMenuFormat.update((value) => !value);
-  }
-
-  changeFormatDay(newformatDay: FormatDay): void {
-    this.previousFormatDay.set(this.currentFormatDay());
-    this.currentFormatDay.set(newformatDay);
-    this.handlerMenuFormat();
-  }
 
   isInvalidField(field: string): boolean | undefined {
    const control = this.formReportPurchase.get(field);
   return control ? control.invalid && (control.touched || control.dirty) : false;
   }
 
-  getDateErrorMessage(): string {
-  const dateControl = this.formReportPurchase.get('payment_details.date');
-  
-  if (!dateControl?.errors) return '';
-  
-  if (dateControl.errors['required']) {
-    return 'Campo fecha es obligatorio';
-  }
-  
-  if (dateControl.errors['minlength']) {
-    return 'La fecha debe tener 10 caracteres (DD/MM/YYYY)';
-  }
-  
-  if (dateControl.errors['invalidFormat']) {
-    return 'Formato incorrecto. Use DD/MM/YYYY';
-  }
-  
-  if (dateControl.errors['invalidMonth']) {
-    return 'Mes inválido (debe ser entre 1 y 12)';
-  }
-  
-  if (dateControl.errors['invalidYear']) {
-    return 'Año inválido (solo se permiten el año actual y el anterior)';
-  }
-  
-  if (dateControl.errors['invalidDay']) {
-    return 'Día inválido para este mes';
-  }
-  
-  if (dateControl.errors['invalidDate']) {
-    return 'Fecha inválida';
-  }
-  
-  return 'Error en la fecha';
-}
 
-
-formatSimpleTime(event: Event) {
-  const input = event.target as HTMLInputElement;
-  let value = input.value.toUpperCase();
-  
-  if (value.includes('A')) {
-    value = value.replace('A', 'AM').replace('M', '');
-  } else if (value.includes('P')) {
-    value = value.replace('P', 'PM').replace('M', '');
+  onTimeInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value.toUpperCase();
+    
+    // Detectar si se presionó 'A' o 'P' y convertir a AM/PM
+    if (value.endsWith('A') && !value.endsWith('AM')) {
+      value = value.replace(/A$/, 'AM');
+     
+    } else if (value.endsWith('P') && !value.endsWith('PM')) {
+      value = value.replace(/P$/, 'PM');
+         
+    }
+    
+    // Actualizar el valor del formulario
+    // this.timeForm.get('hora')?.setValue(value, { emitEvent: false });
+    this.formReportPurchase.get('payment_details.hour')?.setValue(value, {emitEvent: false})
   }
-  
-  input.value = value;
-}
 
   sendReport(): void {
     if (this.formReportPurchase.invalid) {
@@ -284,6 +244,20 @@ formatSimpleTime(event: Event) {
       },
     });
   }
+
+  handleKeydown(event: KeyboardEvent) {
+  const input = event.target as HTMLInputElement;
+  const key = event.key.toLowerCase();
+
+  // Solo permitir 'a' o 'p' cuando el cursor esté al final
+  if (['a', 'p'].includes(key) && input.value.length >= 5) {
+    event.preventDefault();
+    const timePart = input.value.substring(0, 5);
+    const period = key === 'a' ? 'AM' : 'PM';
+    input.value = `${timePart} ${period}`;
+    this.formReportPurchase.get(' payment_details.hour')?.setValue(input.value);
+  }
+}
 }
 
 type FormatDay = 'AM' | 'PM';

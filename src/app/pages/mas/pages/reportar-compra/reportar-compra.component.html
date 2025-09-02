@@ -1,6 +1,7 @@
 <div class="mt-24 h-full min-h-screen flex flex-col md:flex-row">
   <div
-    class="flex w-full mx-auto lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center items-center">
+    class="flex w-full mx-auto lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center items-center"
+  >
     <div class="p-4 w-full mx-auto text-center">
       <h1 class="font-bold text-3xl text-white">
         Recarga saldo desde nuestro pagina web
@@ -9,7 +10,12 @@
   </div>
 
   <div class="mt-8 size-full lg:w-1/2 flex items-center justify-center">
-    <form [formGroup]="formReportPurchase" action="" autocomplete="off" class="w-full lg:max-w-[600px] px-4">
+    <form
+      [formGroup]="formReportPurchase"
+      action=""
+      autocomplete="off"
+      class="w-full lg:max-w-[600px] px-4"
+    >
       <h2 class="font-bold text-3xl">
         Reporta todas tus compras y recibe tu saldo correspondiente
       </h2>
@@ -18,19 +24,35 @@
       </p>
 
       <div class="mt-4">
-        <label for="user" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="user"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           *Usuario:
         </label>
 
-        <input type="text" id="user" placeholder="Indica el nombre de tu negocio o establecimiento"
+        <input
+          type="text"
+          id="user"
+          placeholder="Indica el nombre de tu negocio o establecimiento"
           class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-          formControlName="user" />
+          formControlName="user"
+        />
 
-        <p class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
-            <path fill-rule="evenodd"
+        <p
+          class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-5 h-5 mr-2"
+          >
+            <path
+              fill-rule="evenodd"
               d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-              clip-rule="evenodd"></path>
+              clip-rule="evenodd"
+            ></path>
           </svg>
           Indica el usuario que usas para ingresar al portal.
         </p>
@@ -43,41 +65,71 @@
       </div>
 
       <div class="mt-4">
-        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="username"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           *Nombre de usuario:
         </label>
 
-        <input type="text" id="username" placeholder="Indica el nombre del titular"
+        <input
+          type="text"
+          id="username"
+          placeholder="Indica el nombre del titular"
           class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-          formControlName="username" />
+          formControlName="username"
+        />
 
-        <p class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
-            <path fill-rule="evenodd"
+        <p
+          class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-5 h-5 mr-2"
+          >
+            <path
+              fill-rule="evenodd"
               d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-              clip-rule="evenodd"></path>
+              clip-rule="evenodd"
+            ></path>
           </svg>
           Indica el nombre completo del titular de la cuenta
         </p>
       </div>
 
       <div class="mt-4">
-        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="email"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           *Correo electrónico:
         </label>
 
-        <input type="text" id="email" placeholder="Indica tu correo electrónico"
+        <input
+          type="text"
+          id="email"
+          placeholder="Indica tu correo electrónico"
           class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-          formControlName="email" />
+          formControlName="email"
+        />
       </div>
 
       <div class="mt-4">
-        <label for="platform" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="platform"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           *Plataforma:
         </label>
 
-        <select id="platform" formControlName="platform" (change)="updateBanks()"
-          class="bg-gray-50 border outline-none mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <select
+          id="platform"
+          formControlName="platform"
+          (change)="updateBanks()"
+          class="bg-gray-50 border outline-none mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
           <option value="" disabled selected>Plataforma que perteneces</option>
           <option value="Pagaqui">Pagaqui</option>
           <option value="Recargaki/Planetaemx">Recargaki/Planetaemx</option>
@@ -89,32 +141,52 @@
           <legend>Datos bancarios</legend>
 
           <div class="mt-4">
-            <label for="bank" class="block text-sm font-medium text-gray-700 dark:text-white">
+            <label
+              for="bank"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               *Banco:
             </label>
 
-            <select id="bank" formControlName="bank"
-              class="bg-gray-50 border disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:opacity-50 outline-none mt-2 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value="" disabled selected>   {{ banksToShow.length ? 'Selecciona el banco' : 'Selecciona una plataforma primero' }}</option>
+            <select
+              id="bank"
+              formControlName="bank"
+              class="bg-gray-50 border disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:opacity-50 outline-none mt-2 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="" disabled selected>
+                {{
+                  banksToShow.length
+                    ? "Selecciona el banco"
+                    : "Selecciona una plataforma primero"
+                }}
+              </option>
               @for (bank of banksToShow; track bank.id) {
               <option [value]="bank.bank">{{ bank.bank }}</option>
               }
             </select>
 
             @if(isInvalidField('payment_details.bank')) {
-            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+            <span
+              class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+            >
               Seleccione el banco a donde deposito
             </span>
             }
           </div>
 
           <div class="mt-4 section-form">
-            <label for="payment_method" class="block text-sm font-medium text-gray-700 dark:text-white">
+            <label
+              for="payment_method"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               *Metodo de pago:
             </label>
 
-            <select id="payment_method" formControlName="payment_method"
-              class="bg-gray-50 border outline-none mt-2 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select
+              id="payment_method"
+              formControlName="payment_method"
+              class="bg-gray-50 border outline-none mt-2 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
               <option value="" disabled selected>*Selecciona el banco</option>
               <option>Depósito en efectivo</option>
               <option>Transferencia</option>
@@ -122,81 +194,125 @@
           </div>
 
           <div class="mt-4 section-form">
-            <label for="amount" class="text-sm font-medium text-gray-700 dark:text-white">Monto</label>
+            <label
+              for="amount"
+              class="text-sm font-medium text-gray-700 dark:text-white"
+              >Monto</label
+            >
             <div class="mt-2">
-              <div [ngClass]="
+              <div
+                [ngClass]="
                   isInvalidField('payment_details.amount')
                     ? 'border-red-500 dark:border-sky-500'
                     : 'border-slate-300 dark:border-slate-600'
                 "
-                class="flex items-center rounded-md bg-white dark:bg-gray-700 pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-1 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-blue-500 has-[input:focus]:ring-blue-500">
-                <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">
+                class="flex items-center rounded-md bg-white dark:bg-gray-700 pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-1 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-blue-500 has-[input:focus]:ring-blue-500"
+              >
+                <div
+                  class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6"
+                >
                   $
                 </div>
-                <input id="amount" type="text" formControlName="amount"
-                  class="w-full block placeholder:text-slate-500 text-sm outline-none dark:text-white p-2.5 rounded-lg border-0 focus:outline-none dark:placeholder-slate-400" />
+                <input
+                  id="amount"
+                  type="text"
+                  formControlName="amount"
+                  class="w-full block placeholder:text-slate-500 text-sm outline-none dark:text-white p-2.5 rounded-lg border-0 focus:outline-none dark:placeholder-slate-400"
+                />
               </div>
             </div>
           </div>
 
-          <div class="mt-4 md:flex flex-col md:flex-row items-center gap-4">
+          <div class="mt-4 md:flex flex-col md:flex-row items-start gap-4">
             <div class="mt-4 lg:mt-0 w-full lg:w-1/2">
-              <label for="date" class="block text-sm font-medium text-gray-700 dark:text-white">
+              <label
+                for="date"
+                class="block text-sm font-medium text-gray-700 dark:text-white"
+              >
                 *Fecha:
               </label>
 
               <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path
-                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                    />
                   </svg>
                 </div>
 
                 <input
-                mask="00/00/0000"
-                [showMaskTyped]="true"
-                [keepCharacterPositions]="true"
-        type="text"
-        id="date"
-        placeholder="dd/mm/yyyy" 
-        class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 ps-10 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-      />
+                  dateMaskDDMMYYYY
+                  type="text"
+                  id="date"
+                  placeholder="dd/mm/yyyy"
+                  formControlName="date"
+                  class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 ps-10 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                />
+                <!-- <input
+                  mask="00/00/0000"
+                  [showMaskTyped]="false"
+                  [keepCharacterPositions]="true"
+                  type="text"
+                  id="date"
+                  placeholder="dd/mm/yyyy"
+                  formControlName="date"
+                  class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 ps-10 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+                /> -->
               </div>
               @if(isInvalidField('payment_details.date')) {
-              <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5 mt-2">
-                {{ getDateErrorMessage() }}
+              <span
+                class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5 mt-2"
+              >
+                Fecha invalida
               </span>
+              <!-- <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5 mt-2">
+                {{ getDateErrorMessage() }}
+              </span> -->
               }
             </div>
 
-            <div class="mt-4 lg:mt-0 w-full lg:w-1/2 flex flex-row items-center">
+            <div
+              class="mt-4 lg:mt-0 w-full lg:w-1/2 flex flex-row items-center"
+            >
               <div class="w-full">
-                <label for="hour" class="block text-sm font-medium text-gray-700 dark:text-white">
+                <label
+                  for="hour"
+                  class="block text-sm font-medium text-gray-700 dark:text-white"
+                >
                   *Hora:
                 </label>
 
                 <div class="w-full flex flex-row mt-2">
                   <input
-                       mask="Hh:m0:A0"
-                      [specialCharacters]="[':']"
-                     [patterns]="customTimePatterns"
-                    [dropSpecialCharacters]="false"
+                    mask="Hh:m0 aa"
+                    (keydown)="handleKeydown($event)"
                     [keepCharacterPositions]="true"
-           
-                  
-                    type="text" id="hour" placeholder="Indica la hora del deposito: 01:01:00" [ngClass]="
+                    [showMaskTyped]="true"
+                    type="text"
+                    id="hour"
+                    placeholder="hh:mm aa"
+                    [ngClass]="
                       isInvalidField('payment_details.hour')
                         ? 'border-red-500 dark:border-sky-500'
                         : 'border-slate-300 dark:border-slate-600'
                     "
                     class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 rounded-s-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-                    formControlName="hour" />
-
+                    formControlName="hour"
+                  />
                 </div>
                 @if( isInvalidField('payment_details.hour') ) {
-                <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+                <span
+                  class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+                >
                   Campo hora es obligatorio
                 </span>
                 }
@@ -205,43 +321,60 @@
           </div>
 
           <div class="mt-4">
-            <label for="folio" class="block text-sm font-medium text-gray-700 dark:text-white">
+            <label
+              for="folio"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               *Folio o numero de autorización:
             </label>
 
-            <input type="text" id="bussines" placeholder="Indica el monto depositado"
+            <input
+              type="text"
+              id="bussines"
+              placeholder="Indica el monto depositado"
               class="w-full block text-sm placeholder:text-slate-500 text-slate-800 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-              formControlName="folio" appNotSpecialCharacter />
+              formControlName="folio"
+              appNotSpecialCharacter
+            />
 
             @if( isInvalidField('payment_details.folio') ) {
-            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">
+            <span
+              class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+            >
               Campo folio es obligatorio
             </span>
             }
           </div>
 
           <div class="my-4">
-
-            <label for="proof_payment" class="block text-sm font-medium text-gray-700 dark:text-white mb-2">
+            <label
+              for="proof_payment"
+              class="block text-sm font-medium text-gray-700 dark:text-white mb-2"
+            >
               *Carga el comprobante de pago:
             </label>
 
             <input
-             formControlName="proof_payment"
+              formControlName="proof_payment"
               class="block w-full file:bg-gray-800 font-medium text-sm file:cursor-pointer file:text-white file:rounded-l-lg file:px-4 file:py-2 border rounded-l-lg border-gray-300"
-              id="proof_payment" type="file">
+              id="proof_payment"
+              type="file"
+            />
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">
               SVG, PNG, JPG or GIF (MAX. 1000x1000px).
             </p>
           </div>
 
-
-          <button [disabled]="!formReportPurchase.valid" type="submit" [ngClass]="
+          <button
+            [disabled]="!formReportPurchase.valid"
+            type="submit"
+            [ngClass]="
               !formReportPurchase.valid
                 ? 'bg-red-400 pointer-events-none'
                 : 'bg-red-600 dark:bg-blue-600 hover:bg-red-700 dark:hover:bg-blue-700 pointer-events-auto'
             "
-            class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
             Reportar compra
           </button>
         </fieldset>
