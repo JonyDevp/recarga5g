@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl, ValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -22,58 +22,74 @@ export class ValidatorsService {
     return null;
   }
 
-  noValidDate(control: FormControl): ErrorValidate | null {
-    const value = control.value;
+  noValidFecha(control: FormControl): ErrorValidate | null {
 
-    // Si el campo está vacío o no tiene el formato completo
-    if (!value || value.length < 10) {
-      return null; // No validar si está vacío o incompleto
-    }
+    const raw = (control.value ?? '').toString();
 
-    // Verificar el formato básico con regex
-    const datePattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-    if (!datePattern.test(value)) {
-      return { isInvalidDate: true };
-    }
+    // Solo dígitos (por seguridad); esperamos DDMMYYYY
+    const digits = raw.replace(/\D/g, '');
 
-    //Extraer dia, mes, año
-    const parts = value.split('/');
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10);
-    const year = parseInt(parts[2], 10);
+    // Si aún no hay 8 dígitos (mientras escribe), no estorbar
+    if (digits.length === 0) return null;
+    if (digits.length !== 8) return null;
 
-    // Validar año (actual o anterior)
+    const dd = parseInt(digits.slice(0, 2), 10);
+    const mm = parseInt(digits.slice(2, 4), 10);
+    const yyyy = parseInt(digits.slice(4, 8), 10);
+
+    // Mes 1..12
+    if (mm < 1 || mm > 12) return { isInvalidDate: true };
+
+    // Días válidos del mes (considera bisiestos según 'yyyy')
+    const daysInMonth = new Date(yyyy, mm, 0).getDate(); // mm es 1..12
+    if (dd < 1 || dd > daysInMonth) return { isInvalidDate: true };
+
+    // Año igual al año actual
     const currentYear = new Date().getFullYear();
-    const minDate = currentYear - 1;
+    if (yyyy !== currentYear) return { isInvalidDate: true };
 
-    if (year > currentYear || year <= minDate) {
-      return { isInvalidDate: true };
-    }
+    return null;
+  };
 
-    // Validar día según el mes
-    if (month < 1 || month > 12) {
-      return { isInvalidDate: true };
-    }
+  noValidDate: ValidatorFn = (control: AbstractControl) => {
+    const raw = (control.value ?? '').toString();
+    const digits = raw.replace(/\D/g, '');
 
-    // Validar día según el mes
-    const daysInMonth = new Date(year, month, 0).getDate();
-    if (day < 1 || day > daysInMonth) {
-      return { isInvalidDate: true };
-    }
+    if (digits.length === 0) return null;
+    if (digits.length !== 8) return { isInvalidDate: true };
 
-    // Validación adicional para asegurar que la fecha es real
-    const date = new Date(year, month - 1, day);
-    if (
-      date.getFullYear() !== year ||
-      date.getMonth() !== month - 1 ||
-      date.getDate() !== day
-    ) {
-      return { isInvalidDate: true };
-    }
+    const dd = parseInt(digits.slice(0, 2), 10);
+    const mm = parseInt(digits.slice(2, 4), 10);
+    const yyyy = parseInt(digits.slice(4, 8), 10);
 
-    // Si pasa todas las validaciones, retornar null (sin errores)
-    return null
+    if (mm < 1 || mm > 12) return { isInvalidDate: true };
+    const daysInMonth = new Date(yyyy, mm, 0).getDate();
+    if (dd < 1 || dd > daysInMonth) return { isInvalidDate: true };
+
+    const currentYear = new Date().getFullYear();
+    if (yyyy !== currentYear) return { isInvalidDate: true };
+
+    return null;
+  };
+
+  noValidHour: ValidatorFn = (control: AbstractControl) => {
+    const raw = (control.value ?? '').toString();
+    const digits = raw.replace(/\D/g, '');
+
+    if (digits.length === 0) return null;
+    if (digits.length !== 4) return { isInvalidHour: true };
+
+    const hh = parseInt(digits.slice(0,2), 10);
+    const mm = parseInt(digits.slice(2,4), 10);
+
+     if (hh < 1 || hh > 24) return { isInvalidHour: true };
+
+      if (mm < 1 || mm > 59) return { isInvalidHour: true };
+
+
+    return null;
   }
+
 
 }
 
@@ -81,3 +97,4 @@ export class ValidatorsService {
 interface ErrorValidate {
   [s: string]: boolean
 }
+

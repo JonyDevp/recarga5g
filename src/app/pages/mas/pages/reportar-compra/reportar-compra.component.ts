@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnInit,
-  signal,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -12,7 +10,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { DateMaskDirective } from '@shared/directives/date-mask.directive';
 import { NotSpecialCharacterDirective } from '@shared/directives/not-special-character.directive';
 import { ValidatorsService } from '@shared/services/validators.service';
 import { NgxMaskDirective } from 'ngx-mask';
@@ -22,10 +19,9 @@ import { NgxMaskDirective } from 'ngx-mask';
   imports: [
     ReactiveFormsModule,
     NotSpecialCharacterDirective,
-    NgxMaskDirective,
     JsonPipe,
     NgClass,
-    DateMaskDirective
+    NgxMaskDirective
   ],
   templateUrl: `./reportar-compra.component.html`,
   styleUrl: './reportar-compra.component.css',
@@ -35,10 +31,6 @@ export default class ReportarCompraComponent {
   public formReportPurchase!: FormGroup;
   private readonly fb = inject(FormBuilder);
   private readonly ValidatorService = inject(ValidatorsService);
-  isOpenMenu = signal(false);
-  isOpenMenuFormat = signal(false);
-  currentFormatDay = signal<FormatDay>('AM');
-  previousFormatDay = signal<FormatDay>('PM');
 
   listPagaquiBank: TypeBank[]  = [
     {
@@ -109,26 +101,6 @@ export default class ReportarCompraComponent {
     }
   ];
 
-  customTimePatterns = {
-  'H': { 
-    pattern: new RegExp('[0-1]'), // Primer dígito de hora (0-2)
-    symbol: 'h'
-  },
-  'h': {
-    pattern: new RegExp('[0-9]'), // Segundo dígito de hora
-    symbol: 'h',
-    optional: false
-  },
-  'm': {
-    pattern: new RegExp('[0-5]'), // Primer dígito de minutos (0-5)
-    symbol: 'm'
-  },
-  '0': {
-    pattern: new RegExp('[0-9]') // Cualquier dígito
-  },
-  'a': { pattern: new RegExp('[aApP]') }  // A o P (AM/PM)
-};
-  
   // Propiedad para almacenar los bancos a mostrar
   banksToShow: TypeBank[] = [];
 
@@ -151,13 +123,6 @@ export default class ReportarCompraComponent {
   }
 
   private initReportPurchase() {
-  // Obtener fecha actual formateada
-  const today = new Date();
-  const day = today.getDate().toString().padStart(2, '0');
-  const month = (today.getMonth() + 1).toString().padStart(2, '0');
-  const year = today.getFullYear();
-  const formattedDate = `${day}/${month}/${year}`;
-
     this.formReportPurchase = this.fb.group({
       user: ['', [Validators.required, Validators.minLength(5)] ],
       username: ['', [Validators.required, Validators.minLength(5)] ],
@@ -167,9 +132,9 @@ export default class ReportarCompraComponent {
         bank: [ {value: '', disabled: true}, [Validators.required, Validators.minLength(5)] ],
         payment_method: ['', [Validators.required]],
         amount: ['', [Validators.required, Validators.min(100)]],
-        date: [ 'DD/MM/YYYY', [this.ValidatorService.noValidDate] ],
-        hour: ['', [Validators.required]],
-        folio: [ '', [Validators.required, Validators.minLength(4)]],
+        date: [ '', [ Validators.required, this.ValidatorService.noValidDate] ],
+        hour: ['', [Validators.required, this.ValidatorService.noValidHour]],
+        folio: [ '', [Validators.required, Validators.minLength(2)]],
         proof_payment: ['', [Validators.required]],
       }),
     });
@@ -179,33 +144,10 @@ export default class ReportarCompraComponent {
     this.initReportPurchase();
   }
 
-  handlerMenu(): void {
-    this.isOpenMenu.update((value) => !value);
-  }
-
-
-  isInvalidField(field: string): boolean | undefined {
-   const control = this.formReportPurchase.get(field);
-  return control ? control.invalid && (control.touched || control.dirty) : false;
-  }
-
-
-  onTimeInput(event: any) {
-    const input = event.target as HTMLInputElement;
-    let value = input.value.toUpperCase();
-    
-    // Detectar si se presionó 'A' o 'P' y convertir a AM/PM
-    if (value.endsWith('A') && !value.endsWith('AM')) {
-      value = value.replace(/A$/, 'AM');
-     
-    } else if (value.endsWith('P') && !value.endsWith('PM')) {
-      value = value.replace(/P$/, 'PM');
-         
-    }
-    
-    // Actualizar el valor del formulario
-    // this.timeForm.get('hora')?.setValue(value, { emitEvent: false });
-    this.formReportPurchase.get('payment_details.hour')?.setValue(value, {emitEvent: false})
+  isInvalidField(field: string): boolean {
+      return this.formReportPurchase?.get(field)?.invalid && this.formReportPurchase.get(field)?.touched
+      ? true
+      : false
   }
 
   sendReport(): void {
@@ -245,22 +187,9 @@ export default class ReportarCompraComponent {
     });
   }
 
-  handleKeydown(event: KeyboardEvent) {
-  const input = event.target as HTMLInputElement;
-  const key = event.key.toLowerCase();
-
-  // Solo permitir 'a' o 'p' cuando el cursor esté al final
-  if (['a', 'p'].includes(key) && input.value.length >= 5) {
-    event.preventDefault();
-    const timePart = input.value.substring(0, 5);
-    const period = key === 'a' ? 'AM' : 'PM';
-    input.value = `${timePart} ${period}`;
-    this.formReportPurchase.get(' payment_details.hour')?.setValue(input.value);
-  }
-}
 }
 
-type FormatDay = 'AM' | 'PM';
+
 interface TypeBank {
   id: string;
   bank: string;
