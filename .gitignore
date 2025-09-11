@@ -62,3 +62,8 @@ Thumbs.db
 # Enviroment
 src/environments/environment*.ts
 .env
+
+# Directives
+src/app/shared/directives/base-mask.directive.ts
+src/app/shared/directives/date-mask.directive.ts
+src/app/shared/directives/hour-mask.directive.ts
