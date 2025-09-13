@@ -1,21 +1,36 @@
 <header
-  class="header text-gray-700 dark:text-gray-200 bg-slate-50/80 dark:bg-[#0000004d] header-animate backdrop-blur-[10px] md:backdrop-blur-0 w-full mb-10 z-[12] py-6 fixed top-0 left-0">
+  class="header text-gray-700 dark:text-gray-200 bg-slate-50/80 dark:bg-[#0000004d] header-animate backdrop-blur-[10px] py-4 md:backdrop-blur-0 w-full mb-10 z-[12]  fixed top-0 left-0">
+ 
+  <div class="container flex justify-end pb-4 px-4">
+         <a routerLink="/registro"
+        class="py-2 px-4 justify-center rounded-[10px] font-semibold border hover:scale-105 transition-transform duration-300 text-white dark:shadow-blue-500/30 dark:hover:shadow-blue-600/20 focus:shadow-none bg-red-600 border-red-600 dark:bg-blue-600 dark:border-blue-600 text-sm leading-none sm:hidden inline-flex items-center gap-2"
+        id="c57aff77-7b12-4baa-8ff4-20ea90d2326e">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21C7.043 21 4.862 20.355 3 19.234Z" />
+        </svg>
+        Registrarme
+      </a>
+  </div>
+ 
   <div
-    class="grid items-center justify-center md:justify-normal w-full grid-cols-[auto_1fr] mx-auto lg:flex container animate-fade-in-down">
-    <div class="md:grow md:basis-0 flex justify-start">
+    class="grid items-center justify-center md:justify-normal w-full grid-cols-[auto_1fr] mx-auto lg:flex lg:container animate-fade-in-down">
+    <div class="header-btn-home md:grow md:basis-0 flex justify-start ">
       <a routerLink="/"
-        class="ml-4 flex items-center gap-2.5 font-bold transition-transform duration-300 hover:scale-110"
+        class="relative ml-4 flex items-center font-bold transition-transform duration-300 hover:scale-110"
         title="Ir a la página principal" aria-label="Ir a la página principal">
-        <span class="hidden lg:block text-[32px] tracking-wide">recarga</span>
+        <span class="block text-lg tracking-wide">recarga5g</span>
         <span
-          class="text-[10px] opacity-80 uppercase font-semibold py-0.5 px-1.5 rounded-md bg-button border border-brand-blue block leading-none">
-          5g.com
+          class="text-[10px] opacity-80 font-semibold py-0.5 px-1.5 rounded-md bg-button block leading-none bg-red-500 dark:bg-blue-500 text-white">
+          .com
         </span>
+
       </a>
     </div>
 
     <nav id="header-navbar"
-      class="col-span-full row-[2/3] grid grid-rows-[0fr] transition-[grid-template-rows] data-[open]:grid-rows-[1fr] md:justify-center md:flex group/nav">
+      class="grid-area-[s]  col-span-full row-[2/3] grid grid-rows-[0fr] transition-[grid-template-rows] data-[open]:grid-rows-[1fr] md:justify-center md:flex group/nav">
       <ul [ngClass]="isOpenNav() ? 'flex' : 'hidden'"
         class="flex-col lg:flex-row grow px-4 lg:px-0 items-center lg:justify-center lg:flex gap-10">
         @for (item of navbarItems; let i = $index; track item.id) {
@@ -104,7 +119,7 @@
         </li>
       </ul>
     </nav>
-    <div class="flex md:grow md:basis-0 items-center gap-4 mr-4 ml-auto md:ml-0 justify-end">
+    <div class="header-buttons flex md:grow md:basis-0 items-center gap-4 ml-auto md:ml-0 mr-4 justify-end">
       <section class="md:relative flex items-center">
         <button (click)="isOpenNotf.set(!isOpenNotf())"
           class="relative cursor-pointer flex items-center gap-2 px-4 py-2 hover:bg-brand-gray/5 rounded-2xl border border-transparent hover:border-brand-gray/10 transition-all">
@@ -171,7 +186,7 @@
         }
       </section>
       <a routerLink="/registro"
-        class="py-2 px-4 justify-center rounded-[10px] font-semibold border hover:scale-105 transition-transform duration-300 text-white dark:shadow-blue-500/30 dark:hover:shadow-blue-600/20 focus:shadow-none bg-red-600 border-red-600 dark:bg-blue-600 dark:border-blue-600 text-base leading-none inline-flex items-center gap-2"
+        class="py-2 px-4 justify-center rounded-[10px] font-semibold border hover:scale-105 transition-transform duration-300 text-white dark:shadow-blue-500/30 dark:hover:shadow-blue-600/20 focus:shadow-none bg-red-600 border-red-600 dark:bg-blue-600 dark:border-blue-600 text-base leading-none hidden sm:inline-flex items-center gap-2"
         id="c57aff77-7b12-4baa-8ff4-20ea90d2326e">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="size-5">

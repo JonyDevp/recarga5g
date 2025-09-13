@@ -17,6 +17,7 @@ import { ClickOutsideDirective } from '@shared/directives/click-outside.directiv
 import { MenuItem } from '@interfaces/header.interface';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ChangeDetectionStrategy } from '@angular/core';
+import { CountUpModule } from "ngx-countup";
 
 @Component({
   selector: 'app-header',
@@ -35,7 +36,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
     }
     100% {
     
-    padding-block: 1rem;
+   /*padding-block: 1rem; */
     -webkit-backdrop-filter: blur(10px);
     }
 }
@@ -51,7 +52,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
     RouterLinkActive,
     NgClass,
     ClickOutsideDirective,
-  ],
+    CountUpModule
+],
   animations: [
     //*contenedor y dispador de las animaciones
     trigger('isOpen', [
