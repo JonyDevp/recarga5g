@@ -6,95 +6,87 @@ import {
   ElementRef,
   inject,
   input,
-  OnInit,
   PLATFORM_ID,
-  signal,
   viewChild,
 } from '@angular/core';
 import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
 import { isPlatformBrowser } from '@angular/common';
 import { SwiperOptions } from 'swiper/types';
-// import { SwiperContainer } from 'swiper/element';
+import { SwiperContainer } from 'swiper/element';
 
 @Component({
   selector: 'app-product-carousel',
-  imports: [],
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <swiper-container
+    init="false"
       #swProduct
-      init="false"
-      class="sw-product [mask-image:linear-gradient(to_right,transparent_0,#ffffff_128px,#ffffff_calc(100%_-_128px),transparent_100%)] dark:[mask-image:linear-gradient(to_right,transparent_0,#000000_128px,#000000_calc(100%_-_128px),transparent_100%)]  flex flex-row w-full h-full mx-auto overflow-hidden"
-    >
-      @for(product of products(); track $index ) {
-
-      <swiper-slide
-        class="sw-product-slide max-w-[180px] w-full h-auto m-auto mask"
-      >
-        <img
-          [src]="product.img.src"
-          class="sw-product-img object-contain"
-          [alt]="product.img.alt"
-          [width]="product.img.width"
-          [height]="product.img.height"
-          loading="lazy"
-        />
-      </swiper-slide>
+      class="sw-product mx-auto flex flex-nowrap max-w-screen-xl w-full h-full overflow-hidden pointer-events-none [mask-image:linear-gradient(to_right,transparent_0,#ffffff_128px,#ffffff_calc(100%_-_128px),transparent_100%)] dark:[mask-image:linear-gradient(to_right,transparent_0,#000000_128px,#000000_calc(100%_-_128px),transparent_100%)]">
+      
+      @for(product of products(); track product.id) {
+        <swiper-slide 
+          class="block sw-product-slide w-[200px] m-0 h-auto">
+          <img
+            [src]="product.img.src"
+            class="sw-product-img w-full h-auto object-cover rounded-lg shadow-lg"
+            [alt]="product.img.alt"
+            [width]="product.img.width"
+            [height]="product.img.height"
+            loading="lazy"
+          />
+        </swiper-slide>
       }
     </swiper-container>
   `,
   styles: [
     `
+      :host {
+        display: block;
+        width: 100%;
+      }
+      
       swiper-container::part(wrapper) {
         transition-timing-function: linear !important;
+      }
+
+      .sw-product-slide:nth-child(1n) {
+        altura: 550px;
+ancho: auto;
       }
     `,
   ],
 })
-export class ProductCarouselComponent implements OnInit, AfterViewInit {
+export class ProductCarouselComponent implements AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
   products = input.required<ProductCarousel[]>();
-  // private readonly swiper = viewChild<ElementRef<SwiperContainer>>('swiper');
-  swElement = viewChild.required<ElementRef>('swProduct');
+  swElement = viewChild<ElementRef<SwiperContainer>>('swProduct');
 
-  private options:SwiperOptions ={
+  private options: SwiperOptions = {
+    initialSlide: 0,
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    navigation: false,
+    pagination: false,
+    scrollbar: false,
+    loop: true,
+    allowTouchMove: false,
+    grabCursor: false,
     autoplay: {
       delay: 0,
-      disableOnInteraction: false
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
     },
-    slidesPerView: 'auto',
-    direction: 'horizontal',
-    spaceBetween: 35,
-    speed: 4000,
-    loop: true,
-    grabCursor: true,
-
+    speed: 3000,
   };
 
-  ngOnInit(): void {
-    // if (isPlatformBrowser(this.platformId)) {
-    //   const swiperElement = this.swiper()!.nativeElement;
-
-    //   swiperElement.autoplay = {
-    //     delay: 0,
-    //     disableOnInteraction: false,
-    //   };
-    //   swiperElement.slidesPerView = 'auto';
-    //   swiperElement.slidesPerGroup = 1;
-    //   swiperElement.direction = 'horizontal';
-    //   swiperElement.loop = true;
-    //   swiperElement.speed = 4000;
-    //   swiperElement.grabCursor = true;
-    //   swiperElement.initialize();
-    // }
-  }
-
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) { 
-      const swiperProduct = this.swElement().nativeElement;
-      Object.assign(swiperProduct, this.options);
-      swiperProduct.initialize();
+    if (!isPlatformBrowser(this.platformId)) return;
+    const swiperElement = this.swElement()?.nativeElement;
+    if (swiperElement) {
+      Object.assign(swiperElement, this.options);
+      swiperElement.initialize();
     }
   }
 }
