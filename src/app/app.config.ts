@@ -18,7 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()), 
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideClientHydration(),
     provideAnimations(),
     provideAnimationsAsync(),
     provideEnvironmentNgxMask(maskConfig)

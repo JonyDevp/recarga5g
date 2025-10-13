@@ -1,41 +1,41 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA, ElementRef, viewChild, PLATFORM_ID, AfterViewInit, afterNextRender, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA, ElementRef, viewChild, PLATFORM_ID, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { SafeHtml } from '@angular/platform-browser';
+
+//Services
+import { MetaTagService } from '@shared/services/meta-tag.service';
+import { SignupService } from './signup.service';
 import { PostalDirectoryService } from './postal-directory.service';
+import { GetSafeSvgService } from '@shared/services/get-safe-svg.service';
+
 import { States } from 'src/app/interfaces/address.interface';
 import { OnlyNumbersDirective } from '@shared/directives/only-numbers.directive';
 import { NotSpecialCharacterDirective } from '@shared/directives/not-special-character.directive';
-import { MetaTagService } from '@shared/services/meta-tag.service';
-import { SignupService } from './signup.service';
-import { SafeHtml } from '@angular/platform-browser';
-import { GetSafeSvgService } from '@shared/services/get-safe-svg.service';
-import { SwiperOptions, Swiper } from 'swiper/types';
+import { SwiperOptions } from 'swiper/types';
 import confetti from 'canvas-confetti';
 import { SwiperContainer } from 'swiper/element';
 
-
 @Component({
-    selector: 'app-registro',
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        OnlyNumbersDirective,
-        NotSpecialCharacterDirective
-    ],
-    templateUrl: './registro.component.html',
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    changeDetection: ChangeDetectionStrategy.OnPush
-  })
+  selector: 'app-registro',
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    OnlyNumbersDirective,
+    NotSpecialCharacterDirective
+  ],
+  templateUrl: './registro.component.html',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
 export default class RegistroComponent implements OnInit, AfterViewInit {
 
   signUpForm!: FormGroup;
   statesOfCountry: States[] = [];
   steps: Steps[] = [];
-  private readonly swiperContainer = viewChild.required<ElementRef<SwiperContainer>>('swiperInfo');
-  private swiperInstance: Swiper | null = null;
-
+  private readonly swiperEl = viewChild<ElementRef<SwiperContainer>>('swiperInfo');
   private formBuilder = inject(FormBuilder);
   private readonly addressService = inject(PostalDirectoryService);
   private readonly platformId = inject(PLATFORM_ID);
@@ -45,22 +45,22 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
 
   // Configuración optimizada para Swiper Element
   private readonly swiperOptions: SwiperOptions = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    spaceBetween: 35,
+    speed: 500,
+    centeredSlides: true,
+    pagination: false,
+    scrollbar: false,
+    loop: true,
     autoplay: {
       delay: 7000,
       disableOnInteraction: false,
+      pauseOnMouseEnter: true
     },
-    loop: true,
-    spaceBetween: 35,
-    slidesPerView: 1,
-    speed: 500,
-    autoHeight: true,
-    centeredSlides: true,
-    injectStyles: [
-      `.swiper-wrapper { align-items: center; }`
-    ]
   };
 
- private initSignUpForm() {
+  private initSignUpForm() {
     this.signUpForm = this.formBuilder.group({
       bussinesName: ['', [Validators.minLength(4)]],
       fullName: ['', [Validators.required, Validators.minLength(10)]],
@@ -81,24 +81,23 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
     this.initSignUpForm();
   }
 
-  slidePrev() {
-    this.swiperInstance?.slidePrev();
+  changeSlide(prevOrNext: number): void {
+    const swEl = this.swiperEl()?.nativeElement;
+    if (prevOrNext === -1) {
+      swEl?.swiper.slidePrev()
+    } else {
+      swEl?.swiper.slideNext()
+    }
   }
-
-  slideNext() {
-    this.swiperInstance?.slideNext();
-  }
-
 
   isInvalidField(field: string): boolean | undefined {
     return this.signUpForm.get(field)?.invalid && this.signUpForm.get(field)?.touched;
   }
 
-
   register() {
 
     if (this.signUpForm.invalid) {
-     return this.markFormGroupTouched(this.signUpForm); 
+      return this.markFormGroupTouched(this.signUpForm);
     }
 
     const formValues = this.signUpForm.value;
@@ -151,24 +150,24 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
       spread: 26,
       startVelocity: 55,
     });
-    
+
     fire(0.2, {
       spread: 60,
     });
-    
+
     fire(0.35, {
       spread: 100,
       decay: 0.91,
       scalar: 0.8
     });
-    
+
     fire(0.1, {
       spread: 120,
       startVelocity: 25,
       decay: 0.92,
       scalar: 1.2
     });
-    
+
     fire(0.1, {
       spread: 120,
       startVelocity: 45,
@@ -177,10 +176,10 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-        this.steps = [
-          {
-            id: 1,
-            svg: this.svgService.getSafeSvg(`
+    this.steps = [
+      {
+        id: 1,
+        svg: this.svgService.getSafeSvg(`
               <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
                stroke-linejoin="round" color="white" style="color:white" height="50" width="50"
                xmlns="http://www.w3.org/2000/svg">
@@ -190,18 +189,18 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
                </path>
                <path d="M10 10l2 -2v8"></path>
              </svg>`
-          ),
-            title: 'Registrate',
-            description: 'Llena el formulario con tus datos personales, para ello necesitaras un correo y numero de telefono',
-            img: {
-              url: 'assets/img/svg/register.svg',
-              alt: 'Registro para vender recargas'
-            }
-          },
+        ),
+        title: 'Registrate',
+        description: 'Llena el formulario con tus datos personales, para ello necesitaras un correo y numero de telefono',
+        img: {
+          url: 'assets/img/svg/register.svg',
+          alt: 'Registro para vender recargas'
+        }
+      },
 
-          {
-            id: 2,
-            svg: this.svgService.getSafeSvg(`
+      {
+        id: 2,
+        svg: this.svgService.getSafeSvg(`
               <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
                 stroke-linejoin="round" color="white" style="color:white" height="50" width="50"
                 xmlns="http://www.w3.org/2000/svg">
@@ -211,17 +210,17 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
                 </path>
                 <path d="M10 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3"></path>
              </svg>`),
-            title: 'Deposita o Transfiere',
-            description: 'Inicia con la venta de recargas con una inversión minima de $100 pesos mexicanos',
-               img: {
-              url: 'assets/img/svg/depositar.svg',
-              alt: 'Depositar monto minimo para recargar saldo'
-            }
-          },
+        title: 'Deposita o Transfiere',
+        description: 'Inicia con la venta de recargas con una inversión minima de $100 pesos mexicanos',
+        img: {
+          url: 'assets/img/svg/depositar.svg',
+          alt: 'Depositar monto minimo para recargar saldo'
+        }
+      },
 
-          {
-            id: 3,
-            svg: this.svgService.getSafeSvg(`
+      {
+        id: 3,
+        svg: this.svgService.getSafeSvg(`
               <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
                 stroke-linejoin="round" color="white" style="color:white" height="50" width="50"
                 xmlns="http://www.w3.org/2000/svg">
@@ -233,17 +232,17 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
                   d="M10 9a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1">
                 </path>
             </svg>`),
-            title: 'Registra tu comprobante',
-            description: 'Reporta tu comprobante de pago en la plataforma o bien por WhatsApp, adjuntado tu usuario',
-               img: {
-              url: 'assets/img/svg/reportar.svg',
-              alt: 'Registro comprobante de pago para recargar saldo'
-            }
-          },
+        title: 'Registra tu comprobante',
+        description: 'Reporta tu comprobante de pago en la plataforma o bien por WhatsApp, adjuntado tu usuario',
+        img: {
+          url: 'assets/img/svg/reportar.svg',
+          alt: 'Registro comprobante de pago para recargar saldo'
+        }
+      },
 
-          {
-            id: 4,
-            svg: this.svgService.getSafeSvg(`
+      {
+        id: 4,
+        svg: this.svgService.getSafeSvg(`
              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
               stroke-linejoin="round" color="white" style="color:white" height="50" width="50"
               xmlns="http://www.w3.org/2000/svg">
@@ -255,17 +254,17 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
               <path d="M14 8v8"></path>
             </svg>
             `),
-            title: '¡Listo!',
-            description: 'Asi de sencillo podrás vender recargas a cualquier compañia, con excelentes comisiones',
-               img: {
-              url: 'assets/img/svg/ok.svg',
-              alt: 'recarga saldo de manera facil para vender tiempo aire'
-            }
-          }
-        ];
-    
-        this.statesOfCountry = this.addressService.getStates();
-    
+        title: '¡Listo!',
+        description: 'Asi de sencillo podrás vender recargas a cualquier compañia, con excelentes comisiones',
+        img: {
+          url: 'assets/img/svg/ok.svg',
+          alt: 'recarga saldo de manera facil para vender tiempo aire'
+        }
+      }
+    ];
+
+    this.statesOfCountry = this.addressService.getStates();
+
     // this.signUpForm.get('address.zip')?.valueChanges.subscribe( (value ) => {
     //  const addressGroup = this.signUpForm.get('address') as FormGroup;
     //   if(this.signUpForm.get('address.zip')?.valid) {
@@ -284,17 +283,14 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-      if (isPlatformBrowser(this.platformId)) {
-       const swiperEl = this.swiperContainer().nativeElement;
-       Object.assign(swiperEl, this.swiperOptions);
-        swiperEl.initialize();
+    if (!isPlatformBrowser(this.platformId)) return;
+    const swiperRegister = this.swiperEl()?.nativeElement;
+
+    if(swiperRegister) {
+       Object.assign(swiperRegister, this.swiperOptions);
+      swiperRegister.initialize();
     }
-  
   }
-
-  ngOnDestroy(): void {
-  }
-
 }
 
 type Steps = {
@@ -302,5 +298,5 @@ type Steps = {
   svg: SafeHtml;
   title: string;
   description: string;
-  img: {url: string; alt: string}
+  img: { url: string; alt: string }
 }

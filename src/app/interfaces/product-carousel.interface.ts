@@ -1,6 +1,7 @@
 
+
 export interface ProductCarousel {
-    id: number,
+   readonly id: Idtype;
     typeService: TypeService;
     company: string;
     img: ImgCarousel
@@ -8,12 +9,12 @@ export interface ProductCarousel {
 }
 
 export interface ImgCarousel {
-    id: number;
     src: string;
     alt: string;
     width: string;
     height: string;
 }
 
+export type  Idtype = `${string}-${string}-${string}-${string}-${string}`;
 export type TypeService = 'Recargas' | 'Servicios' | 'Pines';
 
