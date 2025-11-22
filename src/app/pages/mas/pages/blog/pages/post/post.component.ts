@@ -18,9 +18,7 @@ export default class PostComponent implements OnInit {
 
   private readonly title = inject(Title);
   private readonly meta = inject(MetaTagService);
-  private readonly blogService = inject(ContentfulService);
   private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
 
   statusData = signal<TypeErrorPost>(TypeErrorPost.LOADING);
 

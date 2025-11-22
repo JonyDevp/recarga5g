@@ -54,12 +54,14 @@
                         </div>
                     </div>
     
-                    <img [src]="post()?.headerImage?.url" [alt]="post()?.headerImage?.title" class="rounded-3xl shadow-md">
+                    <div class="w-full h-80 lg:h-[600px]">
+                        <img [src]="post()?.headerImage?.url" [alt]="post()?.headerImage?.title" class="rounded-3xl shadow-md size-full object-cover">
+                    </div>
                 </div>
         </div>
     
-        <div class="max-w-4xl w-full mx-auto mt-8 ">
-            <div class="prose dark:prose-invert mx-auto max-w-none" [innerHTML]="post()?.body"></div>       
+        <div class="max-w-4xl w-full mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-none" [innerHTML]="post()?.body"></div>       
         </div>
     </section>
 

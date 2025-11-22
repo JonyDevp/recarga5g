@@ -1,21 +1,19 @@
 
-import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { ContentfulService } from '@mas/pages/blog/services/contentful.service';
 import { metaTagModel } from 'src/app/interfaces/meta-tag.model';
 import { MetaTagService } from '@shared/services/meta-tag.service';
 // import {  Entry } from 'contentful';
-import { Observable } from 'rxjs';
-import { ThemesService } from '@shared/services/themes.service';
-import { FollowCardComponent } from "@mas/pages/blog/components/follow-card/follow-card.component";
-import { NgxPaginationModule, PaginationInstance } from 'ngx-pagination'; // <-- import the module
 import { TypeErrorPost } from './interfaces/error-types';
-import { SkeletonAsidePostComponent } from "@mas/pages/blog/components/skeleton-aside-post/skeleton-aside-post.component";
+
 import { MapPostItem, MapPostResponse } from './interfaces/post-types';
 import { MapTagResponse } from './interfaces/tag-types';
-import { EmptyStateComponent } from "./components/empty-state/empty-state.component";
-import { ErrorStateComponent } from "./components/error-state/error-state.component";
+
+import { NgxPaginationModule, PaginationInstance } from 'ngx-pagination';
+import { CommonModule } from '@angular/common';
+import { ɵɵRouterLink } from "@angular/router/testing";
 
 @Component({
   selector: 'app-blog',
@@ -23,13 +21,11 @@ import { ErrorStateComponent } from "./components/error-state/error-state.compon
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
   imports: [
-    RouterLink,
-    FollowCardComponent,
     NgxPaginationModule,
-    SkeletonAsidePostComponent,
-    EmptyStateComponent,
-    ErrorStateComponent
+    CommonModule,
+    ɵɵRouterLink
 ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export default class BlogComponent implements OnInit {
@@ -51,145 +47,166 @@ export default class BlogComponent implements OnInit {
   private readonly blogService = inject(ContentfulService);
   private readonly title = inject(Title);
   private readonly meta = inject(MetaTagService);
-  private readonly theme = inject(ThemesService);
   private route = inject(Router);
 
- readonly signalData = signal<TypeData>({
-    posts: { total: 0, items: []},
-    currentPosts: { total: 0, items: []},
-    tags: { total: 0, skip: 0, items: []},
-    featuredPosts: { total: 0, items: []},
-  })
+  readonly signalData = signal<TypeData>({
+    posts: { total: 0, items: [] },
+    currentPosts: { total: 0, items: [] },
+    tags: { total: 0, skip: 0, items: [] },
+    featuredPosts: { total: 0, items: [] },
+  });
 
   // Estados de carga optimizados
-  loadingState = signal<TypeLoading>({
+  readonly loadingState = signal<TypeLoading>({
     posts: TypeErrorPost.LOADING,
     currentPosts: TypeErrorPost.LOADING,
     tags: TypeErrorPost.LOADING,
     featuredPosts: TypeErrorPost.LOADING
-  })
-  
-  isDarkTheme = computed(() => this.theme.themeChange());
-  configPage: PaginationInstance = {
-  itemsPerPage: 10,
-  currentPage: 1
+  });
+
+  //pagination & filtros
+  readonly currentPage = signal(1);
+  readonly itemsPerPage = signal(6);
+  readonly totalItems = computed(() => this.signalData().currentPosts.total);
+  readonly selectedCategory = signal<string | null>(null);
+  readonly searchTerm = signal<string>('');
+
+  public config: PaginationInstance = {
+    id: 'custom',
+    itemsPerPage: 6,
+    currentPage: 1
   }
 
-  constructor() {
-    this.loadCurrentPosts();
-    this.loadPosts();
-  }
+
 
   ngOnInit(): void {
 
     this.title.setTitle('Recarga5g.com | Consulta nuestros artículos mas recientes');
-    
-    //  this.loadCurrentPosts();
-    // this.loadTags();
-    // this.loadFeaturedPosts();
+    this.loadCurrentPosts();
+    this.loadTags();
+    this.loadFeaturedPosts();
   }
 
-  onPageChange(number: number) {
-    this.configPage.currentPage = number;
-  }
+  private postsEffect = effect(() => {
+    const page = this.currentPage();
+    const category = this.selectedCategory();
 
-  private loadPosts() {
-    this.loadingState().posts = TypeErrorPost.LOADING
-    effect( () => {
-      this.loadingState().posts = TypeErrorPost.LOADING;
-     this.blogService.getPosts(1).subscribe({
-        next: (resp) =>  {
-          if(!resp.items || resp.items.length === 0) {
-            this.loadingState().posts = TypeErrorPost.EMPTY;
-            this.signalData().posts = { total: 0, items: []};
-
-          } else {
-            this.loadingState().posts = TypeErrorPost.SUCESS;
-            this.signalData().posts = resp;
-          }
-        },
-        error: (err) =>  {
-          this.loadingState().posts = TypeErrorPost.ERROR;
-          this.signalData().posts = {total: 0, items: []}
-        },
-      })
-    })
-  }
-
-  private loadCurrentPosts() {
-    effect( () => {
-      this.blogService.getCurrentPosts().subscribe({
+    //loading inicial
+    this.loadingState.update(state => ({ ...state, posts: TypeErrorPost.LOADING }));
+    this.blogService
+      .getPosts(1, this.itemsPerPage(), category ?? undefined)
+      .subscribe({
         next: (resp) => {
-            if(!resp.items || resp.items.length === 0) {
-            this.loadingState().currentPosts = TypeErrorPost.EMPTY;
-            this.signalData().currentPosts = { total: 0, items: []};
+          if (!resp.items || resp.items.length === 0) {
+            this.loadingState.update(state => ({
+              ...state,
+              posts: TypeErrorPost.EMPTY,
+            }));
+            this.signalData.update(state => ({
+              ...state,
+              posts: { total: 0, items: [] },
+            }));
           } else {
-            this.loadingState().currentPosts = TypeErrorPost.SUCESS;
-            this.signalData().currentPosts = resp;
-            
+            this.loadingState.update(state => ({
+              ...state,
+              posts: TypeErrorPost.SUCESS,
+            }));
+            this.signalData.update(state => ({
+              ...state,
+              posts: resp,
+            }));
           }
         },
-        error: (err) => { 
-          this.loadingState().currentPosts = TypeErrorPost.ERROR; 
-          this.signalData().currentPosts = { total: 0, items: []}
+
+        error: () => {
+          this.loadingState.update(state => ({
+            ...state,
+            posts: TypeErrorPost.ERROR,
+          }));
+          this.signalData.update(state => ({
+            ...state,
+            posts: { total: 0, items: [] },
+          }));
         }
       })
-    })
+
+  });
+
+  private loadCurrentPosts() {
+
+    this.loadingState.update(state => ({ ...state, currentPosts: TypeErrorPost.LOADING }));
+
+    this.blogService.getPosts(this.currentPage(), this.itemsPerPage()).subscribe({
+      next: (resp) => {
+        if (!resp.items || resp.items.length === 0) {
+          this.loadingState.update(state => ({ ...state, currentPosts: TypeErrorPost.EMPTY }));
+          this.signalData.update(state => ({
+            ...state, currentPosts: { total: 0, items: [] },
+          }));
+        } else {
+          this.loadingState.update(state => ({ ...state, currentPosts: TypeErrorPost.SUCESS }));
+          this.signalData.update(state => ({ ...state, currentPosts: resp }));
+        }
+      },
+      error: (err) => {
+        this.loadingState.update(state => ({ ...state, currentPosts: TypeErrorPost.ERROR }));
+        this.signalData.update(state => ({ ...state, currentPosts: { total: 0, items: [] } }));
+      },
+    });
   }
 
   private loadFeaturedPosts() {
-    effect( () => {
-      this.blogService.getCurrentPosts().subscribe({
-        next: (resp) => {
-            if(!resp.items || resp.items.length === 0) {
-            this.loadingState().featuredPosts = TypeErrorPost.EMPTY;
-            this.signalData().featuredPosts = { total: 0, items: []};
 
-          } else {
-            this.loadingState().featuredPosts = TypeErrorPost.SUCESS;
-            this.signalData().featuredPosts = resp;
-          }
-        },
-        error: (err) => {
-           this.loadingState().featuredPosts = TypeErrorPost.ERROR;
-          this.signalData().featuredPosts = {total: 0, items: []}
+    this.loadingState.update(state => ({ ...state, featuredPosts: TypeErrorPost.LOADING }));
+
+    this.blogService.getFeaturedPost().subscribe({
+      next: (resp) => {
+        if (!resp.items || resp.items.length === 0) {
+          this.loadingState.update(state => ({ ...state, featuredPosts: TypeErrorPost.EMPTY }));
+          this.signalData.update(state => ({ ...state, featuredPosts: { total: 0, items: [] } }));
+        } else {
+          this.loadingState.update(state => ({ ...state, featuredPosts: TypeErrorPost.SUCESS }));
+          this.signalData.update(state => ({ ...state, featuredPosts: resp }));
         }
-      })
+      },
+      error: (err) => {
+        this.loadingState.update(state => ({ ...state, featuredPosts: TypeErrorPost.ERROR }));
+        this.signalData.update(state => ({ ...state, featuredPosts: { total: 0, items: [] } }));
+      }
     })
   }
 
   private loadTags() {
-     effect( () => {
-      this.blogService.getTags().subscribe({
-        next: (resp) => {
-            if(!resp.items || resp.items.length === 0) {
-            this.loadingState().tags = TypeErrorPost.EMPTY;
-          this.signalData().tags = resp;
-     
-          } else {
-            this.loadingState().tags = TypeErrorPost.SUCESS;
-            this.signalData().tags = resp;
-          }
-        },
-        error: (err) => {
-           this.loadingState().tags = TypeErrorPost.ERROR;
-          this.signalData().tags = {
-            total: 0, skip: 0, items: []
-          }
+
+    this.loadingState.update(state => ({ ...state, tags: TypeErrorPost.LOADING, }));
+    this.blogService.getTags().subscribe({
+      next: (resp) => {
+        if (!resp.items || resp.items.length === 0) {
+          this.loadingState.update(state => ({ ...state, tags: TypeErrorPost.EMPTY }));
+          this.signalData.update(state => ({ ...state, tags: resp }));
+        } else {
+          this.loadingState.update(state => ({ ...state, tags: TypeErrorPost.SUCESS }));
+          this.signalData.update(state => ({ ...state, tags: resp }));
         }
-      })
+      },
+      error: (err) => {
+        this.loadingState.update(state => ({ ...state, tags: TypeErrorPost.ERROR }));
+        this.signalData.update(state => ({ ...state, tags: { total: 0, skip: 0, items: [] } }));
+      }
     })
+
   }
 
   navigatePost(slug: string, id: string) {
     this.route.navigate([`/mas/blog/post/${slug}`], {
-      state: {id}
+      state: { id }
     })
   }
-
+  onPageChange(tagId: string | null) {
+    this.selectedCategory.set(tagId);
+    this.currentPage.set(1); // opcional, vuelves a la primera página
+  }
 }
-
-
 type TypeData = {
   posts: MapPostResponse,
   currentPosts: MapPostResponse,
@@ -202,4 +219,10 @@ type TypeLoading = {
   currentPosts: TypeErrorPost,
   featuredPosts: TypeErrorPost,
   tags: TypeErrorPost
+}
+
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
 }
