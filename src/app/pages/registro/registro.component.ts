@@ -1,9 +1,8 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA, ElementRef, viewChild, PLATFORM_ID, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA, PLATFORM_ID, ChangeDetectionStrategy, signal, Renderer2, DOCUMENT } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { SafeHtml } from '@angular/platform-browser';
 
 //Services
 import { MetaTagService } from '@shared/services/meta-tag.service';
@@ -12,62 +11,52 @@ import { PostalDirectoryService } from './postal-directory.service';
 import { GetSafeSvgService } from '@shared/services/get-safe-svg.service';
 
 import { States } from 'src/app/interfaces/address.interface';
-import { OnlyNumbersDirective } from '@shared/directives/only-numbers.directive';
-import { NotSpecialCharacterDirective } from '@shared/directives/not-special-character.directive';
-import { SwiperOptions } from 'swiper/types';
+
 import confetti from 'canvas-confetti';
-import { SwiperContainer } from 'swiper/element';
+import { NgxMaskDirective } from 'ngx-mask';
+import { CapitalizeLettersDirective } from '@shared/directives/capitalize-letters';
+import { ValidatorsService } from '@shared/services/validators.service';
+import StepsRegister, { StepsForRegister } from './steps-register/steps-register';
 
 @Component({
   selector: 'app-registro',
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    OnlyNumbersDirective,
-    NotSpecialCharacterDirective
+    NgxMaskDirective,
+    CapitalizeLettersDirective,
+    StepsRegister
   ],
   templateUrl: './registro.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class RegistroComponent implements OnInit, AfterViewInit {
+export default class RegistroComponent implements OnInit {
 
   signUpForm!: FormGroup;
   statesOfCountry: States[] = [];
-  steps: Steps[] = [];
-  private readonly swiperEl = viewChild<ElementRef<SwiperContainer>>('swiperInfo');
+  steps: StepsForRegister[] = [];
   private formBuilder = inject(FormBuilder);
-  private readonly addressService = inject(PostalDirectoryService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly renderer2 = inject(Renderer2);
+  private readonly document = inject(DOCUMENT);
+
   private readonly metaTagService = inject(MetaTagService);
   private readonly svgService = inject(GetSafeSvgService);
-  private readonly signupService = inject(SignupService);
+  private previousBodyOverflow: string | null = null;
+  private readonly validatorService = inject(ValidatorsService);
 
-  // Configuración optimizada para Swiper Element
-  private readonly swiperOptions: SwiperOptions = {
-    initialSlide: 0,
-    slidesPerView: 1,
-    spaceBetween: 35,
-    speed: 500,
-    centeredSlides: true,
-    pagination: false,
-    scrollbar: false,
-    loop: true,
-    autoplay: {
-      delay: 7000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true
-    },
-  };
+  handlerModal = signal(false);
+  confettiTimeout: any = null;
 
   private initSignUpForm() {
     this.signUpForm = this.formBuilder.group({
-      bussinesName: ['', [Validators.minLength(4)]],
-      fullName: ['', [Validators.required, Validators.minLength(10)]],
-      email: ['', [Validators.required]],
+      bussinesName: ['', [this.validatorService.noWriteSpaceValid, Validators.minLength(3)]],
+      fullName: ['', [Validators.required, this.validatorService.noWriteSpaceValid]],
+      email: ['', [Validators.required, this.validatorService.validEmail, this.validatorService.noWriteSpaceValid]],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       address: this.formBuilder.group({
-        zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
+        zip: ['', [Validators.required, Validators.maxLength(5), Validators.pattern(/^\d{5}$/)]],
         state: ['', [Validators.required]],
         mun_deleg: ['', [Validators.required]],
         col: ['', [Validators.required]],
@@ -81,15 +70,7 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
     this.initSignUpForm();
   }
 
-  changeSlide(prevOrNext: number): void {
-    const swEl = this.swiperEl()?.nativeElement;
-    if (prevOrNext === -1) {
-      swEl?.swiper.slidePrev()
-    } else {
-      swEl?.swiper.slideNext()
-    }
-  }
-
+ 
   isInvalidField(field: string): boolean | undefined {
     return this.signUpForm.get(field)?.invalid && this.signUpForm.get(field)?.touched;
   }
@@ -97,13 +78,62 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
   register() {
 
     if (this.signUpForm.invalid) {
-      return this.markFormGroupTouched(this.signUpForm);
+      this.markFormGroupTouched(this.signUpForm);
+      return;
     }
 
     const formValues = this.signUpForm.value;
-    this.cleanForm();
-    this.launchConfetti();
+    this.openModal()
+    //TODO: Llamar al servicio 
+
   }
+
+  openModal(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const body = this.document.body;
+      this.previousBodyOverflow = body.style.overflow || '';
+
+      this.renderer2.setStyle(body, 'overflow', 'hidden');
+      this.handlerModal.set(true);
+
+      this.confettiTimeout = setTimeout(() => {
+        if (this.handlerModal()) {
+          this.launchConfetti();
+        }
+      }, 1000);
+    }
+  }
+
+  closeModal(): void {
+
+    if (isPlatformBrowser(this.platformId)) {
+      const body = this.document.body;
+      this.handlerModal.set(false);
+
+
+      if (this.previousBodyOverflow !== null) {
+        if (this.previousBodyOverflow) {
+          this.renderer2.setStyle(body, 'overflow', this.previousBodyOverflow);
+        } else {
+          // Si antes no había estilo inline, lo eliminamos
+          this.renderer2.removeStyle(body, 'overflow');
+        }
+        this.previousBodyOverflow = null;
+      }
+
+
+
+    }
+    // 2) Limpia y reinicia el formulario
+    this.cleanForm();
+
+    // 3) Cancela el timeout del confetti, si aún no se ha disparado
+    if (this.confettiTimeout) {
+      clearTimeout(this.confettiTimeout);
+      this.confettiTimeout = null;
+    }
+  }
+
 
   private markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach((control) => {
@@ -115,20 +145,11 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private cleanForm() {
-    this.signUpForm.reset({
-      bussinesName: '',
-      fullName: '',
-      email: '',
-      phoneNumber: '',
-      address: {
-        zip: '',
-        state: '',
-        municipDeleg: '',
-        col: '',
-        street: ''
-      }
-    });
+  private cleanForm(): void {
+    this.signUpForm.reset();
+    this.signUpForm.markAsPristine();
+    this.signUpForm.markAsUntouched();
+    this.signUpForm.updateValueAndValidity();
   }
 
   launchConfetti() {
@@ -173,6 +194,7 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
       startVelocity: 45,
     });
   }
+
 
   ngOnInit(): void {
 
@@ -263,40 +285,22 @@ export default class RegistroComponent implements OnInit, AfterViewInit {
       }
     ];
 
-    this.statesOfCountry = this.addressService.getStates();
+    this.metaTagService.updateMetaTag({
+      title: 'Regístrate en Recarga5g.com | Vende recargas, pago de servicios y pines electrónicos',
+      description: 'Regístrate en Recarga5g.com y comienza a vender recargas, pago de servicios y pines electrónicos con comisiones de hasta el 7.5%. ¡Únete hoy mismo!',
+      keywords: 'registro recarga5g, vender recargas, vender pines electrónicos, pago de servicios, comisiones recarga5g',
+      url: 'https://www.recarga5g.com/registro',
+      typeContent: 'website'
+    })
 
-    // this.signUpForm.get('address.zip')?.valueChanges.subscribe( (value ) => {
-    //  const addressGroup = this.signUpForm.get('address') as FormGroup;
-    //   if(this.signUpForm.get('address.zip')?.valid) {
-    //       addressGroup.get('state')?.enable();
-    //       addressGroup.get('municipDeleg')?.enable();
-    //       addressGroup.get('col')?.enable();
-    //       addressGroup.get('street')?.enable();
-    //   } else {
-    //      addressGroup.get('state')?.disable();
-    //      addressGroup.get('municipDeleg')?.disable();
-    //      addressGroup.get('col')?.disable();
-    //      addressGroup.get('street')?.disable();
-    //   }
-    // })
 
   }
 
-  ngAfterViewInit(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
-    const swiperRegister = this.swiperEl()?.nativeElement;
-
-    if(swiperRegister) {
-       Object.assign(swiperRegister, this.swiperOptions);
-      swiperRegister.initialize();
+  onKeydown(event: KeyboardEvent): void {
+    console.log('entro')
+    if (event.key === 'Escape' && this.handlerModal()) {
+      this.closeModal();
     }
   }
 }
 
-type Steps = {
-  id: number;
-  svg: SafeHtml;
-  title: string;
-  description: string;
-  img: { url: string; alt: string }
-}

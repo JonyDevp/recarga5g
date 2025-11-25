@@ -1,172 +1,233 @@
 <!-- component -->
-<div class="mt-24 md:mt-8 lg:mt-8 h-full md:h-screen lg:h-screen flex flex-col md:flex-row lg:flex-row">
+<div
+  class="mt-24 md:mt-8 lg:mt-8 h-full md:h-screen lg:h-screen flex flex-col md:flex-col lg:flex-row"
+>
   <div
-    class="flex w-full lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center items-center relative">
-
-    <swiper-container #swiperInfo class="swiper-info size-full" init="false">
-      @for (step of steps; track $index) {
-      <swiper-slide class="swiper-steps flex justify-center items-center flex-col">
-        <div class="group relative text-center">
-          <div class="relative space-y-8 py-12 p-8">
-            <span [innerHTML]="step.svg"></span>
-            <div class="space-y-2 mx-auto">
-              <h5 class="text-white font-semibold text-3xl lg:text-4xl transition">
-                {{ step.title }}
-              </h5>
-              <p class="text-gray-100 text-lg">
-                {{ step.description }}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:max-w-[450px] w-full">
-          <img [src]="step.img.url" class="block size-full object-cover" [alt]="step.img.alt"
-            loading="lazy">
-        </div>
-     
-      </swiper-slide>
-      }
-    </swiper-container>
-
-    <button
-    (click)="changeSlide(-1)"
-      class="swiper-button-prev z-2 lg:block absolute cursor-pointer top-1/2 left-2.5 right-auto text-3xl font-semibold text-white"
-      type="button">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" class="size-12"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-      </svg>
-    </button>
-
-    <button
-    (click)="changeSlide(1)"
-      class="swiper-button-next z-2 lg:block absolute cursor-pointer top-1/2 right-2.5 left-auto text-3xl font-semibold text-white"
-      type="button">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" class="size-12"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
-    </button>
-
-
+    class="flex w-full lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center items-center relative"
+  >
+    <app-steps-register
+    ngSkipHydration
+      class="w-full h-full py-12 lg:py-0"
+      [steps]="steps"
+    >
+    </app-steps-register>
   </div>
 
-  <div class="mt-8 lg:mt-0 flex w-full lg:w-1/2 justify-center items-center">
-    <form class="w-full lg:max-w-[600px] px-4" autocomplete="off" [formGroup]="signUpForm" (ngSubmit)="register()">
+  <div
+    class="mt-10 lg:mt-0 flex w-full lg:w-1/2 justify-center items-center h-full"
+  >
+    <form
+      class="w-full lg:max-w-[600px] px-4"
+      autocomplete="off"
+      [formGroup]="signUpForm"
+      (ngSubmit)="register()"
+    >
       <h1 class="font-bold text-2xl mb-1">Registrate totalmente gratis!</h1>
       <p class="text-sm font-normal text-gray-600 dark:text-slate-200 mb-7">
         Empieza vender recargas hoy mismo
       </p>
 
       <div class="mt-4">
-        <label for="bussines" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="bussines"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           Nombre del negocio:
         </label>
-        <input id="bussines" placeholder="Indica el nombre de tu negocio o establecimiento" type="text"
-          formControlName="bussinesName" appNotSpecialCharacter
-          class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 border-slate-300 dark:bg-gray-700 mt-2 border dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400" />
+        <input
+          id="bussines"
+          placeholder="Indica el nombre de tu negocio o establecimiento"
+          type="text"
+          formControlName="bussinesName"
+          appCapitalizeLetters
+          class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
+          [ngClass]="
+            isInvalidField('bussinesName')
+              ? 'border-red-500 dark:border-sky-500'
+              : 'border-slate-300 dark:border-slate-600'
+          "
+        />
 
-        <p class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
-            <path fill-rule="evenodd"
+        @if(isInvalidField('bussinesName')) {
+        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+          >Campo nombre del negocio es invalido</span
+        >
+        }
+
+        <p
+          class="flex items-center mt-2 text-xs text-slate-500 dark:text-slate-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-5 h-5 mr-2"
+          >
+            <path
+              fill-rule="evenodd"
               d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-              clip-rule="evenodd"></path>
+              clip-rule="evenodd"
+            ></path>
           </svg>
           Si no tienes un negocio ignora el campo.
         </p>
       </div>
 
       <div class="mt-4">
-        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="email"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           Nombre completo:
         </label>
-        <input id="fullname" type="text" placeholder="*Indica tu nombre completo" formControlName="fullName"
+        <input
+          appCapitalizeLetters
+          id="fullname"
+          type="text"
+          placeholder="*Indica tu nombre completo"
+          formControlName="fullName"
           class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
           [ngClass]="
             isInvalidField('fullName')
               ? 'border-red-500 dark:border-sky-500'
               : 'border-slate-300 dark:border-slate-600'
-          " />
+          "
+        />
 
         @if( isInvalidField('fullName') ) {
-        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo Nombre es obligatorio</span>
+        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+          >Campo Nombre es obligatorio</span
+        >
         }
       </div>
 
       <div class="mt-4">
-        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="email"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           Correo electrónico:
         </label>
-        <input id="email" type="text" placeholder="*Indica tu correo electrónico" formControlName="email"
+        <input
+          id="email"
+          type="text"
+          placeholder="*Indica tu correo electrónico"
+          formControlName="email"
           class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
           [ngClass]="
             isInvalidField('email')
               ? 'border-red-500 dark:border-sky-500'
               : 'border-slate-300 dark:border-slate-600'
-          " />
+          "
+        />
 
         @if( isInvalidField('email') ) {
-        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo correo es obligatorio</span>
+        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+          >Campo correo es obligatorio</span
+        >
         }
       </div>
 
       <div class="mt-4">
-        <label for="phoneNumber" class="block text-sm font-medium text-gray-700 dark:text-white">
+        <label
+          for="phoneNumber"
+          class="block text-sm font-medium text-gray-700 dark:text-white"
+        >
           Numero telefonico:
         </label>
         <div class="relative mt-2">
-          <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
-            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor" viewBox="0 0 19 18">
+          <div
+            class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none"
+          >
+            <svg
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 19 18"
+            >
               <path
-                d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
+                d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"
+              />
             </svg>
           </div>
-          <input id="phoneNumber" placeholder="Indica tu numero" formControlName="phoneNumber" type="text"
-            appOnlyNumbers [maxlength]="10"
+          <input
+            type="text"
+            inputmode="numeric"
+            autocomplete="tel"
+            [showMaskTyped]="true"
+            [dropSpecialCharacters]="true"
+            [keepCharacterPositions]="true"
+            mask="(000) 000-0000"
+            [clearIfNotMatch]="true"
+            id="phoneNumber"
+            placeholder="(000) 000-0000"
+            formControlName="phoneNumber"
             class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400 ps-10"
             [ngClass]="
               isInvalidField('phoneNumber')
                 ? 'border-red-500 dark:border-sky-500'
                 : 'border-slate-300 dark:border-slate-600'
-            " />
+            "
+          />
         </div>
         @if( isInvalidField('phoneNumber') ) {
-        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo numero es obligatorio</span>
+        <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+          >Campo numero es obligatorio</span
+        >
         }
       </div>
 
       <div class="mt-4" formGroupName="address">
         <div class="form-group grid md:grid-cols-2 gap-4 md:gap-6">
           <div class="w-full">
-            <label for="zip" id="zip" class="block text-sm font-medium text-gray-700 dark:text-white">
+            <label
+              for="zip"
+              id="zip"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               codigo postal:
             </label>
-            <input id="zip" type="text" placeholder="* Indica el codigo postal" formControlName="zip" appOnlyNumbers
+            <input
+              inputmode="numeric"
+              id="zip"
+              mask="00000"
+              type="text"
+              placeholder="* Indica el codigo postal"
+              formControlName="zip"
               [maxlength]="5"
               class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
               [ngClass]="
                 isInvalidField('address.zip')
                   ? 'border-red-500 dark:border-sky-500'
                   : 'border-slate-300 dark:border-slate-600'
-              " />
+              "
+            />
             @if( isInvalidField('address.zip') ) {
-            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo cp es obligatorio</span>
+            <span
+              class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+              >Campo cp es obligatorio</span
+            >
             }
           </div>
 
           <div class="w-full">
-            <label for="state" class="block text-sm font-medium text-gray-700 dark:text-white">Estado:
+            <label
+              for="state"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+              >Estado:
             </label>
 
-            <select id="state"
+            <select
+              id="state"
               class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white mt-2 p-2.5 rounded-lg border bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 focus:outline-none dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              formControlName="state" [ngClass]="
+              formControlName="state"
+              [ngClass]="
                 isInvalidField('address.state')
                   ? 'border-red-500 dark:border-sky-500'
                   : 'border-slate-300 dark:border-gray-600'
-              ">
+              "
+            >
               <option value="" disabled selected>
                 * Seleccione una opción
               </option>
@@ -175,74 +236,151 @@
               }
             </select>
             @if( isInvalidField('address.state') ) {
-            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo estado es obligatorio</span>
+            <span
+              class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+              >Campo estado es obligatorio</span
+            >
             }
           </div>
         </div>
 
         <div class="form-group grid md:grid-cols-2 gap-4 md:gap-6 mt-4">
           <div class="w-full">
-            <label for="municipDeleg" class="block text-sm font-medium text-gray-700 dark:text-white">
+            <label
+              for="municipDeleg"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               Municipio:
             </label>
-            <input id="municipDeleg" type="text" placeholder="*Indica tu municipio"
+            <input
+              id="municipDeleg"
+              type="text"
+              placeholder="*Indica tu municipio"
               class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-              formControlName="mun_deleg" [ngClass]="
+              formControlName="mun_deleg"
+              [ngClass]="
                 isInvalidField('address.mun_deleg')
                   ? 'border-red-500 dark:border-sky-500'
                   : 'border-slate-300 dark:border-slate-600'
-              " />
+              "
+            />
             @if( isInvalidField('address.mun_deleg') ) {
-            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo municipio es
-              obligatorio</span>
+            <span
+              class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+              >Campo municipio es obligatorio</span
+            >
             }
           </div>
 
           <div class="w-full">
-            <label for="col" class="block text-sm font-medium text-gray-700 dark:text-white">
+            <label
+              for="col"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               Colonia:
             </label>
-            <input id="col" type="text" formControlName="col" placeholder="* Indica tu colonia"
+            <input
+              id="col"
+              type="text"
+              formControlName="col"
+              placeholder="* Indica tu colonia"
               class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
               [ngClass]="
                 isInvalidField('address.col')
                   ? 'border-red-500 dark:border-sky-500'
                   : 'border-slate-300 dark:border-slate-600'
-              " />
+              "
+            />
             @if( isInvalidField('address.col') ) {
-            <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo colonia es obligatorio</span>
+            <span
+              class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+              >Campo colonia es obligatorio</span
+            >
             }
           </div>
         </div>
 
         <div class="mt-4">
-          <label for="street" class="block text-sm font-medium text-gray-700 dark:text-white">
+          <label
+            for="street"
+            class="block text-sm font-medium text-gray-700 dark:text-white"
+          >
             Calle:
           </label>
-          <input id="street" type="text" placeholder="* Indica tu calle"
+          <input
+            id="street"
+            type="text"
+            placeholder="* Indica tu calle"
             class="w-full block text-sm text-slate-800 placeholder:text-slate-500 dark:text-white p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-            formControlName="street" [ngClass]="
+            formControlName="street"
+            [ngClass]="
               isInvalidField('address.street')
                 ? 'border-red-500 dark:border-sky-500'
                 : 'border-slate-300 dark:border-slate-600'
-            " />
+            "
+          />
           @if( isInvalidField('address.street') ) {
-          <span class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5">Campo calle es obligatorio</span>
+          <span
+            class="text-xs text-red-600 dark:text-sky-400 font-medium pl-2.5"
+            >Campo calle es obligatorio</span
+          >
           }
         </div>
       </div>
 
-      <button type="submit"
+      <button
+        type="submit"
+        [class]="
+          signUpForm.invalid
+            ? 'pointer-events-none opacity-50'
+            : 'pointer-events-auto opacity-100'
+        "
         class="w-full block cursor-pointer bg-red-700 dark:bg-blue-600 border border-red-700 dark:border-blue-700 text-white font-semibold rounded-lg px-4 py-3 mt-6 hover:bg-red-800 dark:hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-blue-400"
-        (click)="register()">
+      >
         Registrarme
       </button>
-      <!-- <button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Registrarme</button> -->
     </form>
   </div>
 </div>
 
-<div class="form-section">
+@if (handlerModal()) {
+<div
+  (click)="closeModal()"
+  (keydown)="onKeydown($event)"
+  class="fixed inset-0 z-10 grid h-screen w-screen place-items-center bg-black/80 backdrop-blur-sm transition-opacity duration-300 overflow-y-hidden"
+>
+  <div
+    (click)="$event.stopPropagation()"
+    class="relative m-4 p-4 w-11/12 lg:w-2/5 lg:min-w-[40%] lg:max-w-[40%] rounded-lg bg-white shadow-sm animate-slide-in-top"
+  >
+    <div
+      class="flex shrink-0 items-center pb-4 text-xl font-medium text-slate-800"
+    >
+      ¡Solicitud Recibida!
+    </div>
+    <div
+      class="relative border-t border-slate-200 py-4 leading-normal text-slate-600 font-light"
+    >
+      Su registro ha sido recibido con exito, nuestro equipo le estaran enviando
+      al correo proporcionado, el correo con toda la información para vender
+      recargas electrónicas, asi mismo se le estara enviando en 2do correo el
+      correo de bienvenida con sus datos de acceso, manuales de usuario y
+      numeros de cuenta para depósitos y/o transferencias
+    </div>
+    <div class="flex shrink-0 flex-wrap items-center pt-4 justify-end">
+      <button
+        (click)="closeModal()"
+        class="rounded-md bg-green-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-700 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+        type="button"
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>
+}
+
+<!-- <div class="form-section">
   <pre>
     {{ signUpForm.value | json }}
   </pre>
@@ -254,4 +392,4 @@
     <br>
       Status: {{  signUpForm.status}}
     </pre>
-</div>
+</div> -->
