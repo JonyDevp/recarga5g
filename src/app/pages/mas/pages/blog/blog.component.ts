@@ -14,6 +14,7 @@ import { MapTagResponse } from './interfaces/tag-types';
 import { NgxPaginationModule, PaginationInstance } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { ɵɵRouterLink } from "@angular/router/testing";
+import { title } from 'process';
 
 @Component({
   selector: 'app-blog',
@@ -31,18 +32,6 @@ import { ɵɵRouterLink } from "@angular/router/testing";
 export default class BlogComponent implements OnInit {
 
   // posts$: Entry<any>[] = [];
-
-  //? META TAG
-  tag: metaTagModel = {
-    title: 'Recarga5g.com | Blog, Lee nuestros artículos mas recientes y destacados',
-    description: 'A continuación podrás consultar nuestros artículos que publicamos periódicamente para que siempre te mantengas al tanto sobre promociones, avisos sobre tecnologías, compañía de telefonía y mucho mas!',
-    keywords: 'Promociones Telcel, Promociones Bait, Avisos Recarga5g.com, Blog Recarga5g.com, Recarga5g, Recarga5g.com, articulos Recarga5g.com',
-    url: 'recarga5g.com/ayuda/blog',
-    type: 'website',
-    image: 'https://recarga5g.com/Venta-recargas.png',
-    card: 'summary_large_image',
-    creator: '@recargascelular',
-  }
 
   private readonly blogService = inject(ContentfulService);
   private readonly title = inject(Title);
@@ -85,6 +74,14 @@ export default class BlogComponent implements OnInit {
     this.loadCurrentPosts();
     this.loadTags();
     this.loadFeaturedPosts();
+
+    this.meta.updateMetaTag({
+      title: 'Recarga5g.com | Consulta nuestros artículos mas recientes',
+      description: 'En Recarga5g.com, te ofrecemos los artículos más recientes sobre tecnología 5G, dispositivos compatibles y consejos para aprovechar al máximo esta revolucionaria conectividad. Mantente informado con nuestras actualizaciones periódicas.',
+      keywords: 'Recarga5g, artículos 5G, tecnología 5G, dispositivos 5G, consejos 5G, noticias 5G',
+      url: 'https://www.recarga5g.com/mas/blog',
+      typeContent: 'blog'
+    })
   }
 
   private postsEffect = effect(() => {
