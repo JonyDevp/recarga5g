@@ -24,7 +24,15 @@ export default class PostComponent implements OnInit {
 
   post = signal<MapPostItem | null>(null)
   ngOnInit(): void {
-    this.title.setTitle('Recarga5g.com | Consulta nuestros artículos mas destacados');
+
+    this.meta.updateMetaTag({
+      title: 'Recarga5g.com: Consulta nuestros artículos sobre la tecnología 5G y mas',
+      description: 'En Recarga5g.com, te ofrecemos los artículos más recientes sobre tecnología 5G, dispositivos compatibles y consejos para aprovechar al máximo esta revolucionaria conectividad. Mantente informado con nuestras actualizaciones periódicas.', 
+      keywords: 'Recarga5g, artículos 5G, tecnología 5G, dispositivos 5G, consejos 5G, noticias 5G',
+      url: 'https://www.recarga5g.com/mas/blog/post',
+      typeContent: 'article'
+    })
+     this.title.setTitle('Recarga5g.com: Consulta nuestros artículos sobre la tecnología 5G y mas');
 
     // Obtener el ID del estado de navegación
     const resolvedData = this.route.snapshot.data['postData'];
@@ -37,11 +45,5 @@ export default class PostComponent implements OnInit {
     }
 
   }
-
-  constructor() {
-
-  }
-
-
 
 }
