@@ -47,7 +47,7 @@ import { SwiperOptions } from 'swiper/types';
         <div
           class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-500"
         >
-          <swiper-container init="false" #swiperApp class="swiper-app" ngSkipHydration>
+          <swiper-container init="false" #swiperApp class="swiper-app">
             @for (product of carouselImages(); track $index) {
             <swiper-slide class="swiper-app__slide">
           
