@@ -53,7 +53,7 @@ import { CountUpModule } from "ngx-countup";
     NgClass,
     ClickOutsideDirective,
     CountUpModule
-],
+  ],
   animations: [
     //*contenedor y dispador de las animaciones
     trigger('isOpen', [
@@ -77,7 +77,7 @@ export class HeaderComponent implements OnDestroy {
   activeNavOverlay = signal(false);
   isOpenNav = signal(false);
   //signal que indica cual esta abierto
- readonly isOpenMenu = signal<number>(-1);
+  readonly isOpenMenu = signal<number>(-1);
   lastClickedMenu = signal<number | null>(null);
 
   private readonly document = inject(DOCUMENT);
@@ -314,10 +314,15 @@ export class HeaderComponent implements OnDestroy {
     this.isOpenNav.update(value => !value);
   }
 
+    onToggleNavbar(): void {
+    this.toggleNavbar();
+    this.handlerScrollDocument();
+  }
+
   handleMenuClick(index: number, event: Event) {
-      // Detener propagación para evitar que appClickOutside se active
+    // Detener propagación para evitar que appClickOutside se active
     event.stopPropagation();
-    
+
     if (this.isOpenMenu() === index) {
       // Si el menú clicado ya está abierto, ciérralo
       this.isOpenMenu.set(-1);
@@ -327,18 +332,25 @@ export class HeaderComponent implements OnDestroy {
     }
   }
 
+  closeNavbar(): void {
+    if (this.isOpenNav()) {
+      this.isOpenNav.set(false);
+      this.isOpenMenu.set(-1);       // cerrar cualquier submenú abierto
+      this.handlerScrollDocument();  // restaurar scroll del body
+    }
+  }
+
+  onNavItemClick(): void {
+    this.closeNavbar();
+  }
+
 
   isMenuOpen(index: number): boolean {
     return this.isOpenMenu() === index;
-}
-
-
-  onToggleNavbar(): void {
-    this.toggleNavbar();
-    this.handlerScrollDocument();
   }
 
-    handlerScrollDocument(): void {
+
+  handlerScrollDocument(): void {
     if (isPlatformBrowser(this.platform_id)) {
 
       const body = this.document.body;

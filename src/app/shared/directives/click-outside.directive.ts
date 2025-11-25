@@ -13,9 +13,14 @@ export class ClickOutsideDirective implements  OnInit, OnDestroy {
   private unlistener: (() => void) | undefined;
 
   onDocumentClick = (event: Event) => {
-    if (!this.elementRef.nativeElement.parentElement.contains(event.target)) {
-      this.outSideClick.emit();
-    }
+   if (!this.appClickOutside()) return;
+
+  const host = this.elementRef.nativeElement as HTMLElement;
+  const area = host.parentElement ?? host; // mismo truco que usas ahora
+
+  if (!area.contains(event.target as Node)) {
+    this.outSideClick.emit();
+  }
   };
 
   

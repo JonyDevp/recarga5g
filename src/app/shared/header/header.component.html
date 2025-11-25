@@ -30,6 +30,8 @@
     </div>
 
     <nav id="header-navbar"
+        [appClickOutside]="isOpenNav()"
+     (outSideClick)="closeNavbar()"
       class="grid-area-[s]  col-span-full row-[2/3] grid grid-rows-[0fr] transition-[grid-template-rows] data-[open]:grid-rows-[1fr] md:justify-center md:flex group/nav">
       <ul [ngClass]="isOpenNav() ? 'flex' : 'hidden'"
         class="flex-col lg:flex-row grow px-4 lg:px-0 items-center lg:justify-center lg:flex gap-10">
@@ -66,7 +68,7 @@
               <li>
                 <a [routerLink]="subItem.routerLink" 
                    [routerLinkActive]="subItem.isActiveClass"
-                   (click)="isOpenMenu.set(-1)"
+                  (click)="onNavItemClick(); isOpenMenu.set(-1)"
                   class="relative flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300">
                   <div class="dropdown-menu-icon shadow-md rounded-lg p-2 bg-white dark:bg-gray-700 text-gray">
                     @if (subItem.icon) {
@@ -91,6 +93,7 @@
          } @else {
           <a [routerLink]="item.routerLink" [routerLinkActive]="item.isActiveClass"
             [routerLinkActiveOptions]="{ exact: true }"
+               (click)="onNavItemClick()"
             class="flex items-center justify-start lg:justify-center gap-x-2 px-4 py-2 hover:bg-brand-gray/5 rounded-lg border border-transparent hover:border-brand-gray/10 transition-all min-h-[40px] text-sm font-semibold duration-300 w-full">
             {{ item.label }}
           </a>
@@ -186,6 +189,7 @@
         }
       </section>
       <a routerLink="/registro"
+      (click)="closeNavbar()"
         class="py-2 px-4 justify-center rounded-[10px] font-semibold border hover:scale-105 transition-transform duration-300 text-white dark:shadow-blue-500/30 dark:hover:shadow-blue-600/20 focus:shadow-none bg-red-600 border-red-600 dark:bg-blue-600 dark:border-blue-600 text-base leading-none hidden sm:inline-flex items-center gap-2"
         id="c57aff77-7b12-4baa-8ff4-20ea90d2326e">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
