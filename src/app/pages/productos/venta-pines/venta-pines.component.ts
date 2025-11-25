@@ -39,34 +39,24 @@ export default class VentaPinesComponent implements OnInit{
   carouselPines = signal<ProductCarousel[]>([]);
   stepPines = signal<registerStepsModel[]>([]);
 
-    //? META TAG
-    tag: metaTagModel = {
-
-      title: "Recarga5g.com | Consulta como vender tarjetas electrónicas Google play, Spotify, Netflix con excelentes comisiones",
-      description: "Nuestras tarjetas de regalo Google Play, Spotify son el regalo perfecto para personas de todas las edades y gustos. Desde música y películas hasta juegos y aplicaciones, tus clientes podrán disfrutar de una amplia variedad de contenido digital con estas tarjetas",
-      keywords: "como vender tarjetas de regalo, tarjeta de regalo, tarjeta de regalo amazon, pines electrónicos, como vender pines electrónicos, vender pines, vender pines electrónicos, google play, google play tarjetas, vender tarjetas de regalo, spotify",
-      url: "recarga5g.com/consulta/pines",
-      type: "website",
-      image: "https://recarga5g.com/Venta-recargas.png",
-      card: "summary_large_image",
-      creator: "@recargascelular"
-    }
 
     private readonly productCarouselService = inject(ProductCarouselService);
     private readonly metaTagService = inject( MetaTagService);
+  
     private readonly  title = inject( Title);
       theme = inject(ThemesService);
     isDarkTheme = computed(() => this.theme.themeChange());
 
   ngOnInit(): void {
+        this.title.setTitle('Recarga5g.com: Venta de tarjeta de regalo para negocios');
+
     this.metaTagService.updateMetaTag({
-      title: 'Consulta | Pines Ofrece un servicio extra a tu negocio',
-      description: '',
-      keywords: '',
-      url: 'https://recarga5g.com/consulta/pines',
+      title: 'Recarga5g.com: Venta de tarjeta de regalo para negocios',
+      description: 'Consulta los pines electrónicos que ofrecemos para que tus clientes puedan realizar recargas, pagos de servicios y compras en línea de manera rápida y segura.',
+      keywords: 'consulta pines electrónicos, venta de pines, tarjetas de regalo para negocios, pines para recargas, pines para pago de servicios, pines para compras en línea, Recarga5G pines, ',
+      url: 'https://recarga5g.com/productos/pines',
       typeContent: 'website'
     })
-    this.title.setTitle('Recarga5g.com | Venta de tarjetas de regalo Google play, Amazon, Netflix');
 
 
 

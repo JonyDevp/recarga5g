@@ -14,27 +14,21 @@ import { MetaTagService } from '@shared/services/meta-tag.service';
 })
 export default class PoliticasComponent implements OnInit {
 
-  //? META TAG
-  tag: metaTagModel = {
-    title: 'Recarga5g.com | nuestras políticas para aplicacion de depósitos, recargas y pago de servicios',
-    description: 'Consulta nuestras politicas de nuestros servicios para vender recargas electrónicas para todo tipo de negocio con comisiones hasta 7.5% fijo.',
-    keywords: "Condiciones para vender recargas, politicas recarga5g.com, Bait, telcel, recargas electronicas 7.5% comision, recarga5g.com",
-    url: 'recarga5g.com/legal/politicas',
-    type: 'website',
-    image: 'https://recarga5g.com/Venta-recargas.png',
-    card: 'summary_large_image',
-    creator: '@recargascelular',
-  }
+
   
   private readonly title = inject(Title);
   private readonly meta = inject(MetaTagService);
 
   ngOnInit(): void {
-    this.title.setTitle('Recarga5g.com | nuestras políticas para aplicacion de depósitos, recargas y pago de servicios')
+    this.title.setTitle('Recarga5g.com: nuestras políticas para aplicacion de depósitos, recargas y pago de servicios')
+    this.meta.updateMetaTag({
+      title: 'Recarga5g.com: nuestras políticas para aplicacion de depósitos, recargas y pago de servicios',
+      description: 'En Recarga5g.com, nos tomamos muy en serio la seguridad y transparencia en nuestras políticas. Consulta nuestras políticas para conocer cómo gestionamos los depósitos, recargas y pagos de servicios en nuestra plataforma.',
+      keywords: 'políticas, depósitos, recargas, pagos de servicios, seguridad, transparencia, Recarga5g.com, gestión de pagos',
+      typeContent: 'website',
+      url: 'https://www.recarga5g.com/mas/legal/politicas',
+    });
  
-    // this.meta.generateTags({
-    //   ...this.tag
-    // })
   }
 
 }

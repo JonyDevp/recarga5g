@@ -11,28 +11,20 @@ import { MetaTagService } from '@shared/services/meta-tag.service';
 })
 export default class CondicionesComponent implements OnInit {
 
-    //? META TAG
- tag: metaTagModel = {
-  title: 'Recarga5g.com | Consulta nuestras condiciones de uso de nuestras plataformas',
-  description: 'Consulta nuestras condiciones para que puedas vender sin inconvenientes recargas a cualquier compañia Telcel, Movistar, Bait, y mucho mas! ',
-  keywords: 'Condiciones para venta de recargas, condiciones para vender tiempo aire, Recarga5g.com, telcel, venta de recargas telcel',
-  url: 'recarga5g.com/legal/condiciones',
-  type: 'website',
-  image: 'https://recarga5g.com/Venta-recargas.png',
-  card: 'summary_large_image',
-  creator: '@recargascelular',
- }
 
  private readonly title = inject( Title ); 
  private readonly meta = inject( MetaTagService );
 
   ngOnInit(): void {
-    this.title.setTitle('Recarga5g.com | Consulta nuestras condiciones de uso de nuestras plataformas');
-  
-
-    // this.meta.generateTags({
-    //   ...this.tag
-    // })
+    this.title.setTitle('Recarga5g.com: Consulta nuestras condiciones de uso de nuestras plataformas');
+    this.meta.updateMetaTag({
+      title: 'Recarga5g.com: Consulta nuestras condiciones de uso de nuestras plataformas',
+      description: 'En Recarga5g.com, nos comprometemos a ofrecerte un servicio transparente y seguro. Consulta nuestras condiciones de uso para conocer tus derechos y responsabilidades al utilizar nuestras plataformas.',
+      keywords: 'condiciones de uso, términos y condiciones, políticas de uso, Recarga5g.com, servicio seguro, transparencia, derechos del usuario',
+      typeContent: 'website',
+      url: 'https://www.recarga5g.com/mas/legal/condiciones',
+    
+    });
   }
 
 }

@@ -78,21 +78,6 @@ export default class FaqsComponent {
   isOpenModal = signal(false);
 
 
-  //? META TAG
-  tag: metaTagModel = {
-    title:
-      'Recarga5g.com | Preguntas frecuentes para vender recargas electrónicas con excelentes comisiones',
-    description:
-      'Asesórate con nosotros sobre como puede vender recargas electrónicas: Telcel, Bait Movistar y mucho mas!. Con excelentes comisiones',
-    keywords: 'Preguntas frecuentes, recarga5g.com, FAQS recargas',
-    url: 'recarga5g.com/ayuda/faqs',
-    type: 'website',
-    image: 'https://recarga5g.com/Venta-recargas.png',
-    card: 'summary_large_image',
-    creator: '@recargascelular',
-  };
-
-
   constructor() {
     effect(() => {
       this.scrollTitleIntersection();
@@ -136,6 +121,16 @@ scrollToTitle(id: string) {
     this.title.setTitle(
       'Recarga5g.com | Consulta las preguntas mas frecuentes y resuelve todas tus dudas para vender recargas, pago de servicios y pines electrónicos'
     );
+
+    this.metaTagService.updateMetaTag({
+      title: 'Recarga5g.com | Consulta las preguntas mas frecuentes y resuelve todas tus dudas para vender recargas, pago de servicios y pines electrónicos',
+      description:
+        'Encuentra respuestas a las preguntas más comunes sobre cómo vender recargas, pagar servicios y adquirir pines electrónicos en Recarga5g.com. Resuelve tus dudas aquí.',
+      keywords:
+        'preguntas frecuentes recargas, dudas vender recargas, ayuda pago servicios, pines electrónicos, soporte Recarga5g.com,ayuda recargas, ayuda recarga5g.com, faqs recarga5g, preguntas comunes recargas, guía usuario recarga5g',
+      url: 'https://www.recarga5g.com/mas/faqs',
+      typeContent: 'website'
+    })
 
     this.faqsMenuOne = this.faqsService.getMenuOne();
     this.faqsMenuTwo = this.faqsService.getMenuTwo();

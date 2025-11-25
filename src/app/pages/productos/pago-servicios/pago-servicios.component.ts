@@ -46,9 +46,9 @@ export default class PagoServiciosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.title.setTitle('Recarga5g.com | Como cobrar recibo de servicios: Telmex, Izzi, CFE y mucho mas!')
+    this.title.setTitle('Recarga5g.com: Venta de cobro de servicios en tu negocio')
    this.metaTagService.updateMetaTag({
-      title: 'Recarga5g.com | Como cobrar recibo de servicios: Telmex, Izzi, CFE y mucho mas!',
+      title: 'Recarga5g.com: Venta de cobro de servicios en tu negocio!',
       description: 'Descubre cómo cobrar recibos de servicios como Telmex, Izzi y CFE de manera fácil y segura con Recarga5g.com. ¡Empieza a ganar comisiones hoy mismo!',
       keywords: 'pago de servicios, cobro de pago de servicios negocio, plataforma para pago de servicios, pago de servicios en linea, como vender pago de servicios, ¿Cómo recibir pago de servicios en mi negocio?, ¿Qué servicios puedo cobrar en mi negocio?',
       url: 'https://www.recarga5g.com/productos/servicios',

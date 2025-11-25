@@ -81,12 +81,12 @@ export default class PlanetaemxComponent implements OnInit {
  private readonly titulo = inject(Title);
 
   ngOnInit(): void {
-    this.titulo.setTitle('Recarga5g.com | Planetaemx plataforma para la venta de recargas Bait');
+    this.titulo.setTitle('Recarga5g.com: Planetaemx plataforma de venta de recargas a todas las compañias en méxico');
 
     this.productCarousel.set( this.productCarouselService.getRecargas() );
     this.appRecargaki.set( this.planetaemxService.getAppRecargaki())
     this.metaTagService.updateMetaTag({
-      title: 'Plataformas | Planetaemx plataforma para la venta de recargas multiregion',
+      title: 'Recarga5g.com: Planetaemx plataforma de venta de recargas a todas las compañias en méxico',
       description: 'Obtén una comisión hasta un 7.5% fijo en todos tus depósitos, Genera ganancias extras a tu negocio vendiendo recargas Bait, Telcel, Movistar y muchos mas',
       keywords: "Planetaemx, Recargaki, App Recargaki, App Planetaemx, Cuentas planetaemx, cuentas bancarias planetaemx, cuentas recargaki, cuentas bancarias recargaki, manual planetaemx, manual recargaki, manuales planetaemx, manuales recargaki, vender recargas, plataforma para vender recargas, comision por deposito, venta recargas, comision 7.5 recargas, comision 7.5% recargas, venta de recargas movistar, Movistar, tiempo aire movistar, vender recargas movistar",
       url: 'recarga5g.com/plataforma/planetaemx',

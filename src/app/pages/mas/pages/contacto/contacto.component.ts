@@ -16,23 +16,12 @@ import { ValidatorsService } from '@shared/services/validators.service';
     RouterLink,
     ReactiveFormsModule,
     NgClass,
-    JsonPipe
+    
   ],
   
 })
 export default class ContactoComponent implements OnInit {
 
-  //? META TAG
-  tag: metaTagModel = {
-    title: "Recarga5g.com | Consulta como vender recargas electrónicas",
-    description: "Contactamos por alguno de nuestros medios de contacto para asesorarte para que puedas generar ganancias vendiendo recargas telefónicas a cualquier tipo de compañía.",
-    keywords: "Contacto para venta de recargas, Contacto Pagaqui, Contacto Planetaemx, Contacto Recargaki, Contacto recargas electrónicas, Recarga5g.com, Contacto para vender recargas elecrtrónicas con excelentes comisiones",
-    url: "recarga5g.com/ayuda/contacto",
-    type: "website",
-    image: "https://recarga5g.com/Venta-recargas.png",
-    card: "summary_large_image",
-    creator: "@recargascelular"
-  }
 
   contactForm!: FormGroup;
   private formBuilder = inject(FormBuilder);
@@ -50,12 +39,14 @@ export default class ContactoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Recarga5g.com | Contáctanos por cualquier de nuestros medios de contacto para asesorarte y obtener más información para vender recargas a cualquier compañia con excelentes comisiones');
-
-    // this._metaTagService.generateTags( {
-    //   ...this.tag
-    // })
-
+    this.title.setTitle('Recarga5g.com: Contáctanos por cualquier de nuestros medios de contacto para asesorarte y obtener más información para vender recargas a cualquier compañia con excelentes comisiones');
+    this._metaTagService.updateMetaTag({
+      title: 'Recarga5g.com: Contáctanos por cualquier de nuestros medios de contacto para asesorarte y obtener más información para vender recargas a cualquier compañia con excelentes comisiones',
+      description: 'Contáctanos por cualquier de nuestros medios de contacto para asesorarte y obtener más información para vender recargas a cualquier compañia con excelentes comisiones',
+      keywords: 'contacto recarga5g, contacto recargas, soporte recarga5g, ayuda recarga5g, atención al cliente recarga5g, vender recargas, asesoría recargas móviles, información recargas móviles, comisiones por ventas de recargas',
+      url: 'recarga5g.com/mas/contacto',
+      typeContent: 'website',
+    })
   }
 
   constructor() {

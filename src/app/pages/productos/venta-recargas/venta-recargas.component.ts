@@ -65,13 +65,13 @@ private readonly title = inject( Title);
     ngOnInit(): void {
 
       this.metaTagService.updateMetaTag({
-        title: 'Consulta | Recargas Venta de recargas electrónicas para todo tipo de negocio',
-        description: '',
-        keywords: '',
-        url: '',
+        title: 'Recarga5g.com: Venta de recargas electrónicas para negocios',
+        description: 'Vende recargas electrónicas para cualquier tipo de negocio. Registro gratuito y fácil. ¡Empieza a ganar hoy mismo con Recarga5g.com!',
+        keywords: 'venta de recargas electrónicas, vender recargas para negocios, recargas móviles, recargas para tiendas, negocio de recargas, ganar dinero con recargas, Recarga5g.com',
+        url: 'https://recarga5g.com/productos/recargas',
         typeContent: 'website'
       })
-      this.title.setTitle('Recarga5g.com | Como vender recargas en todas las compañias nacionales')
+      this.title.setTitle('Recarga5g.com: Venta de recargas electrónicas para negocios')
 
       // this.metaTagService.generateTags( {
       // ...this.tag

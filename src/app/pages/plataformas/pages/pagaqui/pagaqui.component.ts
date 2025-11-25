@@ -10,9 +10,6 @@ import {
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-//* Interfaces importados
-import { registerStepsModel } from 'src/app/interfaces/register-steps-model';
-
 //* Servicios importados
 import { MetaTagService } from '@shared/services/meta-tag.service';
 import { RegisterStepsService } from '@shared/services/register-steps.service';
@@ -110,23 +107,19 @@ export default class PlataformaPagaquiComponent
   private readonly productCarouselService = inject(ProductCarouselService);
   private readonly pagaquiService = inject(PagaquiService);
 
-  private readonly stepPagaquiService = inject(RegisterStepsService);
   private readonly metaTagService = inject(MetaTagService);
   private readonly title = inject(Title);
 
   ngOnInit(): void {
     this.title.setTitle(
-      'Recarga5g.com | Consulta para vender recargas electrónicas'
+      'Recarga5g.com: Pagaqui plataforma para vender recargas telcel y mas compañias en méxico'
     );
 
-    this.productCarousel = this.productCarouselService.getRecargas();
-    this.appPagaqui = this.pagaquiService.getAppPagaqui();
-  
 
   
     this.metaTagService.updateMetaTag(
       {
-        title: 'Plataformas | Pagaqui venta de recargas electrónicas telcel para negocios',
+        title: 'Recarga5g.com: Pagaqui plataforma para vender recargas telcel y mas compañias en méxico',
         description: 'Plataforma para venta de recargas electrónicas Telcel, y mas servicios en MX, desde tu negocio',
         keywords: 'pagaqui, venta de recargas telcel, recargas telcel, tiempo aire telcel, vender recargas telcel, contacto pagaqui, cuentas pagaqui, vender recargas mexico',
         url: 'https://recarga5g.com/plataformas/pagaqui',
@@ -134,6 +127,9 @@ export default class PlataformaPagaquiComponent
       }
     );
     this.theme.initTheme();
+  this.productCarousel = this.productCarouselService.getRecargas();
+    this.appPagaqui = this.pagaquiService.getAppPagaqui();
+  
 
   }
 
