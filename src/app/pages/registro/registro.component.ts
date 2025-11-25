@@ -6,8 +6,7 @@ import { Validators } from '@angular/forms';
 
 //Services
 import { MetaTagService } from '@shared/services/meta-tag.service';
-import { SignupService } from './signup.service';
-import { PostalDirectoryService } from './postal-directory.service';
+// import { SignupService } from './signup.service';
 import { GetSafeSvgService } from '@shared/services/get-safe-svg.service';
 
 import { States } from 'src/app/interfaces/address.interface';
