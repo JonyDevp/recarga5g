@@ -20,7 +20,6 @@
                 "glob": "**/*",
                 "input": "public"
               },
-
               {
                 "glob": "**/*",
                 "input": "src/assets",
@@ -33,16 +32,15 @@
               "node_modules/@fontsource/inter/500.css",
               "node_modules/@fontsource/inter/600.css",
               "node_modules/@fontsource/inter/700.css"
-           
             ],
             "outputPath": "dist/recarga5g",
             "index": "src/index.html",
-
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
-              "entry": "server.ts"
-            }
+              "entry": "src/server.ts"
+            },
+            "outputMode": "server"
           },
           "configurations": {
             "production": {

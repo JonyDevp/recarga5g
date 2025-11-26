@@ -1,13 +1,16 @@
 import { isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Component, HostBinding, HostListener, inject, OnInit, PLATFORM_ID, DOCUMENT } from '@angular/core';
-import {  Router, RouterOutlet } from '@angular/router';
+import {  NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ContactBtnComponent } from '@shared/contact-btn/contact-btn.component';
 import { FooterComponent } from '@shared/footer/footer.component';
 import { HeaderComponent } from '@shared/header/header.component';
 import { UpScrollComponent } from '@shared/up-scroll/up-scroll.component';
 import { ThemesService } from '@shared/services/themes.service';
+import { filter } from 'rxjs';
 // import * as AOS from 'aos';
 //  import { GoogleTagManagerModule, GoogleTagManagerService } from 'angular-google-tag-manager';
+
+declare var dataLayer: any; // Declaramos dataLayer global
 
 @Component({
     selector: 'app-root',
@@ -35,34 +38,27 @@ constructor() {
 ngOnInit(): void {
   this.themeService.initTheme();
   
-  // if (isPlatformBrowser(this.platform_id)) {
-  //    AOS.init({
-  //   duration: 1000,
-  //   easing: 'ease-in-out',
-  //   disable: 'mobile',
-  //   once: true,
-  //   mirror: false,
-  //   anchorPlacement: 'ccenter-bottom', // defines which position of the element regarding to window should trigger the animation
-  // });
-
-  // }
-
 
 
   // Esto aplicará el tema basado en el sistema o configuración guardada.
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        // Aquí mandamos info a Google Tag Manager
+        this.pushPageView(event.urlAfterRedirects);
+      });
 
-  // this.router.events.forEach(home => {
-  //   if (home instanceof NavigationEnd) {
-  //     const gtmTag = {
-  //       event: 'Page',
-  //       pageName: home.url
-  //     };
-  //     this.gtmService.pushTag(gtmTag);
-  //   }
-
-
-  // })
 }  
+
+  private pushPageView(url: string): void {
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: 'pageview',
+        pagePath: url,
+        pageTitle: document.title
+      });
+    }
+  }
 
   @HostListener('window:scroll')
   ScrollTop():void {
