@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Title } from '@angular/platform-browser';
 
 //*Interfaces importados
@@ -31,15 +31,14 @@ import { ThemesService } from '@shared/services/themes.service';
       }
       `],
     imports: [
-        CommonModule,
-        RouterLink,
-        ProductCarouselComponent,
-        AppRecargasComponent,
-        SalesMethodComponent,
-        ProductsComponent,
-        RegisterStepsComponent,
-        DoubtsComponent
-    ]
+    RouterLink,
+    ProductCarouselComponent,
+    AppRecargasComponent,
+    SalesMethodComponent,
+    ProductsComponent,
+    RegisterStepsComponent,
+    DoubtsComponent
+]
 })
 export default class PlanetaemxComponent implements OnInit {
 
