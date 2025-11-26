@@ -1,5 +1,5 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { environment } from '@envs/environment.development';
+import {Injectable } from '@angular/core';
+import { environment } from '@envs/environment';
 import { createClient } from 'contentful';
 import { catchError, from, map, Observable, of, shareReplay, tap, } from 'rxjs';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
