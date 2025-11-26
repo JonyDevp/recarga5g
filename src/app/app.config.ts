@@ -1,10 +1,9 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { NgxMaskConfig, provideEnvironmentNgxMask } from 'ngx-mask';
@@ -15,11 +14,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes, withComponentInputBinding()), 
+    provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })), 
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideAnimations(),
-    provideAnimationsAsync(),
-    provideEnvironmentNgxMask(maskConfig)
+
+    provideEnvironmentNgxMask(maskConfig),
   ]
 };
