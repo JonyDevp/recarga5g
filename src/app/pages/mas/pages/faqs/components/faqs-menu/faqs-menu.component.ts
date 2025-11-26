@@ -1,9 +1,9 @@
 import { NgClass, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+// import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { MenuFaq } from '../../faqs.service';
 
-const DEFAULT_DURATION = 0.35;
+
 
 @Component({
   selector: 'app-faqs-menu',
@@ -39,10 +39,10 @@ const DEFAULT_DURATION = 0.35;
             {{ item.label }}
           </button>
 
-          <!-- [@isActivo]="isAnyChildActive(item)" -->
-          <ul
-         [@isActivo]="isAnyChildActive(item)"
-         [ngClass]="item.menu && 'border-l pl-4 ml-10 border-l-slate-300 dark:border-l-slate-300/30'">
+   
+<ul
+            class=" transition-all duration-300 pl-4 ml-10 border-l border-l-slate-300 dark:border-l-slate-300/30 "
+            [ngClass]="isAnyChildActive(item)  ? 'h-auto visible max-h-[1000px]' : 'max-h-0 invisible opacity-0'">
             @for (subitem of item.menu; track subitem.id) {
 
             <li class="faqs-list__li pb-4">
@@ -85,7 +85,7 @@ const DEFAULT_DURATION = 0.35;
             </svg>
             {{ item.label }}
           </button>
-          <!-- <button class="mb-6 pl-4 font-semibold">{{ item.label }}</button> -->
+     
         }
    
       </li>
@@ -93,20 +93,7 @@ const DEFAULT_DURATION = 0.35;
       }
     </ul>
   `,
-  animations: [
-    trigger('isActivo', [
-      state(
-        'true',
-        style({ height: AUTO_STYLE, visibility: 'visible', opacity: 1 })
-      ),
-      state(
-        'false',
-        style({ height: '0px', visibility: 'hidden', opacity: 0 })
-      ),
-      transition('false => true', animate(DEFAULT_DURATION + 's ease')),
-      transition('true => false', animate(DEFAULT_DURATION + 's ease')),
-    ]),
-  ],
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FaqsMenuComponent {
@@ -115,10 +102,18 @@ export class FaqsMenuComponent {
   item: number = 0;
   private viewScroll = inject(ViewportScroller);
   menuItems = input.required<MenuFaq[]>();
+  isActivo = signal(false);
+  openSectionId = signal<string | null>(null);
+
+  toggleSection(id: string) {
+    this.openSectionId.update(current =>
+      current === id ? null : id
+    );
+  }
 
 
   scrollToAnchor(anchor: string) {
-    this.viewScroll.setOffset([0, 80]); // [x-offset, y-offset]
+    this.viewScroll.setOffset([0, 100]); // [x-offset, y-offset]
     this.viewScroll.scrollToAnchor(anchor);
   }
 
