@@ -7,7 +7,7 @@ import { MapPostItem } from '../interfaces/post-types';
 export const postResolver: ResolveFn<MapPostItem | null> = (route: ActivatedRouteSnapshot) => {
   const blogService = inject(ContentfulService);
   const router = inject(Router);
-  const navigation = inject(Router).getCurrentNavigation();
+  const navigation = inject(Router).currentNavigation();
 
   const slugFromUrl = route.params['slug'];
   const idFromState = navigation?.extras.state?.['id'];
