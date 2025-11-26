@@ -1,10 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { metaTagModel } from 'src/app/interfaces/meta-tag.model';
 import { MetaTagService } from '@shared/services/meta-tag.service';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { JsonPipe, NgClass } from '@angular/common';
+// import { JsonPipe, NgClass } from '@angular/common';
 import { ValidatorsService } from '@shared/services/validators.service';
 
 @Component({
@@ -15,7 +14,6 @@ import { ValidatorsService } from '@shared/services/validators.service';
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    NgClass,
     
   ],
   
