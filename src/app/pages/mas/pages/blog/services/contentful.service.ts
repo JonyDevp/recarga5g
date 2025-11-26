@@ -1,7 +1,7 @@
 import {Injectable } from '@angular/core';
-import { environment } from '@envs/environment';
 import { createClient } from 'contentful';
-import { catchError, from, map, Observable, of, shareReplay, tap, } from 'rxjs';
+import { environment } from '@envs/environment';
+import { catchError, from, map, Observable, of, shareReplay } from 'rxjs';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { TypePostSkeleton } from '../interfaces/content-types';
 import * as Contentful from 'contentful';
