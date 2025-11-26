@@ -13,19 +13,14 @@ export const masRoutes: Routes = [
         loadComponent: () => import('@mas/pages/faqs/faqs.component')
     },
 
-    {
-        path: 'reportar-compra',
-        loadComponent: () => import('@mas/pages/reportar-compra/reportar-compra.component')
-    },
+    // {
+    //     path: 'reportar-compra',
+    //     loadComponent: () => import('@mas/pages/reportar-compra/reportar-compra.component')
+    // },
 
     {
         path: 'blog',
         loadComponent: () => import('@mas/pages/blog/blog.component')
-    },
-
-      {
-        path: 'blog/tag/:id',
-        loadComponent: () => import('@mas/pages/blog/pages/blog-tag/blog-tag.component'),
     },
 
     {
