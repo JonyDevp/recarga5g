@@ -9,7 +9,8 @@ import { ThemesService } from '@shared/services/themes.service';
   selector: 'app-terminales',
   imports: [
     CardProductComponent,
-    DoubtsComponent
+    DoubtsComponent,
+    
 ],
   templateUrl: 'terminales.component.html',
   styles: [``],
