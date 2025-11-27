@@ -18,20 +18,19 @@
         <h1 class="text-4xl font-semibold text-left lg:text-center mb-3">Preguntas frecuentes para vender recargas</h1>
         <p class="text-left lg:text-center mb-4">Consulta las preguntas mas frecuentes que tenemos acerca de nuestras plataformas</p>
         <p class="mb-4 text-left lg:text-center">Preguntas y respuestas frecuentes para vender recargas electrónicas</p>
-        <form action="">
-            <div class="relative mb-6 max-w-96 mx-auto">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
-                        class="size-6" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-                    </svg>
-                </div>
-                <input (focus)="isOpenModal.set(true)" type="text" id="input-group-1"
-                    class="w-full block text-slate-500 ps-11 p-2.5 dark:text-white rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 border border-slate-400 dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
-                    placeholder="Buscar pregunta...">
-            </div>
-        </form>
+         
+<div class="max-w-sm mx-auto">
+
+    <button (click)="isOpenModal.set(true)"  type="button" class="w-full text-gray-500 dark:text-blue-300 bg-gray-50 dark:bg-blue-400/10 font-medium rounded-md text-sm px-4 py-2.5 text-center flex items-center border border-slate-400 dark:border-slate-600 gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+                           class="size-6" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round"
+                               d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                       </svg>
+       Buscar...
+   </button>
+</div>
+
     </div>
 
     <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
@@ -43,14 +42,14 @@
                         <nav class="navbar-faqs">
                             <!-- general -->
                             <div class="navbar-section border-b border-gray-300">
-                                <app-faqs-menu [menuItems]="faqsMenuOne" [activeSection]="activeTitle" />
+                                <app-faqs-menu [menuItems]="faqsMenuOne" [activeSection]="activeTitle()" />
                             </div>
 
                             <!-- platform -->
                             <div class="navbar-section my-6 border-b border-gray-300">
                                 <!-- <span class="font-semibold text-sm">Plataformas</span> -->
-                                <app-faqs-menu [menuItems]="faqsMenuTwo" [activeSection]="activeTitle" />
-                                <app-faqs-menu [menuItems]="faqsMenuThree" [activeSection]="activeTitle" />
+                                <app-faqs-menu [menuItems]="faqsMenuTwo" [activeSection]="activeTitle()" />
+                                <app-faqs-menu [menuItems]="faqsMenuThree" [activeSection]="activeTitle()" />
                             </div>
 
                             <!-- terminales -->
