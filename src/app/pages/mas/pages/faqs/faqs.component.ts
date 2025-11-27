@@ -31,7 +31,7 @@ import { FaqsService, MenuFaq } from './faqs.service';
 
 })
 export default class FaqsComponent {
-
+    mail = 'tae.celular@gmail.com';
   faqsTitle = viewChildren<ElementRef>('titleSection');
   panelOpenState = false;
   item: number = 0;

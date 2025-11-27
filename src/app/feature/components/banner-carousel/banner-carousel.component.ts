@@ -27,7 +27,7 @@ import { RouterLink } from '@angular/router';
       class="sw-hero-container flex relative p-0 mx-auto size-full overflow-hidden"
       #swBannerElement
     >
-      @for (banner of banners(); track banner.id; let firstItem = $first) {
+      @for (banner of banners(); track $index; let firstItem = $first) {
       <swiper-slide
         class="sw-hero-slide max-w-[1920px] w-full block h-auto shrink-0"
         
