@@ -1,8 +1,8 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, inject, OnInit, CUSTOM_ELEMENTS_SCHEMA, PLATFORM_ID, ChangeDetectionStrategy, signal, Renderer2, DOCUMENT } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
+// import { FormBuilder } from '@angular/forms';
+// import { Validators } from '@angular/forms';
 
 //Services
 import { MetaTagService } from '@shared/services/meta-tag.service';
@@ -11,10 +11,10 @@ import { GetSafeSvgService } from '@shared/services/get-safe-svg.service';
 
 import { States } from 'src/app/interfaces/address.interface';
 
-import confetti from 'canvas-confetti';
-import { NgxMaskDirective } from 'ngx-mask';
-import { CapitalizeLettersDirective } from '@shared/directives/capitalize-letters';
-import { ValidatorsService } from '@shared/services/validators.service';
+// import confetti from 'canvas-confetti';
+// import { NgxMaskDirective } from 'ngx-mask';
+// import { CapitalizeLettersDirective } from '@shared/directives/capitalize-letters';
+// import { ValidatorsService } from '@shared/services/validators.service';
 import StepsRegister, { StepsForRegister } from './steps-register/steps-register';
 
 @Component({
@@ -22,12 +22,13 @@ import StepsRegister, { StepsForRegister } from './steps-register/steps-register
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NgxMaskDirective,
-    CapitalizeLettersDirective,
+    // NgxMaskDirective,
+    // CapitalizeLettersDirective,
     StepsRegister
   ],
   templateUrl: './registro.component.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  styles: [` `],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class RegistroComponent implements OnInit {
@@ -35,164 +36,164 @@ export default class RegistroComponent implements OnInit {
   signUpForm!: FormGroup;
   statesOfCountry: States[] = [];
   steps: StepsForRegister[] = [];
-  private formBuilder = inject(FormBuilder);
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly renderer2 = inject(Renderer2);
-  private readonly document = inject(DOCUMENT);
+  // private formBuilder = inject(FormBuilder);
+  // private readonly platformId = inject(PLATFORM_ID);
+  // private readonly renderer2 = inject(Renderer2);
+  // private readonly document = inject(DOCUMENT);
 
   private readonly metaTagService = inject(MetaTagService);
   private readonly svgService = inject(GetSafeSvgService);
-  private previousBodyOverflow: string | null = null;
-  private readonly validatorService = inject(ValidatorsService);
+  // private previousBodyOverflow: string | null = null;
+  // private readonly validatorService = inject(ValidatorsService);
 
-  handlerModal = signal(false);
-  confettiTimeout: any = null;
+  // handlerModal = signal(false);
+  // confettiTimeout: any = null;
 
-  private initSignUpForm() {
-    this.signUpForm = this.formBuilder.group({
-      bussinesName: ['', [this.validatorService.noWriteSpaceValid, Validators.minLength(3)]],
-      fullName: ['', [Validators.required, this.validatorService.noWriteSpaceValid]],
-      email: ['', [Validators.required, this.validatorService.validEmail, this.validatorService.noWriteSpaceValid]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      address: this.formBuilder.group({
-        zip: ['', [Validators.required, Validators.maxLength(5), Validators.pattern(/^\d{5}$/)]],
-        state: ['', [Validators.required]],
-        mun_deleg: ['', [Validators.required]],
-        col: ['', [Validators.required]],
-        street: ['', [Validators.required]],
-      }),
+  // private initSignUpForm() {
+  //   this.signUpForm = this.formBuilder.group({
+  //     bussinesName: ['', [this.validatorService.noWriteSpaceValid, Validators.minLength(3)]],
+  //     fullName: ['', [Validators.required, this.validatorService.noWriteSpaceValid]],
+  //     email: ['', [Validators.required, this.validatorService.validEmail, this.validatorService.noWriteSpaceValid]],
+  //     phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+  //     address: this.formBuilder.group({
+  //       zip: ['', [Validators.required, Validators.maxLength(5), Validators.pattern(/^\d{5}$/)]],
+  //       state: ['', [Validators.required]],
+  //       mun_deleg: ['', [Validators.required]],
+  //       col: ['', [Validators.required]],
+  //       street: ['', [Validators.required]],
+  //     }),
 
-    })
-  }
+  //   })
+  // }
 
-  constructor() {
-    this.initSignUpForm();
-  }
+  // constructor() {
+  //   this.initSignUpForm();
+  // }
 
  
-  isInvalidField(field: string): boolean | undefined {
-    return this.signUpForm.get(field)?.invalid && this.signUpForm.get(field)?.touched;
-  }
+  // isInvalidField(field: string): boolean | undefined {
+  //   return this.signUpForm.get(field)?.invalid && this.signUpForm.get(field)?.touched;
+  // }
 
-  register() {
+  // register() {
 
-    if (this.signUpForm.invalid) {
-      this.markFormGroupTouched(this.signUpForm);
-      return;
-    }
+  //   if (this.signUpForm.invalid) {
+  //     this.markFormGroupTouched(this.signUpForm);
+  //     return;
+  //   }
 
-    const formValues = this.signUpForm.value;
-    this.openModal()
-    //TODO: Llamar al servicio 
+  //   const formValues = this.signUpForm.value;
+  //   this.openModal()
+  //   //TODO: Llamar al servicio 
 
-  }
+  // }
 
-  openModal(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const body = this.document.body;
-      this.previousBodyOverflow = body.style.overflow || '';
+  // openModal(): void {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     const body = this.document.body;
+  //     this.previousBodyOverflow = body.style.overflow || '';
 
-      this.renderer2.setStyle(body, 'overflow', 'hidden');
-      this.handlerModal.set(true);
+  //     this.renderer2.setStyle(body, 'overflow', 'hidden');
+  //     this.handlerModal.set(true);
 
-      this.confettiTimeout = setTimeout(() => {
-        if (this.handlerModal()) {
-          this.launchConfetti();
-        }
-      }, 1000);
-    }
-  }
+  //     this.confettiTimeout = setTimeout(() => {
+  //       if (this.handlerModal()) {
+  //         this.launchConfetti();
+  //       }
+  //     }, 1000);
+  //   }
+  // }
 
-  closeModal(): void {
+  // closeModal(): void {
 
-    if (isPlatformBrowser(this.platformId)) {
-      const body = this.document.body;
-      this.handlerModal.set(false);
-
-
-      if (this.previousBodyOverflow !== null) {
-        if (this.previousBodyOverflow) {
-          this.renderer2.setStyle(body, 'overflow', this.previousBodyOverflow);
-        } else {
-          // Si antes no había estilo inline, lo eliminamos
-          this.renderer2.removeStyle(body, 'overflow');
-        }
-        this.previousBodyOverflow = null;
-      }
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     const body = this.document.body;
+  //     this.handlerModal.set(false);
 
 
-
-    }
-    // 2) Limpia y reinicia el formulario
-    this.cleanForm();
-
-    // 3) Cancela el timeout del confetti, si aún no se ha disparado
-    if (this.confettiTimeout) {
-      clearTimeout(this.confettiTimeout);
-      this.confettiTimeout = null;
-    }
-  }
+  //     if (this.previousBodyOverflow !== null) {
+  //       if (this.previousBodyOverflow) {
+  //         this.renderer2.setStyle(body, 'overflow', this.previousBodyOverflow);
+  //       } else {
+  //         // Si antes no había estilo inline, lo eliminamos
+  //         this.renderer2.removeStyle(body, 'overflow');
+  //       }
+  //       this.previousBodyOverflow = null;
+  //     }
 
 
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach((control) => {
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
-      } else {
-        control.markAsTouched();
-      }
-    });
-  }
 
-  private cleanForm(): void {
-    this.signUpForm.reset();
-    this.signUpForm.markAsPristine();
-    this.signUpForm.markAsUntouched();
-    this.signUpForm.updateValueAndValidity();
-  }
+  //   }
+  //   // 2) Limpia y reinicia el formulario
+  //   this.cleanForm();
 
-  launchConfetti() {
-    const count = 200;
-    const defaults = {
-      origin: { y: 0.7 }
-    };
+  //   // 3) Cancela el timeout del confetti, si aún no se ha disparado
+  //   if (this.confettiTimeout) {
+  //     clearTimeout(this.confettiTimeout);
+  //     this.confettiTimeout = null;
+  //   }
+  // }
 
-    function fire(particleRatio: number, opts: any) {
-      confetti({
-        ...defaults,
-        ...opts,
-        particleCount: Math.floor(count * particleRatio)
-      });
-    }
 
-    // Multiple confetti bursts with different settings
-    fire(0.25, {
-      spread: 26,
-      startVelocity: 55,
-    });
+  // private markFormGroupTouched(formGroup: FormGroup) {
+  //   Object.values(formGroup.controls).forEach((control) => {
+  //     if (control instanceof FormGroup) {
+  //       this.markFormGroupTouched(control);
+  //     } else {
+  //       control.markAsTouched();
+  //     }
+  //   });
+  // }
 
-    fire(0.2, {
-      spread: 60,
-    });
+  // private cleanForm(): void {
+  //   this.signUpForm.reset();
+  //   this.signUpForm.markAsPristine();
+  //   this.signUpForm.markAsUntouched();
+  //   this.signUpForm.updateValueAndValidity();
+  // }
 
-    fire(0.35, {
-      spread: 100,
-      decay: 0.91,
-      scalar: 0.8
-    });
+  // launchConfetti() {
+  //   const count = 200;
+  //   const defaults = {
+  //     origin: { y: 0.7 }
+  //   };
 
-    fire(0.1, {
-      spread: 120,
-      startVelocity: 25,
-      decay: 0.92,
-      scalar: 1.2
-    });
+  //   function fire(particleRatio: number, opts: any) {
+  //     confetti({
+  //       ...defaults,
+  //       ...opts,
+  //       particleCount: Math.floor(count * particleRatio)
+  //     });
+  //   }
 
-    fire(0.1, {
-      spread: 120,
-      startVelocity: 45,
-    });
-  }
+  //   // Multiple confetti bursts with different settings
+  //   fire(0.25, {
+  //     spread: 26,
+  //     startVelocity: 55,
+  //   });
+
+  //   fire(0.2, {
+  //     spread: 60,
+  //   });
+
+  //   fire(0.35, {
+  //     spread: 100,
+  //     decay: 0.91,
+  //     scalar: 0.8
+  //   });
+
+  //   fire(0.1, {
+  //     spread: 120,
+  //     startVelocity: 25,
+  //     decay: 0.92,
+  //     scalar: 1.2
+  //   });
+
+  //   fire(0.1, {
+  //     spread: 120,
+  //     startVelocity: 45,
+  //   });
+  // }
 
 
   ngOnInit(): void {
@@ -295,11 +296,11 @@ export default class RegistroComponent implements OnInit {
 
   }
 
-  onKeydown(event: KeyboardEvent): void {
-    console.log('entro')
-    if (event.key === 'Escape' && this.handlerModal()) {
-      this.closeModal();
-    }
-  }
+  // onKeydown(event: KeyboardEvent): void {
+  //   console.log('entro')
+  //   if (event.key === 'Escape' && this.handlerModal()) {
+  //     this.closeModal();
+  //   }
+  // }
 }
 

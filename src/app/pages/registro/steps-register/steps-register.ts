@@ -27,7 +27,7 @@ import { SwiperOptions } from 'swiper/types';
               >
                 {{ step.title }}
               </h5>
-              <p class="text-gray-100 text-lg">
+              <p class="text-white">
                 {{ step.description }}
               </p>
             </div>

@@ -1,6 +1,6 @@
 <!-- component -->
 <div
-  class="mt-24 md:mt-8 lg:mt-8 h-full md:h-screen lg:h-screen flex flex-col md:flex-col lg:flex-row"
+  class="mt-24 md:mt-8 lg:mt-8 h-full md:h-screen lg:h-screen flex flex-col md:flex-col lg:flex-row overflow-hidden"
 >
   <div
     class="flex w-full lg:w-1/2 bg-gradient-to-tr from-red-500 to-red-700 dark:from-indigo-800 dark:to-sky-700 justify-center items-center relative"
@@ -14,9 +14,23 @@
   </div>
 
   <div
-    class="mt-10 lg:mt-0 flex w-full lg:w-1/2 justify-center items-center h-full"
+    class="mt-12 flex w-full lg:w-1/2 justify-center items-center h-full"
   >
-    <form
+
+   <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSfV-lQ1VvgiDYilfmasenGlEFgzo3REdOicKoGbFzTQyj-zWQ/viewform?embedded=true"
+  
+   style="width: 100%; height: 100vh; overflow: hidden; overflow-y: scroll;"
+   
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0">
+
+    Cargando…
+  </iframe>
+
+
+    <!-- <form
       class="w-full lg:max-w-[600px] px-4"
       autocomplete="off"
       [formGroup]="signUpForm"
@@ -339,11 +353,11 @@
       >
         Registrarme
       </button>
-    </form>
+    </form> -->
   </div>
 </div>
 
-@if (handlerModal()) {
+<!-- @if (handlerModal()) {
 <div
   (click)="closeModal()"
   (keydown)="onKeydown($event)"
@@ -378,7 +392,7 @@
     </div>
   </div>
 </div>
-}
+} -->
 
 <!-- <div class="form-section">
   <pre>
