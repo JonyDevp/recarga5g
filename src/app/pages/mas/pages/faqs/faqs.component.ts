@@ -23,7 +23,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { FaqsMenuComponent } from './components/faqs-menu/faqs-menu.component';
 import { FaqsService, MenuFaq } from './faqs.service';
-import { FaqsFilterModalComponent } from './components/faqs-modal-card/faqs-modal-card.component';
+import { SearchModalComponent } from './components/search-modal/search-modal.component';
 import { CountUpModule } from "ngx-countup";
 
 @Component({
@@ -35,7 +35,7 @@ import { CountUpModule } from "ngx-countup";
     width: 0;
 }
     `],
-  imports: [RouterLink, FaqsMenuComponent, FaqsFilterModalComponent, CountUpModule],
+  imports: [RouterLink, FaqsMenuComponent, SearchModalComponent, CountUpModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
