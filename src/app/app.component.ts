@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, HostBinding, HostListener, inject, OnInit, PLATFORM_ID, DOCUMENT } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {  NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ContactBtnComponent } from '@shared/contact-btn/contact-btn.component';
 import { FooterComponent } from '@shared/footer/footer.component';
@@ -21,14 +20,11 @@ export class AppComponent  implements OnInit{
   title = 'recarga5g.com';
 
   showBtnScroll: boolean = false;
-  private scrollHeight = 700;
 
-  @HostBinding('class') componetCssClass: any;
-
-  private readonly document = inject(DOCUMENT);
-  private readonly platform_id = inject(PLATFORM_ID);
   private readonly router = inject(Router);
  private readonly themeService = inject(ThemesService);
+
+   platformID = inject(PLATFORM_ID);
 
   // private gtmService: GoogleTagManagerService,
   
@@ -59,22 +55,5 @@ ngOnInit(): void {
       });
     }
   }
-
-  @HostListener('window:scroll')
-  ScrollTop():void {
-   if(isPlatformBrowser (this.platform_id)) {
-     const yoffSet = window.scrollY;
-     const scrollTop = this.document.documentElement.scrollTop || this.document.body.scrollTop;
-     this.showBtnScroll = (yoffSet || scrollTop) > this.scrollHeight;
- }
-}
-
-
-  onScrollTop():void {
-    if(isPlatformBrowser (this.platform_id)) {
-      this.document.documentElement.scrollTop = 0;
-    }
-  }
-
 
 }
