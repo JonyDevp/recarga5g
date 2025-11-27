@@ -6,64 +6,35 @@ import {
   signal,
   viewChildren,
   effect,
-  Renderer2,
-  DOCUMENT
 } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
-import { metaTagModel } from 'src/app/interfaces/meta-tag.model';
-import { MetaTagService } from '../../../../shared/services/meta-tag.service';
 import {
   isPlatformBrowser,
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import {
-  animate,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { FaqsMenuComponent } from './components/faqs-menu/faqs-menu.component';
-import { FaqsService, MenuFaq } from './faqs.service';
 import { FaqsFilterModalComponent } from './components/faqs-modal-card/faqs-modal-card.component';
+import { MetaTagService } from '@shared/services/meta-tag.service';
+import { FaqsService, MenuFaq } from './faqs.service';
 
 @Component({
   selector: 'app-faqs',
   standalone: true,
   templateUrl: './faqs.component.html',
-  styles: [
-    `
-      .faqs-modal-card::-webkit-scrollbar {
-        width: 0;
-      }
-    `,
-  ],
+  styles: [`
+    .hidden-scroll::-webkit-scrollbar {
+    width: 0;
+}
+    `],
   imports: [RouterLink, FaqsMenuComponent, FaqsFilterModalComponent],
 
-  animations: [
-    //*contenedor y dispador de las animaciones
-    trigger('isOpen', [
-      transition(':enter', [
-        style({ transform: 'scale(0.95)', opacity: 0 }),
-        animate('100ms ease-out', style({ transform: 'scale(1)', opacity: 1 })),
-      ]),
-      transition(':leave', [
-        style({ transform: 'scale(1)', opacity: 1 }),
-        animate(
-          '75ms ease-in',
-          style({ transform: 'scale(0.95)', opacity: 0 })
-        ),
-      ]),
-    ]),
-  ],
 })
 export default class FaqsComponent {
 
-  // faqsTitle = viewChildren<QueryList<ElementRef>>('titleSection')
   faqsTitle = viewChildren<ElementRef>('titleSection');
   panelOpenState = false;
   item: number = 0;
-  mail = 'tae.celular@gmail.com';
 
   private readonly title = inject(Title);
   private readonly metaTagService = inject(MetaTagService);
@@ -76,7 +47,6 @@ export default class FaqsComponent {
   faqsMenuThree: MenuFaq[] = [];
   faqsMenuFour: MenuFaq[] = [];
   isOpenModal = signal(false);
-
 
   constructor() {
     effect(() => {
@@ -107,8 +77,6 @@ export default class FaqsComponent {
     });
   }
 
-
-
   closeModal(event: boolean){
    this.isOpenModal.set(event)
   }
@@ -136,11 +104,6 @@ scrollToTitle(id: string) {
     this.faqsMenuTwo = this.faqsService.getMenuTwo();
     this.faqsMenuThree = this.faqsService.getMenuThree();
     this.faqsMenuFour = this.faqsService.getMenuFour();
-
-    
-    // this.metaTagService.generateTags({
-    //   ...this.tag,
-    // });
   }
 }
 
