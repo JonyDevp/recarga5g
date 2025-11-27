@@ -6,17 +6,25 @@ import {
   signal,
   viewChildren,
   effect,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnInit,
+  runInInjectionContext,
+  EnvironmentInjector,
+  OnDestroy,
+
 } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
+import { MetaTagService } from '@shared/services/meta-tag.service';
 import {
   isPlatformBrowser,
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FaqsMenuComponent } from './components/faqs-menu/faqs-menu.component';
-import { FaqsFilterModalComponent } from './components/faqs-modal-card/faqs-modal-card.component';
-import { MetaTagService } from '@shared/services/meta-tag.service';
 import { FaqsService, MenuFaq } from './faqs.service';
+import { FaqsFilterModalComponent } from './components/faqs-modal-card/faqs-modal-card.component';
+import { CountUpModule } from "ngx-countup";
 
 @Component({
   selector: 'app-faqs',
@@ -27,63 +35,34 @@ import { FaqsService, MenuFaq } from './faqs.service';
     width: 0;
 }
     `],
-  imports: [RouterLink, FaqsMenuComponent, FaqsFilterModalComponent],
+  imports: [RouterLink, FaqsMenuComponent, FaqsFilterModalComponent, CountUpModule],
+  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export default class FaqsComponent {
-    mail = 'tae.celular@gmail.com';
+export default class FaqsComponent implements OnInit, AfterViewInit, OnDestroy {
+
   faqsTitle = viewChildren<ElementRef>('titleSection');
   panelOpenState = false;
   item: number = 0;
+  mail = 'tae.celular@gmail.com';
 
   private readonly title = inject(Title);
-  private readonly metaTagService = inject(MetaTagService);
   private platform_id = inject(PLATFORM_ID);
-  private observer!: IntersectionObserver;
+  private readonly envInjector = inject(EnvironmentInjector);
+
+  private readonly metaTagService = inject(MetaTagService);
   private readonly faqsService = inject(FaqsService);
-  activeTitle: string = '';
+
+  private observer?: IntersectionObserver;
+
   faqsMenuOne: MenuFaq[] = [];
   faqsMenuTwo: MenuFaq[] = [];
   faqsMenuThree: MenuFaq[] = [];
   faqsMenuFour: MenuFaq[] = [];
   isOpenModal = signal(false);
+  activeTitle = signal('');
 
-  constructor() {
-    effect(() => {
-      this.scrollTitleIntersection();
-    });
-  }
 
-  private scrollTitleIntersection(): void {
-    if (!isPlatformBrowser(this.platform_id)) return;
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.activeTitle = entry.target.id;
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-        rootMargin: '0px 0px -50% 0px',
-      }
-    );
-
-    this.faqsTitle().forEach((section) => {
-      const titleRef = section.nativeElement;
-      this.observer.observe(titleRef);
-    });
-  }
-
-  closeModal(event: boolean){
-   this.isOpenModal.set(event)
-  }
-
-scrollToTitle(id: string) {
-  this.faqsService.scrollToAnchor(id)
-}
 
   ngOnInit(): void {
     this.title.setTitle(
@@ -105,6 +84,57 @@ scrollToTitle(id: string) {
     this.faqsMenuThree = this.faqsService.getMenuThree();
     this.faqsMenuFour = this.faqsService.getMenuFour();
   }
+
+  ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platform_id)) return;
+    const titles = this.faqsTitle();
+    if (!titles.length) return;
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        // En zoneless: nos aseguramos de escribir señales dentro del contexto de Angular
+        runInInjectionContext(this.envInjector, () => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              const element = entry.target as HTMLElement;
+              const id = element.id;
+
+              // Actualizamos el título activo
+              this.activeTitle.set(id);
+
+              // Si solo quieres reaccionar al primer elemento visible, puedes hacer break
+              break;
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50% 0px',
+      }
+    );
+
+    // Suscribir todos los títulos al observer
+    titles.forEach((section) => {
+      this.observer!.observe(section.nativeElement);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+
+  closeModal(event: boolean) {
+    this.isOpenModal.set(event)
+  }
+
+  scrollToTitle(id: string) {
+    this.faqsService.scrollToAnchor(id)
+  }
+
+
 }
 
 
