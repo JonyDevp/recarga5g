@@ -7,7 +7,8 @@ import {
   Renderer2,
   signal,
   DOCUMENT,
-  DestroyRef
+  DestroyRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
@@ -15,6 +16,7 @@ import {
   templateUrl: './up-scroll.component.html',
   styles: [` `,],
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UpScrollComponent {
   activeScroll = signal(false);
@@ -37,6 +39,7 @@ export class UpScrollComponent {
         this.document.documentElement?.scrollTop ||
         this.document.body?.scrollTop ||
         0;
+        
       this.activeScroll.set(scrollPosition >= this.topPosToStartShowing);
     });
 
