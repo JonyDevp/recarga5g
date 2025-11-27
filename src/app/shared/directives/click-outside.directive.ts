@@ -1,42 +1,70 @@
-import { Directive, ElementRef, inject, input, OnDestroy, OnInit, output, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Renderer2,
+  DestroyRef,
+  inject,
+  input,
+  output,
+} from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Directive({
   selector: '[appClickOutside]',
   standalone: true,
 })
-export class ClickOutsideDirective implements  OnInit, OnDestroy {
+export class ClickOutsideDirective {
 
-  private readonly elementRef = inject(ElementRef);
-  private readonly renderer2 = inject(Renderer2);
-  appClickOutside = input.required<boolean>()
+  // Elemento host
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly renderer = inject(Renderer2);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly document = inject(DOCUMENT);
+
+  // Control externo para activar o desactivar la detección
+  appClickOutside = input.required<boolean>();
+
+  // Evento que se emite cuando se hace click fuera
   outSideClick = output<void>();
-  private unlistener: (() => void) | undefined;
 
-  onDocumentClick = (event: Event) => {
-   if (!this.appClickOutside()) return;
+  private unlisten?: () => void;
 
-  const host = this.elementRef.nativeElement as HTMLElement;
-  const area = host.parentElement ?? host; // mismo truco que usas ahora
+  constructor() {
+    // Evitamos registrar eventos en entornos que no sean navegador (SSR, tests)
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
-  if (!area.contains(event.target as Node)) {
-    this.outSideClick.emit();
-  }
-  };
-
-  
-
-  ngOnInit(): void {
-    this.unlistener = this.renderer2.listen(
-      'document',
+    // Registramos el listener sobre el document usando Renderer2
+    this.unlisten = this.renderer.listen(
+      this.document,
       'click',
-      this.onDocumentClick
+      (event: Event) => this.onDocumentClick(event),
     );
+
+    // Limpieza automática con DestroyRef (sin implementar OnDestroy)
+    this.destroyRef.onDestroy(() => {
+      if (this.unlisten) {
+        this.unlisten();
+        this.unlisten = undefined;
+      }
+    });
   }
 
-  ngOnDestroy(): void {
-    if (this.unlistener) {
-      this.unlistener();
+  private onDocumentClick(event: Event): void {
+    // Si está desactivada la directiva, no hacemos nada
+    if (!this.appClickOutside()) {
+      return;
+    }
+
+    const hostElement = this.elementRef.nativeElement;
+    const clickedElement = event.target as Node | null;
+
+    // Si el click fue fuera del elemento host, emitimos el evento
+    if (clickedElement && !hostElement.contains(clickedElement)) {
+      this.outSideClick.emit();
     }
   }
-
- }
+}
