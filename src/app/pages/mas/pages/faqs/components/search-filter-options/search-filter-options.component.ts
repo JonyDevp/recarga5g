@@ -10,7 +10,7 @@ import { FaqsService, TitleSection } from '../../faqs.service';
 
             <ul>
                 <li class="mb-2">
-                    @for (title of sectionTitle(); track $index) {
+                    @for (title of sectionTitle(); track title.id) {
                         <button 
                         type="button" 
                         (click)="scrollToTitle(title.id)"

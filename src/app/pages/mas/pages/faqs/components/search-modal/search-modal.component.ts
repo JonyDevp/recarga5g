@@ -110,7 +110,7 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
     </div>
     }
   `,
-   
+
   styles: `
   .hidden-scroll::-webkit-scrollbar {
     width: 0;
@@ -118,11 +118,20 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
     `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchModalComponent implements OnInit, OnDestroy {
+export class SearchModalComponent implements OnDestroy {
+ 
   private readonly faqsService = inject(FaqsService);
   private readonly document = inject(DOCUMENT);
   private readonly renderer2 = inject(Renderer2);
-  private readonly platform_id = inject(PLATFORM_ID);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+
+  isOpenModal = input.required<boolean>();
+  closeModal = output<boolean>();
+
+
+  readonly searchTerm = signal('');
 
   // Datos originales
   originalSections = signal<{
@@ -131,53 +140,15 @@ export class SearchModalComponent implements OnInit, OnDestroy {
     planetaemx: TitleSection[];
     terminales: TitleSection[];
   }>({
-    generales: [],
-    pagaqui: [],
-    planetaemx: [],
-    terminales: [],
-  });
-  searchTerm = signal('');
-  isOpenModal = input.required<boolean>();
-  closeModal = output<boolean>();
-
-  handlerScrollDocument(): void {
-    if (isPlatformBrowser(this.platform_id)) {
-      const body = this.document.body;
-
-      if (this.isOpenModal()) {
-        this.renderer2.setStyle(body, 'overflow', 'hidden');
-      } else {
-        this.renderer2.removeStyle(body, 'overflow');
-      }
-    }
-  }
-
-  onOverlayClick(): void {
-    this.closeModal.emit(false);
-  }
-
-  private scrollEffect = effect(() => {
-    if (isPlatformBrowser(this.platform_id)) {
-      const isOpen = this.isOpenModal();
-      const body = this.document.body;
-
-      if (isOpen) {
-        this.renderer2.setStyle(body, 'overflow', 'hidden');
-      } else {
-        this.renderer2.removeStyle(body, 'overflow');
-      }
-    }
+    generales: this.faqsService.getFaqSection('generales'),
+    pagaqui: this.faqsService.getFaqSection('pagaqui'),
+    planetaemx: this.faqsService.getFaqSection('planetaemx'),
+    terminales: this.faqsService.getFaqSection('terminales'),
   });
 
-  onSearchChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-
-    this.searchTerm.set(input.value.trim());
-  }
-
-  // Secciones filtradas
+   // Secciones filtradas
   filteredSections = computed(() => {
-    const term = this.searchTerm().toLowerCase();
+    const term = this.searchTerm().toLowerCase().trim();
     const sections = this.originalSections();
 
     if (!term) return sections;
@@ -192,24 +163,40 @@ export class SearchModalComponent implements OnInit, OnDestroy {
     };
   });
 
-  // Verifica si hay resultados en alguna sección
+    // Verifica si hay resultados en alguna sección
   hasResults(): boolean {
     const sections = this.filteredSections();
     return Object.values(sections).some((section) => section.length > 0);
   }
 
-  ngOnInit(): void {
-    this.originalSections.set({
-      generales: this.faqsService.getFaqSection('generales'),
-      pagaqui: this.faqsService.getFaqSection('pagaqui'),
-      planetaemx: this.faqsService.getFaqSection('planetaemx'),
-      terminales: this.faqsService.getFaqSection('terminales'),
-    });
+    // Effect que bloquea el scroll del body cuando el modal está abierto
+  private readonly bodyScrollEffect = effect(() => {
+    if (!this.isBrowser) return;
+
+    const isOpen = this.isOpenModal();
+    const body = this.document.body;
+
+    if (isOpen) {
+      this.renderer2.setStyle(body, 'overflow', 'hidden');
+    } else {
+      this.renderer2.removeStyle(body, 'overflow');
+    }
+  });
+
+ 
+    onOverlayClick(): void {
+    this.closeModal.emit(false);
+  }
+
+  onSearchChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    this.searchTerm.set(input.value.trim());
   }
 
   ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platform_id) && this.isOpenModal()) {
-      this.renderer2.removeStyle(this.document.body, 'overflow');
-    }
+        if (!this.isBrowser) return;
+    this.renderer2.removeStyle(this.document.body, 'overflow');
+
   }
 }
