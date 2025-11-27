@@ -4,15 +4,12 @@ import {
   PLATFORM_ID,
   inject,
   signal,
-  viewChild,
-  ElementRef,
   OnDestroy,
   DOCUMENT
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { ThemesService } from '@shared/services/themes.service';
-import { animate, style, transition, trigger } from '@angular/animations';
 import { ClickOutsideDirective } from '@shared/directives/click-outside.directive';
 import { MenuItem } from '@interfaces/header.interface';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -54,29 +51,16 @@ import { CountUpModule } from "ngx-countup";
     ClickOutsideDirective,
     CountUpModule
   ],
-  animations: [
-    //*contenedor y dispador de las animaciones
-    trigger('isOpen', [
-      transition(':enter', [
-        style({ transform: 'scale(0.95)', opacity: 0 }),
-        animate('100ms ease-out', style({ transform: 'scale(1)', opacity: 1 }))
-      ]),
-      transition(':leave', [
-        style({ transform: 'scale(1)', opacity: 1 }),
-        animate('75ms ease-in', style({ transform: 'scale(0.95)', opacity: 0 }))
-      ])
-    ]),
-  ],
+
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnDestroy {
 
   isOpen = signal(false);
   active = signal(false);
-  isOpenNotf = signal(false)
+  // isOpenNotf = signal(false);
   activeNavOverlay = signal(false);
   isOpenNav = signal(false);
-  //signal que indica cual esta abierto
   readonly isOpenMenu = signal<number>(-1);
   lastClickedMenu = signal<number | null>(null);
 
@@ -259,14 +243,14 @@ export class HeaderComponent implements OnDestroy {
 
             },
 
-            {
-              id: '0f3dafcf-a4c8',
-              label: 'Reportar compra',
-              isActiveClass: 'text-slate-200 bg-gray-700',
-              routerLink: '/mas/reportar-compra',
-              svgIcon: this.getSafeSvg(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>`),
-              info: 'Reporta compra de saldo'
-            },
+            // {
+            //   id: '0f3dafcf-a4c8',
+            //   label: 'Reportar compra',
+            //   isActiveClass: 'text-slate-200 bg-gray-700',
+            //   routerLink: '/mas/reportar-compra',
+            //   svgIcon: this.getSafeSvg(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>`),
+            //   info: 'Reporta compra de saldo'
+            // },
 
             {
               id: 'c397e154-b2c4',
