@@ -19,7 +19,7 @@ import { NgxMaskDirective } from 'ngx-mask';
   imports: [
     ReactiveFormsModule,
     NotSpecialCharacterDirective,
-    JsonPipe,
+    // JsonPipe,
     NgClass,
     NgxMaskDirective
   ],
