@@ -21,6 +21,28 @@ export class ContentfulService {
 
   // CACHE
   private tags$?: Observable<MapTagResponse>;
+
+
+    getAllPostSlugs(limit = 1000): Observable<string[]> {
+    return from(
+      this.client.getEntries({
+        content_type: 'blogRecarga5g', // ajusta al content_type que ya usas
+        select: ['fields.slug'],
+        limit,
+      })
+    ).pipe(
+      map((resp: any) =>
+        resp.items
+          .map((item: any) => item.fields.slug as string | undefined)
+          .filter((slug): slug is string => !!slug)
+      ),
+      catchError((error) => {
+        console.error('[ContentfulService] Error al obtener slugs', error);
+        return of([] as string[]);
+      })
+    );
+  }
+
   /**
   * Obtener posts con paginación y filtros opcionales
   */

@@ -1,5 +1,8 @@
 // app.routes.server.ts
+import { inject } from '@angular/core';
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import { ContentfulService } from '@mas/pages/blog/services/contentful.service';
+import { firstValueFrom } from 'rxjs';
 export const serverRoutes: ServerRoute[] = [
 
      // Home
@@ -27,8 +30,19 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'mas/blog', renderMode: RenderMode.Prerender },
 
   // Blog dinámico → SSR para SEO
-  { path: 'mas/blog/post/:slug', renderMode: RenderMode.Server },
+  {
+    path: 'mas/blog/post/:slug',
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      const contentful = inject(ContentfulService);
 
+      // Convertimos el Observable a Promise para poder usar await
+      const slugs = await firstValueFrom(contentful.getAllPostSlugs());
+
+      // Angular generará un HTML para cada slug
+      return slugs.map(slug => ({ slug }));
+    },
+  },
   // Legales
   { path: 'mas/legal/politicas', renderMode: RenderMode.Prerender },
   { path: 'mas/legal/condiciones', renderMode: RenderMode.Prerender },
