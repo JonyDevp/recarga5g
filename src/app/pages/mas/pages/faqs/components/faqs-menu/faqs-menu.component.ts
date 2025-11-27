@@ -1,6 +1,5 @@
 import { NgClass, ViewportScroller } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
-// import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { MenuFaq } from '../../faqs.service';
 
 

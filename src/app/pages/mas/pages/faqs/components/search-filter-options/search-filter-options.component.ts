@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, input, output } from '@angu
 import { FaqsService, TitleSection } from '../../faqs.service';
 
 @Component({
-  selector: 'app-faqs-menu-filter',
+  selector: 'app-search-filter-options',
   imports: [],
   template: `
    <div class="pt-4 px-4 pb-3">
@@ -29,7 +29,7 @@ import { FaqsService, TitleSection } from '../../faqs.service';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FaqsMenuFilterComponent {
+export class SearchFilterOptionsComponent {
   title = input.required<string>();
   sectionTitle = input.required<TitleSection[]>();
   itemSelected = output<void>();

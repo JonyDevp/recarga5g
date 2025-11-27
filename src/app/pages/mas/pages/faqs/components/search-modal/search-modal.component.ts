@@ -14,12 +14,12 @@ import {
   DOCUMENT
 } from '@angular/core';
 import { FaqsService, TitleSection } from '../../faqs.service';
-import { FaqsMenuFilterComponent } from '../faqs-menu-filter/faqs-menu-filter.component';
+import { SearchFilterOptionsComponent } from '../search-filter-options/search-filter-options.component';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-faqs-modal-card',
-  imports: [FaqsMenuFilterComponent],
+  selector: 'app-search-modal',
+  imports: [SearchFilterOptionsComponent],
   template: `
     @if(isOpenModal()) {
     <div
@@ -36,7 +36,7 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
         class="faqs-modal-card rounded-md max-h-96 max-w-screen-sm w-full relative overflow-hidden overflow-y-auto shadow-lg pointer-events-auto bg-white dark:bg-slate-700 text-gray-800 mx-auto z-40 opacity-100"
       >
         <form
-          action=""
+          autocomplete="off"
           class="border-b border-b-slate-50 dark:border-b-slate-600"
         >
           <div class="relative">
@@ -59,8 +59,10 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
               </svg>
             </div>
             <input
+             
               type="text"
               id="input-group-1"
+              autocomplete="false"
               (input)="onSearchChange($event)"
               class="w-full block text-slate-500 ps-11 p-2.5 text-sm dark:text-white bg-gray-50 dark:bg-gray-700 border border-slate-300 dark:border-slate-600 focus:border-blue-500 dark:focus:border-slate-500 focus:bg-white dark:focus:bg-slate-600 focus:outline-none dark:placeholder-slate-400"
               placeholder="Buscar pregunta..."
@@ -77,28 +79,28 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
         }
 
         @if(filteredSections().generales.length > 0 || !searchTerm()) {
-                  <app-faqs-menu-filter
+                  <app-search-filter-options
                     [title]="'Preguntas Generales'"
                     [sectionTitle]="filteredSections().generales"
                     (itemSelected)="onOverlayClick()"/>
          }
 
          @if(filteredSections().pagaqui.length > 0 || !searchTerm()) { 
-           <app-faqs-menu-filter
+           <app-search-filter-options
              [title]="'Plataforma Pagaqui'"
              [sectionTitle]="filteredSections().pagaqui"
              (itemSelected)="onOverlayClick()" />
          }
        
          @if(filteredSections().planetaemx.length > 0 || !searchTerm()) { 
-           <app-faqs-menu-filter
+           <app-search-filter-options
              [title]="'Plataforma Planetaemx'"
              [sectionTitle]="filteredSections().planetaemx"
              (itemSelected)="onOverlayClick()" />
          }
 
          @if(filteredSections().terminales.length > 0 || !searchTerm()) { 
-           <app-faqs-menu-filter
+           <app-search-filter-options
              [title]="'Terminales'"
              [sectionTitle]="filteredSections().terminales"
              (itemSelected)="onOverlayClick()" />
@@ -116,7 +118,7 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
     `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FaqsFilterModalComponent implements OnInit, OnDestroy {
+export class SearchModalComponent implements OnInit, OnDestroy {
   private readonly faqsService = inject(FaqsService);
   private readonly document = inject(DOCUMENT);
   private readonly renderer2 = inject(Renderer2);
@@ -161,10 +163,8 @@ export class FaqsFilterModalComponent implements OnInit, OnDestroy {
 
       if (isOpen) {
         this.renderer2.setStyle(body, 'overflow', 'hidden');
-        console.log('Scroll bloqueado');
       } else {
         this.renderer2.removeStyle(body, 'overflow');
-        console.log('Scroll restaurado');
       }
     }
   });
