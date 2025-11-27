@@ -10,7 +10,7 @@ import { ValidatorsService } from '@shared/services/validators.service';
   selector: 'app-contacto',
   standalone: true,
   templateUrl: './contacto.component.html',
-  styleUrls: ['./contacto.component.scss'],
+  styles: [``],
   imports: [
     RouterLink,
     ReactiveFormsModule,
