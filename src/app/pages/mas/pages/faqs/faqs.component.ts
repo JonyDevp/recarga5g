@@ -5,7 +5,6 @@ import {
   inject,
   signal,
   viewChildren,
-  effect,
   ChangeDetectionStrategy,
   AfterViewInit,
   OnInit,
@@ -16,15 +15,18 @@ import {
 } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
-import { MetaTagService } from '@shared/services/meta-tag.service';
 import {
   isPlatformBrowser,
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
+
+//components
 import { FaqsMenuComponent } from './components/faqs-menu/faqs-menu.component';
-import { FaqsService, MenuFaq } from './faqs.service';
 import { SearchModalComponent } from './components/search-modal/search-modal.component';
-import { CountUpModule } from "ngx-countup";
+
+//services
+import { SeoService } from '@shared/services/seo.service';
+import { FaqsService, MenuFaq } from './faqs.service';
 
 @Component({
   selector: 'app-faqs',
@@ -35,7 +37,7 @@ import { CountUpModule } from "ngx-countup";
     width: 0;
 }
     `],
-  imports: [RouterLink, FaqsMenuComponent, SearchModalComponent, CountUpModule],
+  imports: [RouterLink, FaqsMenuComponent, SearchModalComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
@@ -50,7 +52,7 @@ export default class FaqsComponent implements OnInit, AfterViewInit, OnDestroy {
   private platform_id = inject(PLATFORM_ID);
   private readonly envInjector = inject(EnvironmentInjector);
 
-  private readonly metaTagService = inject(MetaTagService);
+  private readonly metaTagService = inject(SeoService);
   private readonly faqsService = inject(FaqsService);
 
   private observer?: IntersectionObserver;
@@ -66,16 +68,16 @@ export default class FaqsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.title.setTitle(
-      'Recarga5g.com | Consulta las preguntas mas frecuentes y resuelve todas tus dudas para vender recargas, pago de servicios y pines electrónicos'
+      'Recarga5g.com: Consulta las preguntas mas frecuentes y resuelve todas tus dudas para vender recargas, pago de servicios y pines electrónicos'
     );
 
     this.metaTagService.updateMetaTag({
-      title: 'Recarga5g.com | Consulta las preguntas mas frecuentes y resuelve todas tus dudas para vender recargas, pago de servicios y pines electrónicos',
+      title: 'Recarga5g.com: Consulta las preguntas mas frecuentes y resuelve todas tus dudas para vender recargas, pago de servicios y pines electrónicos',
       description:
         'Encuentra respuestas a las preguntas más comunes sobre cómo vender recargas, pagar servicios y adquirir pines electrónicos en Recarga5g.com. Resuelve tus dudas aquí.',
       keywords:
         'preguntas frecuentes recargas, dudas vender recargas, ayuda pago servicios, pines electrónicos, soporte Recarga5g.com,ayuda recargas, ayuda recarga5g.com, faqs recarga5g, preguntas comunes recargas, guía usuario recarga5g',
-      url: 'https://www.recarga5g.com/mas/faqs',
+      url: '/mas/faqs',
       typeContent: 'website'
     })
 
