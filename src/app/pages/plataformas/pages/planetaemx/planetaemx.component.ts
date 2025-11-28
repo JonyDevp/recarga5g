@@ -1,12 +1,11 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-
+import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-//*Interfaces importados
 
 //* Servicios importados
-
-import { MetaTagService } from '@shared/services/meta-tag.service';
+import { SeoService } from '@shared/services/seo.service';
+import { ThemesService } from '@shared/services/themes.service';
 import { ProductCarouselService } from '@feature/components/product-carousel/services/product-carousel.service';
 import { PlanetaemxService } from '@plataformas/services/planetaemx.service';
 
@@ -14,13 +13,11 @@ import { PlanetaemxService } from '@plataformas/services/planetaemx.service';
 import { CarouselApp } from '@feature/components/app-recargas/interface/app.interface';
 import { SalesMethodComponent } from '@feature/components/sales-method/sales-method.component';
 import { AppRecargasComponent } from '@feature/components/app-recargas/app-recargas.component';
-import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
-import { ProductCarouselComponent } from '@feature/components/product-carousel/product-carousel.component';
-import { RegisterStepsComponent } from '@feature/components/register-steps/register-steps.component';
 import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
-import { RouterLink } from '@angular/router';
+import { RegisterStepsComponent } from '@feature/components/register-steps/register-steps.component';
+import { ProductCarouselComponent } from '@feature/components/product-carousel/product-carousel.component';
 import { ProductsComponent } from '@plataformas/components/products/products.component';
-import { ThemesService } from '@shared/services/themes.service';
+import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
 
 @Component({
     selector: 'app-planetaemx',
@@ -76,23 +73,23 @@ export default class PlanetaemxComponent implements OnInit {
  private readonly productCarouselService = inject(ProductCarouselService);
  private readonly planetaemxService = inject(PlanetaemxService);
 
- private readonly metaTagService = inject(MetaTagService);
+ private readonly metaTagService = inject(SeoService);
  private readonly titulo = inject(Title);
 
   ngOnInit(): void {
-    this.titulo.setTitle('Recarga5g.com: Planetaemx plataforma de venta de recargas a todas las compañias en méxico');
+    this.titulo.setTitle('Recarga5g.com: Planetaemx plataforma de venta de recargas para negocios en méxico');
 
     this.productCarousel.set( this.productCarouselService.getRecargas() );
     this.appRecargaki.set( this.planetaemxService.getAppRecargaki())
     this.metaTagService.updateMetaTag({
-      title: 'Recarga5g.com: Planetaemx plataforma de venta de recargas a todas las compañias en méxico',
+      title: 'Recarga5g.com: Planetaemx plataforma de venta de recargas para negocios en méxico',
       description: 'Obtén una comisión hasta un 7.5% fijo en todos tus depósitos, Genera ganancias extras a tu negocio vendiendo recargas Bait, Telcel, Movistar y muchos mas',
-      keywords: "Planetaemx, Recargaki, App Recargaki, App Planetaemx, Cuentas planetaemx, cuentas bancarias planetaemx, cuentas recargaki, cuentas bancarias recargaki, manual planetaemx, manual recargaki, manuales planetaemx, manuales recargaki, vender recargas, plataforma para vender recargas, comision por deposito, venta recargas, comision 7.5 recargas, comision 7.5% recargas, venta de recargas movistar, Movistar, tiempo aire movistar, vender recargas movistar",
-      url: 'recarga5g.com/plataforma/planetaemx',
+      keywords: "Planetaemx, Recargaki, App Recargaki, App Planetaemx, Cuentas planetaemx, cuentas bancarias planetaemx, cuentas recargaki, cuentas bancarias recargaki, manual planetaemx, manual recargaki, manuales planetaemx, manuales recargaki, vender recargas, plataforma para vender recargas, comision por deposito, venta recargas, comision 7.5 recargas, comision 7.5% recargas, venta de recargas movistar, Movistar, tiempo aire movistar, vender recargas movistar, contacto planetaemx, contacto recargaki, soporte planetaemx, soporte recargaki, ayuda planetaemx, ayuda recargaki, recarga5g, recarga5g.com, plataforma recarga5g, plataforma venta recargas, plataforma recargas mexico, plataforma planetaemx, plataforma recargaki",
+      url: '/plataformas/planetaemx',
       typeContent: 'website',
     })
 
-    this.theme.initTheme()
+    this.theme.initTheme();
   }
 
 
