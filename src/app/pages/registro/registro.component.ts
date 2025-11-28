@@ -5,7 +5,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 // import { Validators } from '@angular/forms';
 
 //Services
-import { MetaTagService } from '@shared/services/meta-tag.service';
+import { SeoService } from '@shared/services/seo.service';
 // import { SignupService } from './signup.service';
 import { GetSafeSvgService } from '@shared/services/get-safe-svg.service';
 
@@ -16,6 +16,7 @@ import { States } from 'src/app/interfaces/address.interface';
 // import { CapitalizeLettersDirective } from '@shared/directives/capitalize-letters';
 // import { ValidatorsService } from '@shared/services/validators.service';
 import StepsRegister, { StepsForRegister } from './steps-register/steps-register';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registro',
@@ -41,8 +42,10 @@ export default class RegistroComponent implements OnInit {
   // private readonly renderer2 = inject(Renderer2);
   // private readonly document = inject(DOCUMENT);
 
-  private readonly metaTagService = inject(MetaTagService);
+  private readonly metaTagService = inject(SeoService);
   private readonly svgService = inject(GetSafeSvgService);
+  private readonly title = inject( Title);
+
   // private previousBodyOverflow: string | null = null;
   // private readonly validatorService = inject(ValidatorsService);
 
@@ -70,7 +73,7 @@ export default class RegistroComponent implements OnInit {
   //   this.initSignUpForm();
   // }
 
- 
+
   // isInvalidField(field: string): boolean | undefined {
   //   return this.signUpForm.get(field)?.invalid && this.signUpForm.get(field)?.touched;
   // }
@@ -197,6 +200,15 @@ export default class RegistroComponent implements OnInit {
 
 
   ngOnInit(): void {
+      this.title.setTitle('Recarga5g.com: Registrate y vende recargas, pago de servicios y pines electrónicos')
+
+    this.metaTagService.updateMetaTag({
+      title: 'Recarga5g.com: Registrate y vende recargas, pago de servicios y pines electrónicos',
+      description: 'Sin importar el tipo de negocio que tengas, regístrate y comienza a vender recargas electrónicas, pines y pago de servicios con comisiones hasta del 7.5%',
+      keywords: 'registro recarga5g, vender recargas, vender pines electrónicos, pago de servicios, comisiones recarga5g, registro venta recargas, plataforma recargas, cuenta para vender recargas, como vender recargas, ganar dinero vendiendo recargas, registro para venta de recargas en negocios, registro para vender recargas en comercios, ganar dinero con recargas, inscripcion para vender recargas',
+      url: '/registro',
+      typeContent: 'website'
+    });
 
     this.steps = [
       {
@@ -285,22 +297,6 @@ export default class RegistroComponent implements OnInit {
       }
     ];
 
-    this.metaTagService.updateMetaTag({
-      title: 'Regístrate en Recarga5g.com | Vende recargas, pago de servicios y pines electrónicos',
-      description: 'Regístrate en Recarga5g.com y comienza a vender recargas, pago de servicios y pines electrónicos con comisiones de hasta el 7.5%. ¡Únete hoy mismo!',
-      keywords: 'registro recarga5g, vender recargas, vender pines electrónicos, pago de servicios, comisiones recarga5g',
-      url: 'https://www.recarga5g.com/registro',
-      typeContent: 'website'
-    })
-
-
   }
-
-  // onKeydown(event: KeyboardEvent): void {
-  //   console.log('entro')
-  //   if (event.key === 'Escape' && this.handlerModal()) {
-  //     this.closeModal();
-  //   }
-  // }
 }
 

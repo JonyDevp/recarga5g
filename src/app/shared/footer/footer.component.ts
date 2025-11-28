@@ -25,13 +25,13 @@ export class FooterComponent {
     {
       id: 1,
       label: 'Preguntas Frecuentes',
-      routerLink: 'nosotros/preguntas',
+      routerLink: 'mas/faqs',
     },
 
    {
     id: 2,
     label: 'Blog',
-    routerLink: 'nosotros/blog',
+    routerLink: 'mas/blog',
    },
 
    {
@@ -43,13 +43,13 @@ export class FooterComponent {
    {
     id: 4,
     label: 'Politicas de privacidad',
-    routerLink: 'nosotros/politicas'
+    routerLink: 'mas/legal/politicas'
    },
 
    {
     id: 5,
     label: 'Condiciones de uso',
-    routerLink: 'nosotros/condiciones'
+    routerLink: 'mas/legal/condiciones'
    }
 
   ];

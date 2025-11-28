@@ -1,10 +1,9 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { MetaTagService } from '@shared/services/meta-tag.service';
-import { ContentfulService } from '../../services/contentful.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MapPostItem } from '../../interfaces/post-types';
 import { TypeErrorPost } from '../../interfaces/error-types';
+import { SeoService } from '@shared/services/seo.service';
 
 @Component({
   selector: 'app-post',
@@ -17,7 +16,7 @@ import { TypeErrorPost } from '../../interfaces/error-types';
 export default class PostComponent implements OnInit {
 
   private readonly title = inject(Title);
-  private readonly meta = inject(MetaTagService);
+  private readonly meta = inject(SeoService);
   private readonly route = inject(ActivatedRoute);
 
   statusData = signal<TypeErrorPost>(TypeErrorPost.LOADING);
@@ -31,7 +30,7 @@ export default class PostComponent implements OnInit {
     if (resolvedData) {
       this.post.set(resolvedData);
       this.statusData.set(TypeErrorPost.SUCESS);
-      const url = `https://www.recarga5g.com/mas/blog/post/${resolvedData.slug}`;
+      const url = `/mas/blog/post/${resolvedData.slug}`;
 
       this.meta.updateMetaTag({
         title: resolvedData.title,

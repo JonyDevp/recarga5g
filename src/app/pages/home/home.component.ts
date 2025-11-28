@@ -2,21 +2,19 @@ import {
   Component,
   ElementRef,
   OnInit,
-  AfterViewInit,
   ViewChildren,
   QueryList,
   signal,
   CUSTOM_ELEMENTS_SCHEMA,
   viewChild,
-  PLATFORM_ID,
 } from '@angular/core';
-import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import {  Title } from '@angular/platform-browser';
 import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 //* Services
-import { MetaTagService } from '@shared/services/meta-tag.service';
+import { SeoService } from '@shared/services/seo.service';
 import { ProductCarouselService } from '@feature/components/product-carousel/services/product-carousel.service';
 
 //* Components
@@ -64,13 +62,13 @@ import { Testimonial, TestimonialService } from './services/testimonial.service'
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export default class HomeComponent implements OnInit, AfterViewInit {
+export default class HomeComponent implements OnInit {
   @ViewChildren('counter') countersElements!: QueryList<ElementRef>;
   typerWriterElement = viewChild<ElementRef>('typeWriter')
   // countersElements = viewChildren< QueryList<ElementRef> >('counter');
-  private readonly platformId =inject(PLATFORM_ID);
+  // private readonly platformId =inject(PLATFORM_ID);
   private readonly title = inject(Title);
-  private readonly _metaTagService = inject(MetaTagService);
+  private readonly _metaTagService = inject(SeoService);
   private readonly _productCarouselService = inject(ProductCarouselService);
   private readonly reasonForSellingService = inject(ReasonForSellingService);
   private readonly advantageService = inject(AdvantageListService);
@@ -163,8 +161,20 @@ export default class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.title.setTitle(
-      'Recarga5g.com | Vende tiempo aire, pago de servicios y pines hasta un 7.5% de comisión'
+      'Recarga5g.com: Vende tiempo aire, pago de servicios y pines hasta un 7.5% de comisión'
     );
+
+    
+    this._metaTagService.updateMetaTag({
+      title:
+        'Recarga5g.com: Vende recargas electrónicas, pago de servicios y pines hasta un 7.5% de comisión',
+      description:
+        'Gana hasta un 7.5% de comisión vendiendo recargas electrónicas, pago de servicios y pines. Fácil, rápido y rentable para todo tipo de negocio.',
+      keywords:
+        'recarga5g, recarga5g.com, recargas electronicas 7.5% comision, recargas electronicas, comision 7.5 por la venta de recargas, sistema de recargas, pago de servicios, sistema de recargas, vender recargas multiregion, plataforma para vender recargas, venta de recargas, como vender recargas, app para recargas',
+      url: '/',
+      typeContent: 'website',
+    });
 
     this.allProducts = this._productCarouselService.getProductCarousel();
     this.listInversion = this.advantageService.listInversion;
@@ -177,31 +187,7 @@ export default class HomeComponent implements OnInit, AfterViewInit {
     this.testimonialTwo = this.testimonialService.testimonialListTwo;
     this.testimonialThree = this.testimonialService.testimonialListThree;
 
-    this._metaTagService.updateMetaTag({
-      title:
-        'recarga5g.com | Vende recargas electrónicas, pago de servicios y pines hasta un 7.5% de comisión',
-      description:
-        'Descubre Recarga5G: gana hasta un 7.5% de comisión vendiendo recargas electrónicas, pago de servicios y pines. Fácil, rápido y rentable para tu negocio',
-      keywords:
-        'recarga5g, recarga5g.com, recargas electronicas 7.5% comision, recargas electronicas, comision 7.5 por la venta de recargas, sistema de recargas, pago de servicios, sistema de recargas, vender recargas multiregion, plataforma para vender recargas, venta de recargas, como vender recargas, app para recargas',
-      url: 'https://recarga5g.com/',
-      typeContent: 'website',
-    });
-
-  
   }
-
-  ngAfterViewInit(): void {
- 
-  }
-
-  //* FUNCTIONS FOR COUNTER RECORD SECTION
- 
-
-  //Función que maneja el incremento gradual de los números
-
-
-
 }
 
 

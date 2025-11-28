@@ -3,8 +3,7 @@ import { ChangeDetectionStrategy, Component, computed, CUSTOM_ELEMENTS_SCHEMA, e
 import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { ContentfulService } from '@mas/pages/blog/services/contentful.service';
-import { metaTagModel } from 'src/app/interfaces/meta-tag.model';
-import { MetaTagService } from '@shared/services/meta-tag.service';
+import { SeoService } from '@shared/services/seo.service';
 // import {  Entry } from 'contentful';
 import { TypeErrorPost } from './interfaces/error-types';
 
@@ -13,7 +12,6 @@ import { MapTagResponse } from './interfaces/tag-types';
 
 import { NgxPaginationModule, PaginationInstance } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
-import { ɵɵRouterLink } from "@angular/router/testing";
 import { title } from 'process';
 
 @Component({
@@ -24,7 +22,6 @@ import { title } from 'process';
   imports: [
     NgxPaginationModule,
     CommonModule,
-    ɵɵRouterLink
 ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -35,7 +32,7 @@ export default class BlogComponent implements OnInit {
 
   private readonly blogService = inject(ContentfulService);
   private readonly title = inject(Title);
-  private readonly meta = inject(MetaTagService);
+  private readonly meta = inject(SeoService);
   private route = inject(Router);
 
   readonly signalData = signal<TypeData>({
@@ -70,16 +67,16 @@ export default class BlogComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.title.setTitle('Recarga5g.com | Consulta nuestros artículos mas recientes');
+    this.title.setTitle('Recarga5g.com: Consulta nuestros artículos mas recientes');
     this.loadCurrentPosts();
     this.loadTags();
     this.loadFeaturedPosts();
 
     this.meta.updateMetaTag({
-      title: 'Recarga5g.com | Consulta nuestros artículos mas recientes',
+      title: 'Recarga5g.com: Consulta nuestros artículos mas recientes',
       description: 'En Recarga5g.com, te ofrecemos los artículos más recientes sobre tecnología 5G, dispositivos compatibles y consejos para aprovechar al máximo esta revolucionaria conectividad. Mantente informado con nuestras actualizaciones periódicas.',
       keywords: 'Recarga5g, artículos 5G, tecnología 5G, dispositivos 5G, consejos 5G, noticias 5G',
-      url: 'https://www.recarga5g.com/mas/blog',
+      url: '/mas/blog',
       typeContent: 'blog'
     })
   }
