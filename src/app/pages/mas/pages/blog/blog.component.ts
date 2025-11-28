@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { ContentfulService } from '@mas/pages/blog/services/contentful.service';
@@ -7,7 +7,7 @@ import { SeoService } from '@shared/services/seo.service';
 // import {  Entry } from 'contentful';
 import { TypeErrorPost } from './interfaces/error-types';
 
-import { MapPostItem, MapPostResponse } from './interfaces/post-types';
+import { MapPostResponse } from './interfaces/post-types';
 import { MapTagResponse } from './interfaces/tag-types';
 
 import { NgxPaginationModule, PaginationInstance } from 'ngx-pagination';
@@ -22,6 +22,7 @@ import { title } from 'process';
   imports: [
     NgxPaginationModule,
     CommonModule,
+    RouterLink
 ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,4 +1,4 @@
-import { inject, Injectable } from "@angular/core";
+import { DOCUMENT, inject, Injectable } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
 @Injectable({
@@ -7,9 +7,9 @@ import { Meta, Title } from "@angular/platform-browser";
   export class SeoService {
 
     private meta = inject(Meta);
-    private doc = inject(Document);
+    private doc = inject(DOCUMENT);
     title = inject(Title);
-private readonly baseUrl= 'https://recarga5g.com/';
+private readonly baseUrl= 'https://recarga5g.com';
 
     updateMetaTag(meta: MetaData): void {
        this.title.setTitle(meta.title);
@@ -21,10 +21,8 @@ private readonly baseUrl= 'https://recarga5g.com/';
       this.meta.updateTag({ property: 'og:description', content: meta.description });
       this.meta.updateTag({ property: 'og:image', content: 'https://recarga5g.com/Venta-recargas.png' });
       this.meta.updateTag({ property: 'og:type', content: meta.typeContent });
-          this.meta.updateTag({ property: 'og:url', content: this.buildAbsoluteURL(meta.url) });
-
+     this.meta.updateTag({ property: 'og:url', content: this.buildAbsoluteURL(meta.url) });
       this.meta.updateTag({ property: 'og:locale', content: 'es_MX' });
-      this.meta.updateTag({ property: 'og:url', content: meta.url });
 
 
       //* Twitter
