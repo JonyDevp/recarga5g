@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 
 export const routes: Routes = [
-    
+
     {
         path: '',
         loadComponent: () => import('./pages/home/home.component')
@@ -14,25 +14,20 @@ export const routes: Routes = [
 
     {
         path: 'plataformas',
-        loadChildren: () => import('@plataformas/plataformas.routes').then( (r) => r.PlataformasRoutes)
+        loadChildren: () => import('@plataformas/plataformas.routes').then((r) => r.PlataformasRoutes)
     },
 
     {
         path: 'productos',
-        loadChildren: () => import('@productos/productos.routes').then ( (consultRoute) => consultRoute.consultaRoutes)
+        loadChildren: () => import('@productos/productos.routes').then((consultRoute) => consultRoute.consultaRoutes)
     },
 
     {
         path: 'mas',
-        loadChildren: () => import('@mas/mas.routes').then ( (masRoute) => masRoute.masRoutes)
+        loadChildren: () => import('@mas/mas.routes').then((masRoute) => masRoute.masRoutes)
     },
 
     {
-        path: 'novedades',
-        loadComponent: () => import('./pages/novedades/pages/novedades/novedades.component')
-    },
-
-       {
         path: '404',
         loadComponent: () => import('@shared/not-found/not-found.component')
     },
@@ -42,6 +37,4 @@ export const routes: Routes = [
         redirectTo: '404',
         pathMatch: 'full'
     },
-
-
 ]

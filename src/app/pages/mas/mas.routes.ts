@@ -4,19 +4,20 @@ import { postResolver } from "./pages/blog/utils/post-resolver.resolver";
 export const masRoutes: Routes = [
 
     {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/404'
+    },
+
+    {
         path: 'contacto',
         loadComponent: () => import('@mas/pages/contacto/contacto.component')
     },
 
     {
-        path: 'faqs', 
+        path: 'faqs',
         loadComponent: () => import('@mas/pages/faqs/faqs.component')
     },
-
-    // {
-    //     path: 'reportar-compra',
-    //     loadComponent: () => import('@mas/pages/reportar-compra/reportar-compra.component')
-    // },
 
     {
         path: 'blog',
@@ -24,9 +25,9 @@ export const masRoutes: Routes = [
     },
 
     {
-        path:'blog/post/:slug',
+        path: 'blog/post/:slug',
         loadComponent: () => import('@mas/pages/blog/pages/post/post.component'),
-         resolve: { postData: postResolver}
+        resolve: { postData: postResolver }
     },
 
     {

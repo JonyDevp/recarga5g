@@ -34,11 +34,11 @@ export class FooterComponent {
     routerLink: 'mas/blog',
    },
 
-   {
-    id: 3,
-    label: 'Quienes somos',
-    routerLink: 'nosotros/trayectoria'
-   },
+  //  {
+  //   id: 3,
+  //   label: 'Quienes somos',
+  //   routerLink: 'nosotros/trayectoria'
+  //  },
 
    {
     id: 4,
