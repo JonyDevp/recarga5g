@@ -17,7 +17,15 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sales-method',
   templateUrl: './sales-method.component.html',
-  styles: [``],
+  styles: [`
+    .sl-channelModal-li {
+      counter-increment: indexmodalSteps;
+    }
+
+    .sl-channelModal-li::before {
+      content: counter(indexmodalSteps);
+    }
+  `],
   
   imports: [CommonModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +34,8 @@ export class SalesMethodComponent implements OnInit {
   customClass = input<string>();
   customClassModal = input<string>();
   customClassBtn = input<string>();
-  customClassIcon = input<string>();
+  customClassBgTextIcon = input<string>();
+  customClassLabelCard = input<string>();
   customClassShadow = input<string>();
 
   metodoVentas: SalesChannel[] = [];
