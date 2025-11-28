@@ -161,7 +161,7 @@ export default class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(
-      'Recarga5g.com | Vende tiempo aire, pago de servicios y pines hasta un 7.5% de comisión'
+      'Recarga5g.com: Vende tiempo aire, pago de servicios y pines hasta un 7.5% de comisión'
     );
 
     
