@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
   inject,
   signal,
   computed,
@@ -11,8 +10,7 @@ import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 //* Servicios importados
-import { MetaTagService } from '@shared/services/meta-tag.service';
-import { RegisterStepsService } from '@shared/services/register-steps.service';
+import { SeoService } from '@shared/services/seo.service';
 import { PagaquiService } from './services/pagaqui.service';
 import { ProductCarouselService } from '@feature/components/product-carousel/services/product-carousel.service';
 //* Components
@@ -46,11 +44,7 @@ import { AdvantageList } from '@interfaces/advantage-list.interface';
     DoubtsComponent
 ]
 })
-export default class PlataformaPagaquiComponent
-  implements OnInit, AfterViewInit
-{
-  // @ViewChild('modalTemplate') template = {} as TemplateRef<any>;
-  // @ViewChild('videoPagaqui') video?: ElementRef;
+export default class PlataformaPagaquiComponent implements OnInit {
 
   handlerModalVideo = signal<boolean>(false);
   productCarousel: ProductCarousel[] = [];
@@ -89,40 +83,23 @@ export default class PlataformaPagaquiComponent
 
  isDarkTheme = computed(() => this.theme.themeChange());
 
-  //? META TAG
-  // tag: metaTagModel = {
-  //   title: 'Recarga5g.com | Consulta como vender recargas electrónicas',
-  //   description:
-  //     'Con un único saldo vende recargas electrónicas, pago de servicios y pines electrónicos hasta un 7% de comisión',
-  //   keywords:
-  //     'Pagaqui, cuentas Pagaqui, cuenta bancarias pagaqui, cuentas para saldo de recargas, app pagaqui, aplicación pagaqui, Plataforma para venta de recargas, Plataforma para venta de recargas telefonicas, manuales pagaqui, manual de usuario pagaqui, comision 7%, comisión por venta de recargas, Bait, venta de recargas bait, tiempo aire bait, vender recargas bait',
-  //   url: 'recarga5g.com/plataforma/pagaqui',
-  //   type: 'website',
-  //   card: 'summary_large_image',
-  //   creator: '@recargascelular',
-  //   image: 'https://recarga5g.com/Venta-recargas.webp',
-  // };
-
-  
   private readonly productCarouselService = inject(ProductCarouselService);
   private readonly pagaquiService = inject(PagaquiService);
 
-  private readonly metaTagService = inject(MetaTagService);
+  private readonly metaTagService = inject(SeoService);
   private readonly title = inject(Title);
 
   ngOnInit(): void {
     this.title.setTitle(
-      'Recarga5g.com: Pagaqui plataforma para vender recargas telcel y mas compañias en méxico'
+      'Recarga5g.com: Pagaqui tu plataforma para vender recargas telcel y mas compañias en méxico'
     );
-
-
   
     this.metaTagService.updateMetaTag(
       {
-        title: 'Recarga5g.com: Pagaqui plataforma para vender recargas telcel y mas compañias en méxico',
+        title: 'Recarga5g.com: Pagaqui tu plataforma para vender recargas telcel y mas compañias en méxico',
         description: 'Plataforma para venta de recargas electrónicas Telcel, y mas servicios en MX, desde tu negocio',
-        keywords: 'pagaqui, venta de recargas telcel, recargas telcel, tiempo aire telcel, vender recargas telcel, contacto pagaqui, cuentas pagaqui, vender recargas mexico',
-        url: 'https://recarga5g.com/plataformas/pagaqui',
+        keywords: 'pagaqui, venta de recargas telcel, recargas telcel, tiempo aire telcel, vender recargas telcel, contacto pagaqui, cuentas pagaqui, vender recargas mexico, ayuda pagaqui, plataforma pagaqui, plataforma para vender recargas, recargas electrónicas, recargas bait, vender recargas bait, tiempo aire bait, comision por venta de recargas, comision 7%, plataforma para vender recargas electrónicas, pagina para vender recargas, app pagaqui, aplicación pagaqui, plataforma para vender tiempo aire, plataforma para vender recargas telefonicas, contacto pagaqui, ayuda pagaqui',
+        url: '/plataformas/pagaqui',
         typeContent: 'website'
       }
     );
@@ -132,9 +109,6 @@ export default class PlataformaPagaquiComponent
   
 
   }
-
-  ngAfterViewInit(): void {}
-
   openVideo(): void {
 
     this.handlerModalVideo.set(true);
@@ -144,11 +118,4 @@ export default class PlataformaPagaquiComponent
     this.handlerModalVideo.set(false);
   }
 
-  // closeVideo(): void {
-  //   this.btnVideo.set(false);
-
-  //   const stopVideo = this.video?.nativeElement;
-
-  //   this.renderer2.removeAttribute(stopVideo, 'src');
-  // }
 }
