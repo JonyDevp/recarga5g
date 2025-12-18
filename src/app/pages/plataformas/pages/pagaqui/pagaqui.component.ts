@@ -109,13 +109,6 @@ export default class PlataformaPagaquiComponent implements OnInit {
   
 
   }
-  openVideo(): void {
 
-    this.handlerModalVideo.set(true);
-  }
-
-  closeVideo(): void {
-    this.handlerModalVideo.set(false);
-  }
 
 }
