@@ -314,7 +314,7 @@
 
         <footer class="mt-4">
           <a class="bg-gray-700 dark:bg-blue-400/30 dark:text-blue-300 text-white dark:hover:bg-blue-400/50 hover:text-white px-4 py-2 cursor-pointer text-sm font-medium rounded-lg"
-            routerLink="/consultas/servicios">Leer mas</a>
+            routerLink="/productos/servicios">Leer mas</a>
         </footer>
       </article>
 
@@ -857,8 +857,8 @@
         </ol>
       </div>
 
-      <div data-aos="fade-left" class="app-recargas-col w-full self-center">
-        <app-recargas [carouselImages]="carosuelAppImages"></app-recargas>
+      <div class="app-recargas-col w-full self-center">
+        <app-recargas ngSkipHydration [carouselImages]="carosuelAppImages"></app-recargas>
       </div>
     </div>
   </div>
