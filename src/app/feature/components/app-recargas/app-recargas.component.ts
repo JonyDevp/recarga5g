@@ -45,7 +45,7 @@ import { SwiperOptions } from 'swiper/types';
         >
         </span>
         <div
-          class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-500"
+          class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white "
         >
           <swiper-container init="false" #swiperApp class="swiper-app">
             @for (product of carouselImages(); track $index) {
@@ -53,7 +53,9 @@ import { SwiperOptions } from 'swiper/types';
           
               <img
                 [src]="product.img.src"
-                class="swiper-app__img swiper-app__img w-[272px] h-[572px]"
+                width="272"
+                height="576"
+                class="swiper-app__img swiper-app__img "
                 [alt]="product.img.alt">
             </swiper-slide>
             }
