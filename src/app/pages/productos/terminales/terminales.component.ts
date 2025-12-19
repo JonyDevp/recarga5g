@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { CardProductComponent } from '@feature/components/card-product/card-product.component';
+import { TPVCardsComponent } from '@feature/components/tpv-cards/tpv-cards.component';
 import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
 import { SeoService } from '@shared/services/seo.service';
 import { ThemesService } from '@shared/services/themes.service';
@@ -8,7 +8,7 @@ import { ThemesService } from '@shared/services/themes.service';
 @Component({
   selector: 'app-terminales',
   imports: [
-    CardProductComponent,
+    TPVCardsComponent,
     DoubtsComponent,
     
 ],
