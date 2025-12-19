@@ -8,13 +8,15 @@
         @if (product.companies) {
           <div class=" w-full grid grid-cols-3 justify-between flex-row p-4 gap-x-4 gap-y-8">
             @for (company of product.companies; track $index) {
-              <div class="company w-fullp-2">
-                <img [src]="company.img.src" [alt]="company.img.alt" [title]="company.title">
+              <div class="company w-full">
+              
+                  <img clas="w-full h-auto" [src]="company.img.src" [alt]="company.img.alt" [title]="company.title" [attr.width]="company.img.width" [attr.height]="company.img.height" class="mx-auto block" loading="lazy"/>
+              
               </div>
             }
           </div>
         } @else {
-          <img [src]="product.img?.src" [alt]="product.img?.alt">
+          <img [src]="product.img?.src" [alt]="product.img?.alt" [attr.width]="product.img?.width" [attr.height]="product.img?.height" loading="lazy">
         }
 
 

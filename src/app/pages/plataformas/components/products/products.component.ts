@@ -8,13 +8,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: `products.component.html`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent { 
+export class ProductsComponent {
 
   bgBtn = input.required<string>();
 
   ourProduct: products[] = [
     {
-      id: 1, 
+      id: 1,
       subtitle: 'Excelentes comisiones',
       title: 'Venta de recargas telefónicas',
       description: 'Venta de recargas telefónicas para todos los operadores móviles, incluyendo Telcel, Movistar, AT&T, y más. Con nosotros, podrás realizar recargas al instante, las 24 horas del día, los 7 días de la semana, desde la comodidad de tu hogar o negocio.',
@@ -27,6 +27,8 @@ export class ProductsComponent {
           img: {
             src: 'assets/img/companies/recargas/telcel.webp',
             alt: 'Venta de recargas telcel',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -36,17 +38,21 @@ export class ProductsComponent {
           title: 'Vende recargas Movistar',
           img: {
             src: 'assets/img/companies/recargas/movistar.webp',
-            alt: 'Venta de recargas Movistar'
+            alt: 'Venta de recargas Movistar',
+            width: '100',
+            height: '36'
           }
         },
 
         {
           company: 'Bait',
           title: 'Vende recargas Bait',
-          linkCompany:'https://mibait.com/',
+          linkCompany: 'https://mibait.com/',
           img: {
             src: 'assets/img/companies/recargas/bait.webp',
-            alt: 'Venta de recargas Bait'
+            alt: 'Venta de recargas Bait',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -56,7 +62,9 @@ export class ProductsComponent {
           linkCompany: 'https://virginmobile.mx/',
           img: {
             src: 'assets/img/companies/recargas/virgin.webp',
-            alt: 'Venta de recargas virgin Mobile'
+            alt: 'Venta de recargas virgin Mobile',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -66,7 +74,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.att.com.mx/',
           img: {
             src: 'assets/img/companies/recargas/att.webp',
-            alt: 'Venta de recargas AT&T'
+            alt: 'Venta de recargas AT&T',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -76,7 +86,9 @@ export class ProductsComponent {
           linkCompany: 'https://axiosmobile.mx/',
           img: {
             src: 'assets/img/companies/recargas/axios.webp',
-            alt: 'Venta de recargas Axios Mobile'
+            alt: 'Venta de recargas Axios Mobile',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -86,7 +98,9 @@ export class ProductsComponent {
           linkCompany: 'https://tienda.vasanta.com.mx/',
           img: {
             src: 'assets/img/companies/recargas/vasanta.webp',
-            alt: 'Venta de recargas Vasanta'
+            alt: 'Venta de recargas Vasanta',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -96,7 +110,9 @@ export class ProductsComponent {
           linkCompany: 'https://unefon.com.mx/',
           img: {
             src: 'assets/img/companies/recargas/unefon.webp',
-            alt: 'Venta de recargas Unefon'
+            alt: 'Venta de recargas Unefon',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -106,14 +122,16 @@ export class ProductsComponent {
           linkCompany: 'https://internetparaelbienestar.mx/',
           img: {
             src: 'assets/img/companies/recargas/internetparaelbienestar.webp',
-            alt: 'Venta de recargas Bienestar'
+            alt: 'Venta de recargas Bienestar',
+            width: '100',
+            height: '36'
           }
         },
       ]
     },
 
     {
-      id: 2, 
+      id: 2,
       subtitle: 'Excelentes comisiones',
       title: 'Pago de servicios',
       description: 'Podrás realizar recargas al instante, las 24 horas del día, los 7 días de la semana, desde la comodidad de tu hogar o negocio',
@@ -125,7 +143,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.cfe.mx/Pages/default.aspx',
           img: {
             src: 'assets/img/companies/servicios/cfe.webp',
-            alt: 'cobro de servicios CFE'
+            alt: 'cobro de servicios CFE',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -135,7 +155,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.dish.com.mx/',
           img: {
             src: 'assets/img/companies/servicios/dish.webp',
-            alt: 'Cobro de servicios Dish'
+            alt: 'Cobro de servicios Dish',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -145,7 +167,9 @@ export class ProductsComponent {
           linkCompany: 'https://telmex.com/',
           img: {
             src: 'assets/img/companies/servicios/telmex.webp',
-            alt: 'Cobro de servicios Telmex'
+            alt: 'Cobro de servicios Telmex',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -156,7 +180,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.televia.com.mx/',
           img: {
             src: 'assets/img/companies/servicios/televia.webp',
-            alt: 'Cobro de servicios Televia'
+            alt: 'Cobro de servicios Televia',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -167,7 +193,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.jafra.com.mx/',
           img: {
             src: 'assets/img/companies/servicios/jafra.webp',
-            alt: 'Cobro de servicios Jafra'
+            alt: 'Cobro de servicios Jafra',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -178,7 +206,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.sky.com.mx/servicios/satelital?plan=prepago',
           img: {
             src: 'assets/img/companies/servicios/vetv.webp',
-            alt: 'Cobro de servicios Vetv'
+            alt: 'Cobro de servicios Vetv',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -188,7 +218,9 @@ export class ProductsComponent {
           linkCompany: 'https://mx.andrea.com/',
           img: {
             src: 'assets/img/companies/servicios/calzadoandrea.webp',
-            alt: 'Cobro de servicios Andrea'
+            alt: 'Cobro de servicios Andrea',
+            width: '100',
+            height: '36'
           }
         },
 
@@ -198,10 +230,12 @@ export class ProductsComponent {
           linkCompany: 'https://www.megacable.com.mx/',
           img: {
             src: 'assets/img/companies/servicios/megacable.webp',
-            alt: 'Cobro de servicios Megacable'
+            alt: 'Cobro de servicios Megacable',
+            width: '100',
+            height: '36'
           }
         },
-    
+
       ]
     },
 
@@ -218,7 +252,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.netflix.com/mx/',
           img: {
             src: 'assets/img/companies/pines/netflix.png',
-            alt: 'Venta de giftcard Netflix'
+            alt: 'Venta de giftcard Netflix',
+            width: '96',
+            height: '136'
           }
         },
 
@@ -228,7 +264,9 @@ export class ProductsComponent {
           linkCompany: 'https://play.google.com/store/games?hl=es_MX',
           img: {
             src: 'assets/img/companies/pines/googleplay100.webp',
-            alt: 'Venta de giftcard Google Play'
+            alt: 'Venta de giftcard Google Play',
+            width: '96',
+            height: '136'
           }
         },
 
@@ -238,7 +276,9 @@ export class ProductsComponent {
           linkCompany: 'https://www.primevideo.com/offers/nonprimehomepage',
           img: {
             src: 'assets/img/companies/pines/amazonprimevideounmes.webp',
-            alt: 'Venta de giftcard Amazon Prime Video'
+            alt: 'Venta de giftcard Amazon Prime Video',
+            width: '96',
+            height: '136'
           }
         }
       ]
@@ -250,7 +290,12 @@ export class ProductsComponent {
       title: 'Terminales para puntos de venta',
       description: 'Automiza y expande tus medios para el cobro de tus servicios, con excelentes comisiones, a traves de nuestras terminales',
       link: '/productos/terminales',
-      img: { src: 'assets/img/terminales-thumbnail.webp', alt: 'Adquiere tu terminal con Recarga5g.com'}
+      img: {
+        src: 'assets/img/terminales-thumbnail.webp',
+        alt: 'Adquiere tu terminal con Recarga5g.com',
+        width: '344',
+        height: '217'
+      }
     },
 
   ];
@@ -263,7 +308,7 @@ type products = {
   title: string;
   description: string;
   companies?: companies[];
-  img?: {src: string; alt: string};
+  img?: { src: string; alt: string, width: string; height: string };
   link: string;
 }
 
@@ -271,6 +316,6 @@ type companies = {
   company: string;
   title: string;
   linkCompany: string;
-  img: {src: string; alt: string};
+  img: { src: string; alt: string, width: string; height: string };
 
 }

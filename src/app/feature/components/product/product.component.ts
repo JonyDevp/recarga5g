@@ -24,9 +24,9 @@ import { ProductCarousel } from '@interfaces/product-carousel.interface';
         <div
           class="font-semibold text-sm py-[0.375rem] px-4 rounded-md bg-slate-800 dark:bg-slate-700 text-slate-100 shadow-sm inline-flex items-center gap-2">
 
-          <h5>
+          <h4>
             {{titleSection()}}
-          </h5>
+          </h4>
         </div>
 
       </div>
@@ -41,7 +41,7 @@ import { ProductCarousel } from '@interfaces/product-carousel.interface';
           <div
             class="relative bg-slate-100 dark:bg-slate-100/80 ring-1 shadow-sm ring-black/5 rounded-lg group-hover:scale-110 duration-1000">
             <a [href]="company.siteweb" class="cursor-pointer block" rel="noopener noreferrer" target="_blank">
-              <img [src]="company.img.src" [alt]="company.img.alt" loading="lazy" [title]="company.company">
+              <img [src]="company.img.src" [alt]="company.img.alt" loading="lazy" [title]="company.company" width="" height="">
             </a>
           </div>
         </li>
