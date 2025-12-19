@@ -16,8 +16,8 @@ import { AppRecargasComponent } from '@feature/components/app-recargas/app-recar
 import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
 import { RegisterStepsComponent } from '@feature/components/register-steps/register-steps.component';
 import { ProductCarouselComponent } from '@feature/components/product-carousel/product-carousel.component';
-import { ProductsComponent } from '@plataformas/components/products/products.component';
 import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
+import { ProductCardsComponent } from '@plataformas/components/product-cards/product-cards.component';
 
 @Component({
     selector: 'app-planetaemx',
@@ -32,15 +32,15 @@ import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
     ProductCarouselComponent,
     AppRecargasComponent,
     SalesMethodComponent,
-    ProductsComponent,
+    ProductCardsComponent,
     RegisterStepsComponent,
     DoubtsComponent
 ]
 })
 export default class PlanetaemxComponent implements OnInit {
 
- productCarousel = signal<ProductCarousel[]>([]);
- appRecargaki = signal<CarouselApp[]>([]);
+ productCarousel : ProductCarousel[] = [];
+ appRecargaki :CarouselApp[] =[];
 
  theme = inject(ThemesService);
  isDarkTheme = computed(() => this.theme.themeChange());
@@ -79,8 +79,8 @@ export default class PlanetaemxComponent implements OnInit {
   ngOnInit(): void {
     this.titulo.setTitle('Recarga5g.com: Planetaemx plataforma de venta de recargas para negocios en méxico');
 
-    this.productCarousel.set( this.productCarouselService.getRecargas() );
-    this.appRecargaki.set( this.planetaemxService.getAppRecargaki())
+    this.productCarousel = this.productCarouselService.getRecargas();
+    this.appRecargaki = this.planetaemxService.getAppRecargaki();
     this.metaTagService.updateMetaTag({
       title: 'Recarga5g.com: Planetaemx plataforma de venta de recargas para negocios en méxico',
       description: 'Obtén una comisión hasta un 7.5% fijo en todos tus depósitos, Genera ganancias extras a tu negocio vendiendo recargas Bait, Telcel, Movistar y muchos mas',

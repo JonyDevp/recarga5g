@@ -21,9 +21,9 @@ import { CarouselApp } from '@feature/components/app-recargas/interface/app.inte
 import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
 import { RegisterStepsComponent } from '@feature/components/register-steps/register-steps.component';
 import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
-import { ProductsComponent } from '@plataformas/components/products/products.component';
 import { ThemesService } from '@shared/services/themes.service';
 import { AdvantageList } from '@interfaces/advantage-list.interface';
+import { ProductCardsComponent } from '@plataformas/components/product-cards/product-cards.component';
 
 @Component({
     selector: 'app-plataforma-pagaqui',
@@ -39,7 +39,7 @@ import { AdvantageList } from '@interfaces/advantage-list.interface';
     ProductCarouselComponent,
     SalesMethodComponent,
     AppRecargasComponent,
-    ProductsComponent,
+    ProductCardsComponent,
     RegisterStepsComponent,
     DoubtsComponent
 ]
