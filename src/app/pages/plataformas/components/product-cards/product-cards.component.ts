@@ -3,12 +3,12 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-product-cards',
   imports: [RouterLink, NgClass],
-  templateUrl: `products.component.html`,
+  templateUrl: `product-cards.component.html`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent {
+export class ProductCardsComponent {
 
   bgBtn = input.required<string>();
 
@@ -291,7 +291,7 @@ export class ProductsComponent {
       description: 'Automiza y expande tus medios para el cobro de tus servicios, con excelentes comisiones, a traves de nuestras terminales',
       link: '/productos/terminales',
       img: {
-        src: 'assets/img/terminales-thumbnail.webp',
+        src: 'assets/img/terminales/terminales-thumbnail.webp',
         alt: 'Adquiere tu terminal con Recarga5g.com',
         width: '344',
         height: '217'
