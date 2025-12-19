@@ -137,7 +137,7 @@ export default class HomeComponent implements OnInit {
     {
       id: 1,
       img: {
-        src: '/assets/img/companies/recargas-app_light.webp',
+        src: '/assets/img/companies/slide-recargas.webp',
         alt: 'App para venta de recargas',
       },
     },
@@ -145,7 +145,7 @@ export default class HomeComponent implements OnInit {
     {
       id: 2,
       img: {
-        src: '/assets/img/companies/servicios-app_light.webp',
+        src: '/assets/img/companies/slide-servicios.webp',
         alt: 'App para pago de servicios',
       },
     },
@@ -153,7 +153,7 @@ export default class HomeComponent implements OnInit {
     {
       id: 3,
       img: {
-        src: '/assets/img/companies/pines-app_light.webp',
+        src: '/assets/img/companies/slide-pines.webp',
         alt: 'App para venta de pines electrónicos',
       },
     },
