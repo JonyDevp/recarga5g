@@ -13,10 +13,10 @@ import { RouterLink } from '@angular/router';
   <div class="grid grid-cols-1 p-4 gap-8 lg:grid-cols-2 lg:items-center  bg-gradient-to-br rounded-3xl"
     [ngClass]="bgClass() ? bgClass() : 'from-red-700 to-red-900 dark:from-blue-700 dark:to-blue-900'">
     <div class="mx-auto w-full max-w-lg text-center lg:mx-0 lg:pl-10">
-      <h5 class="text-3xl font-bold lg:text-4xl text-white relative leading-tight break-words">
+      <h3 class="text-3xl font-bold lg:text-4xl text-white relative leading-tight break-words">
         {{ title() }}
         <svg  viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 text-deep-purple-accent-100 lg:w-32  lg:block"><defs _ngcontent-ng-c2649257774=""><pattern _ngcontent-ng-c2649257774="" id="700c93bf-0068-4e32-aafe-ef5b6a647708" x="0" y="0" width=".135" height=".30"><circle _ngcontent-ng-c2649257774="" cx="1" cy="1" r=".7"></circle></pattern></defs><rect _ngcontent-ng-c2649257774="" fill="url(#700c93bf-0068-4e32-aafe-ef5b6a647708)" width="52" height="24"></rect></svg>
-      </h5>
+      </h3>
 
       <p class="mt-4 text-white">
         {{text()}}
