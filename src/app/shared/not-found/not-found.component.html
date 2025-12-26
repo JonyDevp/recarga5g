@@ -1,27 +1,40 @@
-<div class="nofound h-screen w-full relative overflow-hidden bg-[url(/assets/img/bg_purple.png)] object-cover animate-fade-in">
-    <div class="nofound__container container mx-auto">
-        <!-- Increase z-index of content to appear above stars -->
-        <div class="nofound__content flex items-center justify-center text-center h-screen flex-col relative z-10">
-            <h2 class="nofound__h2 text-white text-8xl font-semibold">404</h2>
-            <h3 class="nofound__h3 text-slate-100 text-4xl">Pages no found</h3>
-            <a routerLink="/" class="nofound__a cursor-pointer text-white text-xl bg-red-600 hover:bg-red-700 dark:bg-blue-600 dark:hover:bg-blue-700 px-4 py-2 rounded-md shadow mt-4">Regresar a la pagina principal</a>
-        </div>
-
-        <!-- Keep decorative elements (earth, astronaut, moon) above stars but below text -->
-        <div class="earth absolute top-1/4 left-14 z-[5]">
-            <img src="/assets/img/svg/earth.svg" class="earth__img size-52" alt="tierra">
-        </div>
-
-        <div class="astronaut absolute top-1/5 left-2/5 z-[6]">
-            <img src="/assets/img/svg/astronaut.svg" class="astronaut__img size-64 object-contain" alt="astronauta">
-        </div>
-
-        <div class="moon absolute top-2/12 left-2/12 z-[4]">
-            <img src="/assets/img/svg/moon.svg" class="moon__img size-36" alt="Luna">
-        </div>
-
-        <!-- Keep stars at the very bottom (z-0 or negative z-index) -->
-        <div class="glowing_stars bg-[url('/assets/img/svg/overlay_stars.svg')] bg-repeat bg-contain bg-top-left size-full absolute top-0 left-0 z-0">
-        </div>
-    </div>
+<main class="flex-grow flex items-center justify-center relative p-6 mt-24">
+<!-- Abstract Background Pattern -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-1/2 left-1/4 size-80 bg-blue-300/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-1/4 right-1/4 size-80 bg-blue-300/5 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2"></div>
 </div>
+<div class="max-w-3xl w-full flex flex-col items-center justify-center relative z-10 text-center">
+<!-- Hero 404 -->
+<div class="relative mb-6">
+<h1 class="glow-text text-[150px] md:text-[200px] font-bold leading-none text-primary dark:text-blue-500 tracking-tighter select-none">
+                    404
+                </h1>
+<!-- Small decorative element -->
+<div class="absolute -top-2 -right-2 text-slate-300 dark:text-slate-600 opacity-50 rotate-12 -z-1">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-14 text-gray-500 " viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.181 8.68a4.503 4.503 0 0 1 1.903 6.405m-9.768-2.782L3.56 14.06a4.5 4.5 0 0 0 6.364 6.365l3.129-3.129m5.614-5.615 1.757-1.757a4.5 4.5 0 0 0-6.364-6.365l-4.5 4.5c-.258.26-.479.541-.661.84m1.903 6.405a4.495 4.495 0 0 1-1.242-.88 4.483 4.483 0 0 1-1.062-1.683m6.587 2.345 5.907 5.907m-5.907-5.907L8.898 8.898M2.991 2.99 8.898 8.9"/></svg>
+</div>
+</div>
+<!-- Message Block -->
+<div class="space-y-4 max-w-xl mx-auto mb-10">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-700 dark:text-white">
+                    Pagina no encontrada
+                </h2>
+<p class="leading-relaxed">
+¡Uy! Parece que te has salido del mapa. La página que buscas no existe, se ha movido o no está disponible temporalmente.
+</p>
+</div>
+
+<!-- Primary Action -->
+<div class="flex flex-col sm:flex-row gap-4 items-center justify-center mb-16">
+<a class="h-10 px-6 flex items-center justify-center text-white bg-primary dark:bg-blue-600 text-background-dark font-bold text-sm rounded-full hover:bg-primary/90 dark:hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg shadow-primary/20 dark:shadow-blue-300/20" routerLink="/">
+                    Ir a la pagina principal
+                </a>
+<a class="h-10 px-6 flex items-center justify-center bg-slate-200 dark:bg-white/10 text-slate-900 dark:text-white font-medium text-sm rounded-full hover:bg-slate-300 dark:hover:bg-white/20 transition-all" href="#">
+                    Contactar a soporte
+                </a>
+</div>
+<!-- Helpful Links Footer -->
+
+</div>
+</main>
