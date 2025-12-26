@@ -43,7 +43,7 @@ import { RouterLink } from '@angular/router';
 
         <a class="contact__link cur" href="{{link()}}" target="_blank"
           rel="noopener noreferrer" aria-label="Contactar por whatsApp">
-          <img src="assets/img/whatsapp_contact.png" alt="">
+          <img src="assets/img/whatsapp_contact.png" alt="WhatsApp para contactar" loading="lazy" width="200" height="47" />
         </a>
       </div>
     </div>
