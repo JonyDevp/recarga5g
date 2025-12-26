@@ -4,12 +4,6 @@ import { postResolver } from "./pages/blog/utils/post-resolver.resolver";
 export const masRoutes: Routes = [
 
     {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/404'
-    },
-
-    {
         path: 'contacto',
         loadComponent: () => import('@mas/pages/contacto/contacto.component')
     },
@@ -38,5 +32,16 @@ export const masRoutes: Routes = [
     {
         path: 'legal/condiciones',
         loadComponent: () => import('@mas/pages/legal/pages/condiciones/condiciones.component')
-    }
+    },
+
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/404',
+    },
+
+    {
+        path: '**',
+        redirectTo: '/404'
+    },
 ]

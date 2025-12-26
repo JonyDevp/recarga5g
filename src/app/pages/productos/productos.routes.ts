@@ -4,13 +4,6 @@ import { Routes } from "@angular/router";
 export const consultaRoutes: Routes = [
 
     {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/404'
-    },
-
-
-    {
         path: 'recargas',
         loadComponent: () => import('@productos/venta-recargas/venta-recargas.component')
     },
@@ -28,5 +21,16 @@ export const consultaRoutes: Routes = [
     {
         path: 'terminales',
         loadComponent: () => import('@productos/terminales/terminales.component')
-    }
+    },
+
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/404',
+    },
+
+    {
+        path: '**',
+        redirectTo: '/404'
+    },
 ];
