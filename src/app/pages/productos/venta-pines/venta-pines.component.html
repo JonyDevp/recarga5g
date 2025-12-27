@@ -23,7 +23,13 @@
 <!-- ============= CAORUSEL PINES ============= -->
 
 <section data-aos="zoom-in-up" class="container mx-auto mb-20">
-  <app-product-carousel [products]="carouselPines()"></app-product-carousel>
+      @defer (on viewport) {
+    <app-product-carousel ngSkipHydration [products]="carouselPines"></app-product-carousel>
+  } @placeholder {
+        <div class="w-3/4 mx-auto h-24 animate-pulse bg-slate-300 rounded-2xl">
+
+      </div>
+  } 
 </section>
 <!-- ============= SECCION COBRO PINES============= -->
 
@@ -553,7 +559,7 @@
 <section class="mb-20">
   <h3 class="text-3xl lg:text-5xl lg:leading-[1.1] font-semibold text-center c-text">Vender tarjetas de regalo en tu negocio </h3>
   <app-product titleSection="pines electrónicos" size="max-w-3xl w-full" gridStyle="grid-cols-2 lg:grid-cols-4"
-    [product]="carouselPines()" animateScrollClass="zoom-in" />
+    [product]="carouselPines" animateScrollClass="zoom-in" />
 </section>
 
 <section class="mb-20">

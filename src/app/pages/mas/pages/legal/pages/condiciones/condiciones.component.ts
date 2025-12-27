@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { SeoService } from '@shared/services/seo.service';
 
@@ -6,7 +6,8 @@ import { SeoService } from '@shared/services/seo.service';
   selector: 'app-condiciones',
   standalone: true,
   templateUrl: './condiciones.component.html',
-  styles: [``]
+  styles: [``],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class CondicionesComponent implements OnInit {
 

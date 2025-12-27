@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { SeoService } from '@shared/services/seo.service';
 
@@ -7,7 +7,7 @@ import { SeoService } from '@shared/services/seo.service';
   standalone: true,
   templateUrl: './politicas.component.html',
   styles: [``],
-  
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class PoliticasComponent implements OnInit {
 

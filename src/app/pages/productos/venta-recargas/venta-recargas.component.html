@@ -24,8 +24,14 @@
     </div>
 </section>
 
-<section data-aos="zoom-in-up" class="container mx-auto my-20">
-    <app-product-carousel [products]="carouselRecargas"></app-product-carousel>
+<section class="container mx-auto my-20">
+  @defer (on viewport) {
+    <app-product-carousel ngSkipHydration [products]="carouselRecargas"></app-product-carousel>
+  } @placeholder {
+        <div class="w-3/4 mx-auto h-24 animate-pulse bg-slate-300 rounded-2xl">
+
+      </div>
+  }
 </section>
 
 <section class="relative features mb-20 px-4 sm:px-6 lg:px-8">

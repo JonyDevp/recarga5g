@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -35,7 +35,8 @@ import { ProductCardsComponent } from '@plataformas/components/product-cards/pro
     ProductCardsComponent,
     RegisterStepsComponent,
     DoubtsComponent
-]
+],
+changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class PlanetaemxComponent implements OnInit {
 

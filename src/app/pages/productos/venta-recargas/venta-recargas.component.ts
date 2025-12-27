@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, inject, computed } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
@@ -30,7 +30,8 @@ import { DoubtsComponent } from "@feature/components/doubts/doubts.component";
     ProductComponent,
     SalesMethodComponent,
     DoubtsComponent
-]
+],
+changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class VentaRecargasComponent implements OnInit {
 

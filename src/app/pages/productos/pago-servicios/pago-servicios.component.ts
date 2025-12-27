@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
@@ -30,11 +30,12 @@ import { ProductCarousel } from 'src/app/interfaces/product-carousel.interface';
     SalesMethodComponent,
     RegisterStepsComponent,
     DoubtsComponent
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class PagoServiciosComponent implements OnInit {
 
-  carouselServices = signal<ProductCarousel[]>([]);
+  carouselServices : ProductCarousel[]=[];
   productServices: ProductCarousel[] = [];
   theme = inject(ThemesService);
   isDarkTheme = computed(() => this.theme.themeChange());
@@ -54,7 +55,7 @@ export default class PagoServiciosComponent implements OnInit {
       typeContent: 'website'
     
    })
-    this.carouselServices.set(this.productCarouselService.getServicios());
+    this.carouselServices = this.productCarouselService.getServicios();
     this.productServices = this.productCarouselService.getServicios();
   }
 }

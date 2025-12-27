@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MapPostItem } from '../../interfaces/post-types';
@@ -11,7 +11,8 @@ import { SeoService } from '@shared/services/seo.service';
   templateUrl: './post.component.html',
   imports: [
     RouterLink
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class PostComponent implements OnInit {
 

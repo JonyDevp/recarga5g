@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { SeoService } from '@shared/services/seo.service';
@@ -15,6 +15,7 @@ import { SeoService } from '@shared/services/seo.service';
     RouterLink,
     // ReactiveFormsModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
   
 })
 export default class ContactoComponent implements OnInit {

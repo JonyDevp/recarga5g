@@ -27,8 +27,14 @@
 </section>
 
 <!-- ============= SECCIÓN CAROUSEL SERVICIOS ============= -->
- <section data-aos="zoom-in-up" class="container mx-auto mb-20">
-   <app-product-carousel [products]="carouselServices()"></app-product-carousel>
+ <section class="container mx-auto mb-20">
+    @defer (on viewport) {
+    <app-product-carousel ngSkipHydration [products]="carouselServices"></app-product-carousel>
+  } @placeholder {
+        <div class="w-3/4 mx-auto h-24 animate-pulse bg-slate-300 rounded-2xl">
+
+      </div>
+  } 
  </section>
 
  <section class="sale-services mb-20">

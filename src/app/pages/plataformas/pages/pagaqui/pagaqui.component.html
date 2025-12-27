@@ -30,7 +30,14 @@
 </section>
 
 <section class="section-carousel-pagaqui my-20">
-  <app-product-carousel ngSkipHydration [products]="productCarousel"></app-product-carousel>
+
+  @defer (on viewport) {
+    <app-product-carousel ngSkipHydration [products]="productCarousel"></app-product-carousel>
+  } @placeholder {
+        <div class="w-3/4 mx-auto h-24 animate-pulse bg-slate-300 rounded-2xl">
+
+      </div>
+  }
 </section>
 
 <section class="section-sistema-pagaqui mb-20">

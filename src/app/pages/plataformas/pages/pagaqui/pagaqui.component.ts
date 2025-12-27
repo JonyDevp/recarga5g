@@ -4,6 +4,7 @@ import {
   inject,
   signal,
   computed,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
@@ -42,7 +43,8 @@ import { ProductCardsComponent } from '@plataformas/components/product-cards/pro
     ProductCardsComponent,
     RegisterStepsComponent,
     DoubtsComponent
-]
+],
+changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class PlataformaPagaquiComponent implements OnInit {
 

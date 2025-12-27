@@ -1,5 +1,5 @@
 
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
@@ -31,12 +31,12 @@ import { DoubtsComponent } from '@feature/components/doubts/doubts.component';
     SalesMethodComponent,
     RegisterStepsComponent,
     DoubtsComponent
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class VentaPinesComponent implements OnInit {
 
-  carouselPines = signal<ProductCarousel[]>([]);
-  stepPines = signal<registerStepsModel[]>([]);
+  carouselPines : ProductCarousel[] = [];
 
   private readonly productCarouselService = inject(ProductCarouselService);
   private readonly metaTagService = inject(SeoService);
@@ -56,7 +56,7 @@ export default class VentaPinesComponent implements OnInit {
       typeContent: 'website'
     })
 
-    this.carouselPines.set(this.productCarouselService.getPines());
+    this.carouselPines = this.productCarouselService.getPines();
   }
 
 }
