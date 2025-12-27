@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {  NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ContactBtnComponent } from '@shared/contact-btn/contact-btn.component';
 import { FooterComponent } from '@shared/footer/footer.component';
@@ -14,7 +14,8 @@ declare var dataLayer: any; // Declaramos dataLayer global
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    imports: [RouterOutlet, UpScrollComponent, HeaderComponent, ContactBtnComponent, FooterComponent]
+    imports: [RouterOutlet, UpScrollComponent, HeaderComponent, ContactBtnComponent, FooterComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent  implements OnInit{
   title = 'recarga5g.com';
