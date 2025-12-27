@@ -60,8 +60,15 @@
   </div>
 
   <div class="mt-10 mb-20 border-t border-gray-300 dark:border-gray-600/60 pt-10">
-    <app-product-carousel ngSkipHydration [products]="allProducts">
-    </app-product-carousel>
+    
+    @defer (on viewport) {
+      <app-product-carousel ngSkipHydration [products]="allProducts">
+      </app-product-carousel>
+    } @placeholder {
+      <div class="w-3/4 mx-auto h-24 animate-pulse bg-slate-300 rounded-2xl">
+
+      </div>
+    }
   </div>
 </section>
 
@@ -858,7 +865,15 @@
       </div>
 
       <div class="app-recargas-col w-full self-center">
-        <app-recargas ngSkipHydration [carouselImages]="carosuelAppImages"></app-recargas>
+      
+        @defer (on viewport) {
+
+          <app-recargas ngSkipHydration [carouselImages]="carosuelAppImages"></app-recargas>
+        } @placeholder {
+            <div class="w-68 h-144 bg-slate-300 animate-pulse rounded-2xl">
+
+          </div>
+        }
       </div>
     </div>
   </div>
@@ -1118,7 +1133,7 @@
     </div>
     <h2 class="business-title mb-4 text-center text-4xl md:text-5xl lg:text-6xl">
       Venta de recargas para
-      <span class="text-primary">todo tipo de negocio</span>
+      <span class="text-primary dark:text-blue-300">todo tipo de negocio</span>
     </h2>
 
     <div class="business-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-14 gap-x-6 mt-10">
