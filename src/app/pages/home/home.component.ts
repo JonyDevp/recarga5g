@@ -7,6 +7,7 @@ import {
   signal,
   CUSTOM_ELEMENTS_SCHEMA,
   viewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import {  Title } from '@angular/platform-browser';
@@ -59,8 +60,8 @@ import { Testimonial, TestimonialService } from './services/testimonial.service'
     ProductComponent,
     CountUpModule
 ],
-
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class HomeComponent implements OnInit {
   @ViewChildren('counter') countersElements!: QueryList<ElementRef>;
