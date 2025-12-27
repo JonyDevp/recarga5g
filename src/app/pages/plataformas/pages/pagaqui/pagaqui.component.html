@@ -583,7 +583,14 @@
       </div>
 
       <div class="app-pagaqui-col w-full lg:w-[30%]">
-        <app-recargas ngSkipHydration [carouselImages]="appPagaqui"></app-recargas>
+        @defer (on viewport) {
+          <app-recargas ngSkipHydration [carouselImages]="appPagaqui"></app-recargas>
+        } @placeholder {
+           <div class="w-3/4 mx-auto h-24 animate-pulse bg-slate-300 rounded-2xl">
+
+      </div>
+        }
+
       </div>
 
       <div class="app-pagaqui-col w-full lg:w-[30%] mt-6 lg:mt-0">
